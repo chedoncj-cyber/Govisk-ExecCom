@@ -295,7 +295,7 @@ const GRC_SUITE = [
   { id: 'grc_report',               icon: '📈', title: 'GRC Intelligence Report',     tag: 'GRC',        desc: 'Governance, Risk & Compliance maturity — OCEG/COSO methodology.' },
 ];
 
-const REPORT_SUITE = _slug === 'uk' ? CASS_SUITE : GRC_SUITE;
+const REPORT_SUITE = GRC_SUITE;
 
 // ── Regional body overrides for the 4 CASS-specific reports ──────────────────
 const _REGIONAL_REPORTS = {
