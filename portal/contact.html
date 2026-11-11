@@ -1,0 +1,178 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src 'self'; img-src 'self' data:;">
+  <title>Contact Us — Govisk ExecCom Intelligence</title>
+  <meta name="description" content="Contact Govisk ExecCom Intelligence — reach out to discuss FCA CASS compliance reports, platform access, and regulatory intelligence for your firm." />
+  <meta property="og:title" content="Contact Us | Govisk ExecCom Intelligence" />
+  <link rel="canonical" href="https://govisk.com/contact" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/style.css?v=20261037" />
+  <link rel="stylesheet" href="/assets/megamenu.css?v=20261001" />
+  <style>
+    /* ── Contact page: shrink hero bar so globes are visible ── */
+    .sib-hero {
+      background: rgba(13, 31, 60, 0.42);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      padding: 36px 32px 28px;
+    }
+    .sib-hero::before { opacity: 0.5; }
+
+    /* ── Content wrapper: transparent so globes show through ── */
+    .static-wrapper { background: transparent; }
+  </style>
+</head>
+<body class="has-nav">
+
+<canvas id="particle-canvas"></canvas>
+<canvas id="globe-canvas"></canvas>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
+
+<div class="intel-ticker">
+  <span class="ticker-label"><span class="ticker-live-dot"></span>LIVE INTEL</span>
+  <div class="ticker-track">
+    <div class="ticker-scroll">
+      <span class="ticker-item t-amber">FCA · Consumer Duty — new CASS obligations effective 25 Sep 2026</span>
+      <span class="ticker-item t-red">EBA · Basel IV implementation — capital requirements final rules Dec 2026</span>
+      <span class="ticker-item t-amber">MAS · MAS Notice SFA 04-N18 updated — fund managers digital token custody guidance</span>
+    </div>
+  </div>
+  <span class="ticker-date" id="ticker-date"></span>
+</div>
+<nav class="global-nav">
+  <a href="/" class="nav-brand">
+    <div class="nav-brand-icon">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+    </div>
+    <span class="nav-brand-name">Govisk ExecCom <em>Intelligence</em></span>
+  </a>
+  <div class="nav-links">
+    <a href="/" class="nav-link">Home</a>
+    <a href="/portal" class="nav-link">Portal</a>
+    <a href="/about" class="nav-link">About Us</a>
+    <a href="/services" class="nav-link">Services</a>
+    <a href="/case-studies" class="nav-link">Case Studies</a>
+    <a href="/contact" class="nav-link nav-active">Contact Us</a>
+  </div>
+  <div class="nav-right">
+    <a href="/request-demo" class="nav-cta">Request Demo</a>
+  </div></nav>
+
+<div class="sib-hero">
+  <div class="sib-hero-tag">Get in Touch</div>
+  <h1>Contact Govisk ExecCom Intelligence</h1>
+  <p class="sib-hero-sub">Reach out to discuss how our regulatory intelligence platform can support your compliance programme.</p>
+</div>
+
+<div class="static-wrapper">
+  <div class="contact-layout fade-in">
+    <div>
+      <div class="static-label">Send a Message</div>
+      <h2 class="static-h2" style="margin-bottom:24px">How can we help?</h2>
+      <div class="contact-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">First Name</label>
+            <input class="form-input" type="text" placeholder="Charles" id="c-fname" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Last Name</label>
+            <input class="form-input" type="text" placeholder="Bawuah-Oppong" id="c-lname" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email Address</label>
+          <input class="form-input" type="email" placeholder="compliance@firm.com" id="c-email" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Organisation</label>
+          <input class="form-input" type="text" placeholder="Firm name" id="c-org" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Subject</label>
+          <select class="form-select" id="c-subject">
+            <option value="">Select a topic…</option>
+            <option>CASS Compliance — Report Query</option>
+            <option>Cyber &amp; Threat Intelligence</option>
+            <option>Regional Intelligence Coverage</option>
+            <option>Platform Access / Demo Request</option>
+            <option>Technical Support</option>
+            <option>Partnership Enquiry</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Message</label>
+          <textarea class="form-textarea" placeholder="Tell us about your regulatory intelligence needs…" id="c-message"></textarea>
+        </div>
+        <button class="form-submit" id="c-submit">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          Send Message
+        </button>
+        <div class="form-note">We respond to all enquiries within 1 business day.</div>
+        <div class="form-success-msg" id="c-success">
+          ✓ Message sent — we'll be in touch within 1 business day.
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="contact-info-card">
+        <div class="contact-info-title">Govisk ExecCom Intelligence</div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon">🏛️</div>
+          <div>
+            <div class="contact-info-label">Headquarters</div>
+            <div class="contact-info-value">London, United Kingdom</div>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon">📋</div>
+          <div>
+            <div class="contact-info-label">Regulatory Focus</div>
+            <div class="contact-info-value">FCA · CASS · SM&CR · CBEST<br>6 Global Regions</div>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon">📊</div>
+          <div>
+            <div class="contact-info-label">Platform</div>
+            <div class="contact-info-value">13 Report Types · 22 Intel Topics<br>AI-powered · Real-time</div>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon">🔒</div>
+          <div>
+            <div class="contact-info-label">Security</div>
+            <div class="contact-info-value">All data processed securely.<br>No client data stored externally.</div>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:20px;padding:20px 24px;background:var(--surface-1);border:1px solid var(--border-dim);border-radius:var(--r-lg)">
+        <div style="font-size:0.78rem;font-weight:700;color:var(--text-1);margin-bottom:12px">Quick Links</div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <a href="/request-demo" style="font-size:0.80rem;color:var(--data);text-decoration:none;font-weight:600">→ Request a Live Demo</a>
+          <a href="/services" style="font-size:0.80rem;color:var(--data);text-decoration:none;font-weight:600">→ View All Services</a>
+          <a href="/case-studies" style="font-size:0.80rem;color:var(--data);text-decoration:none;font-weight:600">→ Read Case Studies</a>
+          <a href="/" style="font-size:0.80rem;color:var(--data);text-decoration:none;font-weight:600">→ Open Report Suite</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="page-footer">
+  <div class="page-footer-links">
+    <a href="/">Home</a><a href="/about">About Us</a><a href="/services">Services</a>
+    <a href="/case-studies">Case Studies</a><a href="/contact">Contact Us</a><a href="/request-demo">Request Demo</a>
+  </div>
+  Govisk ExecCom Intelligence &nbsp;·&nbsp; FCA Regulatory Intelligence Platform &nbsp;·&nbsp; FCA Handbook Oct 2026</footer>
+<script src="/assets/app.js?v=20261106"></script><script src="/assets/globe.js?v=20261023e"></script>
+<script src="/assets/megamenu.js?v=20261001"></script></body>
+</html>

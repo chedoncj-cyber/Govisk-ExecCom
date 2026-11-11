@@ -1,0 +1,86 @@
+{
+  "region": "North America",
+  "last_updated": "2026-11-06T00:00:00Z",
+  "news": [
+    {
+      "date": "13 Oct 2026",
+      "severity": "high",
+      "regulator": "FinCEN / OCC / OFAC",
+      "country": "USA",
+      "type": "Enforcement",
+      "headline": "Bank of America fined $1.21 billion for AML failures — largest combined US AML penalty of 2026",
+      "detail": "Bank of America received a combined $1.21 billion enforcement action from FinCEN, OCC, and OFAC for systemic anti-money laundering failures, inadequate sanctions screening, and correspondent banking control deficiencies spanning 2019–2024. FinCEN assessed a $500M civil money penalty; OCC levied $450M; OFAC imposed $260M for apparent sanctions violations. BofA agreed to a monitorship and enhanced AML compliance programme.",
+      "tags": ["BofA", "FinCEN", "OCC", "OFAC", "AML", "Sanctions", "Enforcement"]
+    },
+    {
+      "date": "08 Oct 2026",
+      "severity": "high",
+      "regulator": "Federal Reserve / OCC",
+      "country": "USA",
+      "type": "Enforcement",
+      "headline": "American Express fined $350 million for systematic AML programme failures across multiple business lines",
+      "detail": "The Federal Reserve and OCC jointly fined American Express $350 million for AML programme deficiencies, including failures in customer due diligence for Business Platinum cardholders, inadequate suspicious activity monitoring for large prepaid card transactions, and gaps in OFAC screening for international payments. AmEx agreed to a comprehensive remediation plan reviewed by an independent monitor.",
+      "tags": ["American Express", "Federal Reserve", "OCC", "AML", "SAR", "Enforcement"]
+    },
+    {
+      "date": "30 Oct 2026",
+      "severity": "high",
+      "regulator": "SEC",
+      "country": "USA",
+      "type": "Enforcement",
+      "headline": "SEC charges promoters of $130 million military veterans investment fraud scheme",
+      "detail": "The SEC charged six individuals who operated a $130 million investment fraud scheme primarily targeting US military veterans and active-duty service members. The defendants allegedly sold unregistered securities in a fictitious commodities trading programme promising 20–40% annual returns, misappropriating funds for personal use and Ponzi-style payments.",
+      "tags": ["SEC", "Investment Fraud", "Veterans", "Unregistered Securities", "Enforcement"]
+    },
+    {
+      "date": "28 Oct 2026",
+      "severity": "medium",
+      "regulator": "SEC",
+      "country": "USA",
+      "type": "Enforcement",
+      "headline": "SEC charges Zoe Financial Inc for undisclosed conflicts of interest in adviser referrals",
+      "detail": "The SEC charged fintech investment adviser referral platform Zoe Financial Inc for failing to disclose material conflicts of interest when recommending advisers on its platform. Zoe received compensation from recommended advisers but did not adequately disclose this to retail investors. The company agreed to a $4.3 million settlement.",
+      "tags": ["SEC", "Zoe Financial", "Fintech", "Adviser", "Conflicts of Interest", "Enforcement"]
+    },
+    {
+      "date": "08 Oct 2026",
+      "severity": "medium",
+      "regulator": "OSFI",
+      "country": "Canada",
+      "type": "Report",
+      "headline": "OSFI Fall 2026 Risk Outlook: frontier AI identified as emerging systemic risk for Canadian financial institutions",
+      "detail": "OSFI's Fall 2026 Emerging Risks Update identifies frontier AI as a systemic threat to the Canadian financial system, citing risks of AI-enabled cyberattacks, model opacity in credit underwriting, and third-party concentration risk from major AI providers. OSFI announced it will publish final guidance on AI risk management under Guideline E-23 in Q1 2027.",
+      "tags": ["OSFI", "AI Risk", "Systemic Risk", "Cyber", "Canada", "Report"]
+    },
+    {
+      "date": "29 Oct 2026",
+      "severity": "medium",
+      "regulator": "OCC",
+      "country": "USA",
+      "type": "Guidance",
+      "headline": "OCC Bulletin 2026-41 — digital asset custody guidance for national banks updated",
+      "detail": "The OCC updated guidance on digital asset custody for national banks and federal savings associations. Banks must demonstrate robust cryptographic key management, insurance coverage for custodial digital assets, complete segregation of customer crypto from bank proprietary holdings, and monthly reconciliation reports. New fintech sub-custodian rules require prior OCC non-objection.",
+      "tags": ["OCC", "Crypto", "Custody", "Digital Assets", "National Banks", "Guidance"]
+    },
+    {
+      "date": "20 Oct 2026",
+      "severity": "medium",
+      "regulator": "FinCEN",
+      "country": "USA",
+      "type": "Rule",
+      "headline": "FinCEN finalises Beneficial Ownership Information access rules — fintechs and community banks first in line",
+      "detail": "FinCEN published its final rule governing financial institution access to Beneficial Ownership Information in the FinCEN database, effective 1 January 2027. The rule grants authorised access for AML/CFT due diligence, sanctions screening, and fraud prevention. Fintech lenders and community banks gain phased access from March 2027; full implementation across all depository institutions by Q4 2027.",
+      "tags": ["FinCEN", "BOI", "Beneficial Ownership", "CTA", "Fintech", "AML", "Rule"]
+    },
+    {
+      "date": "15 Oct 2026",
+      "severity": "medium",
+      "regulator": "SEC / CFTC",
+      "country": "USA",
+      "type": "Rule",
+      "headline": "SEC and CFTC finalise joint crypto asset regulatory framework — DeFi protocols face first registration requirements",
+      "detail": "The SEC and CFTC published a joint final rule establishing a coordinated registration and disclosure framework for crypto asset intermediaries operating in the US. DeFi protocols with more than $100 million in total value locked must register with CFTC as swap execution facilities or with SEC as alternative trading systems by 1 June 2027. The framework represents the first mandatory registration regime targeting DeFi startups.",
+      "tags": ["SEC", "CFTC", "Crypto", "DeFi", "Fintech", "Registration", "Rule", "Startups"]
+    }
+  ]
+}

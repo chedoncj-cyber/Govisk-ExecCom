@@ -1,0 +1,86 @@
+{
+  "region": "Africa",
+  "last_updated": "2026-11-06T00:00:00Z",
+  "news": [
+    {
+      "date": "31 Jul 2026",
+      "severity": "high",
+      "regulator": "FSCA",
+      "country": "South Africa",
+      "type": "Enforcement",
+      "headline": "FSCA levies record R2.8 billion in penalties — Banxso fined R2bn+ for deepfake AI fraud and client fund misappropriation",
+      "detail": "The FSCA published its Regulatory Actions Report 2025/2026, revealing total penalties of R2.8 billion against 76 persons and entities — a 23-fold increase on the prior period's R119.8 million. The dominant action targeted Banxso: directors Harel Sekler and Warwick Sneider were fined over R2 billion after the FSCA found the firm used AI-generated deepfake videos (featuring Elon Musk and Johann Rupert) to channel investors into an unlawful scheme, misappropriating approximately R1 billion in client funds. The FSCA withdrew Banxso's licences, debarred key officials for up to 30 years, and referred the matter to the South African Police Service.",
+      "tags": ["FSCA", "South Africa", "Enforcement", "Deepfake", "AI Fraud", "Investment Fraud", "Debarment"]
+    },
+    {
+      "date": "11 Oct 2026",
+      "severity": "high",
+      "regulator": "FSCA",
+      "country": "South Africa",
+      "type": "Enforcement",
+      "headline": "FSCA bars two unnamed financial services firms from accepting new client funds pending active investigations",
+      "detail": "The FSCA announced that two financial services firms are prohibited from soliciting or accepting any new client funds while regulatory investigations remain active. The move follows the FSCA's 5 October investigation into Sanus Financial Services (trading as EZInvest and Financix) for suspected unlawful conduct. FSCA cited concerns about potential misappropriation and inadequate client safeguards at multiple licensed entities.",
+      "tags": ["FSCA", "South Africa", "Enforcement", "Client Fund Protection", "Investigation"]
+    },
+    {
+      "date": "15 Jun 2026",
+      "severity": "high",
+      "regulator": "CBN",
+      "country": "Nigeria",
+      "type": "Circular",
+      "headline": "CBN Payments System Circular: data localisation, market share caps, and UBO disclosure — compliance by 1 January 2027",
+      "detail": "The Central Bank of Nigeria issued Circular PSS/DIR/PUB/CIR/001/004 requiring: mandatory storage of all payment transaction data within Nigeria by 31 December 2026, market share concentration caps for payment processors, disclosure of ultimate beneficial ownership (UBO) for all payment businesses, and enhanced systemic oversight. Non-compliant payment firms risk licence suspension after 1 January 2027. Fintech companies with cross-border cloud infrastructure face significant operational restructuring.",
+      "tags": ["CBN", "Nigeria", "Data Localisation", "Payments", "UBO", "Fintech", "Circular"]
+    },
+    {
+      "date": "29 Sep 2026",
+      "severity": "medium",
+      "regulator": "CBK",
+      "country": "Kenya",
+      "type": "Circular",
+      "headline": "CBK Non-Deposit Taking Credit Providers Regulations 2026: BNPL and digital lending startups face new fee and AI rules",
+      "detail": "Legal Notice No. 191 of 2026 broadens CBK supervisory reach to include branch-based, asset-finance and buy-now-pay-later credit businesses alongside app-based digital lenders. Annual regulatory fees: Sh500,000 for licensed providers; Sh250,000 for registered providers; Sh1 million penalty for late payment. New requirements impose tighter controls on AI-driven lending decisions, customer data handling, and product disclosures — directly targeting fintech and startup lenders.",
+      "tags": ["CBK", "Kenya", "Credit Regulation", "Digital Lending", "BNPL", "Fintech", "Startups"]
+    },
+    {
+      "date": "11 Sep 2026",
+      "severity": "medium",
+      "regulator": "CMA",
+      "country": "Kenya",
+      "type": "Enforcement",
+      "headline": "CMA Kenya flags 15 fraudulent and unlicensed investment platforms — DCI criminal investigations launched",
+      "detail": "The Capital Markets Authority of Kenya issued a public warning against 15 unlicensed entities — including Global Investment Group (GIG), CBEX, Kore Exchange, Bitblock Capital, Ultima Cryptocurrency, and Lukman-Trust Fund — for soliciting investment funds without a CMA licence. The DCI launched active criminal investigations. Entities used social media and messaging platforms to impersonate legitimate brokers and promise guaranteed returns.",
+      "tags": ["CMA", "Kenya", "Unlicensed Investment", "Investor Warning", "DCI", "Enforcement"]
+    },
+    {
+      "date": "02 Sep 2026",
+      "severity": "medium",
+      "regulator": "ESAAMLG",
+      "country": "Regional (Eastern & Southern Africa)",
+      "type": "Report",
+      "headline": "ESAAMLG 52nd Annual Meeting in Kigali: member states called to deliver measurable AML/CFT outcomes by 2027",
+      "detail": "The 52nd ESAAMLG Task Force of Senior Officials and 26th Council of Ministers meetings in Kigali, Rwanda (31 Aug – 5 Sep 2026) concluded with a formal call for 22 member states to demonstrate quantifiable results disrupting money laundering and terrorist financing — not merely satisfy legislative requirements. Resolutions directed members to strengthen FIU cooperation, improve suspicious transaction investigation rates, and reform institutional frameworks before the next FATF mutual evaluation cycles.",
+      "tags": ["ESAAMLG", "AML", "CFT", "Regional", "East Africa", "Southern Africa", "FATF"]
+    },
+    {
+      "date": "20 Oct 2026",
+      "severity": "medium",
+      "regulator": "FSCA",
+      "country": "South Africa",
+      "type": "Consultation",
+      "headline": "FSCA Draft Conduct Standard 2 of 2026: crypto asset service providers face new custody, disclosure and capital rules",
+      "detail": "The FSCA published Draft Conduct Standard 2 of 2026 for crypto asset service providers (CASPs), proposing mandatory client asset segregation, proof-of-reserve audits, disclosure of token risk classifications, and minimum capital requirements of R5 million for CASPs holding client assets. Fintechs and crypto startups have until 31 January 2027 to comment. The standard aligns with FATF's updated Recommendation 15 for virtual asset supervision.",
+      "tags": ["FSCA", "South Africa", "Crypto", "CASP", "Custody", "Fintech", "Startups", "Consultation"]
+    },
+    {
+      "date": "15 Oct 2026",
+      "severity": "medium",
+      "regulator": "CBN",
+      "country": "Nigeria",
+      "type": "Guidance",
+      "headline": "CBN Open Banking Framework: Phase 2 live — API mandates for fintechs and 23 Tier 1/2 banks",
+      "detail": "The Central Bank of Nigeria activated Phase 2 of its Open Banking Framework, mandating 23 designated Tier 1 and Tier 2 banks to publish Open APIs for account information, payment initiation, and credit data by 1 December 2026. Fintech startups registered as licensed API consumers gain access to standardised banking data for the first time. The CBN designated 14 fintech companies as early API consumer participants.",
+      "tags": ["CBN", "Nigeria", "Open Banking", "API", "Fintech", "Startups", "Data Sharing"]
+    }
+  ]
+}

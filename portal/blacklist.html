@@ -1,0 +1,616 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src 'self'; img-src 'self' data:;">
+  <title>FATF Blacklist Monitor — Govisk ExecCom Intelligence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/style.css?v=20261023e" />
+  <link rel="stylesheet" href="/assets/megamenu.css?v=20261001" />
+  <style>
+    :root {
+      --bg:         #0A0F1E;
+      --surface:    #0F1729;
+      --surface-2:  #141E36;
+      --surface-3:  #1A2640;
+      --border:     rgba(255,255,255,0.07);
+      --border-2:   rgba(255,255,255,0.12);
+      --text-1:     #F1F5F9;
+      --text-2:     #94A3B8;
+      --text-3:     #64748B;
+      --red:        #EF4444;
+      --red-dim:    rgba(239,68,68,0.12);
+      --red-glow:   rgba(239,68,68,0.4);
+      --amber:      #F59E0B;
+      --amber-dim:  rgba(245,158,11,0.12);
+      --teal:       #14B8A6;
+      --teal-dim:   rgba(20,184,166,0.12);
+      --green:      #22C55E;
+      --green-dim:  rgba(34,197,94,0.12);
+      --blue:       #3B82F6;
+      --dur:        180ms;
+      --r:          10px;
+      --r-lg:       16px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'IBM Plex Sans', -apple-system, system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text-1);
+      min-height: 100vh;
+    }
+
+    /* ── Top Bar ── */
+    .topbar {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(10,15,30,0.94);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 28px; height: 58px;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    }
+    .topbar-left { display: flex; align-items: center; gap: 14px; }
+    .topbar-logo {
+      width: 32px; height: 32px;
+      background: linear-gradient(135deg, var(--red), #b91c1c);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 15px; font-weight: 800; color: #fff;
+    }
+    .topbar-brand { font-size: 13px; font-weight: 600; color: var(--text-1); }
+    .topbar-brand em { font-style: normal; color: var(--text-3); }
+    .topbar-right { display: flex; align-items: center; gap: 14px; }
+    .back-btn {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 12px; font-weight: 500; color: var(--text-3);
+      text-decoration: none; padding: 5px 12px; border-radius: 6px;
+      border: 1px solid var(--border);
+      transition: color var(--dur), border-color var(--dur);
+    }
+    .back-btn:hover { color: var(--text-1); border-color: var(--border-2); }
+    .refresh-btn {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 12px; font-weight: 600; cursor: pointer;
+      padding: 6px 14px; border-radius: 6px;
+      background: var(--red-dim); color: var(--red);
+      border: 1px solid rgba(239,68,68,0.25);
+      transition: background var(--dur);
+    }
+    .refresh-btn:hover { background: rgba(239,68,68,0.22); }
+    .last-updated {
+      font-size: 11px; color: var(--text-3);
+      font-family: 'IBM Plex Mono', monospace;
+    }
+
+    /* ── Hero Banner ── */
+    .hero {
+      padding: 36px 28px 28px;
+      background: linear-gradient(135deg, rgba(239,68,68,0.08), rgba(10,15,30,0) 60%);
+      border-bottom: 1px solid var(--border);
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; top: 0; right: 0;
+      width: 400px; height: 100%;
+      background: radial-gradient(ellipse 70% 80% at 80% 50%, rgba(239,68,68,0.06), transparent);
+      pointer-events: none;
+    }
+    .hero-kicker {
+      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--red);
+      font-family: 'IBM Plex Mono', monospace; margin-bottom: 8px;
+    }
+    .hero-title {
+      font-size: 2rem; font-weight: 700; letter-spacing: -0.03em;
+      color: var(--text-1); line-height: 1.1; margin-bottom: 10px;
+    }
+    .hero-title span {
+      background: linear-gradient(135deg, var(--red), #f87171);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-sub {
+      font-size: 0.82rem; color: var(--text-2); max-width: 620px; line-height: 1.6;
+    }
+    .hero-source {
+      margin-top: 12px;
+      font-size: 0.7rem; color: var(--text-3);
+      font-family: 'IBM Plex Mono', monospace;
+    }
+    .hero-source a { color: var(--teal); text-decoration: none; }
+    .hero-source a:hover { text-decoration: underline; }
+
+    /* ── Stats Strip ── */
+    .stats-strip {
+      display: flex; gap: 12px; flex-wrap: wrap;
+      padding: 20px 28px; border-bottom: 1px solid var(--border);
+    }
+    .stat-card {
+      flex: 1; min-width: 120px; max-width: 180px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 16px 18px;
+    }
+    .stat-card.red   { border-top: 2px solid var(--red); }
+    .stat-card.amber { border-top: 2px solid var(--amber); }
+    .stat-card.teal  { border-top: 2px solid var(--teal); }
+    .stat-val {
+      font-size: 2rem; font-weight: 800; line-height: 1;
+      margin-bottom: 4px;
+    }
+    .stat-card.red   .stat-val { color: var(--red); }
+    .stat-card.amber .stat-val { color: var(--amber); }
+    .stat-card.teal  .stat-val { color: var(--teal); }
+    .stat-label { font-size: 0.72rem; color: var(--text-3); font-weight: 500; }
+
+    /* ── Main Layout ── */
+    .page { max-width: 1340px; margin: 0 auto; padding: 28px 28px 80px; }
+
+    /* ── FATF Context Box ── */
+    .fatf-context {
+      background: var(--surface); border: 1px solid var(--border);
+      border-left: 3px solid var(--red);
+      border-radius: var(--r); padding: 18px 22px;
+      margin-bottom: 28px;
+      font-size: 0.78rem; color: var(--text-2); line-height: 1.7;
+    }
+    .fatf-context strong { color: var(--text-1); }
+
+    /* ── Region Tab Bar ── */
+    .tab-bar {
+      display: flex; gap: 6px; flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+    .tab-btn {
+      padding: 7px 16px; border-radius: 20px; cursor: pointer;
+      font-size: 12px; font-weight: 600; border: 1px solid var(--border);
+      background: var(--surface); color: var(--text-3);
+      transition: all var(--dur);
+      font-family: 'IBM Plex Mono', monospace;
+    }
+    .tab-btn:hover { border-color: var(--border-2); color: var(--text-2); }
+    .tab-btn.active {
+      background: rgba(239,68,68,0.15);
+      color: var(--red); border-color: rgba(239,68,68,0.3);
+    }
+
+    /* ── Section Labels ── */
+    .list-section { margin-bottom: 32px; }
+    .list-section-header {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 14px;
+    }
+    .section-badge {
+      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; padding: 3px 10px; border-radius: 20px;
+      font-family: 'IBM Plex Mono', monospace;
+    }
+    .section-badge.black { background: var(--red-dim); color: var(--red); border: 1px solid rgba(239,68,68,0.3); }
+    .section-badge.grey  { background: var(--amber-dim); color: var(--amber); border: 1px solid rgba(245,158,11,0.3); }
+    .section-title-text { font-size: 0.88rem; font-weight: 600; color: var(--text-2); }
+    .section-count { font-size: 0.72rem; color: var(--text-3); margin-left: auto; font-family: 'IBM Plex Mono', monospace; }
+
+    /* ── Country Grid ── */
+    .country-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 12px;
+    }
+    .country-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 18px 20px;
+      display: flex; align-items: flex-start; gap: 14px;
+      transition: border-color var(--dur), transform var(--dur);
+      position: relative; overflow: hidden;
+    }
+    .country-card::before {
+      content: ''; position: absolute; inset: 0; border-radius: inherit;
+      background: linear-gradient(135deg, transparent, rgba(255,255,255,0.012));
+      pointer-events: none;
+    }
+    .country-card:hover { border-color: var(--border-2); transform: translateY(-2px); }
+    .country-card.status-black { border-left: 3px solid var(--red); }
+    .country-card.status-grey  { border-left: 3px solid var(--amber); }
+
+    .card-flag { font-size: 2.2rem; line-height: 1; flex-shrink: 0; }
+    .card-body { flex: 1; min-width: 0; }
+    .card-name { font-size: 0.95rem; font-weight: 700; color: var(--text-1); margin-bottom: 5px; }
+    .card-region { font-size: 0.7rem; color: var(--text-3); font-family: 'IBM Plex Mono', monospace; margin-bottom: 8px; }
+    .card-status-badge {
+      display: inline-block;
+      font-size: 0.6rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; padding: 2px 8px; border-radius: 10px;
+      font-family: 'IBM Plex Mono', monospace; margin-bottom: 6px;
+    }
+    .card-status-badge.black { background: var(--red-dim); color: var(--red); border: 1px solid rgba(239,68,68,0.25); }
+    .card-status-badge.grey  { background: var(--amber-dim); color: var(--amber); border: 1px solid rgba(245,158,11,0.25); }
+    .card-since { font-size: 0.68rem; color: var(--text-3); font-family: 'IBM Plex Mono', monospace; }
+    .card-concerns { margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--border); }
+    .card-concern-item {
+      font-size: 0.7rem; color: var(--text-3); line-height: 1.5;
+      padding-left: 10px; position: relative;
+    }
+    .card-concern-item::before { content: '·'; position: absolute; left: 0; color: var(--red); }
+
+    /* ── Empty State ── */
+    .empty-state {
+      padding: 48px 24px; text-align: center;
+      color: var(--text-3); font-size: 0.85rem;
+    }
+
+    /* ── Loading ── */
+    .loading-bar {
+      text-align: center; padding: 60px 24px;
+      color: var(--text-3); font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem;
+    }
+    .loading-dot {
+      display: inline-block; width: 6px; height: 6px; border-radius: 50%;
+      background: var(--red); margin: 0 3px;
+      animation: pulse 1.2s ease-in-out infinite;
+    }
+    .loading-dot:nth-child(2) { animation-delay: 0.2s; }
+    .loading-dot:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes pulse { 0%,100%{opacity:.2} 50%{opacity:1} }
+
+    /* ── Disclaimer ── */
+    .disclaimer {
+      margin-top: 40px; padding: 16px 20px;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--r);
+      font-size: 0.72rem; color: var(--text-3); line-height: 1.7;
+    }
+    .disclaimer strong { color: var(--text-2); }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      .hero-title { font-size: 1.5rem; }
+      .stats-strip { gap: 8px; }
+      .stat-card { min-width: 100px; }
+    }
+  </style>
+</head>
+<body class="has-nav">
+
+<canvas id="particle-canvas"></canvas>
+<canvas id="globe-canvas"></canvas>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
+
+<!-- ── Top Bar ── -->
+<div class="topbar">
+  <div class="topbar-left">
+    <div class="topbar-logo">&#9888;</div>
+    <div>
+      <div class="topbar-brand">Govisk ExecCom <em>Intelligence</em></div>
+      <div style="font-size:11px;color:var(--text-3);font-family:'IBM Plex Mono',monospace;margin-top:1px">FATF High-Risk Jurisdictions Monitor</div>
+    </div>
+  </div>
+  <div class="topbar-right">
+    <span class="last-updated" id="last-updated">Loading…</span>
+    <button class="refresh-btn" onclick="refreshData()">
+      <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.09"/></svg>
+      Refresh
+    </button>
+    <a href="/portal" class="back-btn">
+      <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      Portal
+    </a>
+  </div>
+</div>
+
+<!-- ── Global Navigation ── -->
+<nav class="global-nav" id="global-nav">
+  <a href="/" class="nav-brand">
+    <div class="nav-brand-icon">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+    </div>
+    <span class="nav-brand-name">Govisk ExecCom <em>Intelligence</em></span>
+  </a>
+  <div class="nav-links">
+    <a href="/" class="nav-link">Home</a>
+    <a href="/portal" class="nav-link">Portal</a>
+    <a href="/about" class="nav-link">About Us</a>
+    <a href="/services" class="nav-link">Services</a>
+    <a href="/case-studies" class="nav-link">Case Studies</a>
+    <a href="/contact" class="nav-link">Contact Us</a>
+  </div>
+  <div class="nav-right">
+    <a href="/request-demo" class="nav-cta">Request Demo</a>
+  </div></nav>
+
+<!-- ── Hero ── -->
+<div class="hero">
+  <div class="hero-kicker">FATF · AML / CFT · Financial Intelligence</div>
+  <div class="hero-title">
+    <span>FATF Blacklist</span> & Grey List Monitor
+  </div>
+  <div class="hero-sub">
+    Countries identified by the Financial Action Task Force (FATF) as High-Risk Jurisdictions subject to a Call for Action (Black List) or under Increased Monitoring (Grey List). Updated daily from fatf-gafi.org.
+  </div>
+  <div class="hero-source">
+    Source: <a href="https://www.fatf-gafi.org/en/topics/high-risk-and-other-monitored-jurisdictions.html" target="_blank" rel="noopener noreferrer">fatf-gafi.org — High-Risk and Other Monitored Jurisdictions</a>
+  </div>
+</div>
+
+<!-- ── Stats Strip ── -->
+<div class="stats-strip" id="stats-strip">
+  <div class="stat-card red">
+    <div class="stat-val" id="stat-black">—</div>
+    <div class="stat-label">BLACK LIST (Call for Action)</div>
+  </div>
+  <div class="stat-card amber">
+    <div class="stat-val" id="stat-grey">—</div>
+    <div class="stat-label">GREY LIST (Increased Monitoring)</div>
+  </div>
+  <div class="stat-card teal">
+    <div class="stat-val" id="stat-total">—</div>
+    <div class="stat-label">Total High-Risk Jurisdictions</div>
+  </div>
+</div>
+
+<!-- ── Main Content ── -->
+<div class="page">
+
+  <!-- FATF Context -->
+  <div class="fatf-context">
+    <strong>What is the FATF Blacklist?</strong> The Financial Action Task Force (FATF) identifies jurisdictions with strategic AML/CFT deficiencies. The
+    <strong>Black List</strong> (High-Risk Jurisdictions subject to a Call for Action) requires enhanced due diligence and counter-measures. The
+    <strong>Grey List</strong> (Jurisdictions under Increased Monitoring) signals active commitment to addressing identified deficiencies — enhanced due diligence is still required under the UK Money Laundering Regulations 2017 (Regulation 33).
+    UK-regulated firms must apply <strong>Enhanced Due Diligence (EDD)</strong> for all transactions involving or connected to any listed jurisdiction.
+  </div>
+
+  <!-- Region Tab Bar -->
+  <div class="tab-bar" id="tab-bar">
+    <button class="tab-btn active" data-region="all">All Regions</button>
+    <button class="tab-btn" data-region="Africa">Africa</button>
+    <button class="tab-btn" data-region="Americas">Americas</button>
+    <button class="tab-btn" data-region="Asia-Pacific">Asia-Pacific</button>
+    <button class="tab-btn" data-region="Europe">Europe</button>
+    <button class="tab-btn" data-region="Middle East & North Africa">Middle East &amp; N. Africa</button>
+  </div>
+
+  <!-- Country Lists -->
+  <div id="content-area">
+    <div class="loading-bar">
+      <span class="loading-dot"></span>
+      <span class="loading-dot"></span>
+      <span class="loading-dot"></span>
+      <br><br>Loading FATF jurisdiction data…
+    </div>
+  </div>
+
+  <!-- Disclaimer -->
+  <div class="disclaimer">
+    <strong>Disclaimer:</strong> This data is sourced from publicly available FATF publications and is provided for information purposes only. It does not constitute legal or compliance advice.
+    Firms must verify the current status of all jurisdictions directly at <strong>fatf-gafi.org</strong> and with OFSI (UK) before making compliance decisions.
+    FATF lists are updated following each FATF Plenary (typically February, June, and October each year).
+    Last live fetch attempt shown in the top bar above.
+  </div>
+
+</div>
+
+<!-- Inline particle animation -->
+<script>
+(function() {
+  var canvas = document.getElementById('particle-canvas');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var particles = [];
+  function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+  resize();
+  window.addEventListener('resize', resize);
+  for (var i = 0; i < 40; i++) {
+    particles.push({ x: Math.random() * window.innerWidth, y: Math.random() * window.innerHeight,
+      vx: (Math.random() - 0.5) * 0.4, vy: (Math.random() - 0.5) * 0.4,
+      r: Math.random() * 1.5 + 0.5 });
+  }
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (var i = 0; i < particles.length; i++) {
+      var p = particles[i];
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0) p.x = canvas.width; if (p.x > canvas.width) p.x = 0;
+      if (p.y < 0) p.y = canvas.height; if (p.y > canvas.height) p.y = 0;
+      ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(239,68,68,0.4)'; ctx.fill();
+      for (var j = i + 1; j < particles.length; j++) {
+        var q = particles[j];
+        var dx = p.x - q.x, dy = p.y - q.y, d = Math.sqrt(dx*dx + dy*dy);
+        if (d < 110) {
+          ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y);
+          ctx.strokeStyle = 'rgba(239,68,68,' + (0.06 * (1 - d / 110)) + ')';
+          ctx.lineWidth = 0.5; ctx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+</script>
+
+<script>
+// ── Data & State ──────────────────────────────────────────────────────────────
+var _data        = null;
+var _activeRegion = 'all';
+var REGIONS = ['Africa', 'Americas', 'Asia-Pacific', 'Europe', 'Middle East & North Africa'];
+
+// ── Fetch ─────────────────────────────────────────────────────────────────────
+async function loadData() {
+  try {
+    var res = await fetch('/api/fatf-blacklist');
+    if (!res.ok) throw new Error('API returned ' + res.status);
+    _data = await res.json();
+    render();
+    updateStats();
+    updateTimestamp();
+  } catch (err) {
+    document.getElementById('content-area').innerHTML =
+      '<div class="empty-state">Failed to load FATF data — ' + err.message + '</div>';
+  }
+}
+
+async function refreshData() {
+  document.getElementById('last-updated').textContent = 'Refreshing…';
+  try {
+    var res = await fetch('/api/fatf-blacklist/refresh', { method: 'POST' });
+    if (res.headers.get('content-type') && res.headers.get('content-type').includes('event-stream')) {
+      var reader = res.body.getReader();
+      var decoder = new TextDecoder();
+      while (true) {
+        var chunk = await reader.read();
+        if (chunk.done) break;
+        var text = decoder.decode(chunk.value);
+        var lines = text.split('\n');
+        for (var l of lines) {
+          if (l.startsWith('data: ')) {
+            try {
+              var ev = JSON.parse(l.slice(6));
+              if (ev.type === 'complete') { await loadData(); return; }
+            } catch (e) {}
+          }
+        }
+      }
+    }
+    await loadData();
+  } catch (err) {
+    document.getElementById('last-updated').textContent = 'Refresh failed';
+  }
+}
+
+// ── Stats ─────────────────────────────────────────────────────────────────────
+function updateStats() {
+  if (!_data || !_data.summary) return;
+  document.getElementById('stat-black').textContent = _data.summary.total_black;
+  document.getElementById('stat-grey').textContent  = _data.summary.total_grey;
+  document.getElementById('stat-total').textContent = _data.summary.total;
+}
+
+function updateTimestamp() {
+  if (!_data || !_data.last_updated) return;
+  var d = new Date(_data.last_updated);
+  var method = _data.fetch_method === 'live_scrape' ? 'live' : 'baseline';
+  document.getElementById('last-updated').textContent =
+    'Updated: ' + d.toLocaleDateString('en-GB', { day:'2-digit', month:'short', year:'numeric' }) +
+    ' ' + d.toLocaleTimeString('en-GB', { hour:'2-digit', minute:'2-digit' }) + ' (' + method + ')';
+}
+
+// ── Render ────────────────────────────────────────────────────────────────────
+function filterList(list) {
+  if (_activeRegion === 'all') return list;
+  return list.filter(function(c) { return c.region === _activeRegion; });
+}
+
+function countryCard(c, statusClass) {
+  var concerns = '';
+  if (c.primary_concerns && c.primary_concerns.length) {
+    concerns = '<div class="card-concerns">' +
+      c.primary_concerns.map(function(x) { return '<div class="card-concern-item">' + x + '</div>'; }).join('') +
+      '</div>';
+  }
+  var badgeLabel = statusClass === 'black' ? 'BLACKLIST' : 'GREY LIST';
+  return '<div class="country-card status-' + statusClass + '">' +
+    '<div class="card-flag">' + (c.flag || '&#127760;') + '</div>' +
+    '<div class="card-body">' +
+      '<div class="card-name">' + c.country + '</div>' +
+      '<div class="card-region">' + c.region + '</div>' +
+      '<span class="card-status-badge ' + statusClass + '">' + badgeLabel + '</span>' +
+      (c.on_list_since ? '<div class="card-since">On list since: ' + c.on_list_since + '</div>' : '') +
+      concerns +
+    '</div>' +
+  '</div>';
+}
+
+function sectionHTML(list, statusClass, title) {
+  var filtered = filterList(list);
+  if (!filtered.length) return '';
+  var badgeClass = statusClass === 'black' ? 'black' : 'grey';
+  var badgeLabel = statusClass === 'black'
+    ? 'HIGH-RISK — CALL FOR ACTION'
+    : 'INCREASED MONITORING';
+  return '<div class="list-section">' +
+    '<div class="list-section-header">' +
+      '<span class="section-badge ' + badgeClass + '">' + badgeLabel + '</span>' +
+      '<span class="section-title-text">' + title + '</span>' +
+      '<span class="section-count">' + filtered.length + ' jurisdiction' + (filtered.length !== 1 ? 's' : '') + '</span>' +
+    '</div>' +
+    '<div class="country-grid">' +
+      filtered.map(function(c) { return countryCard(c, statusClass); }).join('') +
+    '</div>' +
+  '</div>';
+}
+
+function render() {
+  if (!_data) return;
+
+  // Rebuild per-region stats in tabs
+  updateRegionTabCounts();
+
+  var html = '';
+
+  // Black list section
+  html += sectionHTML(_data.black_list, 'black', 'Black List — No active engagement with FATF');
+
+  // If showing a region, check if no entries in either list
+  var greyFiltered = filterList(_data.grey_list);
+  var blackFiltered = filterList(_data.black_list);
+  if (!greyFiltered.length && !blackFiltered.length) {
+    html = '<div class="empty-state">No high-risk jurisdictions in this region.</div>';
+  } else {
+    // Grey list section
+    html += sectionHTML(_data.grey_list, 'grey', 'Grey List — Jurisdictions under Increased Monitoring');
+  }
+
+  document.getElementById('content-area').innerHTML = html;
+}
+
+function updateRegionTabCounts() {
+  if (!_data) return;
+  REGIONS.forEach(function(region) {
+    var blackCount = _data.black_list.filter(function(c) { return c.region === region; }).length;
+    var greyCount  = _data.grey_list.filter(function(c) { return c.region === region; }).length;
+    var total = blackCount + greyCount;
+    var btn = document.querySelector('.tab-btn[data-region="' + region + '"]');
+    if (btn && total > 0) {
+      var regionShort = region.replace('Middle East & North Africa', 'MENA');
+      btn.innerHTML = regionShort + ' <span style="opacity:0.55;font-size:10px">(' + total + ')</span>';
+    }
+  });
+  // All tab
+  var allBtn = document.querySelector('.tab-btn[data-region="all"]');
+  if (allBtn && _data.summary) {
+    allBtn.innerHTML = 'All Regions <span style="opacity:0.55;font-size:10px">(' + _data.summary.total + ')</span>';
+  }
+}
+
+// ── Tab Handling ──────────────────────────────────────────────────────────────
+document.getElementById('tab-bar').addEventListener('click', function(e) {
+  var btn = e.target.closest('.tab-btn');
+  if (!btn) return;
+  document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+  btn.classList.add('active');
+  _activeRegion = btn.dataset.region;
+  render();
+});
+
+// ── Boot ──────────────────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', loadData);
+</script>
+
+<script src="/assets/app.js?v=20261106"></script><script src="/assets/globe.js?v=20261023e"></script>
+<script src="/assets/megamenu.js?v=20261001"></script>
+
+<footer style="position:relative;z-index:1;text-align:center;padding:24px 32px 20px;font-size:0.82rem;color:var(--text-3);">
+  <div style="margin-bottom:12px;">Govisk ExecCom Intelligence &nbsp;·&nbsp; Geo-Financial Risk &amp; Governance Intelligence &nbsp;·&nbsp; Est. 2026</div>
+  <div style="display:flex;flex-wrap:wrap;gap:16px;font-size:12px;justify-content:center;">
+  </div>
+</footer></body>
+</html>

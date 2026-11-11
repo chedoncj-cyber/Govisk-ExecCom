@@ -1,0 +1,374 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src 'self'; img-src 'self' data: https://cdn.jsdelivr.net;">
+  <title>Govisk ExecCom Intelligence Reports — FCA Regulatory Portal</title>
+  <meta name="description" content="FCA CASS regulatory intelligence reports, GRC dashboards, and compliance monitoring for UK financial services firms. Covering CASS 6, 7, 10, SM&CR, PS21/3 and CBEST." />
+  <meta property="og:title" content="Intelligence Portal | Govisk ExecCom Intelligence" />
+  <link rel="canonical" href="https://govisk.com/portal" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/style.css?v=20261037" />
+  <link rel="stylesheet" href="/assets/megamenu.css?v=20261001" />
+</head>
+<body class="has-nav">
+
+<canvas id="particle-canvas"></canvas>
+<canvas id="globe-canvas"></canvas>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
+
+<!-- ── Alert Ticker ── -->
+<div class="intel-ticker" id="intel-ticker">
+  <span class="ticker-label"><span class="ticker-live-dot"></span>LIVE INTEL</span>
+  <div class="ticker-track">
+    <div class="ticker-scroll" id="ticker-scroll">
+      <span class="ticker-item t-red">FCA · CASS 7 client money rules — enhanced reconciliation requirements effective Q1 2027</span>
+      <span class="ticker-item t-amber">ESMA · MiFID II client asset safeguarding review — consultation closes 15 Nov 2026</span>
+      <span class="ticker-item t-red">SEC · Regulation Best Interest — enforcement sweep across 47 broker-dealers initiated</span>
+      <span class="ticker-item t-amber">MAS · Digital asset custody framework — final rules effective Jan 2027</span>
+      <span class="ticker-item t-red">BaFin · DORA fully operative — ICT incident reporting mandatory from 17 Jan 2025</span>
+      <span class="ticker-item t-green">Bank of England · CBEST cyber resilience framework — updated guidance published Oct 2026</span>
+      <span class="ticker-item t-amber">SARB · AML/CFT reforms — FATF mutual evaluation follow-up action required by Dec 2026</span>
+      <span class="ticker-item t-red">FCA · NatWest fined £264.8M for AML failings — largest-ever FCA financial crime fine</span>
+    </div>
+  </div>
+  <span class="ticker-date" id="ticker-date"></span>
+</div>
+
+<!-- ── Global Navigation ── -->
+<nav class="global-nav" id="global-nav">
+  <a href="/" class="nav-brand">
+    <div class="nav-brand-icon">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+    </div>
+    <span class="nav-brand-name">Govisk ExecCom <em>Intelligence</em></span>
+  </a>
+  <div class="nav-links">
+    <a href="/" class="nav-link">Home</a>
+    <a href="/portal" class="nav-link nav-active">Portal</a>
+    <a href="/about" class="nav-link">About Us</a>
+    <a href="/services" class="nav-link">Services</a>
+    <a href="/case-studies" class="nav-link">Case Studies</a>
+    <a href="/contact" class="nav-link">Contact Us</a>
+  </div>
+  <div class="nav-right">
+    <a href="/request-demo" class="nav-cta">Request Demo</a>
+  </div></nav>
+
+<div class="wrapper">
+
+  <!-- ── Header ── -->
+  <header class="site-header">
+    <div class="logo-block">
+      <div class="logo-icon">
+        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+          <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
+        </svg>
+      </div>
+      <div class="logo-text">
+        <h1>Govisk ExecCom <em>Intelligence</em></h1>
+        <p>FCA · CASS · SM&amp;CR · CBEST · PS21/3</p>
+      </div>
+    </div>
+    <div class="header-right">
+      <a class="grc-btn" href="/grc_dashboard.html" target="_blank" title="Open GRC Intelligence Dashboard">
+        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>
+        GRC Dashboard
+      </a>
+      <button class="qs-trigger" id="qs-trigger" title="Quick search reports">
+        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <span>Search</span>
+        <kbd class="qs-kbd">⌘K</kbd>
+      </button>
+      <div class="time-chip" id="time-display">Loading…</div>
+    </div>
+  </header>
+
+  <!-- AI Connectors hidden -->
+  <div class="ai-bar" id="ai-bar" style="display:none">
+    <span class="ai-bar-label">AI</span>
+    <div id="ai-chips" style="display:flex;gap:6px;flex-wrap:wrap;">
+      <div class="ai-chip"><span class="dot"></span>Connecting…</div>
+    </div>
+  </div>
+
+  <!-- ── Stats strip ── -->
+  <div class="stats-strip">
+    <div class="stat-card">
+      <div class="stat-value">12</div>
+      <div class="stat-label">Report Types</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value" id="stat-reports">0</div>
+      <div class="stat-label">Generated</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value" id="stat-ai-connectors">11</div>
+      <div class="stat-label">AI Connectors</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value">6</div>
+      <div class="stat-label">Regions</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value" id="stat-topics">23</div>
+      <div class="stat-label">Intel Topics</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value">RAG</div>
+      <div class="stat-label">Scoring System</div>
+    </div>
+  </div>
+
+  <!-- ── Report Suite ── -->
+  <div class="section-header">
+    <div class="section-title">Report Suite</div>
+    <div class="filter-bar" id="filter-bar">
+      <button class="filter-btn active" data-cat="all">All</button>
+      <button class="filter-btn" data-cat="cass">CASS</button>
+      <button class="filter-btn" data-cat="cyber">Cyber</button>
+      <button class="filter-btn" data-cat="fca">FCA</button>
+      <button class="filter-btn" data-cat="intel">Intel</button>
+      <button class="filter-btn" data-cat="risk">Risk</button>
+      <button class="filter-btn" data-cat="exec">Exec</button>
+      <button class="filter-btn" data-cat="phys">Physical</button>
+      <button class="filter-btn" data-cat="grc">GRC</button>
+      <a href="/blacklist" class="filter-btn" style="text-decoration:none;display:inline-flex;align-items:center;gap:5px;background:rgba(239,68,68,0.1);color:#EF4444;border-color:rgba(239,68,68,0.3)">
+        <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        Blacklist
+      </a>
+    </div>
+  </div>
+  <div class="reports-grid" id="reports-grid"></div>
+
+  <!-- ── Consumer Duty Alert ── -->
+  <div class="duty-strip" id="duty-strip" style="display:none">
+    <div class="duty-icon">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+        <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+      </svg>
+    </div>
+    <div>
+      <div class="duty-title">Consumer Duty — New CASS Obligations (effective 25 Sep 2026)</div>
+      <div class="duty-rules" id="duty-rules"></div>
+    </div>
+  </div>
+
+  <!-- ── Regional Intelligence Navigation ── -->
+  <div class="region-nav-bar">
+    <span class="region-nav-label">Regional MI →</span>
+    <a href="/region/uk"            class="region-nav-link rn-uk">🇬🇧 UK</a>
+    <a href="/region/north-america" class="region-nav-link rn-na">🌎 N. America</a>
+    <a href="/region/latin-america" class="region-nav-link rn-la">🌎 Latin America</a>
+    <a href="/region/asia-pacific"  class="region-nav-link rn-ap">🌏 Asia-Pacific</a>
+    <a href="/region/africa"        class="region-nav-link rn-af">🌍 Africa</a>
+    <a href="/region/europe"        class="region-nav-link rn-eu">🇪🇺 Europe</a>
+  </div>
+
+  <!-- ── FCA Feed ── -->
+  <div class="section-title">🇬🇧 UK — FCA Regulatory Intelligence</div>
+  <div class="reg-feed-subtitle">FCA · CASS · SM&amp;CR · Bank of England · PRA · FRC</div>
+  <div class="reg-feed" id="reg-feed">
+    <div class="reg-item">
+      <div class="reg-dot"></div>
+      <div class="reg-body"><div class="reg-headline" style="color:var(--text-3)">Loading…</div></div>
+    </div>
+  </div>
+
+  <!-- ── North America Feed ── -->
+  <div style="margin-top:32px">
+    <div class="section-title">🌎 North America — Regulatory Intelligence</div>
+    <div class="reg-feed-subtitle">Fed · SEC · OCC · FDIC · CFTC · FinCEN · OFAC &nbsp;·&nbsp; Canada: OSFI · OSC · AMF · FINTRAC</div>
+  </div>
+  <div class="reg-feed" id="reg-feed-north-america">
+    <div class="reg-item"><div class="reg-dot"></div><div class="reg-body"><div class="reg-headline" style="color:var(--text-3)">Loading…</div></div></div>
+  </div>
+
+  <!-- ── Latin America Feed ── -->
+  <div style="margin-top:32px">
+    <div class="section-title">🌎 Latin America — Regulatory Intelligence</div>
+    <div class="reg-feed-subtitle">BCB · CVM &nbsp;·&nbsp; CNBV · BANXICO &nbsp;·&nbsp; SFC · CMF · SBS · BCRA · CNV &nbsp;·&nbsp; GAFILAT</div>
+  </div>
+  <div class="reg-feed" id="reg-feed-latin-america">
+    <div class="reg-item"><div class="reg-dot"></div><div class="reg-body"><div class="reg-headline" style="color:var(--text-3)">Loading…</div></div></div>
+  </div>
+
+  <!-- ── Asia-Pacific Feed ── -->
+  <div style="margin-top:32px">
+    <div class="section-title">🌏 Asia-Pacific — Regulatory Intelligence</div>
+    <div class="reg-feed-subtitle">MAS · HKMA · SFC &nbsp;·&nbsp; NFRA · CSRC · PBOC &nbsp;·&nbsp; FSA &nbsp;·&nbsp; RBI · SEBI &nbsp;·&nbsp; ASIC · APRA · AUSTRAC · APG</div>
+  </div>
+  <div class="reg-feed" id="reg-feed-asia-pacific">
+    <div class="reg-item"><div class="reg-dot"></div><div class="reg-body"><div class="reg-headline" style="color:var(--text-3)">Loading…</div></div></div>
+  </div>
+
+  <!-- ── Africa Feed ── -->
+  <div style="margin-top:32px">
+    <div class="section-title">🌍 Africa — Regulatory Intelligence</div>
+    <div class="reg-feed-subtitle">PA/SARB · FSCA &nbsp;·&nbsp; CBN &nbsp;·&nbsp; CBK · CMA &nbsp;·&nbsp; GIABA · ESAAMLG · GABAC</div>
+  </div>
+  <div class="reg-feed" id="reg-feed-africa">
+    <div class="reg-item"><div class="reg-dot"></div><div class="reg-body"><div class="reg-headline" style="color:var(--text-3)">Loading…</div></div></div>
+  </div>
+
+  <!-- ── Daily Intelligence Briefing ── -->
+  <div class="section-header" style="margin-top:32px">
+    <div class="section-title">Global Regulatory Intelligence</div>
+    <div class="briefing-controls">
+      <span class="briefing-ts" id="briefing-ts"></span>
+      <button class="briefing-run-btn" id="briefing-run-btn">
+        <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+        Run Update
+      </button>
+    </div>
+  </div>
+
+  <!-- ── Regions Overview Cards ── -->
+  <div class="regions-panel" id="regions-panel">
+    <div class="region-card region-card--placeholder">
+      <div class="rc-icon">🌐</div>
+      <div class="rc-body">
+        <div class="rc-name">6 Regions · 22 Topics</div>
+        <div class="rc-regulators">🇬🇧 UK · N. America · Latin America · Asia-Pacific · Africa · 🇪🇺 Europe</div>
+        <div class="rc-status rc-status--idle">Click <strong>Run Update</strong> to load</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Region Tabs ── -->
+  <div class="region-tabs-bar" id="region-tabs-bar">
+    <button class="region-tab active" data-region="all">All Regions</button>
+    <button class="region-tab" data-region="UK">🇬🇧 UK</button>
+    <button class="region-tab" data-region="North America">🌎 N. America</button>
+    <button class="region-tab" data-region="Latin America">🌎 Latin America</button>
+    <button class="region-tab" data-region="Asia">🌏 Asia-Pacific</button>
+    <button class="region-tab" data-region="Africa">🌍 Africa</button>
+    <button class="region-tab" data-region="Europe">🇪🇺 Europe</button>
+  </div>
+
+  <!-- ── Briefing Grid (filtered by active tab) ── -->
+  <div class="briefing-grid" id="briefing-grid" style="margin-top:0">
+    <div class="briefing-empty">Click <strong>Run Update</strong> to fetch live intelligence across <strong>26 topics · 6 regions</strong> — 🇬🇧 UK · North America (Fed·SEC·OCC·FDIC·FinCEN·CIRO·OSFI) · 🇪🇺 Europe (ESMA·ECB·EBA·BaFin·AMF·CBI·CSSF·FINMA) · Latin America (Brazil·Mexico·Colombia·Chile·Peru·Argentina) · Asia-Pacific (MAS·HKMA·FSA·NFRA·RBI·ASIC) · Africa (PA/SARB·FSCA·CBN·CBK).</div>
+  </div>
+  <div class="briefing-log-wrap" id="briefing-log-wrap" style="display:none">
+    <div class="briefing-log" id="briefing-log"></div>
+  </div>
+
+  <!-- ── Enforcement Fines ── -->
+  <div class="section-title" id="enforcement-section-title" style="display:none">FCA Enforcement Actions</div>
+  <div class="enforcement-grid" id="enforcement-grid"></div>
+
+  <!-- ── Recent Reports ── -->
+  <div class="section-title">Generated Reports</div>
+  <div class="reports-table-wrap">
+    <table class="reports-table">
+      <thead>
+        <tr>
+          <th>Report</th>
+          <th>Generated</th>
+          <th>Size</th>
+          <th>Download</th>
+        </tr>
+      </thead>
+      <tbody id="recent-tbody">
+        <tr><td colspan="4" class="no-reports">No reports yet</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <footer class="site-footer">
+    <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-bottom:10px;font-size:0.75rem;">
+    </div>
+    Govisk ExecCom Intelligence &nbsp;·&nbsp; <span>Perplexity · DeepSeek · Cerebras · Groq · Mistral · LLM7.io · OpenRouter · Cohere · Gemini</span> &nbsp;·&nbsp; FCA Handbook Oct 2026</footer>
+
+</div><!-- /wrapper -->
+
+<!-- ── Modal ── -->
+<div class="modal-backdrop" id="modal-backdrop">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title-block">
+        <div class="modal-icon" id="modal-icon-wrap"></div>
+        <div>
+          <div class="modal-title" id="modal-title">Report</div>
+          <div class="modal-sub" id="modal-sub">FCA Aligned</div>
+        </div>
+      </div>
+      <button class="btn-close" id="btn-close-modal" aria-label="Close">✕</button>
+    </div>
+    <div class="modal-body">
+      <div id="report-form"></div>
+      <div class="scan-option" id="scan-option">
+        <span class="scan-icon">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+        </span>
+        <div style="flex:1">
+          <div class="scan-label">Live Regulatory Intelligence Scan</div>
+          <div class="scan-desc">Perplexity scans the web for latest FCA updates before generating</div>
+        </div>
+        <label class="toggle">
+          <input type="checkbox" id="toggle-no-scan" />
+          <span class="toggle-track"></span>
+        </label>
+        <span style="font-size:0.68rem;color:var(--text-3);white-space:nowrap;font-family:'IBM Plex Mono',monospace">Skip</span>
+      </div>
+      <button class="btn-generate" id="btn-generate">
+        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        Generate Intelligence Report
+      </button>
+      <div class="progress-panel" id="progress-panel">
+        <div class="progress-header">
+          <div class="spinner"></div>
+          <span>Generating report…</span>
+        </div>
+        <div class="progress-steps">
+          <div class="step-dot"></div>
+          <div class="step-dot"></div>
+          <div class="step-dot"></div>
+          <div class="step-dot"></div>
+          <div class="step-dot"></div>
+        </div>
+        <div class="progress-log" id="progress-log"></div>
+        <div class="result-bar" id="result-bar">
+          <span class="result-msg" id="result-msg">Report ready</span>
+          <a class="btn-download" id="download-link" href="#" download>
+            <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download .docx
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── Quick Search Overlay ── -->
+<div class="qs-overlay" id="qs-overlay" role="dialog" aria-modal="true" aria-label="Search reports">
+  <div class="qs-panel">
+    <div class="qs-header">
+      <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input class="qs-input" id="qs-input" placeholder="Search reports, regulations, report types…" autocomplete="off" spellcheck="false" />
+      <kbd class="qs-esc">Esc</kbd>
+    </div>
+    <div class="qs-results" id="qs-results"></div>
+    <div class="qs-footer">
+      <span><kbd>↑↓</kbd> navigate</span>
+      <span><kbd>↵</kbd> open</span>
+      <span><kbd>Esc</kbd> close</span>
+    </div>
+  </div>
+</div>
+
+<div class="toast-stack" id="toast-stack"></div>
+
+<script src="/assets/globe.js?v=20261023e"></script>
+<script src="https://cdn.jsdelivr.net/npm/@twemoji/api@latest/dist/twemoji.min.js" crossorigin="anonymous"></script>
+<script src="/assets/app.js?v=20261106"></script>
+<script src="/assets/megamenu.js?v=20261001"></script></body>
+</html>

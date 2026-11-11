@@ -1,0 +1,35 @@
+{
+  "title": "Europe Enforcement Actions — BaFin, ESMA, NCAs",
+  "region": "europe",
+  "last_updated": "2026-11-06T00:00:00Z",
+  "cases": [
+    {
+      "firm": "Wirecard successor entity",
+      "fine": "€18,300,000",
+      "summary": "BaFin imposed an €18.3 million fine on the Wirecard successor entity managing residual assets for failing to maintain adequate AML controls and complete client fund records following the original insolvency. Penalty assessed under KWG §25a and §25h for deficiencies in customer due diligence documentation across approximately 2.1 million historical accounts.",
+      "date": "15 Oct 2026",
+      "regulator": "BaFin"
+    },
+    {
+      "firm": "23 EU CASPs (MiCA non-compliance)",
+      "fine": "NCA enforcement pending",
+      "summary": "ESMA flagged 23 EU member states where crypto asset service providers are still operating under expired transitional arrangements post-MiCA full application. National competent authorities have been directed to commence enforcement proceedings and report all operating-without-authorisation cases to ESMA by 31 December 2026. Fines under MiCA can reach up to 15% of annual turnover.",
+      "date": "30 Oct 2026",
+      "regulator": "ESMA"
+    },
+    {
+      "firm": "15 EU banks (DORA non-compliance)",
+      "fine": "Capital plan required",
+      "summary": "EBA's DORA implementation review identified 15 systematically important EU banks with critical gaps in ICT third-party risk management and digital operational resilience testing. These banks face enhanced supervisory scrutiny from January 2027 and must submit remediation plans to their NCAs before the 17 January 2027 enforcement start date.",
+      "date": "22 Oct 2026",
+      "regulator": "EBA"
+    },
+    {
+      "firm": "Undisclosed EU asset manager",
+      "fine": "€7,200,000",
+      "summary": "An EU national competent authority (identity withheld pending appeal) fined a large asset management firm €7.2 million for AIFMD Article 21 depository oversight failures, specifically for failing to monitor cash flow movements in an infrastructure fund that subsequently suffered a €340 million capital shortfall. ESMA is reviewing the case under MiFID II supervision.",
+      "date": "08 Oct 2026",
+      "regulator": "NCA (EU)"
+    }
+  ]
+}

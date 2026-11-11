@@ -1,0 +1,86 @@
+[
+  {
+    "firm": "John Wood Group PLC",
+    "fine": "£12,993,700",
+    "rules": ["Listing Rules", "DTR 4.1"],
+    "summary": "Fined for publishing inaccurate FY22–HY24 financial statements. Management accounting judgements were inappropriately influenced by a desire to maintain previously stated targets.",
+    "year": "Mar 2026"
+  },
+  {
+    "firm": "Patrick Dawkins (Vector Wealth CEO)",
+    "fine": "£269,233 + BAN",
+    "rules": ["COCON", "APER", "SM&CR"],
+    "summary": "Banned for acting as regulatory front: sold firm to a disqualified director and concealed beneficial ownership to allow high-risk mini-bond marketing through the FCA authorisation. Investors lost ~£4M.",
+    "year": "Sep 2026"
+  },
+  {
+    "firm": "Russel Gerrity",
+    "fine": "£309,843",
+    "rules": ["UK MAR Art.14(a)", "Insider Dealing"],
+    "summary": "Fined for insider dealing in Chariot Oil & Gas and Eco Atlantic shares Oct 2018–Jan 2022. Case triggered by STOR filings from broker. Includes £128,765 profit disgorgement.",
+    "year": "Jan 2026"
+  },
+  {
+    "firm": "Bank of America",
+    "fine": "$1,210,000,000",
+    "rules": ["BSA/AML", "OFAC", "12 USC 1818"],
+    "summary": "Combined FinCEN ($500M) + OCC ($450M) + OFAC ($260M) enforcement for systemic AML failures 2019–2024. Inadequate beneficial ownership screening and correspondent banking controls.",
+    "year": "Oct 2026"
+  },
+  {
+    "firm": "American Express",
+    "fine": "$350,000,000",
+    "rules": ["BSA/AML", "OFAC"],
+    "summary": "Fed and OCC joint fine for AML programme deficiencies: failed CDD for Platinum card clients, inadequate SAR monitoring for prepaid cards, gaps in OFAC screening.",
+    "year": "Oct 2026"
+  },
+  {
+    "firm": "Banxso (South Africa)",
+    "fine": "R2,000,000,000+",
+    "rules": ["FAIS Act", "FSCA Conduct"],
+    "summary": "FSCA record fine for using AI deepfake videos (Elon Musk / Johann Rupert) to channel investors into an unlawful scheme; R1bn in client funds misappropriated. Licence revoked; directors debarred 30 years.",
+    "year": "Jul 2026"
+  },
+  {
+    "firm": "Sir Money Changer (Singapore)",
+    "fine": "LICENCE REVOKED",
+    "rules": ["MAS PSA", "MAS AML Notice PSN01"],
+    "summary": "MAS revoked Major Payment Institution licence for persistent AML failures — no CDD on cash transactions above S$5,000 for 3 years; no STR filings; inadequate recordkeeping.",
+    "year": "Oct 2026"
+  },
+  {
+    "firm": "Wirecard Successor Entity",
+    "fine": "€18,300,000",
+    "rules": ["KWG §25a", "KWG §25h", "AMLD"],
+    "summary": "BaFin fined Wirecard successor for failing to maintain adequate AML controls and complete client fund records across approximately 2.1 million historical accounts post-insolvency.",
+    "year": "Oct 2026"
+  },
+  {
+    "firm": "ASIC: 22 companies",
+    "fine": "A$4,356,000",
+    "rules": ["AFSL", "ACL", "Corps Act Part 7.8"],
+    "summary": "ASIC infringement notices for AFSL/ACL breaches including 5 fintech operators with embedded lending products. Highest single notice A$395K for BNPL suitability failure.",
+    "year": "Nov 2026"
+  },
+  {
+    "firm": "Zoe Financial Inc",
+    "fine": "$4,300,000",
+    "rules": ["Investment Advisers Act", "Reg BI"],
+    "summary": "SEC charged fintech referral platform for undisclosed conflicts of interest — received compensation from recommended advisers without adequate retail investor disclosure.",
+    "year": "Oct 2026"
+  },
+  {
+    "firm": "BCB: 40+ unlicensed VASPs",
+    "fine": "Banking relationship terminated",
+    "rules": ["BCB Res. 519-521", "Virtual Assets Law"],
+    "summary": "BCB enforcement: all banks prohibited from transacting with unlicensed VASPs from 30 Oct 2026. Over 40 crypto startups had not filed for authorisation at the deadline.",
+    "year": "Oct 2026"
+  },
+  {
+    "firm": "FSCA: Sanus Financial (EZInvest / Financix)",
+    "fine": "PENDING",
+    "rules": ["FAIS Act", "FSCA Conduct Standards"],
+    "summary": "FSCA barred from accepting new client funds pending active investigation into suspected unlawful conduct. FSCA investigation opened 5 October 2026.",
+    "year": "Oct 2026"
+  }
+]

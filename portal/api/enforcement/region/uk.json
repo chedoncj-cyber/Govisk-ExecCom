@@ -1,0 +1,35 @@
+{
+  "title": "UK Enforcement Actions — FCA, PRA & FRC",
+  "region": "uk",
+  "last_updated": "2026-11-06T00:00:00Z",
+  "cases": [
+    {
+      "firm": "John Wood Group PLC",
+      "fine": "£12,993,700",
+      "summary": "FCA fined John Wood Group for publishing inaccurate FY22, FY23, and HY24 financial statements. Management accounting judgements were inappropriately influenced by a desire to maintain previously stated performance targets. Inadequate systems and controls allowed the manipulation to persist across multiple reporting periods.",
+      "date": "04 Mar 2026",
+      "regulator": "FCA"
+    },
+    {
+      "firm": "Patrick Dawkins (Vector Wealth CEO)",
+      "fine": "£269,233 + prohibition",
+      "summary": "FCA banned and fined former CEO of Vector Wealth for acting as a regulatory front: selling the firm to a disqualified director and concealing beneficial ownership to allow high-risk mini-bond marketing through the FCA-authorised entity. Investors expected to lose approximately £4 million. Prohibited from holding senior management roles.",
+      "date": "16 Sep 2026",
+      "regulator": "FCA"
+    },
+    {
+      "firm": "Russel Gerrity (oil consultant)",
+      "fine": "£309,843",
+      "summary": "FCA fined Gerrity £309,843 for insider dealing in Chariot Oil & Gas and Eco Atlantic Oil and Gas shares between October 2018 and January 2022. Case was initiated by suspicious transaction reports from a broker. Fine includes £128,765 profit disgorgement plus penalty.",
+      "date": "19 Jan 2026",
+      "regulator": "FCA"
+    },
+    {
+      "firm": "Former Citigroup Fixed Income Trader",
+      "fine": "£890,000 + prohibition",
+      "summary": "FCA prohibited a former Citigroup fixed income trader and imposed a £890,000 financial penalty for layering and spoofing in gilt futures markets. The trader was found to have placed and rapidly cancelled large orders to manipulate prices in the UK government bond market.",
+      "date": "28 Oct 2026",
+      "regulator": "FCA"
+    }
+  ]
+}

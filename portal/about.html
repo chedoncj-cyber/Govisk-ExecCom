@@ -1,0 +1,312 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src 'self'; img-src 'self' data:;">
+  <title>About Us — Govisk ExecCom Intelligence</title>
+  <meta name="description" content="About Govisk ExecCom Intelligence — geo-financial risk and regulatory intelligence for financial services executives. Est. 2026." />
+  <meta property="og:title" content="About Us | Govisk ExecCom Intelligence" />
+  <link rel="canonical" href="https://govisk.com/about" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/style.css?v=20261037" />
+  <link rel="stylesheet" href="/assets/megamenu.css?v=20261001" />
+  <style>
+    .about-doc {
+      position: relative;
+      z-index: 1;
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 48px 32px 96px;
+    }
+    .about-doc h1 {
+      font-size: 1.65rem;
+      font-weight: 700;
+      color: var(--text-1);
+      margin-bottom: 10px;
+      letter-spacing: -0.02em;
+    }
+    .about-doc .doc-byline {
+      font-size: 0.72rem;
+      color: var(--text-3);
+      font-family: 'IBM Plex Mono', monospace;
+      margin-bottom: 40px;
+    }
+    .about-doc h2 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-1);
+      margin: 40px 0 14px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--data);
+      display: inline-block;
+    }
+    .about-doc p {
+      font-size: 0.91rem;
+      color: var(--text-2);
+      line-height: 1.85;
+      margin-bottom: 18px;
+    }
+    .about-doc p strong { color: var(--text-1); }
+    .about-doc .services-intro {
+      font-size: 0.91rem;
+      color: var(--text-2);
+      line-height: 1.85;
+      margin-bottom: 24px;
+    }
+    .about-doc .service-block {
+      background: var(--surface-1);
+      border: 1px solid var(--border-dim);
+      border-left: 3px solid var(--data);
+      border-radius: 0 var(--r) var(--r) 0;
+      padding: 18px 22px;
+      margin-bottom: 14px;
+    }
+    .about-doc .service-block:hover {
+      border-left-color: var(--data);
+      box-shadow: 0 2px 12px rgba(29,107,181,0.07);
+    }
+    .about-doc .service-name {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--text-1);
+      margin-bottom: 8px;
+    }
+    .about-doc .service-what {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--data);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 5px;
+    }
+    .about-doc .service-desc {
+      font-size: 0.84rem;
+      color: var(--text-3);
+      line-height: 1.7;
+    }
+    /* ── Values section ── */
+    .val-divider { border: none; border-top: 1px solid var(--border-dim); margin: 48px 0 40px; }
+    .val-acronym-tag {
+      display: inline-block;
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--data);
+      font-family: 'IBM Plex Mono', monospace;
+      background: var(--data-dim); padding: 4px 10px;
+      border-left: 3px solid var(--data); border-radius: 0 4px 4px 0;
+      margin-bottom: 18px;
+    }
+    .val-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px;
+    }
+    .val-card {
+      background: var(--surface-1); border: 1px solid var(--border-dim);
+      border-radius: var(--r); padding: 20px 22px;
+      transition: box-shadow 160ms;
+    }
+    .val-card:hover { box-shadow: 0 2px 14px rgba(29,107,181,0.08); }
+    .val-letter {
+      display: inline-flex; width: 30px; height: 30px; align-items: center;
+      justify-content: center; background: var(--data); color: #fff;
+      font-size: 0.88rem; font-weight: 800; border-radius: 6px;
+      margin-bottom: 10px; font-family: 'IBM Plex Mono', monospace;
+    }
+    .val-name { font-size: 0.93rem; font-weight: 700; color: var(--text-1); margin-bottom: 5px; }
+    .val-sub { font-size: 0.80rem; font-weight: 600; color: var(--text-2); margin-bottom: 4px; }
+    .val-desc { font-size: 0.81rem; color: var(--text-3); line-height: 1.65; }
+    .val-compact-grid {
+      display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px;
+    }
+    .val-compact-card {
+      background: var(--surface-1); border: 1px solid var(--border-dim);
+      border-radius: var(--r); padding: 16px 18px;
+      transition: box-shadow 160ms;
+    }
+    .val-compact-card:hover { box-shadow: 0 2px 14px rgba(29,107,181,0.08); }
+    @media (max-width: 640px) {
+      .about-doc { padding: 32px 16px 72px; }
+      .val-grid { grid-template-columns: 1fr; }
+      .val-compact-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body class="has-nav">
+
+<canvas id="particle-canvas"></canvas>
+<canvas id="globe-canvas"></canvas>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
+
+<div class="intel-ticker">
+  <span class="ticker-label"><span class="ticker-live-dot"></span>LIVE INTEL</span>
+  <div class="ticker-track">
+    <div class="ticker-scroll">
+      <span class="ticker-item t-red">FCA · CASS 7 — enhanced client money reconciliation rules Q1 2027</span>
+      <span class="ticker-item t-amber">ESMA · MiFID II client asset review consultation closes 15 Nov 2026</span>
+      <span class="ticker-item t-red">BaFin · DORA fully operative — ICT incident reporting mandatory Jan 2025</span>
+      <span class="ticker-item t-green">Bank of England · CBEST updated guidance published Oct 2026</span>
+    </div>
+  </div>
+  <span class="ticker-date" id="ticker-date"></span>
+</div>
+<nav class="global-nav">
+  <a href="/" class="nav-brand">
+    <div class="nav-brand-icon">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+    </div>
+    <span class="nav-brand-name">Govisk ExecCom <em>Intelligence</em></span>
+  </a>
+  <div class="nav-links">
+    <a href="/" class="nav-link">Home</a>
+    <a href="/portal" class="nav-link">Portal</a>
+    <a href="/about" class="nav-link nav-active">About Us</a>
+    <a href="/services" class="nav-link">Services</a>
+    <a href="/case-studies" class="nav-link">Case Studies</a>
+    <a href="/contact" class="nav-link">Contact Us</a>
+  </div>
+  <div class="nav-right">
+    <a href="/request-demo" class="nav-cta">Request Demo</a>
+  </div></nav>
+
+<div class="about-doc">
+
+  <h1>About Govisk ExecCom Intelligence</h1>
+  <div class="doc-byline ">Govisk ExecCom &nbsp;·&nbsp; Est. 2026 &nbsp;·&nbsp; Geo-Financial Risk &amp; Governance Intelligence</div>
+
+  <!-- ═══════════════════════════════════ OUR MISSION ═══════════════════════════════════ -->
+
+  <h2>Our Mission</h2>
+
+  <p>In an epoch where mercurial governance paradigms and geopolitical volatility can precipitate commercial disruption overnight, possessing contemporaneous intelligence is not merely advantageous—it is an existential imperative.</p>
+
+  <p>Govisk ExecCom was established in 2026 by <strong>Charles</strong>—leveraging a robust technological lineage in Information Technology—and <strong>Romana</strong>, drawing upon deep expertise in CASS and regulatory compliance. Driven by a perspicacious conviction, they recognized that global executives necessitate an integrated, centralized conduit to navigate the labyrinthine complexities of geo-financial frameworks, risk mitigation, and governance mandates. Informed by a shared vision of how artificial intelligence and advanced IT can catalyse executive efficacy worldwide, Govisk ExecCom was engineered to synthesize macroeconomic unpredictability into absolute lucidity.</p>
+
+  <p>By deploying proprietary AI-driven intelligent routing mechanisms to curate verified intelligence from authoritative repositories, our analytical suite has burgeoned into a premier geo-financial risk and governance intelligence portal. Today, we proudly fortify over <strong>250 preeminent global institutions</strong>, spanning multifaceted sectors including finance, technology, energy, logistics, mining, and construction.</p>
+
+  <p>Our foundational ethos remains unaltered since inception. We exist to decipher the salient geo-financial, risk management, and governance variables that impact organizational resilience—bestowing the perspicacity requisite for resolute decision-making and the prognostication necessary to safeguard personnel and operations across any global theatre.</p>
+
+  <!-- ═══════════════════════════════════ OUR SERVICES ═════════════════════════════════ -->
+
+  <h2>Our Services</h2>
+
+  <p class="services-intro ">To empower global leadership in pre-empting disruption and mastering intricate regulatory ecosystems, Govisk ExecCom deploys an integrated portfolio of advanced intelligence and regional-driven reporting solutions:</p>
+
+  <div class="service-block ">
+    <div class="service-name">AI-Driven Intelligence Routing</div>
+    <div class="service-what">What we do:</div>
+    <div class="service-desc">Harnessing sophisticated artificial intelligence algorithms to continuously monitor, authenticate, and intelligently route verified global intelligence, regulatory updates, and geopolitical shifts directly to the executives who require them.</div>
+  </div>
+
+  <div class="service-block ">
+    <div class="service-name">Geo-Financial Risk &amp; Governance Reporting</div>
+    <div class="service-what">What we do:</div>
+    <div class="service-desc">Synthesizing vast streams of macroeconomic and regional-driven data into bespoke analytical suites, delivering comprehensive evaluations meticulously tailored to your sector's specific risk matrix.</div>
+  </div>
+
+  <div class="service-block ">
+    <div class="service-name">Regulatory Navigation &amp; Compliance Intelligence</div>
+    <div class="service-what">What we do:</div>
+    <div class="service-desc">Equipping executive leadership with pristine, contemporaneous insights concerning cross-border financial architectures, regulatory mandates, and shifting compliance parameters.</div>
+  </div>
+
+  <div class="service-block ">
+    <div class="service-name">Strategic Foresight &amp; Operational Protection</div>
+    <div class="service-what">What we do:</div>
+    <div class="service-desc">Providing decision-makers with the analytical clarity required to pre-emptively safeguard personnel, physical assets, and operational continuity across international jurisdictions.</div>
+  </div>
+
+  <hr class="val-divider" />
+
+  <div class="val-acronym-tag ">TRUE · IDDEIS &mdash; Our Values</div>
+  <h2>Our Values</h2>
+
+  <div class="val-grid">
+
+    <div class="val-card ">
+      <div class="val-letter">T</div>
+      <div class="val-name">Trust</div>
+      <div class="val-sub">Honesty, consistency and excellence.</div>
+      <div class="val-desc">Built and maintained through transparency and communication.</div>
+    </div>
+
+    <div class="val-card ">
+      <div class="val-letter">R</div>
+      <div class="val-name">Respect</div>
+      <div class="val-sub">People, planet and purpose.</div>
+      <div class="val-desc">The starting point and ongoing position for all our interaction and impact.</div>
+    </div>
+
+    <div class="val-card ">
+      <div class="val-letter">U</div>
+      <div class="val-name">Unity</div>
+      <div class="val-sub">Inclusive, diverse and together.</div>
+      <div class="val-desc">One team working for the betterment of each other and the environment.</div>
+    </div>
+
+    <div class="val-card ">
+      <div class="val-letter">E</div>
+      <div class="val-name">Empowerment</div>
+      <div class="val-sub">Dynamic, driven and agile.</div>
+      <div class="val-desc">Providing the tools and skills to do more and achieve great things.</div>
+    </div>
+
+  </div>
+
+  <div class="val-compact-grid">
+
+    <div class="val-compact-card ">
+      <div class="val-letter">I</div>
+      <div class="val-name">Integrity</div>
+      <div class="val-desc">We apply an objective and incorruptible approach in all our dealings.</div>
+    </div>
+
+    <div class="val-compact-card ">
+      <div class="val-letter">D</div>
+      <div class="val-name">Diversity</div>
+      <div class="val-desc">We embrace differences to deliver wider perspectives and to foster creativity.</div>
+    </div>
+
+    <div class="val-compact-card ">
+      <div class="val-letter">D</div>
+      <div class="val-name">Development</div>
+      <div class="val-desc">We invest in our people to help them realise their potential.</div>
+    </div>
+
+    <div class="val-compact-card ">
+      <div class="val-letter">E</div>
+      <div class="val-name">Excellence</div>
+      <div class="val-desc">We are meticulous and strive to continuously exceed expectations.</div>
+    </div>
+
+    <div class="val-compact-card ">
+      <div class="val-letter">I</div>
+      <div class="val-name">Innovation</div>
+      <div class="val-desc">We work creatively to solve difficult challenges for our clients.</div>
+    </div>
+
+    <div class="val-compact-card ">
+      <div class="val-letter">S</div>
+      <div class="val-name">Special Tailored</div>
+      <div class="val-desc">Tailored reports just for your organisation.</div>
+    </div>
+
+  </div>
+
+</div>
+
+<footer class="page-footer" style="position:relative;z-index:1">
+  <div class="page-footer-links">
+    <a href="/">Home</a>
+    <a href="/about">About Us</a>
+    <a href="/services">Services</a>
+    <a href="/case-studies">Case Studies</a>
+    <a href="/contact">Contact Us</a>
+    <a href="/request-demo">Request Demo</a>
+  </div>
+  Govisk ExecCom Intelligence &nbsp;·&nbsp; Geo-Financial Risk &amp; Governance Intelligence &nbsp;·&nbsp; Est. 2026</footer>
+<script src="/assets/app.js?v=20261106"></script><script src="/assets/globe.js?v=20261023e"></script>
+<script src="/assets/megamenu.js?v=20261001"></script></body>
+</html>

@@ -1,0 +1,368 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src 'self'; img-src 'self' data:;">
+  <title>Refund Policy — Govisk ExecCom Intelligence</title>
+  <meta name="description" content="Govisk ExecCom Intelligence refund and cancellation policy for subscriptions and one-off reports." />
+  <link rel="canonical" href="https://govisk.com/refund-policy" />
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/style.css?v=20261037" />
+  <style>
+    .legal-doc {
+      position: relative;
+      z-index: 1;
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 48px 32px 96px;
+    }
+    .legal-doc h1 {
+      font-size: 1.65rem;
+      font-weight: 700;
+      color: var(--text-1);
+      margin-bottom: 10px;
+      letter-spacing: -0.02em;
+    }
+    .legal-doc .doc-byline {
+      font-size: 0.72rem;
+      color: var(--text-3);
+      font-family: 'IBM Plex Mono', monospace;
+      margin-bottom: 40px;
+    }
+    .legal-doc h2 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-1);
+      margin: 40px 0 14px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--data);
+      display: inline-block;
+    }
+    .legal-doc p, .legal-doc li {
+      font-size: 0.91rem;
+      color: var(--text-2);
+      line-height: 1.85;
+      margin-bottom: 12px;
+    }
+    .legal-doc ul { padding-left: 20px; margin-bottom: 18px; }
+    .legal-doc a { color: var(--data); text-decoration: underline; }
+    .legal-doc strong { color: var(--text-1); }
+    .legal-doc .disclaimer-box {
+      background: rgba(239,68,68,0.08);
+      border: 1px solid rgba(239,68,68,0.25);
+      border-left: 3px solid #EF4444;
+      border-radius: 0 8px 8px 0;
+      padding: 16px 20px;
+      margin-bottom: 24px;
+    }
+    .legal-doc .disclaimer-box p { color: rgba(240,180,180,0.9); margin-bottom: 0; }
+    @media (max-width: 640px) { .legal-doc { padding: 32px 16px 72px; } }
+  </style>
+</head>
+<body class="has-nav">
+
+<canvas id="particle-canvas"></canvas>
+<canvas id="globe-canvas"></canvas>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
+
+<div class="intel-ticker">
+  <span class="ticker-label"><span class="ticker-live-dot"></span>LIVE INTEL</span>
+  <div class="ticker-track">
+    <div class="ticker-scroll">
+      <span class="ticker-item t-red">FCA · CASS 7 — enhanced client money reconciliation rules Q1 2027</span>
+      <span class="ticker-item t-amber">ESMA · MiFID II client asset review consultation closes 15 Nov 2026</span>
+      <span class="ticker-item t-green">Bank of England · CBEST updated guidance published Oct 2026</span>
+    </div>
+  </div>
+  <span class="ticker-date" id="ticker-date"></span>
+</div>
+
+<nav class="global-nav" role="navigation" aria-label="Main navigation">
+  <a href="/" class="nav-brand">
+    <div class="nav-brand-icon">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+    </div>
+    <span class="nav-brand-name">Govisk ExecCom <em>Intelligence</em></span>
+  </a>
+  <div class="nav-links">
+    <a href="/" class="nav-link">Home</a>
+    <a href="/portal" class="nav-link">Portal</a>
+    <a href="/about" class="nav-link">About Us</a>
+    <a href="/services" class="nav-link">Services</a>
+    <a href="/case-studies" class="nav-link">Case Studies</a>
+    <a href="/contact" class="nav-link">Contact Us</a>
+  </div>
+  <div class="nav-right">
+    <a href="/request-demo" class="nav-cta">Request Demo</a>
+  </div>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<script>
+(function(){
+  var btn=document.getElementById('nav-hamburger');
+  var links=document.querySelector('.nav-links');
+  if(btn&&links){links.id='nav-links';btn.addEventListener('click',function(){var open=links.classList.toggle('open');btn.classList.toggle('open',open);btn.setAttribute('aria-expanded',open);});document.addEventListener('click',function(e){if(!btn.contains(e.target)&&!links.contains(e.target)){links.classList.remove('open');btn.classList.remove('open');btn.setAttribute('aria-expanded','false');}});}
+})();
+</script>
+
+<!-- ══ DOCS SIDEBAR ══════════════════════════════════════════ -->
+<aside class="docs-sidebar" id="docs-sidebar">
+  <div class="docs-search">
+    <svg class="docs-search-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <input type="text" placeholder="Search docs..." id="docs-search-input" aria-label="Search documentation">
+    <span class="docs-search-kbd">⌘K</span>
+  </div>
+  <nav class="docs-nav" aria-label="Documentation navigation">
+
+    <div class="docs-nav-section">
+      <div class="docs-nav-section-title">Intelligence Portal</div>
+      <a class="docs-nav-link" href="/portal" data-path="/portal">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
+        Dashboard
+      </a>
+      <a class="docs-nav-link" href="/grc_dashboard" data-path="/grc_dashboard">
+        <svg viewBox="0 0 24 24"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>
+        GRC Dashboard
+        <span class="docs-nav-badge green">Live</span>
+      </a>
+      <a class="docs-nav-link" href="/grc-templates" data-path="/grc-templates">
+        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        GRC Templates
+      </a>
+      <a class="docs-nav-link" href="/blacklist" data-path="/blacklist">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
+        Blacklist Monitor
+        <span class="docs-nav-badge red">Watch</span>
+      </a>
+      <a class="docs-nav-link" href="/region" data-path="/region">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        Region Intelligence
+      </a>
+    </div>
+
+    <div class="docs-nav-divider"></div>
+
+    <div class="docs-nav-section">
+      <div class="docs-nav-section-title">Regulatory Frameworks</div>
+      <a class="docs-nav-link" href="/portal#cass6" data-path="/portal#cass6">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        CASS 6 — Custody
+      </a>
+      <a class="docs-nav-link" href="/portal#cass7" data-path="/portal#cass7">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        CASS 7 — Client Money
+      </a>
+      <a class="docs-nav-link" href="/portal#cass10" data-path="/portal#cass10">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        CASS 10 — Resolution
+      </a>
+      <a class="docs-nav-link" href="/portal#smcr" data-path="/portal#smcr">
+        <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        SM&amp;CR
+      </a>
+      <a class="docs-nav-link" href="/portal#ps213" data-path="/portal#ps213">
+        <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        PS21/3 — Op. Resilience
+      </a>
+      <a class="docs-nav-link" href="/portal#cbest" data-path="/portal#cbest">
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        CBEST — Cyber
+      </a>
+    </div>
+
+    <div class="docs-nav-divider"></div>
+
+    <div class="docs-nav-section">
+      <div class="docs-nav-section-title">Platform</div>
+      <a class="docs-nav-link" href="/" data-path="/">
+        <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        Home
+      </a>
+      <a class="docs-nav-link" href="/about" data-path="/about">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        About Us
+      </a>
+      <a class="docs-nav-link" href="/services" data-path="/services">
+        <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        Services
+      </a>
+      <a class="docs-nav-link" href="/case-studies" data-path="/case-studies">
+        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/></svg>
+        Case Studies
+      </a>
+      <a class="docs-nav-link" href="/contact" data-path="/contact">
+        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Contact
+      </a>
+      <a class="docs-nav-link" href="/request-demo" data-path="/request-demo">
+        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Request Demo
+        <span class="docs-nav-badge">New</span>
+      </a>
+      <a class="docs-nav-link" href="/faq" data-path="/faq">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        FAQ
+      </a>
+    </div>
+
+    <div class="docs-nav-divider"></div>
+
+    <div class="docs-nav-section">
+      <div class="docs-nav-section-title">Legal</div>
+      <a class="docs-nav-link" href="/privacy-policy" data-path="/privacy-policy">
+        <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        Privacy Policy
+      </a>
+      <a class="docs-nav-link" href="/terms" data-path="/terms">
+        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        Terms &amp; Conditions
+      </a>
+      <a class="docs-nav-link" href="/cookie-policy" data-path="/cookie-policy">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>
+        Cookie Policy
+      </a>
+      <a class="docs-nav-link" href="/refund-policy" data-path="/refund-policy">
+        <svg viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-4.63"/></svg>
+        Refund Policy
+      </a>
+    </div>
+
+  </nav>
+</aside>
+<!-- ══ END DOCS SIDEBAR ══════════════════════════════════════ -->
+<script>
+// Auto-mark active sidebar link
+(function(){
+  var path = window.location.pathname.replace(/\/$/, '') || '/';
+  document.querySelectorAll('.docs-nav-link[data-path]').forEach(function(a){
+    var dp = a.getAttribute('data-path').split('#')[0].replace(/\/$/, '') || '/';
+    if(dp === path) a.classList.add('active');
+  });
+  // Sidebar search filter
+  var inp = document.getElementById('docs-search-input');
+  if(inp){
+    inp.addEventListener('input', function(){
+      var q = inp.value.toLowerCase();
+      document.querySelectorAll('.docs-nav-link').forEach(function(a){
+        a.style.display = (!q || a.textContent.toLowerCase().includes(q)) ? '' : 'none';
+      });
+      document.querySelectorAll('.docs-nav-section-title').forEach(function(t){
+        var sec = t.closest('.docs-nav-section');
+        if(!sec) return;
+        var anyVisible = Array.from(sec.querySelectorAll('.docs-nav-link')).some(function(a){ return a.style.display !== 'none'; });
+        sec.style.display = anyVisible ? '' : 'none';
+      });
+    });
+  }
+})();
+</script>
+<div class="docs-layout">
+<div class="docs-content">
+
+
+
+<a href="#main-content" class="skip-link" style="position:absolute;left:-9999px;top:4px;z-index:9999;background:#1a5fad;color:#fff;padding:8px 16px;font-size:13px;font-family:'IBM Plex Sans',sans-serif;border-radius:0 0 6px 0;" onfocus="this.style.left='4px'" onblur="this.style.left='-9999px'">Skip to main content</a>
+
+<div class="legal-doc" id="main-content">
+  <h1>Refund Policy</h1>
+  <div class="doc-byline">Govisk ExecCom Intelligence &nbsp;·&nbsp; Last updated: 5 November 2026</div>
+
+  <h2>1. Subscriptions</h2>
+  <p>Monthly and annual subscriptions may be cancelled at any time via your account dashboard. Cancellation stops future billing; access continues until the end of the current billing period.</p>
+
+  <h2>2. Refund Window</h2>
+  <p>In accordance with the <strong>Consumer Rights Act 2015</strong>, we offer a <strong>14-day refund window</strong> from the date of purchase for subscription products. To request a refund within this window, contact <a href="mailto:billing@govisk.com">billing@govisk.com</a> with your order reference. Refunds are processed within 5–10 business days to the original payment method.</p>
+  <p>After 14 days, subscriptions are non-refundable but can be cancelled to prevent future charges.</p>
+
+  <h2>3. Enterprise Contracts</h2>
+  <p>Enterprise and institutional contracts are governed by the individual Service Level Agreement (SLA) negotiated between the parties. Refund and cancellation terms in those agreements take precedence over this policy.</p>
+
+  <h2>4. One-Off Reports</h2>
+  <p>One-off intelligence reports purchased outside of a subscription are non-refundable once the report has been delivered. If a report is not delivered due to a service error on our part, a full refund will be issued automatically.</p>
+
+  <h2>5. Contact</h2>
+  <p>For billing and refund queries: <a href="mailto:billing@govisk.com">billing@govisk.com</a> or visit the <a href="/contact">Contact Us</a> page.</p>
+</div>
+
+<footer class="page-footer" style="position:relative;z-index:1">
+  <div class="page-footer-links">
+    <a href="/">Home</a>
+    <a href="/about">About Us</a>
+    <a href="/services">Services</a>
+    <a href="/case-studies">Case Studies</a>
+    <a href="/contact">Contact Us</a>
+    <a href="/request-demo">Request Demo</a>
+    <a href="/privacy-policy">Privacy Policy</a>
+    <a href="/terms">Terms &amp; Conditions</a>
+    <a href="/cookie-policy">Cookie Policy</a>
+    <a href="/faq">FAQ</a>
+  </div>
+  Govisk ExecCom Intelligence &nbsp;&middot;&nbsp; Geo-Financial Risk &amp; Governance Intelligence &nbsp;&middot;&nbsp; Est. 2026
+</footer>
+
+<script>
+  document.getElementById('ticker-date').textContent = new Date().toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'});
+  (function() {
+    const canvas = document.getElementById('particle-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let W = window.innerWidth, H = window.innerHeight;
+    canvas.width = W; canvas.height = H;
+    window.addEventListener('resize', () => { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; });
+    const pts = Array.from({length:40}, () => ({
+      x:Math.random()*W, y:Math.random()*H,
+      vx:(Math.random()-.5)*.25, vy:(Math.random()-.5)*.25,
+      r:Math.random()*1+.3, a:Math.random()*.25+.04
+    }));
+    (function draw() {
+      ctx.clearRect(0,0,W,H);
+      pts.forEach(p => {
+        p.x+=p.vx; p.y+=p.vy;
+        if(p.x<0)p.x=W; if(p.x>W)p.x=0;
+        if(p.y<0)p.y=H; if(p.y>H)p.y=0;
+        ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+        ctx.fillStyle=`rgba(62,189,250,${p.a})`; ctx.fill();
+      });
+      for(let i=0;i<pts.length;i++) for(let j=i+1;j<pts.length;j++){
+        const dx=pts[i].x-pts[j].x, dy=pts[i].y-pts[j].y, d=Math.sqrt(dx*dx+dy*dy);
+        if(d<110){ctx.beginPath();ctx.moveTo(pts[i].x,pts[i].y);ctx.lineTo(pts[j].x,pts[j].y);
+          ctx.strokeStyle=`rgba(62,130,250,${.06*(1-d/110)})`;ctx.lineWidth=.5;ctx.stroke();}
+      }
+      requestAnimationFrame(draw);
+    })();
+  })();
+</script>
+<script src="/assets/globe.js?v=20261023e"></script>
+
+
+</div><!-- /.docs-content -->
+</div><!-- /.docs-layout -->
+
+<!-- Cookie Consent -->
+<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;background:rgba(10,18,35,0.97);border-top:1px solid #1e3a5c;padding:14px 32px;display:flex;align-items:center;justify-content:space-between;gap:16px;z-index:9999;flex-wrap:wrap;backdrop-filter:blur(12px);">
+  <p style="color:rgba(200,215,235,0.85);font-size:12.5px;font-family:'IBM Plex Sans',sans-serif;margin:0;flex:1;min-width:200px;">
+    We use essential cookies and Google Fonts. Full details in our <a href="/cookie-policy" style="color:#4a9eff;text-decoration:underline;">Cookie Policy</a>.
+  </p>
+  <div style="display:flex;gap:8px;flex-shrink:0;">
+    <button onclick="setCookieConsent('declined')" style="background:transparent;border:1px solid #2a4a6a;color:rgba(200,215,235,0.7);padding:7px 16px;border-radius:5px;cursor:pointer;font-size:12px;font-family:'IBM Plex Sans',sans-serif;">Decline optional</button>
+    <button onclick="setCookieConsent('accepted')" style="background:#1a5fad;border:none;color:#fff;padding:7px 16px;border-radius:5px;cursor:pointer;font-size:12px;font-weight:600;font-family:'IBM Plex Sans',sans-serif;">Accept</button>
+  </div>
+</div>
+<script>
+(function(){
+  var b=document.getElementById('cookie-banner');
+  if(!localStorage.getItem('cookie-consent')&&b){b.style.display='flex';}
+  window.setCookieConsent=function(v){localStorage.setItem('cookie-consent',v);if(b)b.style.display='none';};
+})();
+</script>
+
+</body>
+</html>

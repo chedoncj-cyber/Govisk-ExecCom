@@ -1,0 +1,194 @@
+{
+  "last_updated": "2025-10-18T00:00:00Z",
+  "fetch_method": "baseline",
+  "source": "FATF October 2025 Plenary — fatf-gafi.org",
+  "summary": {
+    "total_black": 3,
+    "total_grey": 21,
+    "total": 24
+  },
+  "black_list": [
+    {
+      "country": "North Korea",
+      "flag": "🇰🇵",
+      "region": "Asia-Pacific",
+      "on_list_since": "2011",
+      "primary_concerns": [
+        "Weapons of mass destruction proliferation financing",
+        "Systematic non-compliance with FATF standards",
+        "No active engagement with FATF"
+      ]
+    },
+    {
+      "country": "Iran",
+      "flag": "🇮🇷",
+      "region": "Middle East & North Africa",
+      "on_list_since": "2008",
+      "primary_concerns": [
+        "Terrorist financing risks",
+        "Persistent strategic AML/CFT deficiencies",
+        "Failure to implement FATF Action Plan"
+      ]
+    },
+    {
+      "country": "Myanmar",
+      "flag": "🇲🇲",
+      "region": "Asia-Pacific",
+      "on_list_since": "2020",
+      "primary_concerns": [
+        "Significant AML/CFT framework deficiencies",
+        "Drug trafficking proceeds",
+        "Limited progress on FATF Action Plan"
+      ]
+    }
+  ],
+  "grey_list": [
+    {
+      "country": "Algeria",
+      "flag": "🇩🇿",
+      "region": "Africa",
+      "on_list_since": "2023",
+      "primary_concerns": ["AML/CFT framework gaps", "Terrorist financing risks"]
+    },
+    {
+      "country": "Angola",
+      "flag": "🇦🇴",
+      "region": "Africa",
+      "on_list_since": "2023",
+      "primary_concerns": ["Beneficial ownership deficiencies", "Financial sector AML controls"]
+    },
+    {
+      "country": "Burkina Faso",
+      "flag": "🇧🇫",
+      "region": "Africa",
+      "on_list_since": "2021",
+      "primary_concerns": ["Terrorist financing exposure", "Weak financial intelligence unit"]
+    },
+    {
+      "country": "Cameroon",
+      "flag": "🇨🇲",
+      "region": "Africa",
+      "on_list_since": "2023",
+      "primary_concerns": ["AML/CFT supervision gaps", "Proceeds of corruption"]
+    },
+    {
+      "country": "Côte d'Ivoire",
+      "flag": "🇨🇮",
+      "region": "Africa",
+      "on_list_since": "2023",
+      "primary_concerns": ["AML/CFT framework effectiveness", "Financial intelligence gaps"]
+    },
+    {
+      "country": "DR Congo",
+      "flag": "🇨🇩",
+      "region": "Africa",
+      "on_list_since": "2023",
+      "primary_concerns": ["Conflict-related money laundering", "Natural resource proceeds"]
+    },
+    {
+      "country": "Haiti",
+      "flag": "🇭🇹",
+      "region": "Americas",
+      "on_list_since": "2020",
+      "primary_concerns": ["Political instability undermining AML regime", "Drug trafficking proceeds"]
+    },
+    {
+      "country": "Kenya",
+      "flag": "🇰🇪",
+      "region": "Africa",
+      "on_list_since": "2024",
+      "primary_concerns": ["AML supervision of non-financial sectors", "Beneficial ownership registry gaps"]
+    },
+    {
+      "country": "Lao PDR",
+      "flag": "🇱🇦",
+      "region": "Asia-Pacific",
+      "on_list_since": "2021",
+      "primary_concerns": ["Drug trafficking proceeds", "Weak financial sector AML controls"]
+    },
+    {
+      "country": "Mali",
+      "flag": "🇲🇱",
+      "region": "Africa",
+      "on_list_since": "2021",
+      "primary_concerns": ["Terrorist financing exposure", "Political instability"]
+    },
+    {
+      "country": "Monaco",
+      "flag": "🇲🇨",
+      "region": "Europe",
+      "on_list_since": "2024",
+      "primary_concerns": ["High-value asset money laundering", "Legal professional sector oversight"]
+    },
+    {
+      "country": "Mozambique",
+      "flag": "🇲🇿",
+      "region": "Africa",
+      "on_list_since": "2022",
+      "primary_concerns": ["Illicit financial flows", "Natural resource sector risks"]
+    },
+    {
+      "country": "Namibia",
+      "flag": "🇳🇦",
+      "region": "Africa",
+      "on_list_since": "2021",
+      "primary_concerns": ["AML/CFT technical deficiencies", "Real estate sector risks"]
+    },
+    {
+      "country": "Nigeria",
+      "flag": "🇳🇬",
+      "region": "Africa",
+      "on_list_since": "2023",
+      "primary_concerns": ["Corruption proceeds", "Beneficial ownership enforcement gaps"]
+    },
+    {
+      "country": "Senegal",
+      "flag": "🇸🇳",
+      "region": "Africa",
+      "on_list_since": "2021",
+      "primary_concerns": ["AML/CFT effectiveness gaps", "Terrorist financing risks"]
+    },
+    {
+      "country": "South Africa",
+      "flag": "🇿🇦",
+      "region": "Africa",
+      "on_list_since": "2023",
+      "primary_concerns": ["State capture proceeds", "Financial sector supervision gaps", "Beneficial ownership deficiencies"]
+    },
+    {
+      "country": "South Sudan",
+      "flag": "🇸🇸",
+      "region": "Africa",
+      "on_list_since": "2021",
+      "primary_concerns": ["Conflict financing", "Weak institutional framework"]
+    },
+    {
+      "country": "Syria",
+      "flag": "🇸🇾",
+      "region": "Middle East & North Africa",
+      "on_list_since": "2010",
+      "primary_concerns": ["Terrorist financing", "Sanctions evasion", "Conflict-related financial flows"]
+    },
+    {
+      "country": "Tanzania",
+      "flag": "🇹🇿",
+      "region": "Africa",
+      "on_list_since": "2022",
+      "primary_concerns": ["AML/CFT framework deficiencies", "Wildlife trafficking proceeds"]
+    },
+    {
+      "country": "Venezuela",
+      "flag": "🇻🇪",
+      "region": "Americas",
+      "on_list_since": "2016",
+      "primary_concerns": ["Drug trafficking proceeds", "Corruption", "Sanctions evasion risks"]
+    },
+    {
+      "country": "Yemen",
+      "flag": "🇾🇪",
+      "region": "Middle East & North Africa",
+      "on_list_since": "2010",
+      "primary_concerns": ["Terrorist financing", "Conflict-related money laundering", "Weak supervisory framework"]
+    }
+  ]
+}

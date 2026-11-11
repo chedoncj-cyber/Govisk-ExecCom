@@ -1,0 +1,45 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -m py_compile *)",
+      "Bash(python -c *)",
+      "Bash(uvicorn *)",
+      "Bash(node --check *)",
+      "Bash(git status)",
+      "Bash(git diff *)",
+      "Bash(git log *)"
+    ],
+    "deny": [
+      "Edit(.env)",
+      "Write(.env)",
+      "Bash(rm -rf *)",
+      "Bash(git push --force *)"
+    ]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python -m py_compile \"${file}\" 2>&1 && echo \"syntax ok\" || echo \"SYNTAX ERROR in ${file}\"",
+            "condition": "file.endsWith('.py')"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [[ \"${file}\" == *.env* ]]; then echo 'BLOCKED: .env files must not be edited by Claude — edit manually'; exit 1; fi",
+            "condition": "file.includes('.env')"
+          }
+        ]
+      }
+    ]
+  }
+}

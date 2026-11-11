@@ -1,0 +1,106 @@
+{
+  "last_updated": "2026-11-06T00:00:00Z",
+  "new_rules": [
+    {"ref": "CASS 15", "summary": "Safeguarding regime for EMIs and payment firms — mandatory daily reconciliations, monthly REP027 returns, annual audits for firms holding over £100,000"},
+    {"ref": "FCA CP26/37", "summary": "SM&CR Phase 2 — proposes abolishing Certification Regime and FCA Directory; retains pre-approval only for CEO, CFO, CRO and board chair; closes 22 Jan 2027"},
+    {"ref": "FCA/PRA PS19/26", "summary": "High LTI mortgage cap (15% per-firm flow limit) removed at firm level effective 28 Oct 2026; market-level aggregate monitoring retained"}
+  ],
+  "consumer_duty_obligations": [
+    {"rule": "PRIN 2A.2", "obligation": "Cross-cutting rules: firms must act in good faith, avoid causing foreseeable harm, and enable retail customers to pursue their financial objectives throughout the product lifecycle"},
+    {"rule": "PRIN 2A.4", "obligation": "Price and Value outcome: a manufacturer must be satisfied that its product or service provides fair value — the price charged must be reasonable relative to overall benefits — and must review this for a reasonably foreseeable period after sale"},
+    {"rule": "PRIN 2A.5", "obligation": "Consumer Understanding outcome: communications must be designed so that retail customers are likely to understand them and can make effective, timely, and properly informed decisions throughout the customer journey"},
+    {"rule": "PRIN 2A.6", "obligation": "Consumer Support outcome: firms must provide support that meets the needs of retail customers, including those with characteristics of vulnerability, without unreasonable barriers"}
+  ],
+  "news": [
+    {
+      "date": "03 Nov 2026",
+      "severity": "medium",
+      "type": "Consultation",
+      "regulator": "PRA / FCA",
+      "country": "United Kingdom",
+      "headline": "PRA and FCA publish DP2/26: credit union reform including potential building society conversion route",
+      "detail": "Joint discussion paper DP2/26 explores removing certain internal audit requirements for smaller credit unions, introducing a risk-based capital framework for larger ones, and floating a potential route for credit unions to convert to building society status. The PRA simultaneously published CP15/26 on Northern Ireland Credit Union legislative changes; consultation closes 12 January 2027.",
+      "tags": ["PRA", "FCA", "Credit Unions", "DP2/26", "CP15/26", "Prudential Reform"]
+    },
+    {
+      "date": "22 Oct 2026",
+      "severity": "high",
+      "type": "Consultation",
+      "regulator": "FCA",
+      "country": "United Kingdom",
+      "headline": "FCA CP26/37: SM&CR Phase 2 proposes abolishing Certification Regime — saves £2bn over 10 years",
+      "detail": "The FCA published CP26/37, the second phase of its SM&CR review. Proposals: abolish the Certification Regime and FCA Directory, shift most Senior Management Functions to firm notification (retaining pre-approval only for CEO, CFO, CRO, and board chair), and replace mandatory Conduct Rules training with employee notification requirements. The FCA estimates 53% reduction in annual SM&CR compliance costs. Consultation closes 22 January 2027.",
+      "tags": ["FCA", "PRA", "SM&CR", "CP26/37", "Certification Regime", "Accountability"]
+    },
+    {
+      "date": "21 Oct 2026",
+      "severity": "medium",
+      "type": "Consultation",
+      "regulator": "FCA",
+      "country": "United Kingdom",
+      "headline": "FCA CP26/36: cryptoasset perimeter guidance updated for DeFi — full crypto regime live October 2027",
+      "detail": "CP26/36 consults on amendments to the Perimeter Guidance Manual (PERG) to reflect the Cryptoassets (Miscellaneous Amendments) Regulations 2026. The 'technical services' exclusion covers providers that merely give access to decentralised protocols; proprietary trading remains outside the regulatory perimeter. Full cryptoasset regulated activity regime goes live 25 October 2027. Responses due 18 November 2026.",
+      "tags": ["FCA", "Cryptoassets", "CP26/36", "DeFi", "Perimeter Guidance", "PERG", "Fintech"]
+    },
+    {
+      "date": "14 Oct 2026",
+      "severity": "high",
+      "type": "Policy Statement",
+      "regulator": "PRA / FCA",
+      "country": "United Kingdom",
+      "headline": "PS19/26: High LTI mortgage per-firm 15% cap removed effective 28 October 2026",
+      "detail": "PRA and FCA jointly issued PS19/26 confirming removal of the per-firm 15% high-LTI lending flow limit, effective 28 October 2026. Individual lenders may exceed 15% provided aggregate market-level high-LTI lending remains broadly unchanged. Rolling four-quarter measurement replaces the previous annual limit.",
+      "tags": ["PRA", "FCA", "PS19/26", "Mortgage", "LTI", "Prudential Rules"]
+    },
+    {
+      "date": "16 Sep 2026",
+      "severity": "high",
+      "type": "Enforcement",
+      "regulator": "FCA",
+      "country": "United Kingdom",
+      "headline": "FCA bans and fines ex-Vector Wealth CEO Patrick Dawkins £269,233 for acting as regulatory front",
+      "detail": "Final Notice against Patrick Dawkins — £200,500 disciplinary fine plus £57,298 disgorgement and £11,435 interest. Dawkins breached COCON and APER by selling Vector Wealth to a disqualified director and concealing beneficial ownership to allow high-risk mini-bond marketing through the firm's FCA-authorised status. Investors expected to lose approximately £4 million. Dawkins prohibited from holding senior management roles.",
+      "tags": ["FCA", "Enforcement", "COCON", "SM&CR", "Mini-Bonds", "Prohibition"]
+    },
+    {
+      "date": "07 May 2026",
+      "severity": "high",
+      "type": "Rule",
+      "regulator": "FCA",
+      "country": "United Kingdom",
+      "headline": "CASS 15 enters force: EMIs and payment firms now under full safeguarding rulebook",
+      "detail": "CASS 15 (from PS25/12) came into force 7 May 2026, introducing mandatory daily reconciliations, monthly REP027 safeguarding returns, an annual safeguarding audit for firms holding over £100,000, and a resolution pack retrievable within 48 hours. The new regime brings payment firms broadly in line with CASS 6 and 7 standards.",
+      "tags": ["FCA", "CASS", "CASS 15", "Safeguarding", "EMI", "Payment Firms", "PS25/12"]
+    },
+    {
+      "date": "04 Mar 2026",
+      "severity": "high",
+      "type": "Enforcement",
+      "regulator": "FCA",
+      "country": "United Kingdom",
+      "headline": "FCA fines John Wood Group PLC £12,993,700 for misleading FY22-HY24 financial statements",
+      "detail": "The FCA announced a £12,993,700 fine against John Wood Group PLC for publishing inaccurate financial information across its FY22, FY23, and HY24 results. Management's accounting judgements were inappropriately influenced by a desire to maintain previously stated targets; the firm lacked adequate systems and controls. Original penalty before 30% settlement discount was £18,562,500.",
+      "tags": ["FCA", "Enforcement", "Listing Rules", "Market Disclosure", "Corporate Governance"]
+    },
+    {
+      "date": "15 Oct 2026",
+      "severity": "medium",
+      "type": "Guidance",
+      "regulator": "FCA",
+      "country": "United Kingdom",
+      "headline": "FCA Digital Securities Sandbox Year 2 progress report: 23 firms in live testing phase",
+      "detail": "The FCA and Bank of England published the second annual progress report for the Digital Securities Sandbox (DSS), noting 23 firms have entered live testing for tokenised bond issuance, settlement finality using distributed ledgers, and digital gilts. The FCA confirmed it will consult in Q1 2027 on making the DSS a permanent regulatory framework, citing fintech and startup demand for a permanent tokenisation pathway.",
+      "tags": ["FCA", "DSS", "Digital Securities", "Tokenisation", "Fintech", "Sandbox", "DLT"]
+    },
+    {
+      "date": "28 Oct 2026",
+      "severity": "medium",
+      "type": "Consultation",
+      "regulator": "PSR",
+      "country": "United Kingdom",
+      "headline": "PSR CP26/5 — APP fraud reimbursement rule extended to regulated fintechs and digital wallets",
+      "detail": "The Payment Systems Regulator has published CP26/5 proposing extension of the mandatory Authorised Push Payment fraud reimbursement framework to cover regulated fintech firms and digital wallet providers operating over Faster Payments. Consumer protection applies from 1 July 2027 for all Payment Account providers. Industry estimated fintech compliance cost: £340M year-one implementation.",
+      "tags": ["PSR", "APP Fraud", "Reimbursement", "Fintech", "Digital Wallets", "Faster Payments", "CP26/5"]
+    }
+  ]
+}

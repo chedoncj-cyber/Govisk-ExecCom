@@ -1,0 +1,35 @@
+{
+  "title": "Africa Enforcement Actions — FSCA, CBN, CMA",
+  "region": "africa",
+  "last_updated": "2026-11-06T00:00:00Z",
+  "cases": [
+    {
+      "firm": "Banxso (directors Harel Sekler & Warwick Sneider)",
+      "fine": "R2,000,000,000+",
+      "summary": "FSCA imposed over R2 billion in fines against Banxso directors for using AI-generated deepfake videos (featuring Elon Musk and Johann Rupert) to channel investors into an unlawful scheme, misappropriating approximately R1 billion in client funds. FSCA withdrew Banxso's licences, debarred key officials for up to 30 years, and referred the matter to the South African Police Service. Firm has been liquidated.",
+      "date": "31 Jul 2026",
+      "regulator": "FSCA"
+    },
+    {
+      "firm": "Sanus Financial Services (EZInvest / Financix)",
+      "fine": "Investigation ongoing",
+      "summary": "FSCA opened investigation into Sanus Financial Services for suspected unlawful conduct. The firm, trading as EZInvest and Financix, was found to have been soliciting new clients while under regulatory scrutiny. FSCA subsequently barred the firm from accepting any new client funds pending investigation outcome.",
+      "date": "05 Oct 2026",
+      "regulator": "FSCA"
+    },
+    {
+      "firm": "15 unlicensed investment platforms (CMA Kenya)",
+      "fine": "Criminal referral",
+      "summary": "CMA Kenya issued a public warning against 15 entities — including Global Investment Group (GIG), CBEX, Kore Exchange, Bitblock Capital, Ultima Cryptocurrency, and Lukman-Trust Fund — for soliciting investment funds without a CMA licence. DCI launched active criminal investigations. Entities used social media and messaging apps to impersonate legitimate brokers and promise guaranteed returns.",
+      "date": "11 Sep 2026",
+      "regulator": "CMA Kenya"
+    },
+    {
+      "firm": "Multiple unnamed Nigerian payment firms",
+      "fine": "Licence suspension risk",
+      "summary": "CBN issued formal compliance warnings to multiple payment service providers that have not met the 31 December 2026 data localisation deadline under Circular PSS/DIR/PUB/CIR/001/004. Firms storing payment transaction data outside Nigeria face licence suspension from 1 January 2027. CBN is conducting spot audits of data infrastructure.",
+      "date": "15 Oct 2026",
+      "regulator": "CBN"
+    }
+  ]
+}

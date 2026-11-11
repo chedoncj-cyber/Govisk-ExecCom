@@ -1,0 +1,556 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src 'self'; img-src 'self' data:;">
+  <title>Govisk ExecCom Intelligence — Geo-Financial Risk &amp; Governance Platform</title>
+  <meta name="description" content="Govisk ExecCom Intelligence — AI-driven geo-financial risk and regulatory intelligence for global executives. FCA CASS, SM&CR, CBEST and more." />
+  <meta property="og:title" content="Home | Govisk ExecCom Intelligence" />
+  <link rel="canonical" href="https://govisk.com/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/style.css?v=20261037" />
+  <link rel="stylesheet" href="/assets/megamenu.css?v=20261001" />
+  <style>
+    /* ── Hero ── */
+    .home-hero {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 80px 32px 64px;
+      text-align: center;
+    }
+    .home-hero-tag {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--data);
+      background: var(--data-dim);
+      border: 1px solid rgba(29,107,181,0.20);
+      border-radius: 20px;
+      padding: 5px 14px;
+      margin-bottom: 28px;
+    }
+    .home-hero h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      color: var(--text-1);
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 22px;
+    }
+    .home-hero h1 em {
+      font-style: normal;
+      color: var(--data);
+    }
+    .home-hero-sub {
+      font-size: 1rem;
+      color: var(--text-2);
+      line-height: 1.75;
+      max-width: 680px;
+      margin: 0 auto 40px;
+    }
+    .home-cta-row {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .home-cta-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--data);
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 600;
+      padding: 13px 28px;
+      border-radius: var(--r);
+      transition: background 160ms, transform 120ms;
+    }
+    .home-cta-primary:hover { background: #1254a0; transform: translateY(-2px); }
+    .home-cta-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--text-1);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 600;
+      padding: 13px 28px;
+      border-radius: var(--r);
+      border: 1px solid var(--border-hi);
+      transition: background 160ms, transform 120ms;
+    }
+    .home-cta-outline:hover { background: var(--surface-2); transform: translateY(-2px); }
+
+    /* ── Stats bar ── */
+    .home-stats {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      max-width: 760px;
+      margin: 0 auto 72px;
+      background: var(--surface-1);
+      border: 1px solid var(--border-dim);
+      border-radius: var(--r-lg);
+      overflow: hidden;
+    }
+    .home-stat {
+      flex: 1;
+      padding: 22px 20px;
+      text-align: center;
+      border-right: 1px solid var(--border-dim);
+    }
+    .home-stat:last-child { border-right: none; }
+    .home-stat-value {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--data);
+      letter-spacing: -0.02em;
+      line-height: 1;
+      margin-bottom: 5px;
+    }
+    .home-stat-label {
+      font-size: 0.72rem;
+      color: var(--text-3);
+      font-weight: 500;
+    }
+
+    /* ── Section wrapper ── */
+    .home-section {
+      position: relative;
+      z-index: 1;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 32px 72px;
+    }
+    .home-section-tag {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--data);
+      margin-bottom: 10px;
+    }
+    .home-section h2 {
+      font-size: 1.55rem;
+      font-weight: 700;
+      color: var(--text-1);
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+    .home-section-lead {
+      font-size: 0.92rem;
+      color: var(--text-2);
+      line-height: 1.75;
+      max-width: 680px;
+      margin-bottom: 40px;
+    }
+    .home-divider {
+      position: relative;
+      z-index: 1;
+      max-width: 1100px;
+      margin: 0 auto 72px;
+      padding: 0 32px;
+      border: none;
+    }
+    .home-divider::after {
+      content: '';
+      display: block;
+      border-top: 1px solid var(--border-dim);
+    }
+
+    /* ── What it does — 3-col grid ── */
+    .home-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+    @media (max-width: 900px) { .home-grid-3 { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 580px) { .home-grid-3 { grid-template-columns: 1fr; } }
+    .home-card {
+      background: var(--surface-1);
+      border: 1px solid var(--border-dim);
+      border-radius: var(--r-lg);
+      padding: 22px 22px 20px;
+      transition: box-shadow 160ms, border-color 160ms;
+    }
+    .home-card:hover {
+      box-shadow: 0 4px 20px rgba(29,107,181,0.08);
+      border-color: var(--border-hi);
+    }
+    .home-card-icon {
+      font-size: 1.4rem;
+      margin-bottom: 12px;
+    }
+    .home-card-title {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--text-1);
+      margin-bottom: 8px;
+    }
+    .home-card-desc {
+      font-size: 0.82rem;
+      color: var(--text-3);
+      line-height: 1.6;
+    }
+
+    /* ── Who it's for ── */
+    .home-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+    @media (max-width: 640px) { .home-grid-2 { grid-template-columns: 1fr; } }
+    .home-audience-card {
+      background: var(--surface-1);
+      border: 1px solid var(--border-dim);
+      border-radius: var(--r-lg);
+      padding: 20px 22px;
+    }
+    .home-audience-sector {
+      font-size: 0.80rem;
+      font-weight: 700;
+      color: var(--text-1);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .home-audience-roles {
+      font-size: 0.78rem;
+      color: var(--text-3);
+      line-height: 1.6;
+    }
+
+    /* ── How it works ── */
+    .home-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border: 1px solid var(--border-dim);
+      border-radius: var(--r-lg);
+      overflow: hidden;
+    }
+    .home-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      padding: 22px 24px;
+      border-bottom: 1px solid var(--border-dim);
+      background: var(--surface-1);
+      transition: background 160ms;
+    }
+    .home-step:last-child { border-bottom: none; }
+    .home-step:hover { background: var(--surface-2); }
+    .home-step-num {
+      flex-shrink: 0;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--data-dim);
+      border: 1px solid rgba(29,107,181,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--data);
+      font-family: 'IBM Plex Mono', monospace;
+    }
+    .home-step-title {
+      font-size: 0.90rem;
+      font-weight: 700;
+      color: var(--text-1);
+      margin-bottom: 5px;
+    }
+    .home-step-desc {
+      font-size: 0.82rem;
+      color: var(--text-3);
+      line-height: 1.6;
+    }
+
+    /* ── CTA strip ── */
+    .home-cta-strip {
+      position: relative;
+      z-index: 1;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 32px 96px;
+    }
+    .home-cta-box {
+      background: var(--data);
+      border-radius: var(--r-lg);
+      padding: 48px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .home-cta-box h3 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+    }
+    .home-cta-box p {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.78);
+      line-height: 1.6;
+    }
+    .home-cta-box-btns {
+      display: flex;
+      gap: 12px;
+      flex-shrink: 0;
+      flex-wrap: wrap;
+    }
+    .cta-box-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: #fff;
+      color: var(--data);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 700;
+      padding: 12px 24px;
+      border-radius: var(--r);
+      transition: transform 120ms;
+      white-space: nowrap;
+    }
+    .cta-box-primary:hover { transform: translateY(-2px); }
+    .cta-box-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: transparent;
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 600;
+      padding: 12px 24px;
+      border-radius: var(--r);
+      border: 1px solid rgba(255,255,255,0.45);
+      transition: background 160ms, transform 120ms;
+      white-space: nowrap;
+    }
+    .cta-box-outline:hover { background: rgba(255,255,255,0.12); transform: translateY(-2px); }
+    @media (max-width: 640px) {
+      .home-hero { padding: 56px 16px 48px; }
+      .home-section, .home-cta-strip { padding-left: 16px; padding-right: 16px; }
+      .home-cta-box { padding: 32px 24px; }
+    }
+  </style>
+</head>
+<body class="has-nav">
+
+<canvas id="particle-canvas"></canvas>
+<canvas id="globe-canvas"></canvas>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
+
+<div class="intel-ticker">
+  <span class="ticker-label"><span class="ticker-live-dot"></span>LIVE INTEL</span>
+  <div class="ticker-track">
+    <div class="ticker-scroll">
+      <span class="ticker-item t-red">FCA · CASS 7 client money rules — enhanced reconciliation requirements effective Q1 2027</span>
+      <span class="ticker-item t-amber">ESMA · MiFID II client asset safeguarding review — consultation closes 15 Nov 2026</span>
+      <span class="ticker-item t-red">SEC · Regulation Best Interest — enforcement sweep across 47 broker-dealers initiated</span>
+      <span class="ticker-item t-amber">MAS · Digital asset custody framework — final rules effective Jan 2027</span>
+      <span class="ticker-item t-red">BaFin · DORA fully operative — ICT incident reporting mandatory from 17 Jan 2025</span>
+      <span class="ticker-item t-green">Bank of England · CBEST cyber resilience framework — updated guidance published Oct 2026</span>
+      <span class="ticker-item t-red">FCA · NatWest fined £264.8M for AML failings — largest-ever FCA financial crime fine</span>
+    </div>
+  </div>
+  <span class="ticker-date" id="ticker-date"></span>
+</div>
+<nav class="global-nav">
+  <a href="/" class="nav-brand">
+    <div class="nav-brand-icon">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+    </div>
+    <span class="nav-brand-name">Govisk ExecCom <em>Intelligence</em></span>
+  </a>
+  <div class="nav-links">
+    <a href="/" class="nav-link nav-active">Home</a>
+    <a href="/portal" class="nav-link">Portal</a>
+    <a href="/about" class="nav-link">About Us</a>
+    <a href="/services" class="nav-link">Services</a>
+    <a href="/case-studies" class="nav-link">Case Studies</a>
+    <a href="/contact" class="nav-link">Contact Us</a>
+  </div>
+  <div class="nav-right">
+    <a href="/request-demo" class="nav-cta">Request Demo</a>
+  </div></nav>
+
+<!-- ═══════════════════ HERO ═══════════════════ -->
+<div class="home-hero fade-in">
+  <div class="home-hero-tag">Geo-Financial Risk &amp; Governance Intelligence</div>
+  <h1>The Intelligence Platform<br>Built for <em>Global Executives</em></h1>
+  <p class="home-hero-sub">Govisk ExecCom Intelligence synthesises macroeconomic unpredictability, regulatory complexity, and geopolitical risk into actionable intelligence — empowering leadership teams across finance, energy, technology, logistics, and beyond.</p>
+  <div class="home-cta-row">
+    <a href="/portal" class="home-cta-primary">
+      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      Open Intelligence Portal
+    </a>
+    <a href="/request-demo" class="home-cta-outline">Request a Demo</a>
+  </div>
+</div>
+
+<!-- Stats bar -->
+<div class="home-stats fade-in ">
+  <div class="home-stat "><div class="home-stat-value">250+</div><div class="home-stat-label">Global Institutions</div></div>
+  <div class="home-stat "><div class="home-stat-value">6</div><div class="home-stat-label">Regions Covered</div></div>
+  <div class="home-stat "><div class="home-stat-value">13</div><div class="home-stat-label">Report Types</div></div>
+  <div class="home-stat "><div class="home-stat-value">9+</div><div class="home-stat-label">AI Connectors</div></div>
+  <div class="home-stat "><div class="home-stat-value">2026</div><div class="home-stat-label">Est.</div></div>
+</div>
+
+<!-- ═══════════════════ WHAT IT DOES ═══════════════════ -->
+<div class="home-section fade-in">
+  <div class="home-section-tag ">The Platform</div>
+  <h2>What Govisk ExecCom Intelligence does</h2>
+  <p class="home-section-lead ">An AI-driven intelligence portal that routes verified, real-time geo-financial, regulatory, and governance intelligence directly to the executives who need it — across six global regions and 22 intelligence topics.</p>
+  <div class="home-grid-3">
+    <div class="home-card fade-in ">
+      <div class="home-card-icon">🧭</div>
+      <div class="home-card-title">AI-Driven Intelligence Routing</div>
+      <div class="home-card-desc">Proprietary algorithms continuously monitor, authenticate, and route verified intelligence from authoritative global repositories directly to relevant decision-makers.</div>
+    </div>
+    <div class="home-card fade-in ">
+      <div class="home-card-icon">📊</div>
+      <div class="home-card-title">Geo-Financial Risk Reporting</div>
+      <div class="home-card-desc">Bespoke analytical suites synthesising macroeconomic and regional data into comprehensive evaluations tailored to your sector's specific risk matrix.</div>
+    </div>
+    <div class="home-card fade-in ">
+      <div class="home-card-icon">📋</div>
+      <div class="home-card-title">Regulatory Compliance Intelligence</div>
+      <div class="home-card-desc">Pristine, contemporaneous insights on cross-border financial architectures, regulatory mandates, and shifting compliance parameters across all major jurisdictions.</div>
+    </div>
+    <div class="home-card fade-in ">
+      <div class="home-card-icon">🌍</div>
+      <div class="home-card-title">6-Region Global Coverage</div>
+      <div class="home-card-desc">UK · North America · Latin America · Asia-Pacific · Africa · Europe — each mapped to local regulatory regimes, enforcement bodies, and risk environments.</div>
+    </div>
+    <div class="home-card fade-in ">
+      <div class="home-card-icon">🛡️</div>
+      <div class="home-card-title">Strategic Foresight &amp; Protection</div>
+      <div class="home-card-desc">Pre-emptive intelligence enabling decision-makers to safeguard personnel, physical assets, and operational continuity across international jurisdictions.</div>
+    </div>
+    <div class="home-card fade-in ">
+      <div class="home-card-icon">⚡</div>
+      <div class="home-card-title">Multi-Model AI Engine</div>
+      <div class="home-card-desc">Nine AI connectors — Perplexity, DeepSeek, Cerebras, Groq, Mistral, Gemini and more — scan live regulatory publications before every report is generated.</div>
+    </div>
+  </div>
+</div>
+
+<div class="home-divider"></div>
+
+<!-- ═══════════════════ HOW IT WORKS ═══════════════════ -->
+<div class="home-section fade-in">
+  <div class="home-section-tag ">How It Works</div>
+  <h2>From regulatory complexity to board-ready clarity</h2>
+  <p class="home-section-lead ">The WAT Framework — Workflows, Agents, Tools — separates regulatory knowledge from AI reasoning and deterministic execution, achieving high accuracy across complex multi-step intelligence generation.</p>
+  <div class="home-steps">
+    <div class="home-step ">
+      <div class="home-step-num">01</div>
+      <div>
+        <div class="home-step-title">Select your region and report type</div>
+        <div class="home-step-desc">Choose from 6 global regions and 13 intelligence report types — from CASS health checks and cyber threat assessments to country risk and executive protection briefings.</div>
+      </div>
+    </div>
+    <div class="home-step ">
+      <div class="home-step-num">02</div>
+      <div>
+        <div class="home-step-title">AI agents scan live regulatory data</div>
+        <div class="home-step-desc">Nine AI connectors simultaneously query authoritative regulatory repositories, enforcement databases, and geo-financial data sources — authenticated and cross-referenced in real time.</div>
+      </div>
+    </div>
+    <div class="home-step ">
+      <div class="home-step-num">03</div>
+      <div>
+        <div class="home-step-title">Intelligence is synthesised and structured</div>
+        <div class="home-step-desc">Findings are mapped to regulatory frameworks (FCA CASS, ESMA, MAS, SEC, SARB and others), RAG-rated for risk, and structured into board-ready narrative with full citation.</div>
+      </div>
+    </div>
+    <div class="home-step ">
+      <div class="home-step-num">04</div>
+      <div>
+        <div class="home-step-title">Report delivered — audit-ready in minutes</div>
+        <div class="home-step-desc">A structured .docx report with regulatory citations, risk ratings, and executive summary — ready for board submission, regulator response, or compliance filing.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="home-divider"></div>
+
+<!-- ═══════════════════ WHO IT'S FOR ═══════════════════ -->
+<div class="home-section fade-in">
+  <div class="home-section-tag ">Who It's For</div>
+  <h2>Built for global executive leadership</h2>
+  <p class="home-section-lead ">Govisk ExecCom Intelligence serves over 250 preeminent global institutions across multifaceted sectors — wherever geo-financial risk, regulatory complexity, and governance mandates intersect.</p>
+  <div class="home-grid-2">
+    <div class="home-audience-card fade-in ">
+      <div class="home-audience-sector">🏦 Financial Services</div>
+      <div class="home-audience-roles">Banks · Custodians · Asset Managers · Broker-Dealers · Investment Firms · Fund Administrators · FinTech · Insurance</div>
+    </div>
+    <div class="home-audience-card fade-in ">
+      <div class="home-audience-sector">⚡ Energy &amp; Resources</div>
+      <div class="home-audience-roles">Oil &amp; Gas · Renewables · Mining &amp; Extraction · Utilities · Commodities Trading · Infrastructure</div>
+    </div>
+    <div class="home-audience-card fade-in ">
+      <div class="home-audience-sector">💻 Technology</div>
+      <div class="home-audience-roles">Enterprise Software · Cloud Providers · Semiconductor · Data Centres · Telecoms · Cyber Security</div>
+    </div>
+    <div class="home-audience-card fade-in ">
+      <div class="home-audience-sector">🚢 Logistics &amp; Construction</div>
+      <div class="home-audience-roles">Shipping &amp; Freight · Supply Chain · Real Estate Development · Infrastructure Construction · EPC Contractors</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ CTA ═══════════════════ -->
+<div class="home-cta-strip fade-in ">
+  <div class="home-cta-box">
+    <div>
+      <h3>Ready to access the platform?</h3>
+      <p>Open the Intelligence Portal to generate your first report, or schedule a live 30-minute walkthrough with our team.</p>
+    </div>
+    <div class="home-cta-box-btns">
+      <a href="/request-demo" class="cta-box-primary">
+        Request Your Demo →
+      </a>
+      <a href="/portal" class="cta-box-outline">Explore the Portal →</a>
+    </div>
+  </div>
+</div>
+
+<footer class="page-footer" style="position:relative;z-index:1">
+  <div class="page-footer-links">
+    <a href="/">Home</a>
+    <a href="/portal">Portal</a>
+    <a href="/about">About Us</a>
+    <a href="/services">Services</a>
+    <a href="/case-studies">Case Studies</a>
+    <a href="/contact">Contact Us</a>
+    <a href="/request-demo">Request Demo</a>
+  </div>
+  Govisk ExecCom Intelligence &nbsp;·&nbsp; Geo-Financial Risk &amp; Governance Intelligence &nbsp;·&nbsp; Est. 2026</footer>
+<script src="/assets/globe.js?v=20261023e"></script>
+<script src="/assets/megamenu.js?v=20261001"></script></body>
+</html>

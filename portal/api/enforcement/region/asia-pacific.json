@@ -1,0 +1,35 @@
+{
+  "title": "Asia-Pacific Enforcement Actions — MAS, ASIC, HKMA, FSA, SEBI",
+  "region": "asia-pacific",
+  "last_updated": "2026-11-06T00:00:00Z",
+  "cases": [
+    {
+      "firm": "Sir Money Changer Pte Ltd",
+      "fine": "Licence Revocation",
+      "summary": "MAS revoked the Major Payment Institution licence of Sir Money Changer for persistent AML/CFT failures: failed to perform CDD for cash transactions above S$5,000 for three consecutive years, did not retain transaction records as required, and failed to file suspicious transaction reports for high-risk customers.",
+      "date": "14 Oct 2026",
+      "regulator": "MAS"
+    },
+    {
+      "firm": "22 companies (AFSL/ACL breaches)",
+      "fine": "A$4,356,000 total",
+      "summary": "ASIC issued A$4.356 million in infringement notices against 22 companies for AFSL and ACL breaches. Five are fintech operators offering embedded lending products. Highest single notice: A$395,000 against a BNPL provider for failure to assess suitability. Notices issued under ASIC's expanded infringement notice powers.",
+      "date": "04 Nov 2026",
+      "regulator": "ASIC"
+    },
+    {
+      "firm": "Prudential Life Insurance Company of Japan",
+      "fine": "Partial business suspension",
+      "summary": "Japan FSA imposed a partial business suspension order against Prudential Life Insurance for systematic mis-selling of variable life insurance to elderly customers. 847 cases found where products were sold to customers with inappropriate risk profiles. Suspension covers new policy sales through tied agents for three months.",
+      "date": "Oct 2026",
+      "regulator": "FSA Japan"
+    },
+    {
+      "firm": "ANZ Banking Group",
+      "fine": "Federal Court proceedings",
+      "summary": "ASIC commenced Federal Court proceedings against ANZ for allegedly misleading retail clients about protections afforded to their money held in investment accounts. ASIC alleges failures under Part 7.8 of the Corporations Act 2001 related to client money disclosures. Proceedings ongoing.",
+      "date": "04 Nov 2026",
+      "regulator": "ASIC"
+    }
+  ]
+}

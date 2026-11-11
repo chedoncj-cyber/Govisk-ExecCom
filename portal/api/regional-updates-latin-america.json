@@ -1,0 +1,86 @@
+{
+  "region": "Latin America",
+  "last_updated": "2026-11-06T00:00:00Z",
+  "news": [
+    {
+      "date": "30 Oct 2026",
+      "severity": "high",
+      "regulator": "BCB",
+      "country": "Brazil",
+      "type": "Enforcement",
+      "headline": "BCB bars banks from transacting with unlicensed crypto VASPs — enforcement deadline 30 October 2026",
+      "detail": "From 30 October 2026, all BCB-supervised banks and payment institutions are prohibited from maintaining transactional relationships with virtual asset service providers (VASPs) that have not received or applied for BCB authorisation. Any institution still dealing with unauthorised VASPs after this date must cease those operations within 30 days or face sanctions. The measure activates the enforcement arm of Brazil's Virtual Assets Law framework under BCB Resolutions 519–521 (effective February 2026).",
+      "tags": ["BCB", "Brazil", "VASP", "Crypto", "Licensing", "Enforcement", "Virtual Assets"]
+    },
+    {
+      "date": "13 Oct 2026",
+      "severity": "high",
+      "regulator": "CVM",
+      "country": "Brazil",
+      "type": "Enforcement",
+      "headline": "CVM opens judgment in Ano Bom fraud case — fines of R$2.72M proposed per entity, disgorgement of R$47M",
+      "detail": "The CVM convened Administrative Sanctioning Proceeding PAS CVM 19957.010958/2018-75 on 13 October 2026 targeting fraudulent market operations and fiduciary oversight failures by Ano Bom Incorporação e Empreendimentos S.A. and KL Partners Ltda. Reporting Director Marina Copola proposed individual fines of R$1,360,000 for key principals Alexandre Klabin and Ricardo de Oliveira Barbosa, plus R$255,000 for Alexandro Luis Pin. The case was referred jointly by CVM's Superintendencies of Securities Registration (SRE) and Institutional Investor Supervision (SIN).",
+      "tags": ["CVM", "Brazil", "Enforcement", "Fraud", "Sanctioning Proceeding", "Market Manipulation"]
+    },
+    {
+      "date": "23 Oct 2026",
+      "severity": "medium",
+      "regulator": "CVM",
+      "country": "Brazil",
+      "type": "Consultation",
+      "headline": "CVM President calls for mandatory tokenisation and AI market surveillance following Banco Master fund scandal",
+      "detail": "At the IV Congress of Investment Fund Law, CVM President Otto Lobo stated Brazil's capital market supervision infrastructure requires a compulsory shift to tokenisation of securities alongside AI-based monitoring tools. The proposal signals a forthcoming regulatory consultation on overhauling market oversight infrastructure. Lobo framed it as a response to systemic gaps exposed by the Banco Master fund scandal, noting fintech-led tokenisation startups would benefit from a formal regulatory pathway.",
+      "tags": ["CVM", "Brazil", "Tokenisation", "AI", "Market Oversight", "Consultation", "Fintech", "Startups"]
+    },
+    {
+      "date": "28 Oct 2026",
+      "severity": "medium",
+      "regulator": "BANXICO",
+      "country": "Mexico",
+      "type": "Resolution",
+      "headline": "BANXICO publishes resolution overhauling financial group holding company governance rules",
+      "detail": "A resolution amending control rules for holding companies of financial groups was published in Mexico's Diario Oficial de la Federación on 28 October 2026. The measure tightens governance and capital requirements for conglomerates operating across banking, insurance, and securities sectors. Separately, Banxico's Circulars 9/2026 and 10/2026, published in June, modified SPEI payment rules with a compliance deadline of 14 December 2026, impacting fintech firms using SPEI infrastructure.",
+      "tags": ["BANXICO", "Mexico", "Financial Groups", "Resolution", "Governance", "SPEI", "Payments", "Fintech"]
+    },
+    {
+      "date": "30 Oct 2026",
+      "severity": "high",
+      "regulator": "FATF / GAFILAT",
+      "country": "Latin America (Regional)",
+      "type": "Report",
+      "headline": "FATF October 2026 Plenary: Bolivia, Haiti and Venezuela retained on grey list for persistent AML/CFT deficiencies",
+      "detail": "The FATF's October 2026 plenary (28–30 October) updated its grey list with four jurisdictions exiting increased monitoring. In Latin America, Bolivia, Haiti, and Venezuela remain under FATF increased monitoring for persistent AML/CFT deficiencies: weak VASP supervision, beneficial ownership transparency gaps, and low asset recovery rates highlighted in GAFILAT's regional typologies work. The outcome directly affects correspondent banking relationships and de-risking pressure for financial institutions in those jurisdictions.",
+      "tags": ["FATF", "GAFILAT", "Grey List", "AML", "CFT", "Bolivia", "Haiti", "Venezuela"]
+    },
+    {
+      "date": "24 Jul 2026",
+      "severity": "medium",
+      "regulator": "SBS",
+      "country": "Peru",
+      "type": "Resolution",
+      "headline": "SBS Resolution 01923-2026: new sanctions for interest-rate overcharging, AFP failures and cybersecurity breaches",
+      "detail": "Peru's SBS published Resolution SBS No. 01923-2026, materially revising its Regulation of Infractions and Sanctions. New very serious infractions created for interest-rate overcharging, insurance technical-provision shortfalls, and AFP disability-committee process failures. The regulation strengthens cybersecurity and data-protection sanctions and applies to shareholders, directors, managers, and staff. Fintech lenders face new sanctionable categories for AI-driven interest rate computation failures.",
+      "tags": ["SBS", "Peru", "Sanctions", "AFP", "Insurance", "Banks", "Cybersecurity", "Fintech"]
+    },
+    {
+      "date": "15 Oct 2026",
+      "severity": "medium",
+      "regulator": "BCB",
+      "country": "Brazil",
+      "type": "Report",
+      "headline": "BCB Open Finance Phase 4 metrics: 65 million consents issued — Nubank, Inter and fintechs lead adoption",
+      "detail": "The Banco Central do Brasil published Open Finance Phase 4 operational statistics showing 65 million active customer consents for data sharing as of October 2026. Nubank holds the largest share (28%) of initiated consents, followed by Inter (11%) and XP Inc (8%). Fintech startups account for 34% of all third-party provider registrations. BCB confirmed Phase 4 mandatory participation for institutions above R$1 billion in assets from March 2027 will add investment, insurance and pension data.",
+      "tags": ["BCB", "Brazil", "Open Finance", "Nubank", "Fintech", "API", "Data Sharing", "Startups"]
+    },
+    {
+      "date": "29 Oct 2026",
+      "severity": "low",
+      "regulator": "CMF",
+      "country": "Chile",
+      "type": "Consultation",
+      "headline": "CMF Chile Fintech Law: digital asset service provider licensing consultation opens — crypto custody firms must register by Q3 2027",
+      "detail": "Chile's Comisión para el Mercado Financiero opened consultation on licensing requirements for digital asset service providers under the Fintech Law. Comments due 15 January 2027. Firms providing crypto custody must register by Q3 2027; exchange services by Q4 2027. The CMF is specifically targeting crypto startups operating informally under the existing securities law framework.",
+      "tags": ["CMF", "Chile", "Fintech Law", "Crypto", "DASP", "Startups", "Licensing", "Consultation"]
+    }
+  ]
+}

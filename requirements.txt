@@ -1,0 +1,11 @@
+python-dotenv
+requests
+openai
+reportlab
+python-docx
+pandas
+openpyxl
+fastapi
+uvicorn[standard]
+python-multipart
+aiofiles

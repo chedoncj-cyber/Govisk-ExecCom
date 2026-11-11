@@ -1,0 +1,394 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src 'self'; img-src 'self' data:;">
+  <title id="page-title">Regional Intelligence — CASS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/style.css?v=20261037" />
+  <link rel="stylesheet" href="/assets/megamenu.css?v=20261001" />
+  <style>
+    :root { --rp-accent: #1d6bb5; --rp-accent-dim: rgba(29,107,181,0.12); }
+
+    /* ── Back nav ── */
+    .rp-back-nav {
+      display: flex; align-items: center; gap: 12px;
+      padding: 14px 0 8px; margin-bottom: 4px;
+    }
+    .rp-back-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 0.72rem; font-weight: 600;
+      font-family: 'IBM Plex Mono', monospace;
+      color: var(--text-3); text-decoration: none;
+      text-transform: uppercase; letter-spacing: 0.07em;
+      transition: color 0.15s;
+    }
+    .rp-back-link:hover { color: var(--text-1); }
+    .rp-back-sep { color: var(--text-3); font-size: 0.7rem; }
+    .rp-breadcrumb {
+      font-size: 0.72rem; color: var(--text-2);
+      font-family: 'IBM Plex Mono', monospace;
+    }
+
+    /* ── Hero ── */
+    .rp-hero {
+      display: flex; align-items: flex-start; gap: 24px;
+      padding: 28px 32px;
+      background: var(--surface-1);
+      border: 1px solid var(--border-dim);
+      border-left: 4px solid var(--rp-accent);
+      border-radius: var(--r-lg);
+      margin-bottom: 20px;
+      position: relative; overflow: hidden;
+    }
+    .rp-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 80% 50%, var(--rp-accent-dim), transparent);
+      pointer-events: none;
+    }
+    .rp-hero-flag {
+      font-size: 3.2rem; line-height: 1; flex-shrink: 0;
+      filter: drop-shadow(0 0 16px var(--rp-accent));
+    }
+    .rp-hero-body { flex: 1; min-width: 0; }
+    .rp-hero-kicker {
+      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--rp-accent);
+      font-family: 'IBM Plex Mono', monospace; margin-bottom: 6px;
+    }
+    .rp-hero-title {
+      font-size: 1.6rem; font-weight: 700; letter-spacing: -0.03em;
+      color: var(--text-1); line-height: 1.1; margin-bottom: 8px;
+    }
+    .rp-hero-regulators {
+      font-size: 0.7rem; color: var(--text-3);
+      font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.02em;
+      line-height: 1.6;
+    }
+    .rp-hero-meta {
+      display: flex; flex-direction: column; align-items: flex-end;
+      gap: 8px; flex-shrink: 0;
+    }
+    .rp-hero-tag {
+      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; padding: 4px 10px; border-radius: 20px;
+      border: 1px solid var(--rp-accent);
+      color: var(--rp-accent); background: var(--rp-accent-dim);
+      font-family: 'IBM Plex Mono', monospace;
+    }
+    .rp-hero-updated {
+      font-size: 0.65rem; color: var(--text-3);
+      font-family: 'IBM Plex Mono', monospace;
+    }
+
+    /* ── MI Stats Grid ── */
+    .rp-mi-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px; margin-bottom: 16px;
+    }
+    @media (max-width: 860px) { .rp-mi-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 520px) { .rp-mi-grid { grid-template-columns: repeat(2, 1fr); } }
+
+    .mi-card {
+      background: var(--surface-1);
+      border: 1px solid var(--border-dim);
+      border-radius: var(--r-lg);
+      padding: 16px 18px;
+      display: flex; flex-direction: column; gap: 6px;
+      position: relative; overflow: hidden;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .mi-card:hover { transform: translateY(-2px); border-color: var(--border); }
+    .mi-card::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+      height: 2px; background: var(--mi-color, var(--rp-accent));
+    }
+    .mi-card-value {
+      font-size: 2rem; font-weight: 700; letter-spacing: -0.04em;
+      color: var(--mi-color, var(--rp-accent)); line-height: 1;
+    }
+    .mi-card-label {
+      font-size: 0.65rem; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.08em; color: var(--text-3);
+      font-family: 'IBM Plex Mono', monospace;
+    }
+    .mi-card-icon {
+      position: absolute; top: 12px; right: 14px;
+      font-size: 1.1rem; opacity: 0.35;
+    }
+
+    /* ── Risk Distribution ── */
+    .rp-risk-panel {
+      background: var(--surface-1);
+      border: 1px solid var(--border-dim);
+      border-radius: var(--r-lg);
+      padding: 20px 24px;
+      margin-bottom: 16px;
+    }
+    .rp-risk-title {
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--text-3);
+      font-family: 'IBM Plex Mono', monospace; margin-bottom: 16px;
+    }
+    .risk-bar-row {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 10px;
+    }
+    .risk-bar-label {
+      width: 64px; font-size: 0.68rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.07em;
+      font-family: 'IBM Plex Mono', monospace; flex-shrink: 0;
+    }
+    .risk-bar-track {
+      flex: 1; height: 6px; background: var(--surface-3);
+      border-radius: 3px; overflow: hidden;
+    }
+    .risk-bar-fill {
+      height: 100%; border-radius: 3px;
+      transition: width 0.8s var(--ease-out);
+    }
+    .risk-bar-count {
+      width: 24px; text-align: right;
+      font-size: 0.7rem; font-weight: 600;
+      font-family: 'IBM Plex Mono', monospace;
+      color: var(--text-2); flex-shrink: 0;
+    }
+    .risk-bar-pct {
+      width: 36px; text-align: right;
+      font-size: 0.65rem; color: var(--text-3);
+      font-family: 'IBM Plex Mono', monospace; flex-shrink: 0;
+    }
+
+    /* ── Regulator Cloud ── */
+    .rp-regulators {
+      display: flex; align-items: center; gap: 8px;
+      flex-wrap: wrap; margin-bottom: 20px;
+    }
+    .rp-reg-label {
+      font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--text-3);
+      font-family: 'IBM Plex Mono', monospace; margin-right: 4px;
+    }
+    .rp-reg-chip {
+      font-size: 0.68rem; font-weight: 600; padding: 3px 10px;
+      border-radius: 12px; border: 1px solid var(--rp-accent);
+      color: var(--rp-accent); background: var(--rp-accent-dim);
+      font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+
+    /* ── Ref feed subtitle ── */
+    .rp-feed-subtitle {
+      font-size: 0.7rem; color: var(--text-3);
+      font-family: 'IBM Plex Mono', monospace;
+      margin: -8px 0 12px;
+    }
+
+    /* ── Severity filter bar ── */
+    .rp-filter-bar {
+      display: flex; gap: 6px; margin-bottom: 12px;
+    }
+    .rp-filter-btn {
+      font-size: 0.65rem; font-weight: 700; padding: 4px 12px;
+      border-radius: 12px; border: 1px solid var(--border-dim);
+      background: var(--surface-1); color: var(--text-3);
+      cursor: pointer; font-family: 'IBM Plex Mono', monospace;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      transition: all 0.15s;
+    }
+    .rp-filter-btn:hover, .rp-filter-btn.active {
+      border-color: var(--rp-accent); color: var(--rp-accent);
+      background: var(--rp-accent-dim);
+    }
+
+    /* ── Empty + loading states ── */
+    .rp-empty {
+      padding: 40px 20px; text-align: center;
+      color: var(--text-3); font-size: 0.8rem;
+      font-family: 'IBM Plex Mono', monospace;
+    }
+
+    /* ── Briefing section header ── */
+    .rp-briefing-hdr {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-top: 32px; margin-bottom: 4px;
+    }
+  </style>
+</head>
+<body class="has-nav">
+
+<canvas id="globe-canvas"></canvas>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
+
+<!-- ── Alert Ticker ── -->
+<div class="intel-ticker" id="intel-ticker">
+  <span class="ticker-label"><span class="ticker-live-dot"></span>LIVE INTEL</span>
+  <div class="ticker-track">
+    <div class="ticker-scroll" id="ticker-scroll">
+      <span class="ticker-item t-red">Loading regional intelligence…</span>
+    </div>
+  </div>
+  <span class="ticker-date" id="ticker-date"></span>
+</div>
+
+<!-- ── Global Navigation ── -->
+<nav class="global-nav" id="global-nav">
+  <a href="/" class="nav-brand">
+    <div class="nav-brand-icon">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+    </div>
+    <span class="nav-brand-name">Govisk ExecCom <em>Intelligence</em></span>
+  </a>
+  <div class="nav-links">
+    <a href="/" class="nav-link">Home</a>
+    <a href="/portal" class="nav-link">Portal</a>
+    <a href="/about" class="nav-link">About Us</a>
+    <a href="/services" class="nav-link">Services</a>
+    <a href="/case-studies" class="nav-link">Case Studies</a>
+    <a href="/contact" class="nav-link">Contact Us</a>
+  </div>
+  <div class="nav-right">
+    <a href="/request-demo" class="nav-cta">Request Demo</a>
+  </div></nav>
+
+<div class="wrapper">
+
+  <!-- ── Back nav ── -->
+  <nav class="rp-back-nav">
+    <a href="/" class="rp-back-link">
+      <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      Govisk ExecCom Intelligence
+    </a>
+    <span class="rp-back-sep">›</span>
+    <span class="rp-breadcrumb" id="rp-breadcrumb">Regional Intelligence</span>
+  </nav>
+
+  <!-- ── Hero ── -->
+  <div class="rp-hero" id="rp-hero">
+    <div class="rp-hero-flag" id="rp-flag">🌐</div>
+    <div class="rp-hero-body">
+      <div class="rp-hero-kicker">Regional Regulatory Intelligence</div>
+      <h1 class="rp-hero-title" id="rp-title">Loading…</h1>
+      <div class="rp-hero-regulators" id="rp-regulators-subtitle"></div>
+    </div>
+    <div class="rp-hero-meta">
+      <div class="rp-hero-tag">MI Dashboard</div>
+      <div class="rp-hero-updated" id="rp-updated">—</div>
+    </div>
+  </div>
+
+  <!-- ── MI Stats ── -->
+  <div class="rp-mi-grid" id="rp-mi-grid">
+    <div class="mi-card" style="--mi-color:var(--rp-accent)">
+      <div class="mi-card-icon">📊</div>
+      <div class="mi-card-value" id="mi-total">—</div>
+      <div class="mi-card-label">Intel Items</div>
+    </div>
+    <div class="mi-card" style="--mi-color:var(--red)">
+      <div class="mi-card-icon">🔴</div>
+      <div class="mi-card-value" id="mi-high">—</div>
+      <div class="mi-card-label">High Risk</div>
+    </div>
+    <div class="mi-card" style="--mi-color:var(--amber)">
+      <div class="mi-card-icon">🟡</div>
+      <div class="mi-card-value" id="mi-medium">—</div>
+      <div class="mi-card-label">Medium Risk</div>
+    </div>
+    <div class="mi-card" style="--mi-color:var(--green)">
+      <div class="mi-card-icon">🟢</div>
+      <div class="mi-card-value" id="mi-low">—</div>
+      <div class="mi-card-label">Low Risk</div>
+    </div>
+    <div class="mi-card" style="--mi-color:var(--data)">
+      <div class="mi-card-icon">🏛</div>
+      <div class="mi-card-value" id="mi-regulators">—</div>
+      <div class="mi-card-label">Regulators</div>
+    </div>
+  </div>
+
+  <!-- ── Risk Distribution ── -->
+  <div class="rp-risk-panel" id="rp-risk-panel">
+    <div class="rp-risk-title">Risk Distribution</div>
+    <div class="risk-bar-row">
+      <span class="risk-bar-label" style="color:var(--red)">HIGH</span>
+      <div class="risk-bar-track"><div class="risk-bar-fill" id="rbar-high" style="background:var(--red);width:0%"></div></div>
+      <span class="risk-bar-count" id="rbar-high-n" style="color:var(--red)">0</span>
+      <span class="risk-bar-pct" id="rbar-high-p">0%</span>
+    </div>
+    <div class="risk-bar-row">
+      <span class="risk-bar-label" style="color:var(--amber)">MED</span>
+      <div class="risk-bar-track"><div class="risk-bar-fill" id="rbar-med" style="background:var(--amber);width:0%"></div></div>
+      <span class="risk-bar-count" id="rbar-med-n" style="color:var(--amber)">0</span>
+      <span class="risk-bar-pct" id="rbar-med-p">0%</span>
+    </div>
+    <div class="risk-bar-row">
+      <span class="risk-bar-label" style="color:var(--green)">LOW</span>
+      <div class="risk-bar-track"><div class="risk-bar-fill" id="rbar-low" style="background:var(--green);width:0%"></div></div>
+      <span class="risk-bar-count" id="rbar-low-n" style="color:var(--green)">0</span>
+      <span class="risk-bar-pct" id="rbar-low-p">0%</span>
+    </div>
+  </div>
+
+  <!-- ── Active Regulators ── -->
+  <div class="rp-regulators" id="rp-reg-cloud">
+    <span class="rp-reg-label">Active Regulators</span>
+  </div>
+
+  <!-- ── Reference Feed ── -->
+  <div style="margin-top:24px">
+    <div class="section-title" id="rp-ref-title">Reference Intelligence</div>
+    <div class="rp-feed-subtitle" id="rp-feed-subtitle"></div>
+  </div>
+  <div style="margin-bottom:10px">
+    <div class="rp-filter-bar" id="rp-filter-bar">
+      <button class="rp-filter-btn active" data-sev="ALL">All</button>
+      <button class="rp-filter-btn" data-sev="RED">High Risk</button>
+      <button class="rp-filter-btn" data-sev="AMBER">Medium</button>
+      <button class="rp-filter-btn" data-sev="GREEN">Low Risk</button>
+    </div>
+  </div>
+  <div class="reg-feed" id="rp-ref-feed">
+    <div class="reg-item"><div class="reg-dot"></div><div class="reg-body"><div class="reg-headline" style="color:var(--text-3)">Loading reference intelligence…</div></div></div>
+  </div>
+
+  <!-- ── Live Daily Intelligence ── -->
+  <div class="rp-briefing-hdr">
+    <div class="section-title">Live Daily Intelligence</div>
+    <span class="briefing-ts" id="rp-briefing-ts"></span>
+  </div>
+  <div class="briefing-grid" id="rp-briefing-grid">
+    <div class="briefing-empty">Loading live intelligence…</div>
+  </div>
+
+  <!-- ── Enforcement Actions ── -->
+  <div class="enf-section" id="enf-section">
+    <div class="enf-section-hdr">
+      <div class="enf-section-title" id="enf-section-title">Enforcement Actions</div>
+      <span class="enf-badge" id="enf-badge">Loading…</span>
+    </div>
+    <div class="enf-cards" id="enf-cards">
+      <div style="color:var(--text-3);font-size:0.78rem;padding:24px 0;font-family:'IBM Plex Mono',monospace">Loading enforcement data…</div>
+    </div>
+  </div>
+
+  <!-- ── Report Suite ── -->
+  <div class="rp-suite-section" id="rp-report-suite" style="margin-top:36px"></div>
+
+  <footer class="site-footer" style="margin-top:48px">
+    Govisk ExecCom Intelligence &nbsp;·&nbsp; Regional MI Portal &nbsp;·&nbsp;
+    <a href="/" style="color:var(--text-3);text-decoration:none">← Back to Main Portal</a></footer>
+
+</div>
+
+<div class="toast-stack" id="toast-stack"></div>
+<script src="/assets/app.js?v=20261106"></script><script src="/assets/globe.js?v=20261023e"></script>
+<script src="/assets/region.js?v=20261106"></script>
+<script src="/assets/megamenu.js?v=20261001"></script></body>
+</html>

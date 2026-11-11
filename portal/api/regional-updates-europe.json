@@ -1,0 +1,86 @@
+{
+  "region": "Europe",
+  "last_updated": "2026-11-06T00:00:00Z",
+  "news": [
+    {
+      "date": "30 Oct 2026",
+      "severity": "high",
+      "regulator": "ESMA",
+      "country": "EU",
+      "type": "Rule",
+      "headline": "MiCA full application — all EU crypto asset service providers must hold CASP licence from 30 December 2024; ESMA enforcement phase begins",
+      "detail": "ESMA announced the commencement of its active enforcement phase for MiCA compliance, with national competent authorities now conducting supervised audits of all registered crypto asset service providers. ESMA flagged 23 jurisdictions where non-compliant platforms are still operating under transitional arrangements that expired in mid-2026. MiCA supervisory colleges for major CASPs above €1 billion AUM will be established by Q1 2027.",
+      "tags": ["ESMA", "MiCA", "EU", "Crypto", "CASP", "Enforcement", "Regulation"]
+    },
+    {
+      "date": "22 Oct 2026",
+      "severity": "high",
+      "regulator": "EBA",
+      "country": "EU",
+      "type": "Report",
+      "headline": "EBA DORA readiness report: 61% of EU financial institutions not fully compliant — ICT incidents rising",
+      "detail": "The European Banking Authority's October 2026 Digital Operational Resilience Act (DORA) implementation review found 61% of financial institutions have not fully embedded DORA requirements, with the largest gaps in ICT third-party risk management and digital operational resilience testing. EBA recorded a 34% year-on-year increase in major ICT-related incidents reported to competent authorities in 2026. DORA formal enforcement with sanctioning powers commences 17 January 2027.",
+      "tags": ["EBA", "DORA", "EU", "ICT Risk", "Cyber", "Operational Resilience", "Report"]
+    },
+    {
+      "date": "15 Oct 2026",
+      "severity": "high",
+      "regulator": "BaFin",
+      "country": "Germany",
+      "type": "Enforcement",
+      "headline": "BaFin fines Wirecard successor entity €18.3 million for persistent AML failures and client fund record gaps",
+      "detail": "BaFin imposed an €18.3 million fine on the successor entity managing residual Wirecard assets for failing to maintain adequate AML controls and complete client fund records following the original insolvency. The penalty was assessed under the German Banking Act (KWG) §25a and §25h for deficiencies in customer due diligence documentation across approximately 2.1 million historical accounts.",
+      "tags": ["BaFin", "Germany", "AML", "KWG", "Enforcement", "Client Funds", "Wirecard"]
+    },
+    {
+      "date": "08 Oct 2026",
+      "severity": "medium",
+      "regulator": "ESMA",
+      "country": "EU",
+      "type": "Consultation",
+      "headline": "ESMA consults on EMIR 3.0 active accounts requirement — clearing obligations for EU counterparties move on-shore",
+      "detail": "ESMA published its consultation on the technical standards underpinning the EMIR 3.0 active accounts requirement, which mandates EU counterparties to clear at least 65% of specified derivative classes at EU CCPs. The measure, targeting euro, Polish zloty, and Czech koruna IRS and credit default swaps, aims to reduce EU dependence on UK and US CCPs. Final RTS expected Q2 2027; mandatory active accounts by Q4 2027.",
+      "tags": ["ESMA", "EMIR 3.0", "EU", "Clearing", "CCPs", "Derivatives", "Consultation"]
+    },
+    {
+      "date": "03 Nov 2026",
+      "severity": "medium",
+      "regulator": "ECB / SSM",
+      "country": "EU",
+      "type": "Report",
+      "headline": "ECB SSM 2026 bank stress test results: 15 banks fall below minimum capital thresholds under adverse scenario",
+      "detail": "The European Central Bank's Single Supervisory Mechanism published results of its 2026 annual stress test covering 98 directly supervised banks. Under the adverse scenario (3% GDP contraction, 15% property price decline, 400bps rate shock), 15 banks fell below the minimum CET1 ratio of 7%. ECB supervisors will require these banks to submit enhanced capital plans by 28 February 2027.",
+      "tags": ["ECB", "SSM", "Stress Test", "CET1", "Capital", "EU", "Banks", "Report"]
+    },
+    {
+      "date": "20 Oct 2026",
+      "severity": "medium",
+      "regulator": "AMLA",
+      "country": "EU",
+      "type": "Guidance",
+      "headline": "AMLA publishes first supervisory priorities — crypto, correspondent banking and high-risk fintechs in scope",
+      "detail": "The EU Anti-Money Laundering Authority (AMLA) published its inaugural supervisory priorities for 2026–2028. AMLA's direct supervision will initially cover 40 EU credit institutions and 20 crypto asset service providers with cross-border activities across 6+ member states. AMLA flagged correspondent banking networks, NFT marketplaces, and high-risk fintech payment processors as priority sectors. The authority formally assumed supervisory powers 1 July 2026.",
+      "tags": ["AMLA", "EU", "AML", "CFT", "Supervision", "Crypto", "Fintech", "Correspondent Banking"]
+    },
+    {
+      "date": "25 Sep 2026",
+      "severity": "medium",
+      "regulator": "EBA",
+      "country": "EU",
+      "type": "Report",
+      "headline": "EBA Risk Dashboard Q3 2026: EU bank NPL ratios rise to 2.8% — commercial real estate exposure driving credit deterioration",
+      "detail": "The EBA's Q3 2026 Risk Dashboard revealed the EU banking sector's non-performing loan ratio increased to 2.8% from 2.4% in Q1 2026, with commercial real estate (CRE) portfolios the primary driver of credit quality deterioration. Banks with CRE exposure exceeding 20% of total loans showed NPL ratios averaging 4.9%. EBA noted fintech-originated buy-now-pay-later portfolios showed early-stage delinquency rates of 7.2%.",
+      "tags": ["EBA", "Risk Dashboard", "NPL", "Commercial Real Estate", "Credit Risk", "Fintech", "BNPL"]
+    },
+    {
+      "date": "10 Oct 2026",
+      "severity": "medium",
+      "regulator": "ESMA",
+      "country": "EU",
+      "type": "Guidance",
+      "headline": "ESMA AI in Finance report: firms must document AI model risk management under MiFID II Article 25 suitability obligations",
+      "detail": "ESMA published its final AI in Finance supervisory guidance, requiring investment firms using AI-driven recommendation engines to document AI model risk management procedures as part of MiFID II Article 25 suitability compliance. Robo-advisers and AI-based portfolio management fintechs must demonstrate human oversight controls, model validation procedures, and bias detection mechanisms. ESMA expects supervisory convergence across NCAs by Q2 2027.",
+      "tags": ["ESMA", "AI", "MiFID II", "Suitability", "Robo-Advice", "Fintech", "Model Risk", "Guidance"]
+    }
+  ]
+}

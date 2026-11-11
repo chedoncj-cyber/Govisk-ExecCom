@@ -1,0 +1,35 @@
+{
+  "title": "Latin America Enforcement Actions — CVM, BCB, BANXICO, GAFILAT",
+  "region": "latin-america",
+  "last_updated": "2026-11-06T00:00:00Z",
+  "cases": [
+    {
+      "firm": "Ano Bom Incorporação e Empreendimentos / KL Partners",
+      "fine": "R$2,720,000 proposed",
+      "summary": "CVM opened Administrative Sanctioning Proceeding PAS CVM 19957.010958/2018-75 for fraudulent market operations and fiduciary oversight failures. Reporting Director proposed R$1,360,000 fines each for principals Alexandre Klabin and Ricardo de Oliveira Barbosa, plus R$255,000 for Alexandro Luis Pin. Referred jointly by CVM's Superintendencies of Securities Registration and Institutional Investor Supervision.",
+      "date": "13 Oct 2026",
+      "regulator": "CVM"
+    },
+    {
+      "firm": "40+ unlicensed VASPs (BCB enforcement)",
+      "fine": "Bank relationship termination",
+      "summary": "BCB activated enforcement provisions requiring all BCB-supervised banks to terminate transactional relationships with unlicensed virtual asset service providers. Over 40 crypto startups had not filed for BCB authorisation at the 30 October 2026 deadline. Banks holding accounts for these VASPs must file compliance reports with BCB by 30 November 2026.",
+      "date": "30 Oct 2026",
+      "regulator": "BCB"
+    },
+    {
+      "firm": "CMF Chile — A&C SpA",
+      "fine": "UF 25,000 (approx. CLP 1.08 billion)",
+      "summary": "CMF Chile fined A&C SpA UF 25,000 (approximately CLP 1.08 billion) for conducting fictitious securities trades designed to manipulate reference prices on the Santiago Stock Exchange. The firm used coordinated buy-sell transactions between related accounts to artificially influence closing prices for less liquid securities.",
+      "date": "Sep 2026",
+      "regulator": "CMF Chile"
+    },
+    {
+      "firm": "SBS Peru — multiple banks, AFPs and insurers",
+      "fine": "Up to PEN 5 million per entity",
+      "summary": "SBS Peru activated new Resolution SBS No. 01923-2026 sanctionable categories: interest-rate overcharging, insurance technical-provision shortfalls, and AFP disability-committee process failures. Multiple firms received formal warning notices in October 2026 for cybersecurity control deficiencies — the first enforcement actions under the new cybersecurity sanctions framework.",
+      "date": "Oct 2026",
+      "regulator": "SBS Peru"
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "region": "Asia-Pacific",
+  "last_updated": "2026-11-06T00:00:00Z",
+  "news": [
+    {
+      "date": "04 Nov 2026",
+      "severity": "high",
+      "regulator": "ASIC",
+      "country": "Australia",
+      "type": "Enforcement",
+      "headline": "ASIC issues A$4.356 million infringement notices against 22 companies for AFSL and ACL breaches",
+      "detail": "The Australian Securities and Investments Commission issued A$4.356 million in infringement notices against 22 companies for operating without an Australian Financial Services Licence or Australian Credit Licence, or for failing to meet key licence conditions. The notices were issued under ASIC's expanded infringement notice powers following 2025 legislation. Five of the companies are fintech operators offering embedded lending products.",
+      "tags": ["ASIC", "Australia", "AFSL", "Enforcement", "Infringement Notices", "Fintech"]
+    },
+    {
+      "date": "16 Oct 2026",
+      "severity": "medium",
+      "regulator": "MAS",
+      "country": "Singapore",
+      "type": "Consultation",
+      "headline": "MAS proposes mandatory FIDReC membership for all MAS-regulated firms — expands dispute resolution access",
+      "detail": "MAS published a consultation proposing mandatory membership of the Financial Industry Disputes Resolution Centre (FIDReC) for all MAS-regulated financial institutions, including digital payment token service providers and digital advisers. The proposal also raises the FIDReC adjudication limit from S$150,000 to S$250,000 for retail claims. Consultation closes 15 January 2027.",
+      "tags": ["MAS", "Singapore", "FIDReC", "Dispute Resolution", "Consultation", "Digital Payments"]
+    },
+    {
+      "date": "14 Oct 2026",
+      "severity": "high",
+      "regulator": "MAS",
+      "country": "Singapore",
+      "type": "Enforcement",
+      "headline": "MAS revokes licence of Sir Money Changer Pte Ltd for persistent AML control failures",
+      "detail": "MAS revoked the Major Payment Institution licence of Sir Money Changer Pte Ltd on 14 October 2026, following repeated failures to implement adequate AML/CFT controls for cash transactions above the S$5,000 threshold. MAS found the firm failed to perform adequate customer due diligence, did not retain transaction records, and failed to file suspicious transaction reports for three years.",
+      "tags": ["MAS", "Singapore", "Enforcement", "AML", "MPI Licence", "Money Changer"]
+    },
+    {
+      "date": "22 Oct 2026",
+      "severity": "medium",
+      "regulator": "HKMA",
+      "country": "Hong Kong",
+      "type": "Circular",
+      "headline": "HKMA circular on anti-bribery and corruption risk controls during account opening — enhanced due diligence required",
+      "detail": "The HKMA issued a circular requiring all authorised institutions to strengthen anti-bribery and anti-corruption (ABC) controls in account opening procedures. Banks must conduct enhanced due diligence on politically exposed persons, state-owned enterprises, and high-risk corporate structures, and document the rationale for account opening decisions. Effective 1 April 2027.",
+      "tags": ["HKMA", "Hong Kong", "Anti-Bribery", "CDD", "Account Opening", "Circular"]
+    },
+    {
+      "date": "23 Oct 2026",
+      "severity": "medium",
+      "regulator": "SEBI",
+      "country": "India",
+      "type": "Circular",
+      "headline": "SEBI removes mandatory call recording for institutional clients — reduces compliance burden on stock brokers",
+      "detail": "SEBI issued a circular ending the mandatory call recording requirement for institutional client order placements, effective 1 January 2027. The move follows industry feedback that the requirement imposed disproportionate costs on smaller stock brokers and fintech-enabled trading platforms without meaningful investor protection benefits for institutional clients who have alternative legal protections.",
+      "tags": ["SEBI", "India", "Institutional Clients", "Brokers", "Compliance", "Fintech"]
+    },
+    {
+      "date": "Oct 2026",
+      "severity": "high",
+      "regulator": "FSA",
+      "country": "Japan",
+      "type": "Enforcement",
+      "headline": "Japan FSA issues partial business suspension to Prudential Life Insurance for systematic mis-selling",
+      "detail": "Japan's Financial Services Agency imposed a partial business suspension order against Prudential Life Insurance Company of Japan for systematic mis-selling of variable life insurance products to elderly customers. The FSA found 847 cases of customers being sold products inappropriate to their risk profile and financial circumstances. Prudential Life must suspend new policy sales through tied agents for three months.",
+      "tags": ["FSA", "Japan", "Insurance", "Mis-selling", "Enforcement", "Consumer Protection"]
+    },
+    {
+      "date": "18 Oct 2026",
+      "severity": "medium",
+      "regulator": "MAS",
+      "country": "Singapore",
+      "type": "Guidance",
+      "headline": "MAS launches Digital Token Advisor licensing framework for crypto investment advisory startups",
+      "detail": "MAS published the final Digital Token Advisor (DTA) licensing framework under the Payment Services Act, specifically designed for startups providing crypto asset investment advice to retail and sophisticated investors. DTAs face lighter prudential requirements than full CMS licence holders but must comply with suitability requirements, disclosure obligations, and mandatory insurance. First DTA licences expected Q1 2027.",
+      "tags": ["MAS", "Singapore", "Crypto", "Digital Token", "Fintech", "Startup", "Licensing", "Advisory"]
+    },
+    {
+      "date": "01 Nov 2026",
+      "severity": "medium",
+      "regulator": "APRA",
+      "country": "Australia",
+      "type": "Consultation",
+      "headline": "APRA CPS 230 Operational Risk Management — final standard includes new fintech and cloud concentration risk rules",
+      "detail": "APRA's new Prudential Standard CPS 230 Operational Risk Management took effect 1 July 2025 and APRA published its November 2026 self-assessment guidelines requiring all banks, insurers and super funds to report on CPS 230 compliance. APRA flagged heightened cloud concentration risks for institutions relying on a single hyperscaler and signalled additional guidance for fintech-originated products embedded in bank balance sheets.",
+      "tags": ["APRA", "Australia", "CPS 230", "Operational Risk", "Cloud", "Fintech", "Concentration Risk"]
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "title": "North America Enforcement Actions — SEC, FinCEN, OCC, OFAC",
+  "region": "north-america",
+  "last_updated": "2026-11-06T00:00:00Z",
+  "cases": [
+    {
+      "firm": "Bank of America",
+      "fine": "$1,210,000,000",
+      "summary": "Combined $1.21 billion enforcement action from FinCEN ($500M), OCC ($450M), and OFAC ($260M) for systemic AML failures spanning 2019–2024. Key failures: inadequate beneficial ownership screening for shell company customers, correspondent banking control deficiencies, and OFAC sanctions violations in SWIFT payment processing. BofA subject to monitorship.",
+      "date": "13 Oct 2026",
+      "regulator": "FinCEN / OCC / OFAC"
+    },
+    {
+      "firm": "American Express",
+      "fine": "$350,000,000",
+      "summary": "Federal Reserve and OCC jointly fined AmEx $350 million for AML programme deficiencies: failures in customer due diligence for Business Platinum cardholders, inadequate suspicious activity monitoring for large prepaid card transactions, and gaps in OFAC screening for international payments. Comprehensive remediation plan required.",
+      "date": "08 Oct 2026",
+      "regulator": "Federal Reserve / OCC"
+    },
+    {
+      "firm": "Military Veterans Investment Fraud Scheme (6 defendants)",
+      "fine": "$130M fraud + disgorgement",
+      "summary": "SEC charged six individuals for operating a $130 million investment fraud scheme primarily targeting US military veterans and active-duty service members. Defendants sold unregistered securities in a fictitious commodities trading programme promising 20–40% annual returns, misappropriating funds for personal use and Ponzi-style payments.",
+      "date": "30 Oct 2026",
+      "regulator": "SEC"
+    },
+    {
+      "firm": "Zoe Financial Inc",
+      "fine": "$4,300,000",
+      "summary": "SEC charged fintech investment adviser referral platform Zoe Financial for failing to disclose material conflicts of interest when recommending advisers on its platform. Zoe received compensation from recommended advisers but did not adequately disclose this to retail investors. $4.3 million settlement agreed.",
+      "date": "28 Oct 2026",
+      "regulator": "SEC"
+    }
+  ]
+}

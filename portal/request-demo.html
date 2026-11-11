@@ -1,0 +1,279 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src 'self'; img-src 'self' data:;">
+  <title>Request Demo — Govisk ExecCom Intelligence</title>
+  <meta name="description" content="Request a live demo of the Govisk ExecCom Intelligence platform — a 30-minute walkthrough with a real compliance report generated for your firm." />
+  <meta property="og:title" content="Request Demo | Govisk ExecCom Intelligence" />
+  <link rel="canonical" href="https://govisk.com/request-demo" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/style.css?v=20261037" />
+  <link rel="stylesheet" href="/assets/megamenu.css?v=20261001" />
+  <style>
+    .demo-page {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 48px 32px 96px;
+    }
+    .demo-page h1 {
+      font-size: 1.55rem;
+      font-weight: 700;
+      color: var(--text-1);
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+    }
+    .demo-page .demo-sub {
+      font-size: 0.88rem;
+      color: var(--text-3);
+      margin-bottom: 40px;
+      line-height: 1.6;
+    }
+    .demo-form {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+    .demo-field {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+    .demo-label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-2);
+    }
+    .demo-label .req {
+      color: var(--red);
+      margin-left: 2px;
+    }
+    .demo-input,
+    .demo-textarea {
+      width: 100%;
+      background: var(--surface-1);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 13px 16px;
+      font-size: 0.88rem;
+      font-family: 'IBM Plex Sans', sans-serif;
+      color: var(--text-1);
+      transition: border-color 160ms, box-shadow 160ms;
+      outline: none;
+    }
+    .demo-input::placeholder,
+    .demo-textarea::placeholder { color: var(--text-3); }
+    .demo-input:focus,
+    .demo-textarea:focus {
+      border-color: var(--data);
+      box-shadow: 0 0 0 3px rgba(29,107,181,0.10);
+    }
+    .demo-textarea {
+      resize: vertical;
+      min-height: 110px;
+    }
+    .demo-textarea.tall { min-height: 80px; }
+    .demo-footer {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 16px;
+      margin-top: 8px;
+    }
+    .demo-submit {
+      background: var(--text-1);
+      color: #fff;
+      border: none;
+      border-radius: var(--r);
+      padding: 12px 28px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      font-family: 'IBM Plex Sans', sans-serif;
+      cursor: pointer;
+      transition: background 160ms, transform 120ms;
+    }
+    .demo-submit:hover { background: var(--data); transform: translateY(-1px); }
+    .demo-submit:disabled { opacity: 0.55; cursor: not-allowed; transform: none; }
+    .demo-success {
+      display: none;
+      font-size: 0.85rem;
+      color: var(--green);
+      font-weight: 600;
+    }
+    .demo-success.shown { display: block; }
+    .demo-consent {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.82rem;
+      color: var(--text-2);
+      line-height: 1.6;
+    }
+    .demo-consent input[type="checkbox"] {
+      flex-shrink: 0;
+      margin-top: 2px;
+      accent-color: var(--data);
+      width: 15px;
+      height: 15px;
+      cursor: pointer;
+    }
+    .demo-consent a { color: var(--data); text-decoration: underline; }
+    @media (max-width: 640px) {
+      .demo-page { padding: 32px 16px 72px; }
+    }
+  </style>
+</head>
+<body class="has-nav">
+
+<canvas id="particle-canvas"></canvas>
+<canvas id="globe-canvas"></canvas>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
+
+<div class="intel-ticker">
+  <span class="ticker-label"><span class="ticker-live-dot"></span>LIVE INTEL</span>
+  <div class="ticker-track">
+    <div class="ticker-scroll">
+      <span class="ticker-item t-red">FCA · CASS 7 enhanced reconciliation requirements — effective Q1 2027</span>
+      <span class="ticker-item t-amber">ESMA · MiFID II client asset review consultation closes 15 Nov 2026</span>
+      <span class="ticker-item t-red">BaFin · EUR 8.5M fine — Deutsche Bank MiFID II transaction reporting failures</span>
+    </div>
+  </div>
+  <span class="ticker-date" id="ticker-date"></span>
+</div>
+<nav class="global-nav">
+  <a href="/" class="nav-brand">
+    <div class="nav-brand-icon">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+    </div>
+    <span class="nav-brand-name">Govisk ExecCom <em>Intelligence</em></span>
+  </a>
+  <div class="nav-links">
+    <a href="/" class="nav-link">Home</a>
+    <a href="/portal" class="nav-link">Portal</a>
+    <a href="/about" class="nav-link">About Us</a>
+    <a href="/services" class="nav-link">Services</a>
+    <a href="/case-studies" class="nav-link">Case Studies</a>
+    <a href="/contact" class="nav-link">Contact Us</a>
+  </div>
+  <div class="nav-right">
+    <a href="/request-demo" class="nav-cta" style="background:#1559a0">Request Demo</a>
+  </div></nav>
+
+<div class="demo-page">
+
+  <h1>See Govisk ExecCom Intelligence Platform in Action</h1>
+  <p class="demo-sub">Book a 30-minute live walkthrough — we'll generate a real compliance report for your firm's regulatory context during the session.</p>
+
+  <div class="demo-form" id="demo-form">
+
+    <div class="demo-field">
+      <label class="demo-label" for="d-name">Name <span class="req">*</span></label>
+      <input class="demo-input" type="text" id="d-name" placeholder="E.g. John Doe" autocomplete="name" aria-required="true" required />
+    </div>
+
+    <div class="demo-field">
+      <label class="demo-label" for="d-email">Email Address <span class="req">*</span></label>
+      <input class="demo-input" type="email" id="d-email" placeholder="E.g. john@doe.com" autocomplete="email" aria-required="true" required />
+    </div>
+
+    <div class="demo-field">
+      <label class="demo-label" for="d-org">Organisation <span class="req">*</span></label>
+      <input class="demo-input" type="text" id="d-org" placeholder="Your organisation" autocomplete="organization" aria-required="true" required />
+    </div>
+
+    <div class="demo-field">
+      <label class="demo-label" for="d-title">Job Title <span class="req">*</span></label>
+      <textarea class="demo-textarea tall" id="d-title" placeholder="E.g. Head of Compliance" aria-required="true" required></textarea>
+    </div>
+
+    <div class="demo-field">
+      <label class="demo-label" for="d-message">Message</label>
+      <textarea class="demo-textarea" id="d-message" placeholder="Tell us about your regulatory intelligence needs or any specific areas you'd like covered in the demo…"></textarea>
+    </div>
+
+    <div class="demo-field">
+      <label class="demo-consent">
+        <input type="checkbox" id="consent" name="consent" required aria-required="true" />
+        <span>I consent to Govisk ExecCom processing my data to respond to this request, as described in the.</span>
+      </label>
+    </div>
+
+    <div class="demo-footer">
+      <span class="demo-success" id="d-success">✓ Request received — we'll confirm your session within 4 business hours.</span>
+      <button class="demo-submit" id="d-submit">Request My Demo</button>
+    </div>
+
+  </div>
+
+</div>
+
+<footer class="page-footer" style="position:relative;z-index:1">
+  <div class="page-footer-links">
+    <a href="/">Home</a>
+    <a href="/about">About Us</a>
+    <a href="/services">Services</a>
+    <a href="/case-studies">Case Studies</a>
+    <a href="/contact">Contact Us</a>
+    <a href="/request-demo">Request Demo</a>
+  </div>
+  Govisk ExecCom Intelligence &nbsp;·&nbsp; Geo-Financial Risk &amp; Governance Intelligence &nbsp;·&nbsp; Est. 2026</footer>
+
+<script>
+  document.getElementById('ticker-date').textContent = new Date().toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'});
+
+  document.getElementById('d-submit').addEventListener('click', function() {
+    const name    = document.getElementById('d-name').value.trim();
+    const email   = document.getElementById('d-email').value.trim();
+    const org     = document.getElementById('d-org').value.trim();
+    const title   = document.getElementById('d-title').value.trim();
+    const consent = document.getElementById('consent').checked;
+    if (!name)  { document.getElementById('d-name').focus();  return; }
+    if (!email || !email.includes('@')) { document.getElementById('d-email').focus(); return; }
+    if (!org)   { document.getElementById('d-org').focus();   return; }
+    if (!title) { document.getElementById('d-title').focus(); return; }
+    if (!consent) { document.getElementById('consent').focus(); alert('Please confirm your consent to proceed.'); return; }
+    this.textContent = '✓ Sent';
+    this.disabled = true;
+    document.getElementById('d-success').classList.add('shown');
+  });
+
+  (function() {
+    const canvas = document.getElementById('particle-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let W = window.innerWidth, H = window.innerHeight;
+    canvas.width = W; canvas.height = H;
+    window.addEventListener('resize', () => { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; });
+    const pts = Array.from({length:40}, () => ({
+      x:Math.random()*W, y:Math.random()*H,
+      vx:(Math.random()-.5)*.25, vy:(Math.random()-.5)*.25,
+      r:Math.random()*1+.3, a:Math.random()*.25+.04
+    }));
+    (function draw() {
+      ctx.clearRect(0,0,W,H);
+      pts.forEach(p => {
+        p.x+=p.vx; p.y+=p.vy;
+        if(p.x<0)p.x=W; if(p.x>W)p.x=0;
+        if(p.y<0)p.y=H; if(p.y>H)p.y=0;
+        ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+        ctx.fillStyle=`rgba(62,189,250,${p.a})`; ctx.fill();
+      });
+      for(let i=0;i<pts.length;i++) for(let j=i+1;j<pts.length;j++){
+        const dx=pts[i].x-pts[j].x, dy=pts[i].y-pts[j].y, d=Math.sqrt(dx*dx+dy*dy);
+        if(d<110){ctx.beginPath();ctx.moveTo(pts[i].x,pts[i].y);ctx.lineTo(pts[j].x,pts[j].y);
+          ctx.strokeStyle=`rgba(62,130,250,${.06*(1-d/110)})`;ctx.lineWidth=.5;ctx.stroke();}
+      }
+      requestAnimationFrame(draw);
+    })();
+  })();
+</script>
+<script src="/assets/app.js?v=20261106"></script><script src="/assets/globe.js?v=20261023e"></script>
+<script src="/assets/megamenu.js?v=20261001"></script></body>
+</html>

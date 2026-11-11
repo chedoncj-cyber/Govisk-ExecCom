@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /portal/grc_dashboard
+
+Allow: /
+
+Sitemap: https://govisk.com/sitemap.xml

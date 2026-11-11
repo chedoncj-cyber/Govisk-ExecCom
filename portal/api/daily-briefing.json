@@ -1,0 +1,234 @@
+{
+  "generated_date": "06 Nov 2026",
+  "generated_time": "00:00 UTC",
+  "topics": [
+    {
+      "region": "UK",
+      "title": "FCA SM&CR Phase 2 — Certification Regime abolition proposed",
+      "icon": "⚡",
+      "risk_level": "HIGH",
+      "status": "Consultation Open — closes 22 Jan 2027",
+      "summary": "FCA CP26/37 proposes abolishing the Certification Regime and FCA Directory in the most significant SM&CR reform since 2016. Pre-approval retained only for CEO, CFO, CRO, and board chair. Estimated £2 billion, 10-year compliance saving.\n\n• Firms must review all Certified Function holders against new framework\n• Conduct Rules notification replaces mandatory annual training\n• FCA Directory decommissioned — firms lose public disclosure requirement\n• Board attestation obligations under SYSC 4.7 unchanged",
+      "insight": "Firms with large Certification populations (retail banks, wealth managers) gain most. However, internal accountability frameworks must be redesigned before abolition date to avoid governance gaps.",
+      "key_actions": [
+        "Map all current Certified Function holders to remaining controlled functions",
+        "Review employment contracts referencing Certification Regime obligations",
+        "Submit CP26/37 consultation response before 22 January 2027",
+        "Update CASS Oversight Function documentation under new SM&CR framework"
+      ],
+      "compliance_deadline": "22 Jan 2027 (consultation); implementation TBC",
+      "provider": "FCA Handbook",
+      "enriched_by": "Linklaters / Lewis Silkin",
+      "citations": ["fca.org.uk/publications/cp26-37", "lewissilkin.com/insights/2026/10", "handbook.fca.org.uk/smcr"]
+    },
+    {
+      "region": "UK",
+      "title": "CASS 15 live — payment firms now under safeguarding rulebook",
+      "icon": "🔒",
+      "risk_level": "HIGH",
+      "status": "In Force — 7 May 2026",
+      "summary": "CASS 15 (from PS25/12) entered force 7 May 2026, introducing structured safeguarding obligations for EMIs and payment service firms:\n\n• Daily reconciliations of safeguarded funds against safeguarding ledger\n• Monthly REP027 returns to FCA\n• Annual safeguarding audit for firms holding over £100,000 client funds\n• Resolution pack retrievable within 48 hours\n• Firms must hold funds only in designated safeguarding accounts",
+      "insight": "Payment firms that relied on the old, less prescriptive PSRs safeguarding arrangements are now under CASS 6/7-equivalent scrutiny. CASS Oversight Function holders at dual-regulated firms must extend oversight scope to cover CASS 15 entities.",
+      "key_actions": [
+        "Confirm CASS 15 reconciliation process is operational and documented",
+        "Verify REP027 monthly return has been submitted for October 2026",
+        "Review resolution pack completeness — 48-hour retrieval test required",
+        "Extend CASS oversight to cover any group EMI/payment subsidiaries"
+      ],
+      "compliance_deadline": "Ongoing — in force",
+      "provider": "FCA Handbook / PS25/12",
+      "enriched_by": "BNY / Finextra",
+      "citations": ["handbook.fca.org.uk/cass/15", "finextra.com/cass-15", "bny.com/cass-15-guide"]
+    },
+    {
+      "region": "North America",
+      "title": "BofA $1.21B FinCEN/OCC/OFAC AML penalty — systemic programme failures",
+      "icon": "⚠️",
+      "risk_level": "HIGH",
+      "status": "Final — 13 Oct 2026",
+      "summary": "Bank of America received a combined $1.21 billion enforcement action from three US regulators for systemic AML and sanctions failures spanning 2019–2024:\n\n• FinCEN: $500M civil money penalty for transaction monitoring failures\n• OCC: $450M for correspondent banking control deficiencies\n• OFAC: $260M for apparent sanctions violations in SWIFT payment processing\n• BofA subject to monitorship and enhanced AML compliance programme\n• Key failure: inadequate beneficial ownership screening for shell company customers",
+      "insight": "The largest combined US AML penalty of 2026 signals regulators will pursue systemic failures across all three major AML pillars simultaneously. Banks with large correspondent banking networks should conduct urgent gap analysis against BofA's consent order requirements.",
+      "key_actions": [
+        "Review correspondent banking CDD programme against FinCEN consent order requirements",
+        "Test OFAC sanctions screening coverage for SWIFT MT103/MT202 COV messages",
+        "Conduct gap analysis on shell company beneficial ownership verification procedures",
+        "Escalate to Board Risk Committee: systemic AML monitoring coverage metrics"
+      ],
+      "compliance_deadline": "Monitorship ongoing",
+      "provider": "FinCEN / OCC",
+      "enriched_by": "Reuters / Bloomberg",
+      "citations": ["fincen.gov/news/news-releases/2026-10", "occ.gov/news-issuances/2026"]
+    },
+    {
+      "region": "North America",
+      "title": "SEC/CFTC joint crypto framework — DeFi protocols face first registration requirements",
+      "icon": "🔐",
+      "risk_level": "MEDIUM",
+      "status": "Final Rule — registration deadline 1 Jun 2027",
+      "summary": "The SEC and CFTC published a joint final rule establishing a coordinated framework for crypto asset intermediaries in the US:\n\n• DeFi protocols >$100M TVL must register as swap execution facilities (CFTC) or alternative trading systems (SEC)\n• New crypto broker-dealer lite regime for intermediaries under $500M AUM\n• Mandatory custody and segregation requirements for all registered VASPs\n• Stablecoin issuers must hold 1:1 reserve assets in US-regulated banks\n• First mandatory registration regime directly targeting DeFi protocols and startups",
+      "insight": "The joint framework ends regulatory arbitrage between SEC and CFTC crypto jurisdiction. DeFi protocols must structurally decide whether to register, restrict US user access, or challenge the rules in court. Many VC-backed crypto startups will need compliance counsel urgently.",
+      "key_actions": [
+        "Assess whether any crypto platform holdings cross $100M TVL threshold",
+        "Review DeFi protocol exposure in investment portfolios for regulatory risk",
+        "Monitor litigation timeline — industry challenge expected Q1 2027",
+        "Update crypto AML policies to reference new registered VASP requirements"
+      ],
+      "compliance_deadline": "1 Jun 2027",
+      "provider": "SEC / CFTC",
+      "enriched_by": "CoinDesk / Linklaters",
+      "citations": ["sec.gov/news/2026/crypto-framework", "cftc.gov/PressRoom/2026"]
+    },
+    {
+      "region": "Asia",
+      "title": "MAS revokes Sir Money Changer licence — AML/CFT failures across all control layers",
+      "icon": "🚫",
+      "risk_level": "HIGH",
+      "status": "Final — 14 Oct 2026",
+      "summary": "MAS revoked the Major Payment Institution licence of Sir Money Changer Pte Ltd on 14 October 2026 for repeated AML/CFT failures:\n\n• Failed to perform CDD for cash transactions above S$5,000 threshold (3 years)\n• Did not retain transaction records as required under MAS Notice PSN01\n• Failed to file suspicious transaction reports for high-risk customers\n• Licence revocation is MAS's most severe sanction short of criminal prosecution\n• Customers must complete all pending transactions before 14 November 2026",
+      "insight": "MAS's willingness to revoke a Major Payment Institution licence for cumulative CDD failures (rather than a single egregious breach) signals a zero-tolerance posture for AML control gaps across Singapore's payment sector. PSPs and money changers should conduct immediate CDD process audits.",
+      "key_actions": [
+        "Review CDD procedures for cash transactions at all threshold levels (S$5,000+, S$20,000+)",
+        "Verify suspicious transaction report (STR) filing completeness for past 36 months",
+        "Conduct MAS Notice PSN01 recordkeeping audit — 5-year retention requirement",
+        "Brief Board Risk Committee on MAS enforcement posture change"
+      ],
+      "compliance_deadline": "Immediate",
+      "provider": "MAS Singapore",
+      "enriched_by": "Monetary Authority of Singapore",
+      "citations": ["mas.gov.sg/regulation/enforcement/2026/sir-money-changer", "mas.gov.sg/notices/PSN01"]
+    },
+    {
+      "region": "Asia",
+      "title": "ASIC A$4.356M infringement notices — 22 companies including 5 fintech operators",
+      "icon": "⚖️",
+      "risk_level": "HIGH",
+      "status": "Final — 4 Nov 2026",
+      "summary": "ASIC issued A$4.356 million in infringement notices against 22 companies for AFSL and ACL breaches:\n\n• 5 of the 22 companies are fintech operators offering embedded lending products\n• Breaches: operating without licence, failing to meet licence conditions, inadequate hardship processes\n• ASIC notes embedded lending in non-financial platforms as growing regulatory risk\n• Infringement notices do not require admission of liability\n• Highest single notice: A$395,000 against a BNPL provider for failure to assess suitability",
+      "insight": "ASIC's targeting of embedded fintech lending (BNPL-style products in retail, telco and utilities platforms) confirms the regulator is extending its surveillance beyond traditional finance into platform economy credit. Firms with API-distributed lending products must review their AFSL coverage.",
+      "key_actions": [
+        "Audit all embedded lending products for AFSL/ACL coverage",
+        "Review suitability assessment procedures for BNPL and similar products",
+        "Check hardship policy compliance under RG 271",
+        "Register all API-distributed credit products with ASIC credit register"
+      ],
+      "compliance_deadline": "Immediate",
+      "provider": "ASIC Australia",
+      "enriched_by": "ASIC Media Releases",
+      "citations": ["asic.gov.au/media-centre/2026/november", "asic.gov.au/rg271"]
+    },
+    {
+      "region": "Africa",
+      "title": "FSCA record R2.8bn penalties — Banxso deepfake AI fraud signals new threat class",
+      "icon": "🤖",
+      "risk_level": "HIGH",
+      "status": "Final — July–October 2026",
+      "summary": "The FSCA's 2025/2026 Regulatory Actions Report reveals a 23-fold increase in penalties, dominated by the Banxso deepfake fraud:\n\n• AI-generated deepfakes of Elon Musk and Johann Rupert used to market unlawful investment scheme\n• Approximately R1 billion in client funds misappropriated\n• Directors Harel Sekler and Warwick Sneider fined over R2 billion combined\n• Debarment for up to 30 years; matter referred to South African Police\n• Firm liquidated — FSCA seeking restitution for affected investors",
+      "insight": "Deepfake-enabled investment fraud now represents a primary threat vector in African retail financial markets. Financial institutions must implement synthetic media detection controls in their marketing compliance and consumer-facing communications review processes.",
+      "key_actions": [
+        "Implement deepfake/synthetic media detection in KYC video verification procedures",
+        "Brief marketing compliance team on FSCA deepfake enforcement precedent",
+        "Review social media monitoring programme for impersonation of firm executives",
+        "Update investor communications policy to address AI-generated fraud disclosures"
+      ],
+      "compliance_deadline": "Immediate",
+      "provider": "FSCA South Africa",
+      "enriched_by": "Moneyweb / Moonstone",
+      "citations": ["fsca.co.za/regulatory-actions-2026", "moneyweb.co.za/banxso-fsca"]
+    },
+    {
+      "region": "Africa",
+      "title": "CBN data localisation mandate — payment firms must store data in Nigeria by 31 Dec 2026",
+      "icon": "🗄️",
+      "risk_level": "HIGH",
+      "status": "Circular issued — deadline 31 Dec 2026",
+      "summary": "CBN Circular PSS/DIR/PUB/CIR/001/004 imposes four simultaneous interventions:\n\n• Mandatory payment transaction data storage within Nigeria — 31 December 2026 deadline\n• Market share concentration caps for dominant payment processors\n• Mandatory Ultimate Beneficial Ownership disclosure for all payment businesses\n• Enhanced systemic oversight measures effective 1 January 2027\n• Non-compliant firms face licence suspension after 1 January 2027\n• Fintechs with AWS/Google Cloud cross-border data arrangements face significant operational restructuring",
+      "insight": "The 31 December 2026 data localisation deadline is six weeks away. Fintechs relying on hyperscaler infrastructure outside Nigeria must urgently assess whether local data centres can be provisioned in time or whether temporary licence suspension risk is acceptable.",
+      "key_actions": [
+        "Assess current payment transaction data storage locations against Nigeria localisation requirement",
+        "Engage AWS/Google/Azure for Nigeria-region data storage options",
+        "File UBO disclosure documentation with CBN before December 2026",
+        "Review market share calculations against CBN concentration cap thresholds"
+      ],
+      "compliance_deadline": "31 Dec 2026",
+      "provider": "Central Bank of Nigeria",
+      "enriched_by": "BusinessDay NG / PrivaLex",
+      "citations": ["cbn.gov.ng/documents/PSS-CIR-001-004", "businessday.ng/cbn-payments-circular"]
+    },
+    {
+      "region": "Latin America",
+      "title": "BCB VASP enforcement — banks prohibited from dealings with unlicensed crypto operators",
+      "icon": "₿",
+      "risk_level": "HIGH",
+      "status": "In Force — 30 Oct 2026",
+      "summary": "BCB's Virtual Assets Law enforcement phase activated 30 October 2026:\n\n• All BCB-supervised banks prohibited from maintaining relationships with unlicensed VASPs\n• Institutions still dealing with unauthorised VASPs must cease within 30 days\n• BCB Resolutions 519–521 require VASPs to hold BCB authorisation to operate\n• Over 40 crypto startups had not yet filed for BCB authorisation at the deadline\n• Stablecoin issuers and DeFi protocols explicitly in scope of the VASP definition",
+      "insight": "Brazil's VASP enforcement creates immediate compliance risk for banks and payment institutions with crypto B2B relationships. Firms must audit all crypto-sector counterparties and obtain BCB authorisation confirmation or terminate relationships within 30 days.",
+      "key_actions": [
+        "Audit all crypto-sector counterparty relationships for BCB VASP authorisation status",
+        "Issue 30-day notice to terminate relationships with unauthorised VASPs",
+        "Update AML/KYB (Know Your Business) programme to include BCB VASP registry check",
+        "Review correspondent banking agreements for crypto exposure"
+      ],
+      "compliance_deadline": "30 Nov 2026 (30-day grace period)",
+      "provider": "Banco Central do Brasil",
+      "enriched_by": "DeepIDV / Ledger Insights",
+      "citations": ["bcb.gov.br/vasp-resolution-519", "deepidv.com/bcb-vasp-deadline"]
+    },
+    {
+      "region": "Latin America",
+      "title": "FATF Grey List update: Bolivia, Haiti, Venezuela retained — correspondent banking impact",
+      "icon": "🌐",
+      "risk_level": "MEDIUM",
+      "status": "Final — October 2026 Plenary",
+      "summary": "FATF October 2026 Plenary outcomes for Latin America:\n\n• Bolivia, Haiti, Venezuela remain under increased monitoring\n• Key deficiencies: weak VASP supervision, beneficial ownership transparency gaps, low asset recovery rates\n• Four jurisdictions globally exited the grey list (not LatAm)\n• GAFILAT typologies report highlighted trade-based money laundering and crypto exposure\n• De-risking pressure from correspondent banks expected to intensify for grey-listed jurisdictions",
+      "insight": "Financial institutions processing payments to or from Bolivia, Haiti, and Venezuela must maintain enhanced due diligence programmes that document FATF grey list status. Correspondent banking agreements with banks in those countries should be reviewed annually.",
+      "key_actions": [
+        "Update EDD programme for all transactions involving Bolivia, Haiti, Venezuela",
+        "Review correspondent bank agreements for grey-listed jurisdiction counterparties",
+        "Brief MLCO on GAFILAT typologies report — trade-based ML and crypto vectors",
+        "Update FATF grey list status in AML risk rating matrix"
+      ],
+      "compliance_deadline": "Immediate",
+      "provider": "FATF / GAFILAT",
+      "enriched_by": "FATF-GAFI.org",
+      "citations": ["fatf-gafi.org/outcomes-plenary-october-2026", "gafilat.org/typologies-2026"]
+    },
+    {
+      "region": "Europe",
+      "title": "DORA enforcement commences 17 January 2027 — EBA finds 61% of firms non-compliant",
+      "icon": "🛡",
+      "risk_level": "HIGH",
+      "status": "Enforcement from 17 Jan 2027",
+      "summary": "EBA's October 2026 DORA readiness review:\n\n• 61% of EU financial institutions not fully compliant with DORA requirements\n• Largest gaps: ICT third-party risk management (74% non-compliant) and digital operational resilience testing (68% non-compliant)\n• Major ICT-related incidents reported to NCAs up 34% year-on-year in 2026\n• DORA formal enforcement with sanctioning powers begins 17 January 2027\n• Early enforcement focus: ICT incident classification accuracy and TLPT/TIBER-EU test results",
+      "insight": "With 10 weeks to the enforcement start date and 61% of institutions still non-compliant, the EBA gap suggests NCAs will initially focus enforcement on the most systemic institutions. Firms should prioritise ICT third-party risk registers and incident classification policies as minimum viable compliance.",
+      "key_actions": [
+        "Complete DORA ICT third-party risk register — all critical ICT vendors documented",
+        "Classify all ICT vendors by DORA criticality tier before 17 January 2027",
+        "Ensure ICT incident classification framework aligns with EBA RTS on major incidents",
+        "Submit TLPT/TIBER-EU test timeline to competent authority if not yet completed"
+      ],
+      "compliance_deadline": "17 Jan 2027",
+      "provider": "EBA / ESMA",
+      "enriched_by": "EBA Risk Dashboard Q3 2026",
+      "citations": ["eba.europa.eu/dora-implementation-report-2026", "eba.europa.eu/risk-dashboard-q3-2026"]
+    },
+    {
+      "region": "Europe",
+      "title": "MiCA CASP enforcement phase — ESMA targets 23 non-compliant jurisdictions",
+      "icon": "⚡",
+      "risk_level": "HIGH",
+      "status": "Enforcement Active — Q4 2026",
+      "summary": "ESMA's MiCA supervisory enforcement phase update:\n\n• 23 EU member states still have CASPs operating under expired transitional arrangements\n• ESMA has established supervisory colleges for major CASPs above €1 billion AUM (Q1 2027)\n• MiCA authorisation requirement for crypto startups — full CASP licence mandatory\n• Trading platforms, custody providers, and stablecoin issuers all in scope\n• NCAs must report all operating-without-authorisation cases to ESMA by 31 December 2026",
+      "insight": "Crypto startups operating in EU markets under informal or transitional arrangements face imminent enforcement. Firms that have not yet filed MiCA CASP applications should do so immediately — processing times are running 4–6 months at most NCAs.",
+      "key_actions": [
+        "Confirm MiCA CASP application has been submitted to relevant NCA",
+        "Review crypto service scope against MiCA Annex I permitted activities",
+        "Ensure AML/CFT policies reference MiCA Travel Rule requirements",
+        "Brief legal counsel on ESMA college supervisory scope if >€1B AUM"
+      ],
+      "compliance_deadline": "Immediate — no transitional grace remaining",
+      "provider": "ESMA",
+      "enriched_by": "MiCA Regulation (EU) 2023/1114",
+      "citations": ["esma.europa.eu/mica-enforcement-2026", "eur-lex.europa.eu/MiCA"]
+    }
+  ]
+}

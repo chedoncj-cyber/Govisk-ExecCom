@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /.env
+Disallow: /.tmp/
+Sitemap: https://govisk.com/sitemap.xml

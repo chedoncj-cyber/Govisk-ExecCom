@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: govisk-execcom-portal
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python portal/serve.py
+    autoDeploy: true
+    envVars:
+      - key: PYTHONUNBUFFERED
+        value: "1"
