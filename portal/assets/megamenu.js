@@ -44,13 +44,13 @@
       activePaths: ['/portal'],
       columns: [
         {
-          head: 'CASS Suite',
+          head: 'GRC Suite',
           items: [
-            { icon: '📊', title: 'Health Check',       desc: 'CASS 6 & 7 reconciliation scoring', href: '/portal?report=cass_health_check' },
-            { icon: '📋', title: 'Resolution Pack',    desc: 'CASS 10 — 48h retrieval readiness',  href: '/portal?report=cass_resolution_pack' },
-            { icon: '🔒', title: 'Client Money',       desc: 'CASS 7 daily reconciliation audit',  href: '/portal?report=client_money_segregation' },
-            { icon: '⚠️',  title: 'Breach Log',         desc: 'Breach documentation & remediation', href: '/portal?report=cass_breach_log' },
-            { icon: '👁',  title: 'COOF Oversight',    desc: 'Board reporting & compliance',       href: '/portal?report=cass_oversight' }
+            { icon: '🏛', title: 'Governance & Control', desc: 'Board-level GRC posture & control ops',  href: '/portal?report=governance_control_ops' },
+            { icon: '📜', title: 'Policy Governance',    desc: 'Policy inventory, review & attestation', href: '/portal?report=policy_governance' },
+            { icon: '⚙️', title: 'Risk Operations',      desc: 'KRI/KPI monitoring & risk register',     href: '/portal?report=risk_operations' },
+            { icon: '🚨', title: 'Incident Oversight',   desc: 'Incident log, RCA & regulator notify',   href: '/portal?report=incident_oversight' },
+            { icon: '🔐', title: 'Identity & Data Risk', desc: 'Identity, data & third-party risk',      href: '/portal?report=identity_data_risk' }
           ]
         },
         {

@@ -262,7 +262,8 @@ function renderBriefing(briefing) {
 }
 
 // ── Report Suite ─────────────────────────────────────────────────────────────
-const REPORT_SUITE = [
+// UK: CASS suite  |  All other regions: GRC suite
+const CASS_SUITE = [
   { id: 'cass_health_check',        icon: '📊', title: 'CASS Health Check',           tag: 'CASS 6 & 7', desc: 'Reconciliation gaps, pool compliance, CASS 7.13.4R RAG scoring.' },
   { id: 'cass_resolution_pack',     icon: '📋', title: 'CASS Resolution Pack',        tag: 'CASS 10',    desc: 'Client asset return readiness, 48-hour retrieval test.' },
   { id: 'client_money_segregation', icon: '🔒', title: 'Client Money Segregation',    tag: 'CASS 7',     desc: 'Segregation method, CMA reconciliation, daily compliance.' },
@@ -277,6 +278,24 @@ const REPORT_SUITE = [
   { id: 'physical_security_audit',  icon: '🏢', title: 'Physical Security Audit',     tag: 'PHYSICAL',   desc: 'Access control, CCTV, alarms, operational resilience.' },
   { id: 'grc_report',               icon: '📈', title: 'GRC Intelligence Report',     tag: 'GRC',        desc: 'Governance, Risk & Compliance maturity — OCEG/COSO methodology.' },
 ];
+
+const GRC_SUITE = [
+  { id: 'governance_control_ops',   icon: '🏛', title: 'Governance & Control Ops',    tag: 'GC OPS',     desc: 'Policy governance, risk operations, control effectiveness — board-level GRC posture.' },
+  { id: 'policy_governance',        icon: '📜', title: 'Policy Governance',           tag: 'POLICY GOV', desc: 'Policy inventory, review cycles, compliance gaps, board approval and staff attestation.' },
+  { id: 'risk_operations',          icon: '⚙️', title: 'Risk Operations',             tag: 'RISK OPS',   desc: 'KRI/KPI monitoring, risk register, appetite breaches and emerging risk scanning.' },
+  { id: 'incident_oversight',       icon: '🚨', title: 'Incident Oversight',          tag: 'INCIDENT',   desc: 'Incident log, root cause analysis, remediation tracking and regulator notification.' },
+  { id: 'identity_data_risk',       icon: '🔐', title: 'Identity, Data & Third-Party',tag: 'IDR',        desc: 'Identity governance, data classification, third-party risk and supply chain.' },
+  { id: 'threat_intelligence',      icon: '🎯', title: 'Threat Intelligence',         tag: 'INTEL',      desc: 'Sector threat landscape, fraud typologies, insider risk.' },
+  { id: 'cyber_threat_assessment',  icon: '🛡', title: 'Cyber Threat Assessment',     tag: 'CYBER',      desc: 'Pen test status, MFA, endpoint protection, CBEST/DORA scoring.' },
+  { id: 'fca_incident_response',    icon: '🔔', title: 'Regulatory Incident Response',tag: '24HR',       desc: '24-hour operational incident reporting and regulator notification procedures.' },
+  { id: 'due_diligence',            icon: '🔍', title: 'Due Diligence',               tag: 'DD',         desc: 'Fit & Proper checks, third-party compliance, sanctions screening.' },
+  { id: 'country_risk',             icon: '🌐', title: 'Country Risk',                tag: 'RISK',       desc: 'Sanctions, FATF status, AML risk rating, local custody.' },
+  { id: 'executive_protection',     icon: '👤', title: 'Executive Protection',        tag: 'EXEC',       desc: 'Senior Manager risk briefings, accountability mapping, travel risk.' },
+  { id: 'physical_security_audit',  icon: '🏢', title: 'Physical Security Audit',     tag: 'PHYSICAL',   desc: 'Access control, CCTV, alarms, operational resilience.' },
+  { id: 'grc_report',               icon: '📈', title: 'GRC Intelligence Report',     tag: 'GRC',        desc: 'Governance, Risk & Compliance maturity — OCEG/COSO methodology.' },
+];
+
+const REPORT_SUITE = _slug === 'uk' ? CASS_SUITE : GRC_SUITE;
 
 // ── Regional body overrides for the 4 CASS-specific reports ──────────────────
 const _REGIONAL_REPORTS = {
