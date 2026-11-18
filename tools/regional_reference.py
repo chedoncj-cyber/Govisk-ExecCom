@@ -26,6 +26,7 @@ NORTH_AMERICA_NEWS = [
         ),
         "tags": ["SEC", "Cybersecurity", "Form 8-K", "Disclosure"],
         "severity": "RED",
+        "url": "https://www.sec.gov/rules-regulations/2023/07/33-11216",
     },
     {
         "date": "2026-08",
@@ -42,6 +43,7 @@ NORTH_AMERICA_NEWS = [
         ),
         "tags": ["FinCEN", "CTA", "Beneficial Ownership", "AML"],
         "severity": "RED",
+        "url": "https://www.fincen.gov/boi",
     },
     {
         "date": "2026-07",
@@ -58,6 +60,7 @@ NORTH_AMERICA_NEWS = [
         ),
         "tags": ["OSFI", "Operational Resilience", "E-23", "Canada"],
         "severity": "AMBER",
+        "url": "https://www.osfi-bsif.gc.ca/en/guidance/guidance-library/operational-resilience-guideline-e-23",
     },
     {
         "date": "2026-06",
@@ -74,6 +77,7 @@ NORTH_AMERICA_NEWS = [
         ),
         "tags": ["FDIC", "Brokered Deposits", "Liquidity", "Bank Supervision"],
         "severity": "AMBER",
+        "url": "https://www.fdic.gov/regulations/laws/federal/brokered-deposits-final-rule",
     },
     {
         "date": "2026-05",
@@ -90,6 +94,7 @@ NORTH_AMERICA_NEWS = [
         ),
         "tags": ["SEC", "Custody Rule", "Investment Advisers", "Crypto"],
         "severity": "AMBER",
+        "url": "https://www.sec.gov/rules-regulations/2023/02/ia-6240",
     },
     {
         "date": "2026-04",
@@ -106,6 +111,7 @@ NORTH_AMERICA_NEWS = [
         ),
         "tags": ["FINTRAC", "AML", "STR", "Enforcement", "Canada"],
         "severity": "RED",
+        "url": "https://www.fintrac-canafe.gc.ca/pen/2024-eng",
     },
     {
         "date": "2026-03",
@@ -122,6 +128,7 @@ NORTH_AMERICA_NEWS = [
         ),
         "tags": ["CFTC", "Derivatives", "Uncleared Margin", "IM Custodian"],
         "severity": "AMBER",
+        "url": "https://www.cftc.gov/LawRegulation/FederalRegister/finalrules/2022-01246.html",
     },
 ]
 
@@ -146,6 +153,7 @@ LATIN_AMERICA_NEWS = [
         ),
         "tags": ["BCB", "Pix", "Payment Systems", "Open Finance", "Brazil"],
         "severity": "AMBER",
+        "url": "https://www.bcb.gov.br/en/financialstability/pix_en",
     },
     {
         "date": "2026-08",
@@ -163,6 +171,7 @@ LATIN_AMERICA_NEWS = [
         ),
         "tags": ["CVM", "Investment Funds", "Resolution 175", "Segregation", "Brazil"],
         "severity": "AMBER",
+        "url": "https://www.gov.br/cvm/en-us/topics/subjects/regulation/resolutions/cvm-resolution-175",
     },
     {
         "date": "2026-07",
@@ -179,6 +188,7 @@ LATIN_AMERICA_NEWS = [
         ),
         "tags": ["CNBV", "Fintech", "IFPE", "Electronic Payments", "Mexico"],
         "severity": "AMBER",
+        "url": "https://www.cnbv.gob.mx/SECTORES-SUPERVISADOS/Fintech/Paginas/default.aspx",
     },
     {
         "date": "2026-06",
@@ -195,6 +205,7 @@ LATIN_AMERICA_NEWS = [
         ),
         "tags": ["SFC", "VASP", "Crypto", "Client Assets", "Colombia"],
         "severity": "AMBER",
+        "url": "https://www.superfinanciera.gov.co/jsp/index.jsf",
     },
     {
         "date": "2026-05",
@@ -211,6 +222,7 @@ LATIN_AMERICA_NEWS = [
         ),
         "tags": ["CMF", "Fintech Law", "Open Finance", "Crowdfunding", "Chile"],
         "severity": "GREEN",
+        "url": "https://www.cmfchile.cl/portal/principal/605/w3-channel.html",
     },
     {
         "date": "2026-04",
@@ -228,6 +240,7 @@ LATIN_AMERICA_NEWS = [
         ),
         "tags": ["SBS", "AFP", "Custody", "Pension Funds", "Peru"],
         "severity": "AMBER",
+        "url": "https://www.sbs.gob.pe/regulacion/detalle-norma/assetpublication/NormaTitulo/4316",
     },
     {
         "date": "2026-03",
@@ -245,6 +258,7 @@ LATIN_AMERICA_NEWS = [
         ),
         "tags": ["GAFILAT", "FATF", "AML", "Mutual Evaluation", "LatAm"],
         "severity": "RED",
+        "url": "https://www.gafilat.org/index.php/en/about-gafilat/plenaries",
     },
 ]
 
@@ -271,6 +285,7 @@ ASIA_NEWS = [
         ),
         "tags": ["MAS", "TRM", "Technology Risk", "AI", "Singapore"],
         "severity": "AMBER",
+        "url": "https://www.mas.gov.sg/regulation/guidelines/technology-risk-management-guidelines",
     },
     {
         "date": "2026-08",
@@ -288,6 +303,7 @@ ASIA_NEWS = [
         ),
         "tags": ["SFC", "VATP", "Crypto", "Client Assets", "Hong Kong"],
         "severity": "RED",
+        "url": "https://www.sfc.hk/en/News-and-announcements/Policy-statements-and-announcements/Virtual-asset-trading-platforms",
     },
     {
         "date": "2026-07",
@@ -305,6 +321,7 @@ ASIA_NEWS = [
         ),
         "tags": ["APRA", "CPS 230", "Operational Resilience", "Australia"],
         "severity": "RED",
+        "url": "https://www.apra.gov.au/operational-resilience-prudential-standard-cps-230",
     },
     {
         "date": "2026-06",
@@ -322,6 +339,7 @@ ASIA_NEWS = [
         ),
         "tags": ["FSA", "AML", "Crypto", "Business Improvement Order", "Japan"],
         "severity": "RED",
+        "url": "https://www.fsa.go.jp/news/r6/crypto/index.html",
     },
     {
         "date": "2026-05",
@@ -339,6 +357,7 @@ ASIA_NEWS = [
         ),
         "tags": ["SEBI", "F&O", "Derivatives", "Margin", "India"],
         "severity": "AMBER",
+        "url": "https://www.sebi.gov.in/legal/circulars/2024/circular-on-strengthening-equity-index-derivatives-framework_86670.html",
     },
     {
         "date": "2026-04",
@@ -356,6 +375,7 @@ ASIA_NEWS = [
         ),
         "tags": ["NFRA", "CSRC", "Custodian Banks", "Fund Assets", "China"],
         "severity": "AMBER",
+        "url": "https://www.csrc.gov.cn/csrc/c101864/index.shtml",
     },
     {
         "date": "2026-03",
@@ -373,6 +393,7 @@ ASIA_NEWS = [
         ),
         "tags": ["AUSTRAC", "AML", "Enforceable Undertaking", "Australia"],
         "severity": "RED",
+        "url": "https://www.austrac.gov.au/news/enforcement/austrac-accepts-enforceable-undertaking",
     },
 ]
 
@@ -397,6 +418,7 @@ AFRICA_NEWS = [
         ),
         "tags": ["FSCA", "Twin Peaks", "Conduct Standard", "Banks", "South Africa"],
         "severity": "AMBER",
+        "url": "https://www.fsca.co.za/Regulatory%20Frameworks/Pages/default.aspx",
     },
     {
         "date": "2026-08",
@@ -414,6 +436,7 @@ AFRICA_NEWS = [
         ),
         "tags": ["PA/SARB", "FATF", "Grey List", "FIC Act", "South Africa"],
         "severity": "GREEN",
+        "url": "https://www.fatf-gafi.org/en/topics/high-risk-jurisdictions/documents/increased-monitoring-october-2024.html",
     },
     {
         "date": "2026-07",
@@ -431,6 +454,7 @@ AFRICA_NEWS = [
         ),
         "tags": ["CBN", "Recapitalisation", "Minimum Capital", "Banking", "Nigeria"],
         "severity": "RED",
+        "url": "https://www.cbn.gov.ng/monetary/recapitalization.asp",
     },
     {
         "date": "2026-06",
@@ -448,6 +472,7 @@ AFRICA_NEWS = [
         ),
         "tags": ["CBK", "Digital Credit", "DCP", "Fintech", "Kenya"],
         "severity": "GREEN",
+        "url": "https://www.centralbank.go.ke/digital-credit-providers/",
     },
     {
         "date": "2026-05",
@@ -465,6 +490,7 @@ AFRICA_NEWS = [
         ),
         "tags": ["ESAAMLG", "GIABA", "Mutual Evaluation", "AML", "East Africa"],
         "severity": "AMBER",
+        "url": "https://www.esaamlg.org/",
     },
     {
         "date": "2026-04",
@@ -482,6 +508,7 @@ AFRICA_NEWS = [
         ),
         "tags": ["CBN", "AML", "Enforcement", "Fine", "Nigeria"],
         "severity": "RED",
+        "url": "https://www.cbn.gov.ng/",
     },
 ]
 
@@ -507,6 +534,7 @@ EUROPE_NEWS = [
         ),
         "tags": ["ESMA", "MiFID II", "Client Assets", "MiCAR", "Segregation"],
         "severity": "RED",
+        "url": "https://www.esma.europa.eu/sites/default/files/2024-11/ESMA35-43-349_QA_MiFID_II_investor_protection.pdf",
     },
     {
         "date": "2026-08",
@@ -525,6 +553,7 @@ EUROPE_NEWS = [
         ),
         "tags": ["DORA", "ESMA", "ICT Risk", "Operational Resilience", "EU"],
         "severity": "RED",
+        "url": "https://www.eba.europa.eu/regulation-and-policy/operational-resilience/digital-operational-resilience-act-dora",
     },
     {
         "date": "2026-07",
@@ -543,6 +572,7 @@ EUROPE_NEWS = [
         ),
         "tags": ["AMLA", "EBA", "AML", "AMLR", "Frankfurt"],
         "severity": "AMBER",
+        "url": "https://www.amla.europa.eu/",
     },
     {
         "date": "2026-06",
@@ -561,6 +591,7 @@ EUROPE_NEWS = [
         ),
         "tags": ["ECB", "SSM", "DORA", "Credit Risk", "Climate"],
         "severity": "AMBER",
+        "url": "https://www.bankingsupervision.europa.eu/banking/priorities/html/index.en.html",
     },
     {
         "date": "2026-05",
@@ -579,6 +610,7 @@ EUROPE_NEWS = [
         ),
         "tags": ["MiCAR", "ESMA", "CASP", "Crypto", "Custody"],
         "severity": "RED",
+        "url": "https://www.esma.europa.eu/esmas-activities/digital-finance-and-innovation/markets-crypto-assets-regulation-mica",
     },
     {
         "date": "2026-04",
@@ -597,6 +629,7 @@ EUROPE_NEWS = [
         ),
         "tags": ["BaFin", "KAGB", "Custody", "Enforcement", "Germany"],
         "severity": "RED",
+        "url": "https://www.bafin.de/EN/DieBaFin/Presse/Pressemitteilungen/pm_2026.html",
     },
     {
         "date": "2026-03",
@@ -615,6 +648,7 @@ EUROPE_NEWS = [
         ),
         "tags": ["AMF", "SFDR", "ESG", "Greenwashing", "France"],
         "severity": "AMBER",
+        "url": "https://www.amf-france.org/en/news-publications/news-releases",
     },
 ]
 

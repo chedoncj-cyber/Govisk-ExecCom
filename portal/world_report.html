@@ -546,6 +546,12 @@
       background: var(--blue-dim); color: var(--blue);
       font-family: 'IBM Plex Mono', monospace;
     }
+    a.wr-feed-ref {
+      text-decoration: none; cursor: pointer;
+      border-bottom: 1px dashed var(--blue);
+      transition: background 0.15s, color 0.15s;
+    }
+    a.wr-feed-ref:hover { background: var(--blue); color: #fff; border-bottom-color: transparent; }
     .wr-feed-headline {
       font-size: 0.82rem; font-weight: 600; color: var(--text-1); margin-bottom: 3px; line-height: 1.4;
     }
@@ -1682,9 +1688,13 @@ function _buildFeedItems(news, filterSev) {
 
   return items.slice(0, 20).map((n, idx) => {
     const ref = n.reference || n.rule_ref || n.ref || (n.type ? `[${n.type}]` : `[${idx + 1}]`);
+    const srcUrl = n.url || n.source_url || '';
     const country = n.country ? `<span class="wr-feed-type">${_esc(n.country)}</span>` : '';
     const regBadge = n.regulator ? `<span class="wr-feed-regulator">${_esc(n.regulator)}</span>` : '';
     const tags = (n.tags || []).map(t => `<span class="wr-feed-tag">${_esc(t)}</span>`).join('');
+    const refBadge = srcUrl
+      ? `<a class="wr-feed-ref" href="${_esc(srcUrl)}" target="_blank" rel="noopener noreferrer" title="Source: ${_esc(srcUrl)}">${_esc(ref)} ↗</a>`
+      : `<span class="wr-feed-ref" title="Intelligence Reference">${_esc(ref)}</span>`;
     return `<div class="wr-feed-item sev-${n.severity || 'GREEN'}">
       <div class="wr-feed-dot"></div>
       <div class="wr-feed-body">
@@ -1692,7 +1702,7 @@ function _buildFeedItems(news, filterSev) {
           <span class="wr-feed-date">${_esc(n.date || '')}</span>
           ${regBadge}${country}
           ${n.type ? `<span class="wr-feed-type">${_esc(n.type)}</span>` : ''}
-          <span class="wr-feed-ref" title="Intelligence Reference">${_esc(ref)}</span>
+          ${refBadge}
         </div>
         <div class="wr-feed-headline">${_esc(n.headline || n.title || '')}</div>
         <div class="wr-feed-detail">${_esc(n.detail || n.summary || '')}</div>
@@ -1974,14 +1984,19 @@ function _buildWordRegions() {
           const date = el.querySelector('.wr-feed-date')?.textContent || '';
           const reg  = el.querySelector('.wr-feed-regulator')?.textContent || '';
           const hl   = el.querySelector('.wr-feed-headline')?.textContent || '';
-          const ref  = el.querySelector('.wr-feed-ref')?.textContent || '';
+          const refEl = el.querySelector('.wr-feed-ref');
+          const ref  = (refEl?.textContent || '').replace(/\s*↗\s*$/, '');
+          const refHref = refEl?.getAttribute('href') || '';
           const cls  = sev === 'HIGH' ? 'badge-red' : sev === 'MEDIUM' ? 'badge-amber' : 'badge-green';
+          const refCell = refHref
+            ? `<a href="${_escWord(refHref)}" style="color:#2563eb;text-decoration:underline">${_escWord(ref)}</a>`
+            : _escWord(ref);
           return `<tr>
             <td><span class="${cls}">${_escWord(sev)}</span></td>
             <td>${_escWord(date)}</td>
             <td>${_escWord(reg)}</td>
             <td>${_escWord(hl)}</td>
-            <td class="ref-tag">${_escWord(ref)}</td>
+            <td class="ref-tag">${refCell}</td>
           </tr>`;
         }).join('')}
       </table>`;

@@ -26,6 +26,7 @@ FCA_NEWS = [
         ),
         "tags": ["CASS 6", "CASS 7", "Consumer Duty", "Retail"],
         "severity": "RED",
+        "url": "https://www.handbook.fca.org.uk/handbook/CASS/7/11.html",
         "report_types": ["cass_health_check", "client_money_segregation", "cass_oversight"],
     },
     {
@@ -40,6 +41,7 @@ FCA_NEWS = [
         ),
         "tags": ["CASS 6", "CASS 7", "Handbook Notice 142", "Reconciliation"],
         "severity": "AMBER",
+        "url": "https://www.fca.org.uk/news/handbook-notices/handbook-notice-142",
         "report_types": ["cass_health_check", "client_money_segregation", "cass_resolution_pack"],
     },
     {
@@ -54,6 +56,7 @@ FCA_NEWS = [
         ),
         "tags": ["CASS 15", "Payment Services", "E-Money", "Safeguarding"],
         "severity": "AMBER",
+        "url": "https://www.fca.org.uk/publications/policy-statements/ps25-12-safeguarding-improvements-payment-and-e-money-firms",
         "report_types": ["cass_health_check", "client_money_segregation"],
     },
     {
@@ -68,6 +71,7 @@ FCA_NEWS = [
         ),
         "tags": ["CASS 10", "Special Administration", "Resolution Pack"],
         "severity": "RED",
+        "url": "https://www.fca.org.uk/news/press-releases/fca-statement-iti-capital-ltd",
         "report_types": ["cass_resolution_pack"],
     },
     {
@@ -82,6 +86,7 @@ FCA_NEWS = [
         ),
         "tags": ["Crypto", "CASS 6", "Custody"],
         "severity": "AMBER",
+        "url": "https://www.fca.org.uk/firms/authorisation/crypto-asset-businesses",
         "report_types": ["cass_health_check", "cass_resolution_pack"],
     },
     # ----- Enforcement (CASS) -------------------------------------------------
@@ -99,6 +104,7 @@ FCA_NEWS = [
         ),
         "tags": ["Enforcement", "CASS", "Outsourcing", "Principle 3", "Principle 10"],
         "severity": "RED",
+        "url": "https://www.fca.org.uk/news/press-releases/fca-fines-aviva-pension-trustees-uk-ltd-and-aviva-wrap-uk-ltd",
         "report_types": ["cass_health_check", "client_money_segregation", "cass_oversight", "cass_breach_log"],
     },
     {
@@ -115,6 +121,7 @@ FCA_NEWS = [
         ),
         "tags": ["Enforcement", "CASS 6", "Custody", "BNY Mellon"],
         "severity": "RED",
+        "url": "https://www.fca.org.uk/news/press-releases/fca-fines-bank-of-new-york-mellon-london-and-bny-mellon-international",
         "report_types": ["cass_health_check", "client_money_segregation", "cass_resolution_pack"],
     },
     # ----- SM&CR / Executive --------------------------------------------------
@@ -133,6 +140,7 @@ FCA_NEWS = [
         ),
         "tags": ["SM&CR", "Prescribed Responsibilities", "Certification Regime", "COCON"],
         "severity": "AMBER",
+        "url": "https://www.fca.org.uk/news/press-releases/fca-and-pra-confirm-changes-senior-managers-certification-regime",
         "report_types": ["executive_protection", "cass_oversight"],
     },
     {
@@ -149,6 +157,7 @@ FCA_NEWS = [
         ),
         "tags": ["SM&CR", "COCON", "Non-financial misconduct", "Fit and Proper", "COCON 1.1.7FR"],
         "severity": "AMBER",
+        "url": "https://www.fca.org.uk/news/press-releases/fca-extends-conduct-rules-cover-non-financial-misconduct",
         "report_types": ["executive_protection", "due_diligence"],
     },
     {
@@ -164,6 +173,7 @@ FCA_NEWS = [
         ),
         "tags": ["SM&CR", "Ban", "AML", "Integrity", "Fit and Proper"],
         "severity": "RED",
+        "url": "https://www.fca.org.uk/news/press-releases/fca-bans-kasim-garipoglu",
         "report_types": ["executive_protection", "due_diligence"],
     },
     {
@@ -179,6 +189,7 @@ FCA_NEWS = [
         ),
         "tags": ["SM&CR", "Ban", "Compliance Officer", "Prohibited Payments", "Integrity"],
         "severity": "RED",
+        "url": "https://www.fca.org.uk/news/press-releases/fca-bans-darren-reynolds-and-imposes-financial-penalty",
         "report_types": ["executive_protection", "cass_oversight"],
     },
     {
@@ -193,6 +204,7 @@ FCA_NEWS = [
         ),
         "tags": ["SM&CR", "COCON", "Asset Management", "Fine", "Integrity"],
         "severity": "RED",
+        "url": "https://www.fca.org.uk/news/press-releases/fca-fines-robin-odey",
         "report_types": ["executive_protection", "threat_intelligence"],
     },
     # ----- Financial Crime / AML / Threat Intelligence -----------------------
@@ -208,6 +220,7 @@ FCA_NEWS = [
         ),
         "tags": ["Principle 3", "SYSC", "Financial Crime", "CDD", "AML"],
         "severity": "RED",
+        "url": "https://www.fca.org.uk/news/press-releases/fca-fines-nationwide-building-society",
         "report_types": ["threat_intelligence", "due_diligence"],
     },
     {
@@ -222,6 +235,7 @@ FCA_NEWS = [
         ),
         "tags": ["AML", "Principle 2", "Money Laundering", "Financial Crime"],
         "severity": "RED",
+        "url": "https://www.fca.org.uk/news/press-releases/fca-fines-barclays-bank",
         "report_types": ["threat_intelligence", "due_diligence"],
     },
     {
@@ -236,6 +250,7 @@ FCA_NEWS = [
         ),
         "tags": ["Financial Crime", "Principle 3", "Onboarding", "CDD"],
         "severity": "RED",
+        "url": "https://www.fca.org.uk/news/press-releases/fca-fines-monzo-bank-limited",
         "report_types": ["threat_intelligence", "due_diligence"],
     },
     {
@@ -252,6 +267,7 @@ FCA_NEWS = [
         ),
         "tags": ["CDD", "EDD", "AML", "Monitoring", "Financial Crime"],
         "severity": "AMBER",
+        "url": "https://www.fca.org.uk/publications/multi-firm-reviews/review-customer-due-diligence-and-enhanced-due-diligence",
         "report_types": ["due_diligence", "threat_intelligence"],
     },
     # ----- Cyber / Operational Resilience ------------------------------------
@@ -272,6 +288,7 @@ FCA_NEWS = [
         ),
         "tags": ["PS26/2", "Operational Incidents", "Third Parties", "Reporting", "SYSC"],
         "severity": "RED",
+        "url": "https://www.fca.org.uk/publications/policy-statements/ps26-2-operational-incidents-third-party-reporting",
         "report_types": ["fca_incident_response", "cyber_threat_assessment"],
     },
     {
@@ -289,6 +306,7 @@ FCA_NEWS = [
         ),
         "tags": ["Critical Third Parties", "CTP", "Operational Resilience", "Cloud", "PS26/2"],
         "severity": "AMBER",
+        "url": "https://www.fca.org.uk/news/press-releases/critical-third-parties-regime-comes-into-force",
         "report_types": ["cyber_threat_assessment", "fca_incident_response"],
     },
     {
@@ -306,6 +324,7 @@ FCA_NEWS = [
         ),
         "tags": ["PS21/3", "Operational Resilience", "Impact Tolerances", "Scenario Testing"],
         "severity": "RED",
+        "url": "https://www.fca.org.uk/news/statements/fca-finds-firms-still-have-work-to-do-on-operational-resilience",
         "report_types": ["cyber_threat_assessment", "fca_incident_response"],
     },
     {
@@ -322,6 +341,7 @@ FCA_NEWS = [
         ),
         "tags": ["ICO", "Data Breach", "Outsourcing", "Third Party", "Cyber", "UK GDPR"],
         "severity": "RED",
+        "url": "https://ico.org.uk/about-the-ico/media-centre/news-and-blogs/2024/05/ico-fines-capita-after-data-breach/",
         "report_types": ["cyber_threat_assessment", "physical_security_audit", "due_diligence"],
     },
     {
@@ -339,6 +359,7 @@ FCA_NEWS = [
         ),
         "tags": ["Cyber", "Data Breach", "Social Engineering", "UK GDPR", "SYSC 7"],
         "severity": "RED",
+        "url": "https://www.fca.org.uk/consumers/revolut",
         "report_types": ["cyber_threat_assessment", "physical_security_audit", "fca_incident_response"],
     },
     {
@@ -355,6 +376,7 @@ FCA_NEWS = [
         ),
         "tags": ["Ransomware", "Cyber", "Operational Risk", "SYSC"],
         "severity": "RED",
+        "url": "https://www.bankinfosecurity.com/habib-bank-hit-by-qilin-ransomware-a-26981",
         "report_types": ["cyber_threat_assessment", "physical_security_audit"],
     },
     # ----- Sanctions / Country Risk -------------------------------------------
@@ -371,6 +393,7 @@ FCA_NEWS = [
         ),
         "tags": ["OFSI", "Russia Sanctions", "Enforcement", "Citibank"],
         "severity": "RED",
+        "url": "https://www.gov.uk/government/news/ofsi-imposes-penalty-on-citibank-na-london-branch",
         "report_types": ["country_risk", "threat_intelligence"],
     },
     {
@@ -384,6 +407,7 @@ FCA_NEWS = [
         ),
         "tags": ["OFSI", "Russia Sanctions", "Enforcement", "Designated Person"],
         "severity": "RED",
+        "url": "https://www.gov.uk/government/news/ofsi-penalty-markom-management-limited",
         "report_types": ["country_risk", "due_diligence"],
     },
     {
@@ -400,6 +424,7 @@ FCA_NEWS = [
         ),
         "tags": ["OFSI", "Russia Sanctions", "Penalty Cap", "Enforcement"],
         "severity": "RED",
+        "url": "https://www.gov.uk/government/collections/ofsi-financial-sanctions-monetary-penalties",
         "report_types": ["country_risk", "threat_intelligence", "due_diligence"],
     },
     {
@@ -415,6 +440,7 @@ FCA_NEWS = [
         ),
         "tags": ["OFSI", "Iran Sanctions", "Trade Finance", "Correspondent Banking"],
         "severity": "AMBER",
+        "url": "https://www.gov.uk/government/collections/financial-sanctions-regime-iran",
         "report_types": ["country_risk", "threat_intelligence"],
     },
     # ----- Due Diligence / Non-Financial Misconduct ----------------------------
@@ -432,6 +458,7 @@ FCA_NEWS = [
         ),
         "tags": ["Asset Management", "Financial Crime", "CDD", "EDD", "AML"],
         "severity": "RED",
+        "url": "https://www.fca.org.uk/publications/multi-firm-reviews/asset-management-financial-crime-controls",
         "report_types": ["due_diligence", "threat_intelligence"],
     },
     # ----- Physical Security --------------------------------------------------
@@ -449,6 +476,7 @@ FCA_NEWS = [
         ),
         "tags": ["Supply Chain", "Data Breach", "Third Party", "LSE"],
         "severity": "AMBER",
+        "url": "https://www.londonstockexchange.com/news-article/CRW/cyber-security-incident/16920117",
         "report_types": ["physical_security_audit", "cyber_threat_assessment"],
     },
 ]
