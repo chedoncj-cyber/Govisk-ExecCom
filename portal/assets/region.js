@@ -294,6 +294,7 @@ const GRC_SUITE = [
   { group: 'IDENTITY, DATA & Third-Party Risk', id: 'idr_operational_risk',      icon: '⚠️', title: 'Operational Risk',            tag: 'OPS RISK',    desc: 'Operational risk events, loss events, BCP/DR testing status and RTO/RPO compliance tracking.' },
   { group: 'IDENTITY, DATA & Third-Party Risk', id: 'idr_data_governance',       icon: '🗄',  title: 'Data Governance',             tag: 'DATA GOV',    desc: 'Data classification coverage, retention compliance, GDPR/privacy incidents and DPO appointment.' },
   { group: 'IDENTITY, DATA & Third-Party Risk', id: 'idr_regulatory_risk',       icon: '🌐', title: 'Regulatory Risk',             tag: 'REG RISK',    desc: 'Regulatory obligation tracking, compliance gap monitoring, enforcement actions and change implementation.' },
+  { group: 'IDENTITY, DATA & Third-Party Risk', id: 'world_report',              icon: '🌐', title: 'ExecCom Region World Report',  tag: 'EXEC · WORLD', desc: 'Multi-region executive briefing — FATF blacklist, enforcement actions, regional MI feeds and live daily intelligence.', href: '/world-report' },
   // ── Governance Risk & Compliance ──────────────────────────────────────────────
   { group: 'Governance Risk & Compliance',      id: 'grc_enterprise_risk',       icon: '📈', title: 'Enterprise Risk Management',  tag: 'ERM',         desc: 'Enterprise risk register, strategic risk management, residual risk ratings and risk appetite compliance.' },
   { group: 'Governance Risk & Compliance',      id: 'grc_compliance_mgmt',       icon: '✅', title: 'Compliance Management',       tag: 'COMPLIANCE',  desc: 'Compliance obligations, gap analysis, regulatory fines, training completion and enforcement tracking.' },
@@ -310,7 +311,6 @@ const GRC_SUITE = [
   { group: 'Security & Risk Intelligence',      id: 'executive_protection',      icon: '👤', title: 'Executive Protection',        tag: 'EXEC',        desc: 'Senior Manager risk briefings, accountability mapping, travel risk.' },
   { group: 'Security & Risk Intelligence',      id: 'physical_security_audit',   icon: '🏢', title: 'Physical Security Audit',     tag: 'PHYSICAL',    desc: 'Access control, CCTV, alarms, operational resilience.' },
   { group: 'Security & Risk Intelligence',      id: 'grc_report',                icon: '📈', title: 'GRC Intelligence Report',     tag: 'GRC',         desc: 'Governance, Risk & Compliance maturity — OCEG/COSO methodology.' },
-  { group: 'Security & Risk Intelligence',      id: 'world_report',              icon: '🌐', title: 'ExecCom Region World Report',  tag: 'EXEC · WORLD', desc: 'Multi-region executive briefing — FATF blacklist, enforcement actions, regional MI feeds and live daily intelligence.', href: '/world-report' },
 ];
 
 const REPORT_SUITE = GRC_SUITE;
