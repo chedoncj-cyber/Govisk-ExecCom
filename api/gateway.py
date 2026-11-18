@@ -487,6 +487,35 @@ async def serve_world_report():
     return _serve_html("world_report.html")
 
 
+@app.get("/cyber-world-report", response_class=HTMLResponse)
+async def serve_cyber_world_report():
+    """Cyber Intelligence World Region Report — threat intel from national cyber bodies."""
+    return _serve_html("cyber_world_report.html")
+
+
+@app.get("/api/cyber-updates/{slug}")
+async def cyber_updates(slug: str):
+    """Return cyber intelligence reference data for a given region slug."""
+    try:
+        from cyber_reference import CYBER_NEWS, CYBER_REGION_META, CYBER_BODIES, SOURCED_DATE
+        if slug not in CYBER_NEWS:
+            raise HTTPException(
+                status_code=404,
+                detail=f"Unknown region '{slug}'. Valid: uk, north-america, latin-america, europe, asia-pacific, africa",
+            )
+        return {
+            "sourced_date": SOURCED_DATE,
+            "slug": slug,
+            "meta": CYBER_REGION_META[slug],
+            "bodies": CYBER_BODIES[slug],
+            "news": CYBER_NEWS[slug],
+        }
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 @app.get("/api/fatf-blacklist")
 async def get_fatf_blacklist():
     """Return cached FATF blacklist / grey list data (last run of fatf_blacklist.py)."""

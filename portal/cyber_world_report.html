@@ -1,0 +1,1707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Govisk Cyber Intelligence World Region Report</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/style.css?v=20261023e" />
+  <link rel="stylesheet" href="/assets/megamenu.css?v=20261001" />
+  <style>
+    :root {
+      --bg:        #0A0F1E;
+      --surface:   #0F1729;
+      --surface-2: #141E36;
+      --surface-3: #1A2640;
+      --border:    rgba(255,255,255,0.07);
+      --border-2:  rgba(255,255,255,0.12);
+      --text-1:    #F1F5F9;
+      --text-2:    #94A3B8;
+      --text-3:    #64748B;
+      --teal:      #14B8A6;
+      --teal-dim:  rgba(20,184,166,0.13);
+      --blue:      #3B82F6;
+      --blue-dim:  rgba(59,130,246,0.13);
+      --amber:     #F59E0B;
+      --amber-dim: rgba(245,158,11,0.13);
+      --red:       #EF4444;
+      --red-dim:   rgba(239,68,68,0.13);
+      --green:     #22C55E;
+      --green-dim: rgba(34,197,94,0.13);
+      --purple:    #8B5CF6;
+      --purple-dim:rgba(139,92,246,0.13);
+      --cyan:      #06B6D4;
+      --cyan-dim:  rgba(6,182,212,0.13);
+      --dur: 200ms;
+      --r:   10px;
+      --r-lg: 16px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'IBM Plex Sans', -apple-system, system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text-1);
+      min-height: 100vh;
+    }
+
+    /* ── Controls Bar ── */
+    .wr-controls-bar {
+      position: sticky;
+      top: 60px;
+      z-index: 90;
+      background: rgba(10,15,30,0.96);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 32px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .wr-controls-label {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      font-family: 'IBM Plex Mono', monospace;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .wr-control-group {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+    .wr-control-group label {
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      font-family: 'IBM Plex Mono', monospace;
+    }
+    .wr-input, .wr-select {
+      background: var(--surface-2);
+      border: 1px solid var(--border-2);
+      border-radius: 7px;
+      color: var(--text-1);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.78rem;
+      font-weight: 500;
+      padding: 7px 12px;
+      outline: none;
+      transition: border-color var(--dur);
+    }
+    .wr-input:focus, .wr-select:focus { border-color: var(--cyan); }
+    .wr-input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(0.6); }
+    .wr-select {
+      cursor: pointer;
+      min-width: 200px;
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%2364748B' stroke-width='2' viewBox='0 0 24 24'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 10px center;
+      padding-right: 30px;
+    }
+    .wr-generate-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 22px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--cyan), #0891b2);
+      color: #fff;
+      font-size: 0.82rem;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      letter-spacing: 0.04em;
+      transition: opacity var(--dur), transform var(--dur);
+      white-space: nowrap;
+      margin-top: auto;
+    }
+    .wr-generate-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+    .wr-generate-btn:active { transform: translateY(0); }
+    .wr-generate-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+    .wr-export-btn {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 9px 16px;
+      border-radius: 8px;
+      background: var(--surface-2);
+      color: var(--text-2);
+      font-size: 0.78rem;
+      font-weight: 600;
+      border: 1px solid var(--border-2);
+      cursor: pointer;
+      transition: background var(--dur), color var(--dur);
+      margin-top: auto;
+    }
+    .wr-export-btn:hover { background: var(--surface-3); color: var(--text-1); }
+
+    /* ── Loading ── */
+    .wr-loading {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      padding: 80px 32px;
+      text-align: center;
+    }
+    .wr-loading.active { display: flex; }
+    .wr-spinner {
+      width: 40px; height: 40px;
+      border: 3px solid var(--border);
+      border-top-color: var(--cyan);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .wr-loading-text { font-size: 0.82rem; color: var(--text-3); font-family: 'IBM Plex Mono', monospace; }
+    .wr-loading-step { font-size: 0.72rem; color: var(--cyan); font-family: 'IBM Plex Mono', monospace; }
+
+    /* ── Empty State ── */
+    .wr-empty {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      padding: 100px 32px;
+      text-align: center;
+    }
+    .wr-empty-icon { font-size: 3.5rem; filter: drop-shadow(0 0 24px rgba(6,182,212,0.4)); }
+    .wr-empty-title { font-size: 1.3rem; font-weight: 700; color: var(--text-1); letter-spacing: -0.02em; }
+    .wr-empty-sub { font-size: 0.82rem; color: var(--text-3); max-width: 500px; line-height: 1.65; }
+
+    /* ── Report ── */
+    .wr-report { display: none; }
+    .wr-report.active { display: block; }
+    .wr-page { max-width: 1400px; margin: 0 auto; padding: 32px 32px 100px; }
+
+    /* ── Report Header ── */
+    .wr-report-header {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--cyan);
+      border-radius: var(--r-lg);
+      padding: 28px 32px;
+      margin-bottom: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+    .wr-report-header::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 90% 50%, rgba(6,182,212,0.07), transparent);
+      pointer-events: none;
+    }
+    .wr-report-kicker {
+      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--cyan);
+      font-family: 'IBM Plex Mono', monospace; margin-bottom: 6px;
+    }
+    .wr-report-title {
+      font-size: 1.8rem; font-weight: 700; letter-spacing: -0.03em;
+      color: var(--text-1); line-height: 1.1; margin-bottom: 12px;
+    }
+    .wr-report-title span {
+      background: linear-gradient(135deg, var(--cyan), var(--blue));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .wr-report-meta { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+    .wr-report-meta-item {
+      font-size: 0.72rem; color: var(--text-3);
+      font-family: 'IBM Plex Mono', monospace;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .wr-report-meta-item strong { color: var(--text-2); }
+    .wr-classification {
+      margin-left: auto;
+      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; padding: 4px 12px; border-radius: 20px;
+      border: 1px solid rgba(6,182,212,0.3);
+      color: var(--cyan); background: var(--cyan-dim);
+      font-family: 'IBM Plex Mono', monospace;
+    }
+
+    /* ── KPI Cards (5-col) ── */
+    .wr-exec-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+    @media (max-width: 1100px) { .wr-exec-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 700px)  { .wr-exec-grid { grid-template-columns: repeat(2, 1fr); } }
+    .wr-exec-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 20px 18px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color var(--dur), transform var(--dur);
+    }
+    .wr-exec-card:hover { border-color: var(--border-2); transform: translateY(-2px); }
+    .wr-exec-card.c-cyan   { border-top: 2px solid var(--cyan); }
+    .wr-exec-card.c-red    { border-top: 2px solid var(--red); }
+    .wr-exec-card.c-amber  { border-top: 2px solid var(--amber); }
+    .wr-exec-card.c-blue   { border-top: 2px solid var(--blue); }
+    .wr-exec-card.c-green  { border-top: 2px solid var(--green); }
+    .wr-exec-icon { font-size: 1.3rem; margin-bottom: 10px; display: block; }
+    .wr-exec-label {
+      font-size: 0.62rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.1em; color: var(--text-3);
+      font-family: 'IBM Plex Mono', monospace; margin-bottom: 4px;
+    }
+    .wr-exec-value { font-size: 2.4rem; font-weight: 800; line-height: 1; letter-spacing: -0.04em; }
+    .wr-exec-card.c-cyan  .wr-exec-value { color: var(--cyan); }
+    .wr-exec-card.c-red   .wr-exec-value { color: var(--red); }
+    .wr-exec-card.c-amber .wr-exec-value { color: var(--amber); }
+    .wr-exec-card.c-blue  .wr-exec-value { color: var(--blue); }
+    .wr-exec-card.c-green .wr-exec-value { color: var(--green); }
+    .wr-exec-sub { font-size: 0.65rem; color: var(--text-3); margin-top: 4px; font-family: 'IBM Plex Mono', monospace; }
+
+    /* ── Charts Grid ── */
+    .wr-charts-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-bottom: 20px;
+    }
+    @media (max-width: 860px) { .wr-charts-2 { grid-template-columns: 1fr; } }
+    .wr-charts-3 {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 18px;
+      margin-bottom: 20px;
+    }
+    @media (max-width: 1100px) { .wr-charts-3 { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 700px)  { .wr-charts-3 { grid-template-columns: 1fr; } }
+
+    /* ── Panel ── */
+    .wr-panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 22px 24px;
+    }
+    .wr-panel-header {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      margin-bottom: 18px; gap: 10px;
+    }
+    .wr-panel-title { font-size: 0.88rem; font-weight: 700; color: var(--text-1); margin-bottom: 2px; }
+    .wr-panel-sub { font-size: 0.65rem; color: var(--text-3); font-family: 'IBM Plex Mono', monospace; }
+    .wr-panel-badge {
+      font-size: 0.6rem; font-weight: 700; padding: 2px 9px;
+      border-radius: 4px; white-space: nowrap; flex-shrink: 0;
+    }
+    .wr-panel-badge.red    { background: var(--red-dim);   color: var(--red); }
+    .wr-panel-badge.amber  { background: var(--amber-dim); color: var(--amber); }
+    .wr-panel-badge.green  { background: var(--green-dim); color: var(--green); }
+    .wr-panel-badge.blue   { background: var(--blue-dim);  color: var(--blue); }
+    .wr-panel-badge.teal   { background: var(--teal-dim);  color: var(--teal); }
+    .wr-panel-badge.cyan   { background: var(--cyan-dim);  color: var(--cyan); }
+    .wr-chart-container { position: relative; }
+    .wr-chart-h220 { height: 220px; }
+    .wr-chart-h260 { height: 260px; }
+    .wr-chart-h300 { height: 300px; }
+
+    /* ── Section Header ── */
+    .wr-section-header {
+      display: flex; align-items: center; gap: 12px;
+      margin: 36px 0 18px;
+    }
+    .wr-section-line { flex: 1; height: 1px; background: var(--border); }
+    .wr-section-label {
+      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--text-3);
+      font-family: 'IBM Plex Mono', monospace; white-space: nowrap;
+    }
+
+    /* ── Active Threat Matrix ── */
+    .wr-threat-matrix {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+    .wr-threat-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.75rem;
+    }
+    .wr-threat-table thead th {
+      background: var(--surface-2);
+      padding: 10px 14px;
+      text-align: left;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      font-family: 'IBM Plex Mono', monospace;
+      border-bottom: 1px solid var(--border);
+    }
+    .wr-threat-table tbody tr {
+      border-bottom: 1px solid var(--border);
+      transition: background 0.1s;
+    }
+    .wr-threat-table tbody tr:last-child { border-bottom: none; }
+    .wr-threat-table tbody tr:hover { background: var(--surface-2); }
+    .wr-threat-table tbody td {
+      padding: 10px 14px;
+      vertical-align: top;
+      color: var(--text-2);
+    }
+    .wr-threat-table td:first-child { width: 110px; }
+    .wr-threat-headline {
+      font-weight: 600; color: var(--text-1); margin-bottom: 2px; line-height: 1.4;
+    }
+    .wr-threat-detail { font-size: 0.68rem; color: var(--text-3); line-height: 1.4; }
+
+    /* ── Cyber Body Badges ── */
+    .wr-body-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 14px 18px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      margin-bottom: 14px;
+    }
+    .wr-body-label {
+      font-size: 0.6rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--text-3);
+      font-family: 'IBM Plex Mono', monospace;
+      width: 100%; margin-bottom: 2px;
+    }
+    .wr-body-badge {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 0.65rem; font-weight: 600;
+      padding: 5px 12px; border-radius: 20px;
+      border: 1px solid;
+      font-family: 'IBM Plex Mono', monospace;
+      white-space: nowrap;
+      text-decoration: none;
+      transition: opacity 0.15s, transform 0.1s;
+    }
+    .wr-body-badge:hover { opacity: 0.85; transform: translateY(-1px); }
+    .wr-body-badge svg { flex-shrink: 0; }
+
+    /* ── Regional Section ── */
+    .wr-region-block { margin-bottom: 48px; }
+    .wr-region-hero {
+      display: flex; align-items: flex-start; gap: 20px;
+      padding: 22px 28px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      margin-bottom: 16px;
+      position: relative; overflow: hidden;
+    }
+    .wr-region-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 100% at 85% 50%, var(--region-accent-dim, rgba(6,182,212,0.08)), transparent);
+      pointer-events: none;
+    }
+    .wr-region-flag { font-size: 2.6rem; flex-shrink: 0; }
+    .wr-region-body { flex: 1; min-width: 0; }
+    .wr-region-kicker {
+      font-size: 0.6rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--region-accent, var(--cyan));
+      font-family: 'IBM Plex Mono', monospace; margin-bottom: 4px;
+    }
+    .wr-region-name { font-size: 1.3rem; font-weight: 700; color: var(--text-1); letter-spacing: -0.02em; margin-bottom: 6px; }
+    .wr-region-regulators { font-size: 0.65rem; color: var(--text-3); font-family: 'IBM Plex Mono', monospace; line-height: 1.6; }
+    .wr-region-tags { display: flex; gap: 6px; align-items: center; flex-shrink: 0; flex-direction: column; }
+    .wr-region-tag {
+      font-size: 0.6rem; font-weight: 700; padding: 3px 10px;
+      border-radius: 20px; letter-spacing: 0.07em; text-transform: uppercase;
+      border: 1px solid var(--region-accent, var(--cyan));
+      color: var(--region-accent, var(--cyan));
+      background: var(--region-accent-dim, var(--cyan-dim));
+      font-family: 'IBM Plex Mono', monospace; white-space: nowrap;
+    }
+
+    /* ── MI Stats ── */
+    .wr-mi-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px; margin-bottom: 14px;
+    }
+    @media (max-width: 860px) { .wr-mi-grid { grid-template-columns: repeat(3, 1fr); } }
+    .wr-mi-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 14px 16px;
+      position: relative; overflow: hidden;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .wr-mi-card:hover { transform: translateY(-2px); border-color: var(--border-2); }
+    .wr-mi-card::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+      height: 2px; background: var(--mi-c);
+    }
+    .wr-mi-value { font-size: 1.8rem; font-weight: 700; letter-spacing: -0.03em; color: var(--mi-c); line-height: 1; }
+    .wr-mi-label {
+      font-size: 0.6rem; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.08em; color: var(--text-3);
+      font-family: 'IBM Plex Mono', monospace; margin-top: 4px;
+    }
+    .wr-mi-icon { position: absolute; top: 10px; right: 12px; font-size: 1rem; opacity: 0.3; }
+
+    /* ── Risk Bar ── */
+    .wr-risk-panel { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 16px 20px; margin-bottom: 14px; }
+    .wr-risk-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+    .wr-risk-row:last-child { margin-bottom: 0; }
+    .wr-risk-lbl { width: 52px; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; font-family: 'IBM Plex Mono', monospace; flex-shrink: 0; }
+    .wr-risk-track { flex: 1; height: 5px; background: var(--surface-3); border-radius: 3px; overflow: hidden; }
+    .wr-risk-fill { height: 100%; border-radius: 3px; transition: width 0.9s ease; }
+    .wr-risk-num { width: 22px; text-align: right; font-size: 0.68rem; font-weight: 600; font-family: 'IBM Plex Mono', monospace; color: var(--text-2); flex-shrink: 0; }
+    .wr-risk-pct { width: 34px; text-align: right; font-size: 0.62rem; color: var(--text-3); font-family: 'IBM Plex Mono', monospace; flex-shrink: 0; }
+
+    /* ── Intel Feed ── */
+    .wr-feed { display: flex; flex-direction: column; gap: 8px; margin-bottom: 14px; }
+    .wr-feed-item {
+      display: flex; align-items: flex-start; gap: 10px;
+      padding: 11px 14px; background: var(--surface-2);
+      border-radius: 8px; border: 1px solid var(--border);
+      font-size: 0.78rem; transition: border-color 0.15s;
+    }
+    .wr-feed-item:hover { border-color: var(--border-2); }
+    .wr-feed-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
+    .wr-feed-item.sev-RED    .wr-feed-dot { background: var(--red); }
+    .wr-feed-item.sev-AMBER  .wr-feed-dot { background: var(--amber); }
+    .wr-feed-item.sev-GREEN  .wr-feed-dot { background: var(--green); }
+    .wr-feed-item.sev-BLUE   .wr-feed-dot { background: var(--blue); }
+    .wr-feed-body { flex: 1; min-width: 0; }
+    .wr-feed-meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 4px; }
+    .wr-feed-date { font-size: 0.62rem; color: var(--text-3); font-family: 'IBM Plex Mono', monospace; }
+    .wr-feed-regulator, .wr-feed-type {
+      font-size: 0.6rem; font-weight: 700; padding: 1px 7px; border-radius: 4px;
+      text-transform: uppercase; letter-spacing: 0.06em;
+      font-family: 'IBM Plex Mono', monospace;
+    }
+    .wr-feed-regulator { background: var(--cyan-dim); color: var(--cyan); }
+    .wr-feed-type { background: var(--surface-3); color: var(--text-3); }
+    .wr-feed-ref {
+      font-size: 0.6rem; font-weight: 700; padding: 1px 7px; border-radius: 4px;
+      background: var(--blue-dim); color: var(--blue);
+      font-family: 'IBM Plex Mono', monospace;
+    }
+    a.wr-feed-ref {
+      text-decoration: none; cursor: pointer;
+      border-bottom: 1px dashed var(--blue);
+      transition: background 0.15s, color 0.15s;
+    }
+    a.wr-feed-ref:hover { background: var(--blue); color: #fff; border-bottom-color: transparent; }
+    .wr-feed-headline { font-size: 0.82rem; font-weight: 600; color: var(--text-1); margin-bottom: 3px; line-height: 1.4; }
+    .wr-feed-detail { font-size: 0.72rem; color: var(--text-2); line-height: 1.5; margin-bottom: 5px; }
+    .wr-feed-tags { display: flex; gap: 5px; flex-wrap: wrap; }
+    .wr-feed-tag {
+      font-size: 0.58rem; padding: 1px 6px; border-radius: 4px;
+      background: var(--surface-3); color: var(--text-3);
+      font-family: 'IBM Plex Mono', monospace; border: 1px solid var(--border);
+    }
+    .wr-feed-filter { display: flex; gap: 6px; margin-bottom: 10px; flex-wrap: wrap; }
+    .wr-filter-btn {
+      font-size: 0.62rem; font-weight: 700; padding: 3px 10px;
+      border-radius: 10px; border: 1px solid var(--border);
+      background: var(--surface); color: var(--text-3);
+      cursor: pointer; font-family: 'IBM Plex Mono', monospace;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      transition: all 0.15s;
+    }
+    .wr-filter-btn:hover, .wr-filter-btn.active {
+      border-color: var(--cyan); color: var(--cyan); background: var(--cyan-dim);
+    }
+
+    /* ── Callout ── */
+    .wr-callout {
+      padding: 12px 16px; border-radius: 8px;
+      background: var(--surface-2); border: 1px solid var(--border);
+      border-left: 3px solid var(--text-3);
+      font-size: 0.72rem; color: var(--text-3); line-height: 1.6;
+      font-family: 'IBM Plex Mono', monospace; margin-bottom: 10px;
+    }
+    .wr-callout.info    { border-left-color: var(--cyan); color: var(--text-2); }
+    .wr-callout.warning { border-left-color: var(--amber); color: var(--amber); }
+    .wr-callout.danger  { border-left-color: var(--red); color: var(--red); }
+
+    /* ── Search ── */
+    .wr-search-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; }
+    .wr-search-input {
+      background: var(--surface-2); border: 1px solid var(--border);
+      border-radius: 7px; color: var(--text-1);
+      font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem;
+      padding: 6px 12px; outline: none; transition: border-color var(--dur);
+      min-width: 240px;
+    }
+    .wr-search-input:focus { border-color: var(--cyan); }
+    .wr-search-input::placeholder { color: var(--text-3); }
+    .wr-search-count { font-size: 0.65rem; color: var(--text-3); font-family: 'IBM Plex Mono', monospace; }
+
+    /* ── Report Footer ── */
+    .wr-report-footer {
+      margin-top: 60px; padding: 20px 0;
+      border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 12px;
+    }
+    .wr-footer-text { font-size: 0.68rem; color: var(--text-3); line-height: 1.6; max-width: 700px; }
+    .wr-footer-brand { font-size: 0.72rem; font-weight: 700; color: var(--text-3); font-family: 'IBM Plex Mono', monospace; }
+    .wr-footer-brand span { color: var(--cyan); }
+
+    /* ── Print ── */
+    @media print {
+      .wr-controls-bar, .global-nav, .intel-ticker,
+      .orb, #particle-canvas, #globe-canvas,
+      .wr-generate-btn, .wr-export-btn,
+      .wr-feed-filter, .wr-filter-btn,
+      .wr-search-row { display: none !important; }
+      body { background: white; color: black; }
+      .wr-panel, .wr-exec-card, .wr-mi-card, .wr-feed-item,
+      .wr-threat-matrix, .wr-region-hero, .wr-risk-panel,
+      .wr-body-grid { background: white; border-color: #ddd; }
+      .wr-report-title span, .wr-exec-value, .wr-region-name,
+      .wr-feed-headline { -webkit-text-fill-color: initial; color: black; }
+      .wr-page { padding: 16px; }
+      .wr-region-block { page-break-inside: avoid; }
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      .wr-controls-bar { padding: 10px 16px; }
+      .wr-page { padding: 16px 16px 60px; }
+      .wr-report-title { font-size: 1.3rem; }
+      .wr-exec-value { font-size: 1.8rem; }
+    }
+  </style>
+</head>
+<body class="has-nav">
+
+<canvas id="particle-canvas"></canvas>
+<canvas id="globe-canvas"></canvas>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
+
+<!-- ── Alert Ticker ── -->
+<div class="intel-ticker" id="intel-ticker">
+  <span class="ticker-label"><span class="ticker-live-dot"></span>LIVE INTEL</span>
+  <div class="ticker-track">
+    <div class="ticker-scroll" id="ticker-scroll">
+      <span class="ticker-item t-teal">🔐 Govisk Cyber Intelligence World Region Report — Global Cyber Threat Platform</span>
+      <span class="ticker-item t-red">🔴 Active threats across UK · North America · Europe · Asia-Pacific · Africa · Latin America</span>
+      <span class="ticker-item t-amber">⚡ NCSC · CISA · ENISA · JPCERT/CC · ASD/ACSC · ngCERT — All regions monitored</span>
+      <span class="ticker-item t-teal">📊 Select region and date, then click Generate Cyber Report</span>
+    </div>
+  </div>
+  <span class="ticker-date" id="ticker-date"></span>
+</div>
+
+<!-- ── Navigation ── -->
+<nav class="global-nav" id="global-nav">
+  <a href="/" class="nav-brand">
+    <div class="nav-brand-icon">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+    </div>
+    <span class="nav-brand-name">Govisk ExecCom <em>Intelligence</em></span>
+  </a>
+  <div class="nav-links">
+    <a href="/" class="nav-link">Home</a>
+    <a href="/portal" class="nav-link">Portal</a>
+    <a href="/about" class="nav-link">About Us</a>
+    <a href="/services" class="nav-link">Services</a>
+    <a href="/case-studies" class="nav-link">Case Studies</a>
+    <a href="/contact" class="nav-link">Contact Us</a>
+  </div>
+  <div class="nav-right">
+    <a href="/request-demo" class="nav-cta">Request Demo</a>
+  </div>
+</nav>
+
+<!-- ── Controls Bar ── -->
+<div class="wr-controls-bar" id="wr-controls-bar">
+  <span class="wr-controls-label">🔐 Cyber Report</span>
+
+  <div class="wr-control-group">
+    <label for="wr-date-input">Report Date</label>
+    <input type="date" id="wr-date-input" class="wr-input" />
+  </div>
+
+  <div class="wr-control-group">
+    <label for="wr-region-select">Region Scope</label>
+    <select id="wr-region-select" class="wr-select">
+      <option value="all">🌐 All Regions</option>
+      <option value="uk">🇬🇧 United Kingdom</option>
+      <option value="north-america">🌎 North America</option>
+      <option value="latin-america">🌎 Latin America</option>
+      <option value="europe">🇪🇺 Europe</option>
+      <option value="asia-pacific">🌏 Asia-Pacific</option>
+      <option value="africa">🌍 Africa</option>
+    </select>
+  </div>
+
+  <button class="wr-generate-btn" id="wr-generate-btn" onclick="generateReport()">
+    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    Generate Cyber Report
+  </button>
+
+  <button class="wr-export-btn" id="wr-export-pdf-btn" onclick="window.print()" style="display:none" title="Print / Save as PDF">
+    <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+    Export PDF
+  </button>
+  <button class="wr-export-btn" id="wr-export-word-btn" onclick="downloadWord()" style="display:none" title="Download as Word document">
+    <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+    Download Word
+  </button>
+</div>
+
+<!-- ── Loading ── -->
+<div class="wr-loading" id="wr-loading">
+  <div class="wr-spinner"></div>
+  <div class="wr-loading-text">Generating Cyber Intelligence Report…</div>
+  <div class="wr-loading-step" id="wr-loading-step">Connecting to cyber intelligence feeds…</div>
+</div>
+
+<!-- ── Empty State ── -->
+<div class="wr-empty" id="wr-empty">
+  <div class="wr-empty-icon">🔐</div>
+  <div class="wr-empty-title">Govisk Cyber Intelligence World Region Report</div>
+  <div class="wr-empty-sub">
+    Select a report date and region scope above, then click <strong>Generate Cyber Report</strong> to produce
+    a live cyber threat intelligence briefing from national cyber bodies — NCSC, CISA, ENISA, JPCERT/CC,
+    ASD/ACSC, ngCERT and more across all six Govisk regions.
+  </div>
+</div>
+
+<!-- ── Report Content ── -->
+<div class="wr-report" id="wr-report">
+<div class="wr-page">
+
+  <!-- Report Header -->
+  <div class="wr-report-header" id="wr-report-header">
+    <div class="wr-report-kicker">Cyber Intelligence · Govisk ExecCom</div>
+    <div class="wr-report-title">Cyber Intelligence <span>World Region Report</span></div>
+    <div class="wr-report-meta">
+      <span class="wr-report-meta-item">
+        <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Report Date: <strong id="wr-meta-date">—</strong>
+      </span>
+      <span class="wr-report-meta-item">
+        <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        Scope: <strong id="wr-meta-scope">—</strong>
+      </span>
+      <span class="wr-report-meta-item">
+        <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Generated: <strong id="wr-meta-generated">—</strong>
+      </span>
+      <span class="wr-classification" id="wr-meta-class">CONFIDENTIAL</span>
+    </div>
+  </div>
+
+  <!-- KPI Cards -->
+  <div class="wr-exec-grid" id="wr-exec-grid">
+    <div class="wr-exec-card c-cyan">
+      <span class="wr-exec-icon">🛡️</span>
+      <div class="wr-exec-label">Threat Advisories</div>
+      <div class="wr-exec-value" id="wr-stat-total">—</div>
+      <div class="wr-exec-sub">Across all selected regions</div>
+    </div>
+    <div class="wr-exec-card c-red">
+      <span class="wr-exec-icon">🔴</span>
+      <div class="wr-exec-label">Critical Threats</div>
+      <div class="wr-exec-value" id="wr-stat-critical">—</div>
+      <div class="wr-exec-sub">Requiring immediate action</div>
+    </div>
+    <div class="wr-exec-card c-amber">
+      <span class="wr-exec-icon">🦠</span>
+      <div class="wr-exec-label">Ransomware Alerts</div>
+      <div class="wr-exec-value" id="wr-stat-ransomware">—</div>
+      <div class="wr-exec-sub">Active ransomware campaigns</div>
+    </div>
+    <div class="wr-exec-card c-blue">
+      <span class="wr-exec-icon">⚡</span>
+      <div class="wr-exec-label">Active CVEs</div>
+      <div class="wr-exec-value" id="wr-stat-cve">—</div>
+      <div class="wr-exec-sub">Vulnerability intelligence</div>
+    </div>
+    <div class="wr-exec-card c-green">
+      <span class="wr-exec-icon">🏛️</span>
+      <div class="wr-exec-label">Bodies Monitoring</div>
+      <div class="wr-exec-value" id="wr-stat-bodies">—</div>
+      <div class="wr-exec-sub">Cyber agencies monitored</div>
+    </div>
+  </div>
+
+  <!-- Charts Row 1 -->
+  <div class="wr-charts-2">
+    <div class="wr-panel">
+      <div class="wr-panel-header">
+        <div>
+          <div class="wr-panel-title">Threat Type Distribution</div>
+          <div class="wr-panel-sub">Intelligence by threat category across selected regions</div>
+        </div>
+        <span class="wr-panel-badge cyan" id="wr-chart1-badge">—</span>
+      </div>
+      <div class="wr-chart-container wr-chart-h260">
+        <canvas id="wr-chart-threat-dist"></canvas>
+      </div>
+      <div id="wr-threat-legend" style="display:flex;gap:12px;margin-top:12px;flex-wrap:wrap;font-size:0.72rem;"></div>
+    </div>
+    <div class="wr-panel">
+      <div class="wr-panel-header">
+        <div>
+          <div class="wr-panel-title">Severity by Region</div>
+          <div class="wr-panel-sub">Critical / Elevated / Low intel items per region</div>
+        </div>
+        <span class="wr-panel-badge teal">ALL REGIONS</span>
+      </div>
+      <div class="wr-chart-container wr-chart-h260">
+        <canvas id="wr-chart-sev-bar"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- Charts Row 2 -->
+  <div class="wr-charts-3">
+    <div class="wr-panel">
+      <div class="wr-panel-header">
+        <div>
+          <div class="wr-panel-title">Top Threat Categories</div>
+          <div class="wr-panel-sub">Intelligence tag frequency across all regions</div>
+        </div>
+        <span class="wr-panel-badge red">CATEGORIES</span>
+      </div>
+      <div class="wr-chart-container wr-chart-h220">
+        <canvas id="wr-chart-categories"></canvas>
+      </div>
+    </div>
+    <div class="wr-panel">
+      <div class="wr-panel-header">
+        <div>
+          <div class="wr-panel-title">Body Coverage</div>
+          <div class="wr-panel-sub">Cyber agencies per region</div>
+        </div>
+        <span class="wr-panel-badge cyan">COVERAGE</span>
+      </div>
+      <div class="wr-chart-container wr-chart-h220">
+        <canvas id="wr-chart-bodies"></canvas>
+      </div>
+      <div id="wr-bodies-legend" style="display:flex;flex-direction:column;gap:4px;margin-top:10px;font-size:0.68rem;"></div>
+    </div>
+    <div class="wr-panel">
+      <div class="wr-panel-header">
+        <div>
+          <div class="wr-panel-title">Threat Risk Radar</div>
+          <div class="wr-panel-sub">Critical signal ratio by region</div>
+        </div>
+        <span class="wr-panel-badge teal">RADAR</span>
+      </div>
+      <div class="wr-chart-container wr-chart-h220">
+        <canvas id="wr-chart-radar"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- Active Threat Matrix -->
+  <div class="wr-section-header">
+    <div class="wr-section-label">🔴 Active Threat Matrix</div>
+    <div class="wr-section-line"></div>
+    <span style="font-size:0.6rem;font-weight:700;padding:2px 10px;border-radius:4px;background:var(--red-dim);color:var(--red);font-family:'IBM Plex Mono',monospace;white-space:nowrap" id="wr-matrix-badge">Loading…</span>
+  </div>
+
+  <div class="wr-callout info">
+    Active critical threats (severity: RED) across all monitored regions and cyber bodies.
+    Source: NCSC · CISA · ENISA · JPCERT/CC · ASD/ACSC · ngCERT · CERT-EU and regional partners.
+    Last updated: <span id="wr-matrix-updated">—</span>
+  </div>
+
+  <div class="wr-threat-matrix" id="wr-threat-matrix-container">
+    <table class="wr-threat-table">
+      <thead>
+        <tr>
+          <th>Region</th>
+          <th>Date</th>
+          <th>Source</th>
+          <th>Type</th>
+          <th>Threat</th>
+          <th>Severity</th>
+        </tr>
+      </thead>
+      <tbody id="wr-threat-matrix-body">
+        <tr><td colspan="6" style="padding:20px;text-align:center;color:var(--text-3);font-family:'IBM Plex Mono',monospace;font-size:0.72rem">Generate report to populate threat matrix</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Regional Sections -->
+  <div id="wr-regions-container"></div>
+
+  <!-- Report Footer -->
+  <div class="wr-report-footer">
+    <div class="wr-footer-text">
+      CONFIDENTIAL — For authorised use only. Prepared by Govisk ExecCom Intelligence Reports.
+      Cyber intelligence sourced from NCSC, CISA, ENISA, JPCERT/CC, ASD/ACSC, ngCERT, and regional
+      cyber bodies. This report does not constitute legal or regulatory advice.
+      Verify material findings at source agencies before action.
+    </div>
+    <div class="wr-footer-brand">GOVISK <span>Cyber Intelligence</span></div>
+  </div>
+
+</div><!-- /.wr-page -->
+</div><!-- /#wr-report -->
+
+<div class="toast-stack" id="toast-stack"></div>
+
+<script>
+'use strict';
+
+// ── Cyber Region Configuration ────────────────────────────────────────────────
+const CYBER_REGIONS = {
+  'uk': {
+    flag: '🇬🇧',
+    name: 'United Kingdom',
+    accent: '#06B6D4',
+    accentDim: 'rgba(6,182,212,0.12)',
+    countries: 'United Kingdom',
+    apiUrl: '/api/cyber-updates/uk',
+  },
+  'north-america': {
+    flag: '🌎',
+    name: 'North America',
+    accent: '#3B82F6',
+    accentDim: 'rgba(59,130,246,0.12)',
+    countries: 'USA · Canada',
+    apiUrl: '/api/cyber-updates/north-america',
+  },
+  'latin-america': {
+    flag: '🌎',
+    name: 'Latin America',
+    accent: '#F59E0B',
+    accentDim: 'rgba(245,158,11,0.12)',
+    countries: 'Brazil · Mexico · Colombia · Chile · Peru',
+    apiUrl: '/api/cyber-updates/latin-america',
+  },
+  'europe': {
+    flag: '🇪🇺',
+    name: 'Europe',
+    accent: '#8B5CF6',
+    accentDim: 'rgba(139,92,246,0.12)',
+    countries: 'EU · Germany · France · Netherlands · Spain',
+    apiUrl: '/api/cyber-updates/europe',
+  },
+  'asia-pacific': {
+    flag: '🌏',
+    name: 'Asia-Pacific',
+    accent: '#14B8A6',
+    accentDim: 'rgba(20,184,166,0.12)',
+    countries: 'Singapore · Japan · India · Australia · China',
+    apiUrl: '/api/cyber-updates/asia-pacific',
+  },
+  'africa': {
+    flag: '🌍',
+    name: 'Africa',
+    accent: '#EF4444',
+    accentDim: 'rgba(239,68,68,0.12)',
+    countries: 'South Africa · Nigeria · Kenya',
+    apiUrl: '/api/cyber-updates/africa',
+  },
+};
+
+const REGION_ORDER = ['uk','north-america','latin-america','europe','asia-pacific','africa'];
+
+// ── State ─────────────────────────────────────────────────────────────────────
+let _charts = {};
+let _reportState = { generated: false };
+const _regionFeedState = {};
+
+// ── Init ──────────────────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  const dateEl = document.getElementById('wr-date-input');
+  const today  = new Date();
+  dateEl.value = today.toISOString().slice(0, 10);
+  document.getElementById('ticker-date').textContent =
+    today.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+  Chart.defaults.color = '#94A3B8';
+  Chart.defaults.font.family = "'IBM Plex Sans', -apple-system, system-ui, sans-serif";
+  Chart.defaults.font.size = 11;
+});
+
+// ── Helpers ───────────────────────────────────────────────────────────────────
+function _fmtDate(d) {
+  return new Date(d).toLocaleDateString('en-GB', { day: '2-digit', month: 'long', year: 'numeric' });
+}
+function _esc(s) {
+  return String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+function _animateCount(el, target, suffix = '') {
+  if (!el) return;
+  const dur = 900, start = performance.now(), from = parseInt(el.textContent) || 0;
+  const step = (now) => {
+    const t = Math.min((now - start) / dur, 1), ease = 1 - Math.pow(1 - t, 3);
+    el.textContent = Math.round(from + (target - from) * ease) + suffix;
+    if (t < 1) requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+}
+function _destroyChart(id) {
+  if (_charts[id]) { _charts[id].destroy(); delete _charts[id]; }
+}
+
+// ── Loading Steps ─────────────────────────────────────────────────────────────
+const STEPS = [
+  'Connecting to cyber intelligence feeds…',
+  'Querying NCSC advisories…',
+  'Loading CISA KEV catalogue…',
+  'Fetching ENISA threat landscape…',
+  'Retrieving JPCERT/CC incident data…',
+  'Pulling ASD/ACSC cyber reports…',
+  'Aggregating Africa cyber intelligence…',
+  'Building threat matrix and charts…',
+  'Finalising report…',
+];
+let _stepIdx = 0, _stepTimer = null;
+
+function _startLoadingSteps() {
+  _stepIdx = 0;
+  const el = document.getElementById('wr-loading-step');
+  if (el) el.textContent = STEPS[0];
+  _stepTimer = setInterval(() => {
+    _stepIdx = (_stepIdx + 1) % STEPS.length;
+    if (el) el.textContent = STEPS[_stepIdx];
+  }, 900);
+}
+function _stopLoadingSteps() {
+  if (_stepTimer) { clearInterval(_stepTimer); _stepTimer = null; }
+}
+
+// ── Toast ─────────────────────────────────────────────────────────────────────
+function _toast(msg, type = 'teal') {
+  const stack = document.getElementById('toast-stack');
+  if (!stack) return;
+  const t = document.createElement('div');
+  t.className = `toast toast-${type}`;
+  t.textContent = msg;
+  t.style.cssText = `
+    padding: 10px 18px; border-radius: 8px; font-size: 0.78rem; font-weight: 600;
+    background: var(--surface-2); border: 1px solid var(--border-2);
+    color: var(--text-1); box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    animation: fadeInUp 0.2s ease;
+  `;
+  stack.appendChild(t);
+  setTimeout(() => t.remove(), 3200);
+}
+
+// ── Main: generate report ─────────────────────────────────────────────────────
+async function generateReport() {
+  const dateVal   = document.getElementById('wr-date-input').value;
+  const regionVal = document.getElementById('wr-region-select').value;
+  const btn       = document.getElementById('wr-generate-btn');
+
+  if (!dateVal) { _toast('Please select a report date.', 'amber'); return; }
+
+  btn.disabled = true;
+  document.getElementById('wr-empty').style.display    = 'none';
+  document.getElementById('wr-report').style.display   = 'none';
+  document.getElementById('wr-report').classList.remove('active');
+  document.getElementById('wr-loading').classList.add('active');
+  document.getElementById('wr-export-pdf-btn').style.display  = 'none';
+  document.getElementById('wr-export-word-btn').style.display = 'none';
+  _startLoadingSteps();
+
+  const regions = regionVal === 'all' ? REGION_ORDER : [regionVal];
+
+  try {
+    const regionResults = await Promise.allSettled(regions.map(r => _fetchCyberData(r)));
+    const regionData = {};
+    regions.forEach((r, i) => {
+      regionData[r] = regionResults[i].status === 'fulfilled' ? regionResults[i].value : null;
+    });
+    _stopLoadingSteps();
+    _renderReport(dateVal, regionVal, regions, regionData);
+  } catch (err) {
+    _stopLoadingSteps();
+    _renderReport(dateVal, regionVal, regions, {});
+  } finally {
+    btn.disabled = false;
+    document.getElementById('wr-loading').classList.remove('active');
+  }
+}
+
+// ── API Fetch ─────────────────────────────────────────────────────────────────
+async function _fetchCyberData(slug) {
+  const r = await fetch(`/api/cyber-updates/${slug}`);
+  if (!r.ok) throw new Error(`Cyber ${slug} offline`);
+  const data = await r.json();
+  return {
+    slug,
+    news:         data.news    || [],
+    bodies:       data.bodies  || [],
+    meta:         data.meta    || {},
+    sourced_date: data.sourced_date || '',
+  };
+}
+
+// ── Render Report ─────────────────────────────────────────────────────────────
+function _renderReport(dateVal, regionVal, regions, regionData) {
+  // Compute global stats
+  let totalItems = 0, totalCritical = 0, totalRansomware = 0, totalCVE = 0, totalBodies = 0;
+  regions.forEach(r => {
+    const d = regionData[r];
+    if (d && d.news) {
+      totalItems      += d.news.length;
+      totalCritical   += d.news.filter(n => n.severity === 'RED').length;
+      totalRansomware += d.news.filter(n =>
+        (n.tags || []).some(t => t.toLowerCase().includes('ransomware')) ||
+        (n.headline || '').toLowerCase().includes('ransomware')
+      ).length;
+      totalCVE += d.news.filter(n =>
+        (n.tags || []).some(t => /cve/i.test(t)) ||
+        /vulnerab/i.test(n.type || '') ||
+        /cve/i.test(n.headline || '')
+      ).length;
+    }
+    if (d && d.bodies) totalBodies += d.bodies.length;
+  });
+
+  // Header
+  document.getElementById('wr-meta-date').textContent      = _fmtDate(dateVal);
+  document.getElementById('wr-meta-scope').textContent     = regionVal === 'all' ? 'All Regions (Global)' : (CYBER_REGIONS[regions[0]]?.name || regionVal);
+  document.getElementById('wr-meta-generated').textContent = new Date().toLocaleString('en-GB', { day:'2-digit', month:'short', year:'numeric', hour:'2-digit', minute:'2-digit' });
+  document.getElementById('wr-matrix-updated').textContent = dateVal;
+
+  // KPI counters
+  _animateCount(document.getElementById('wr-stat-total'),     totalItems);
+  _animateCount(document.getElementById('wr-stat-critical'),  totalCritical);
+  _animateCount(document.getElementById('wr-stat-ransomware'),totalRansomware);
+  _animateCount(document.getElementById('wr-stat-cve'),       totalCVE);
+  _animateCount(document.getElementById('wr-stat-bodies'),    totalBodies);
+
+  // Show report
+  document.getElementById('wr-report').style.display = 'block';
+  document.getElementById('wr-report').classList.add('active');
+  document.getElementById('wr-export-pdf-btn').style.display  = 'flex';
+  document.getElementById('wr-export-word-btn').style.display = 'flex';
+
+  // Build charts
+  _buildCharts(regions, regionData);
+
+  // Active Threat Matrix
+  _renderThreatMatrix(regions, regionData);
+
+  // Per-region sections
+  _renderAllRegions(regions, regionData);
+
+  // Update ticker
+  _updateTicker(regions, regionData);
+
+  // Chart1 badge
+  document.getElementById('wr-chart1-badge').textContent =
+    totalCritical > 0 ? `${totalCritical} CRITICAL` : 'ALL CLEAR';
+
+  _reportState.generated = true;
+  setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 100);
+}
+
+// ── Charts ────────────────────────────────────────────────────────────────────
+function _buildCharts(regions, regionData) {
+  const rLabels  = regions.map(r => CYBER_REGIONS[r]?.name || r);
+  const rHigh    = regions.map(r => regionData[r]?.news?.filter(n => n.severity === 'RED').length   || 0);
+  const rMed     = regions.map(r => regionData[r]?.news?.filter(n => n.severity === 'AMBER').length || 0);
+  const rLow     = regions.map(r => regionData[r]?.news?.filter(n => n.severity === 'GREEN').length || 0);
+  const rTotal   = regions.map(r => regionData[r]?.news?.length || 0);
+  const rBodies  = regions.map(r => regionData[r]?.bodies?.length || 0);
+
+  // Aggregate type distribution across all regions
+  const typeCounts = {};
+  regions.forEach(r => {
+    (regionData[r]?.news || []).forEach(n => {
+      const t = n.type || 'Unknown';
+      typeCounts[t] = (typeCounts[t] || 0) + 1;
+    });
+  });
+  const typeLabels = Object.keys(typeCounts);
+  const typeVals   = typeLabels.map(k => typeCounts[k]);
+  const typeColors = [
+    'rgba(239,68,68,0.85)','rgba(245,158,11,0.85)','rgba(34,197,94,0.75)',
+    'rgba(59,130,246,0.85)','rgba(139,92,246,0.75)','rgba(6,182,212,0.80)',
+    'rgba(249,115,22,0.75)','rgba(20,184,166,0.75)',
+  ];
+
+  // Aggregate tag categories
+  const tagCounts = {};
+  const TOP_TAGS = ['Ransomware','APT','Phishing','Vulnerability','State Actors','Critical Infrastructure','Data Breach','Enforcement'];
+  regions.forEach(r => {
+    (regionData[r]?.news || []).forEach(n => {
+      (n.tags || []).forEach(tag => {
+        const matchedTop = TOP_TAGS.find(t => tag.toLowerCase().includes(t.toLowerCase()));
+        if (matchedTop) tagCounts[matchedTop] = (tagCounts[matchedTop] || 0) + 1;
+      });
+    });
+  });
+  const catLabels = Object.keys(tagCounts).sort((a, b) => tagCounts[b] - tagCounts[a]).slice(0, 7);
+  const catVals   = catLabels.map(k => tagCounts[k]);
+
+  // 1. Threat Type Doughnut
+  _destroyChart('threat-dist');
+  _charts['threat-dist'] = new Chart(document.getElementById('wr-chart-threat-dist'), {
+    type: 'doughnut',
+    data: {
+      labels: typeLabels,
+      datasets: [{
+        data: typeVals,
+        backgroundColor: typeColors.slice(0, typeLabels.length),
+        borderColor:     typeColors.slice(0, typeLabels.length).map(c => c.replace('0.85)','0.3)').replace('0.75)','0.3)').replace('0.80)','0.3)')),
+        borderWidth: 1, borderRadius: 3,
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false, cutout: '60%',
+      plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: { label: ctx => ` ${ctx.label}: ${ctx.raw} items` } },
+      },
+    },
+  });
+  const legend = document.getElementById('wr-threat-legend');
+  if (legend) {
+    legend.innerHTML = typeLabels.map((l, i) =>
+      `<div style="display:flex;align-items:center;gap:6px;">
+        <span style="width:9px;height:9px;border-radius:50%;background:${typeColors[i] || '#94A3B8'};flex-shrink:0;"></span>
+        <span style="color:var(--text-2)">${l}</span>
+        <strong style="color:var(--text-1)">${typeVals[i]}</strong>
+      </div>`
+    ).join('');
+  }
+
+  // 2. Severity by Region Stacked Bar
+  _destroyChart('sev-bar');
+  _charts['sev-bar'] = new Chart(document.getElementById('wr-chart-sev-bar'), {
+    type: 'bar',
+    data: {
+      labels: rLabels,
+      datasets: [
+        { label: 'Critical', data: rHigh, backgroundColor: 'rgba(239,68,68,0.75)',  borderRadius: 3 },
+        { label: 'Elevated', data: rMed,  backgroundColor: 'rgba(245,158,11,0.75)', borderRadius: 3 },
+        { label: 'Low',      data: rLow,  backgroundColor: 'rgba(34,197,94,0.65)',  borderRadius: 3 },
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      scales: {
+        x: { stacked: true, grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { font: { size: 10 } } },
+        y: { stacked: true, grid: { color: 'rgba(255,255,255,0.04)' }, beginAtZero: true },
+      },
+      plugins: {
+        legend: { position: 'bottom', labels: { boxWidth: 10, padding: 10 } },
+        tooltip: { mode: 'index', intersect: false },
+      },
+    },
+  });
+
+  // 3. Top Threat Categories Bar
+  _destroyChart('categories');
+  _charts['categories'] = new Chart(document.getElementById('wr-chart-categories'), {
+    type: 'bar',
+    data: {
+      labels: catLabels.length ? catLabels : ['No data'],
+      datasets: [{
+        label: 'Intel Items',
+        data: catVals.length ? catVals : [0],
+        backgroundColor: 'rgba(6,182,212,0.7)',
+        borderColor:     'rgba(6,182,212,1)',
+        borderWidth: 1, borderRadius: 4,
+      }]
+    },
+    options: {
+      indexAxis: 'y',
+      responsive: true, maintainAspectRatio: false,
+      scales: {
+        x: { grid: { color: 'rgba(255,255,255,0.04)' }, beginAtZero: true, ticks: { stepSize: 1 } },
+        y: { grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { font: { size: 9 } } },
+      },
+      plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: { label: ctx => ` ${ctx.raw} intelligence item${ctx.raw !== 1 ? 's' : ''}` } },
+      },
+    },
+  });
+
+  // 4. Body Coverage Doughnut (per region)
+  _destroyChart('bodies');
+  const bodyColors = regions.map(r => `${CYBER_REGIONS[r]?.accent || '#06B6D4'}CC`);
+  _charts['bodies'] = new Chart(document.getElementById('wr-chart-bodies'), {
+    type: 'doughnut',
+    data: {
+      labels: rLabels,
+      datasets: [{
+        data: rBodies,
+        backgroundColor: bodyColors,
+        borderColor:     regions.map(r => CYBER_REGIONS[r]?.accent || '#06B6D4'),
+        borderWidth: 1, borderRadius: 2,
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false, cutout: '55%',
+      plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: { label: ctx => ` ${ctx.label}: ${ctx.raw} bodies` } },
+      },
+    },
+  });
+  const bodiesLeg = document.getElementById('wr-bodies-legend');
+  if (bodiesLeg) {
+    bodiesLeg.innerHTML = rLabels.map((l, i) =>
+      `<div style="display:flex;align-items:center;gap:7px;">
+        <span style="width:8px;height:8px;border-radius:50%;background:${bodyColors[i] || '#06B6D4'};flex-shrink:0;"></span>
+        <span style="font-size:0.65rem;color:var(--text-2)">${l} (${rBodies[i]})</span>
+      </div>`
+    ).join('');
+  }
+
+  // 5. Radar (critical ratio per region)
+  _destroyChart('radar');
+  const rRatio = rTotal.map((t, i) => t ? Math.round((rHigh[i] / t) * 100) : 0);
+  _charts['radar'] = new Chart(document.getElementById('wr-chart-radar'), {
+    type: 'radar',
+    data: {
+      labels: rLabels,
+      datasets: [{
+        label: 'Critical %',
+        data: rRatio,
+        backgroundColor: 'rgba(6,182,212,0.15)',
+        borderColor: '#06B6D4',
+        borderWidth: 2,
+        pointBackgroundColor: '#06B6D4',
+        pointRadius: 4,
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      scales: {
+        r: {
+          min: 0, max: 100,
+          ticks: { stepSize: 25, color: '#475569', font: { size: 9 } },
+          grid: { color: 'rgba(255,255,255,0.05)' },
+          angleLines: { color: 'rgba(255,255,255,0.05)' },
+          pointLabels: { color: '#94A3B8', font: { size: 10 } },
+        }
+      },
+      plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: { label: ctx => ` Critical: ${ctx.raw}%` } },
+      },
+    },
+  });
+}
+
+// ── Active Threat Matrix ──────────────────────────────────────────────────────
+function _renderThreatMatrix(regions, regionData) {
+  const tbody = document.getElementById('wr-threat-matrix-body');
+  if (!tbody) return;
+
+  const allRed = [];
+  regions.forEach(r => {
+    const cfg  = CYBER_REGIONS[r];
+    const news = regionData[r]?.news || [];
+    news.filter(n => n.severity === 'RED').forEach(n => {
+      allRed.push({ ...n, regionName: cfg.name, regionFlag: cfg.flag, regionAccent: cfg.accent });
+    });
+  });
+
+  document.getElementById('wr-matrix-badge').textContent =
+    allRed.length > 0 ? `${allRed.length} CRITICAL THREAT${allRed.length !== 1 ? 'S' : ''}` : 'NO CRITICAL THREATS';
+
+  if (!allRed.length) {
+    tbody.innerHTML = `<tr><td colspan="6" style="padding:24px;text-align:center;color:var(--green);font-family:'IBM Plex Mono',monospace;font-size:0.72rem">✅ No critical threats identified across selected regions</td></tr>`;
+    return;
+  }
+
+  tbody.innerHTML = allRed.map(n => {
+    const srcUrl = n.url || '';
+    const refText = srcUrl
+      ? `<a href="${_esc(srcUrl)}" target="_blank" rel="noopener noreferrer" style="color:var(--cyan);text-decoration:none;border-bottom:1px dashed var(--cyan);font-size:0.68rem">${_esc(n.regulator || 'Source')} ↗</a>`
+      : `<span style="font-size:0.68rem;color:var(--text-3)">${_esc(n.regulator || '—')}</span>`;
+    return `<tr>
+      <td>
+        <span style="font-size:0.95rem">${_esc(n.regionFlag)}</span>
+        <span style="font-size:0.65rem;color:${n.regionAccent};font-family:'IBM Plex Mono',monospace;font-weight:600;display:block">${_esc(n.regionName)}</span>
+      </td>
+      <td style="font-family:'IBM Plex Mono',monospace;font-size:0.65rem;color:var(--text-3)">${_esc(n.date || '—')}</td>
+      <td>${refText}</td>
+      <td>
+        <span style="font-size:0.6rem;font-weight:700;padding:1px 7px;border-radius:4px;background:var(--surface-3);color:var(--text-3);font-family:'IBM Plex Mono',monospace;text-transform:uppercase">${_esc(n.type || '—')}</span>
+      </td>
+      <td>
+        <div class="wr-threat-headline">${_esc(n.headline || '')}</div>
+        ${n.tags && n.tags.length ? `<div style="display:flex;gap:4px;flex-wrap:wrap;margin-top:4px">${n.tags.slice(0,3).map(t => `<span class="wr-feed-tag">${_esc(t)}</span>`).join('')}</div>` : ''}
+      </td>
+      <td>
+        <span style="font-size:0.6rem;font-weight:700;padding:2px 8px;border-radius:4px;background:var(--red-dim);color:var(--red);font-family:'IBM Plex Mono',monospace">CRITICAL</span>
+      </td>
+    </tr>`;
+  }).join('');
+}
+
+// ── Render All Regions ────────────────────────────────────────────────────────
+function _renderAllRegions(regions, regionData) {
+  const container = document.getElementById('wr-regions-container');
+  container.innerHTML = '';
+
+  regions.forEach(slug => {
+    const cfg    = CYBER_REGIONS[slug];
+    const data   = regionData[slug];
+    const news   = data?.news   || [];
+    const bodies = data?.bodies || [];
+
+    const el = document.createElement('div');
+    el.className = 'wr-region-block';
+    el.id = `wr-region-${slug}`;
+
+    el.innerHTML = `
+      <div class="wr-section-header">
+        <div class="wr-section-label">${_esc(cfg.flag)} ${_esc(cfg.name)}</div>
+        <div class="wr-section-line"></div>
+        <span style="font-size:0.6rem;font-weight:700;padding:2px 10px;border-radius:4px;border:1px solid;font-family:'IBM Plex Mono',monospace;white-space:nowrap;color:${cfg.accent};border-color:${cfg.accent};background:${cfg.accentDim}">${_esc(cfg.countries)}</span>
+      </div>
+
+      <div class="wr-region-hero" style="--region-accent:${cfg.accent};--region-accent-dim:${cfg.accentDim}">
+        <div class="wr-region-flag">${_esc(cfg.flag)}</div>
+        <div class="wr-region-body">
+          <div class="wr-region-kicker">Cyber Intelligence</div>
+          <div class="wr-region-name">${_esc(cfg.name)}</div>
+          <div class="wr-region-regulators">${_esc(data?.meta?.bodies || bodies.map(b => b.name).join(' · ') || '—')}</div>
+        </div>
+        <div class="wr-region-tags">
+          <span class="wr-region-tag" style="color:${cfg.accent};border-color:${cfg.accent};background:${cfg.accentDim}">Cyber Feed</span>
+          ${data?.sourced_date ? `<span style="font-size:0.6rem;color:var(--text-3);font-family:'IBM Plex Mono',monospace">${_esc(data.sourced_date)}</span>` : ''}
+        </div>
+      </div>
+
+      ${_buildMIStats(slug, news)}
+      ${_buildRiskBar(news)}
+      ${_buildBodyBadges(bodies, cfg)}
+
+      <div style="margin-bottom:14px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;flex-wrap:wrap;gap:8px;">
+          <div style="font-size:0.75rem;font-weight:700;color:var(--text-1)">Cyber Intelligence Feed</div>
+          <div class="wr-feed-filter" id="wr-filter-${slug}">
+            <button class="wr-filter-btn active" data-sev="ALL" onclick="filterFeed('${slug}','ALL',this)">All</button>
+            <button class="wr-filter-btn" data-sev="RED" onclick="filterFeed('${slug}','RED',this)">Critical</button>
+            <button class="wr-filter-btn" data-sev="AMBER" onclick="filterFeed('${slug}','AMBER',this)">Elevated</button>
+            <button class="wr-filter-btn" data-sev="GREEN" onclick="filterFeed('${slug}','GREEN',this)">Low</button>
+          </div>
+        </div>
+        <div class="wr-feed" id="wr-feed-${slug}">${_buildFeedItems(news, 'ALL')}</div>
+      </div>
+    `;
+
+    container.appendChild(el);
+    _regionFeedState[slug] = { news, activeSev: 'ALL' };
+  });
+}
+
+// ── MI Stats ──────────────────────────────────────────────────────────────────
+function _buildMIStats(slug, news) {
+  const critical = news.filter(n => n.severity === 'RED').length;
+  const elevated = news.filter(n => n.severity === 'AMBER').length;
+  const low      = news.filter(n => n.severity === 'GREEN').length;
+  const sources  = new Set(news.map(n => n.regulator).filter(Boolean)).size;
+  const cards = [
+    { val: news.length, label: 'Advisories',  c: '#06B6D4', icon: '🛡️' },
+    { val: critical,    label: 'Critical',     c: '#EF4444', icon: '🔴' },
+    { val: elevated,    label: 'Elevated',     c: '#F59E0B', icon: '🟡' },
+    { val: low,         label: 'Low',          c: '#22C55E', icon: '🟢' },
+    { val: sources || news.length, label: 'Sources', c: '#3B82F6', icon: '🏛️' },
+  ];
+  return `<div class="wr-mi-grid">
+    ${cards.map(c => `<div class="wr-mi-card" style="--mi-c:${c.c}">
+      <span class="wr-mi-icon">${c.icon}</span>
+      <div class="wr-mi-value">${c.val}</div>
+      <div class="wr-mi-label">${c.label}</div>
+    </div>`).join('')}
+  </div>`;
+}
+
+// ── Risk Bar ──────────────────────────────────────────────────────────────────
+function _buildRiskBar(news) {
+  const total    = news.length || 1;
+  const critical = news.filter(n => n.severity === 'RED').length;
+  const elevated = news.filter(n => n.severity === 'AMBER').length;
+  const low      = news.filter(n => n.severity === 'GREEN').length;
+  const pct      = n => Math.round((n / total) * 100);
+  return `<div class="wr-risk-panel">
+    <div class="wr-risk-row">
+      <span class="wr-risk-lbl" style="color:var(--red)">CRIT</span>
+      <div class="wr-risk-track"><div class="wr-risk-fill" style="background:var(--red);width:${pct(critical)}%"></div></div>
+      <span class="wr-risk-num" style="color:var(--red)">${critical}</span>
+      <span class="wr-risk-pct">${pct(critical)}%</span>
+    </div>
+    <div class="wr-risk-row">
+      <span class="wr-risk-lbl" style="color:var(--amber)">ELEV</span>
+      <div class="wr-risk-track"><div class="wr-risk-fill" style="background:var(--amber);width:${pct(elevated)}%"></div></div>
+      <span class="wr-risk-num" style="color:var(--amber)">${elevated}</span>
+      <span class="wr-risk-pct">${pct(elevated)}%</span>
+    </div>
+    <div class="wr-risk-row">
+      <span class="wr-risk-lbl" style="color:var(--green)">LOW</span>
+      <div class="wr-risk-track"><div class="wr-risk-fill" style="background:var(--green);width:${pct(low)}%"></div></div>
+      <span class="wr-risk-num" style="color:var(--green)">${low}</span>
+      <span class="wr-risk-pct">${pct(low)}%</span>
+    </div>
+  </div>`;
+}
+
+// ── Cyber Body Badges ─────────────────────────────────────────────────────────
+function _buildBodyBadges(bodies, cfg) {
+  if (!bodies || !bodies.length) return '';
+  const extLinkIcon = `<svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>`;
+  return `<div class="wr-body-grid">
+    <span class="wr-body-label">Cyber Bodies Monitored</span>
+    ${bodies.map(b => `
+      <a class="wr-body-badge" href="${_esc(b.url || '#')}" target="_blank" rel="noopener noreferrer"
+         title="${_esc(b.full)}"
+         style="color:${cfg.accent};border-color:${cfg.accent};background:${cfg.accentDim}">
+        ${_esc(b.name)} ${extLinkIcon}
+      </a>`).join('')}
+  </div>`;
+}
+
+// ── Feed Items ────────────────────────────────────────────────────────────────
+function _buildFeedItems(news, filterSev) {
+  const items = filterSev && filterSev !== 'ALL'
+    ? news.filter(n => n.severity === filterSev)
+    : news;
+
+  if (!items.length) {
+    return `<div class="wr-callout">No intelligence items for this filter — try All or check API connectivity.</div>`;
+  }
+
+  return items.slice(0, 20).map((n, idx) => {
+    const ref    = n.reference || n.rule_ref || n.ref || (n.type ? `[${n.type}]` : `[${idx + 1}]`);
+    const srcUrl = n.url || n.source_url || '';
+    const country  = n.country  ? `<span class="wr-feed-type">${_esc(n.country)}</span>`   : '';
+    const regBadge = n.regulator ? `<span class="wr-feed-regulator">${_esc(n.regulator)}</span>` : '';
+    const tags   = (n.tags || []).map(t => `<span class="wr-feed-tag">${_esc(t)}</span>`).join('');
+    const refBadge = srcUrl
+      ? `<a class="wr-feed-ref" href="${_esc(srcUrl)}" target="_blank" rel="noopener noreferrer" title="Source: ${_esc(srcUrl)}">${_esc(ref)} ↗</a>`
+      : `<span class="wr-feed-ref" title="Intelligence Reference">${_esc(ref)}</span>`;
+    return `<div class="wr-feed-item sev-${n.severity || 'GREEN'}">
+      <div class="wr-feed-dot"></div>
+      <div class="wr-feed-body">
+        <div class="wr-feed-meta">
+          <span class="wr-feed-date">${_esc(n.date || '')}</span>
+          ${regBadge}${country}
+          ${n.type ? `<span class="wr-feed-type">${_esc(n.type)}</span>` : ''}
+          ${refBadge}
+        </div>
+        <div class="wr-feed-headline">${_esc(n.headline || n.title || '')}</div>
+        <div class="wr-feed-detail">${_esc(n.detail || n.summary || '')}</div>
+        ${tags ? `<div class="wr-feed-tags">${tags}</div>` : ''}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ── Filter Feed ───────────────────────────────────────────────────────────────
+function filterFeed(slug, sev, btn) {
+  const state = _regionFeedState[slug];
+  if (!state) return;
+  document.querySelectorAll(`#wr-filter-${slug} .wr-filter-btn`).forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  state.activeSev = sev;
+  const feedEl = document.getElementById(`wr-feed-${slug}`);
+  if (feedEl) feedEl.innerHTML = _buildFeedItems(state.news, sev);
+}
+
+// ── Update Ticker ─────────────────────────────────────────────────────────────
+function _updateTicker(regions, regionData) {
+  const tickerEl = document.getElementById('ticker-scroll');
+  if (!tickerEl) return;
+  const items = [];
+  regions.forEach(r => {
+    const cfg    = CYBER_REGIONS[r];
+    const news   = regionData[r]?.news || [];
+    const critical = news.filter(n => n.severity === 'RED').length;
+    if (critical > 0) items.push(`<span class="ticker-item t-red">🔴 ${cfg.name}: ${critical} critical threat${critical!==1?'s':''}</span>`);
+  });
+  items.push('<span class="ticker-item t-teal">🔐 Govisk Cyber Intelligence Report — Generated ' +
+    new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }) + '</span>');
+  tickerEl.innerHTML = items.join('');
+}
+
+// ── Word Export ───────────────────────────────────────────────────────────────
+function downloadWord() {
+  if (!_reportState.generated) { _toast('Generate a report first.', 'amber'); return; }
+
+  const dateVal    = document.getElementById('wr-date-input').value;
+  const regionVal  = document.getElementById('wr-region-select').value;
+  const scopeLabel = regionVal === 'all'
+    ? 'All Regions'
+    : (CYBER_REGIONS[regionVal]?.name || regionVal);
+
+  const wordHtml = `
+    <!DOCTYPE html>
+    <html xmlns:o="urn:schemas-microsoft-com:office:office"
+          xmlns:w="urn:schemas-microsoft-com:office:word"
+          xmlns="http://www.w3.org/TR/REC-html40">
+    <head>
+      <meta charset="UTF-8"/>
+      <!--[if gte mso 9]>
+      <xml><w:WordDocument><w:View>Print</w:View><w:Zoom>90</w:Zoom><w:DoNotOptimizeForBrowser/></w:WordDocument></xml>
+      <![endif]-->
+      <style>
+        body { font-family: Calibri, Arial, sans-serif; font-size: 11pt; color: #1a1a2e; margin: 2cm; }
+        h1   { font-size: 20pt; color: #0891b2; border-bottom: 2pt solid #06B6D4; padding-bottom: 6pt; }
+        h2   { font-size: 15pt; color: #0891b2; margin-top: 16pt; border-bottom: 1pt solid #cbd5e1; padding-bottom: 4pt; }
+        h3   { font-size: 13pt; color: #0e7490; margin-top: 12pt; }
+        table { border-collapse: collapse; width: 100%; margin: 10pt 0; font-size: 10pt; }
+        th   { background: #0891b2; color: white; padding: 6pt 8pt; text-align: left; }
+        td   { border: 1pt solid #cbd5e1; padding: 5pt 8pt; vertical-align: top; }
+        tr:nth-child(even) td { background: #f0fdfe; }
+        .kicker { font-size: 8pt; font-weight: bold; color: #06B6D4; letter-spacing: 1pt; text-transform: uppercase; }
+        .meta   { font-size: 9pt; color: #64748b; margin-bottom: 4pt; }
+        .badge-red    { background: #fee2e2; color: #991b1b; padding: 1pt 5pt; font-size: 8pt; font-weight: bold; }
+        .badge-amber  { background: #fef3c7; color: #92400e; padding: 1pt 5pt; font-size: 8pt; font-weight: bold; }
+        .badge-green  { background: #dcfce7; color: #166534; padding: 1pt 5pt; font-size: 8pt; font-weight: bold; }
+        .badge-cyan   { background: #cffafe; color: #0e7490; padding: 1pt 5pt; font-size: 8pt; font-weight: bold; }
+        .section-rule { border: none; border-top: 1pt solid #e2e8f0; margin: 12pt 0; }
+        .confidential { font-size: 8pt; color: #94a3b8; border-top: 1pt solid #e2e8f0; margin-top: 20pt; padding-top: 8pt; }
+        .threat-row   { border-left: 4pt solid #ef4444; padding: 6pt 10pt; margin-bottom: 6pt; background: #fff5f5; }
+        .intel-item   { border-left: 3pt solid #cbd5e1; padding: 5pt 10pt; margin-bottom: 5pt; }
+        .intel-item.RED    { border-left-color: #ef4444; background: #fff5f5; }
+        .intel-item.AMBER  { border-left-color: #f59e0b; background: #fffbeb; }
+        .intel-item.GREEN  { border-left-color: #22c55e; background: #f0fdf4; }
+        .ref-tag { font-size: 8pt; color: #2563eb; font-weight: bold; }
+        .body-badge { display: inline-block; background: #e0f2fe; color: #0369a1; padding: 2pt 6pt; margin: 2pt; font-size: 9pt; font-weight: bold; }
+      </style>
+    </head>
+    <body>
+      <div class="kicker">CONFIDENTIAL — Govisk Cyber Intelligence Reports</div>
+      <h1>🔐 Cyber Intelligence World Region Report</h1>
+      <div class="meta">
+        <strong>Report Date:</strong> ${_fmtDate(dateVal)} &nbsp;|&nbsp;
+        <strong>Scope:</strong> ${_escWord(scopeLabel)} &nbsp;|&nbsp;
+        <strong>Generated:</strong> ${new Date().toLocaleString('en-GB', {day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'})}
+      </div>
+      <hr class="section-rule"/>
+      ${_buildWordThreatMatrix()}
+      ${_buildWordRegions()}
+      <div class="confidential">
+        CONFIDENTIAL — For authorised use only. Prepared by Govisk ExecCom Intelligence Reports.
+        Cyber intelligence sourced from NCSC, CISA, ENISA, JPCERT/CC, ASD/ACSC, ngCERT and regional partners.
+        This report does not constitute legal or regulatory advice.
+        Verify material findings at source agencies before action.
+        &copy; ${new Date().getFullYear()} Govisk ExecCom Intelligence.
+      </div>
+    </body>
+    </html>`;
+
+  const blob = new Blob(['﻿' + wordHtml], { type: 'application/msword; charset=utf-8' });
+  const url  = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  const datePart   = dateVal.replace(/-/g, '');
+  const regionPart = regionVal === 'all' ? 'World' : (CYBER_REGIONS[regionVal]?.name || regionVal).replace(/\s+/g, '_');
+  link.href     = url;
+  link.download = `Govisk_Cyber_Intelligence_Report_${regionPart}_${datePart}.doc`;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  URL.revokeObjectURL(url);
+  _toast('Cyber Intelligence Word document downloaded.', 'green');
+}
+
+function _escWord(s) {
+  return String(s ?? '')
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+
+function _buildWordThreatMatrix() {
+  const matrixBody = document.getElementById('wr-threat-matrix-body');
+  if (!matrixBody) return '';
+  const rows = Array.from(matrixBody.querySelectorAll('tr'));
+  if (!rows.length) return '';
+
+  let html = `<h2>🔴 Active Threat Matrix — Critical Threats</h2>
+  <table>
+    <thead><tr><th>Region</th><th>Date</th><th>Source</th><th>Type</th><th>Threat Headline</th><th>Severity</th></tr></thead>
+    <tbody>`;
+
+  rows.forEach(row => {
+    const cells = Array.from(row.querySelectorAll('td'));
+    if (cells.length < 5) return;
+    const region    = (cells[0]?.textContent || '').trim().replace(/\s+/g, ' ');
+    const date      = (cells[1]?.textContent || '').trim();
+    const source    = (cells[2]?.textContent || '').trim();
+    const type      = (cells[3]?.textContent || '').trim();
+    const headline  = (cells[4]?.textContent || '').trim();
+    const sevCls    = 'badge-red';
+    html += `<tr><td>${_escWord(region)}</td><td>${_escWord(date)}</td><td>${_escWord(source)}</td><td>${_escWord(type)}</td><td>${_escWord(headline)}</td><td><span class="${sevCls}">CRITICAL</span></td></tr>`;
+  });
+
+  html += `</tbody></table><hr class="section-rule"/>`;
+  return html;
+}
+
+function _buildWordRegions() {
+  const regionVal = document.getElementById('wr-region-select').value;
+  const regions   = regionVal === 'all' ? REGION_ORDER : [regionVal];
+  let html = '';
+
+  regions.forEach(slug => {
+    const cfg    = CYBER_REGIONS[slug];
+    const feedEl = document.getElementById(`wr-feed-${slug}`);
+    const feedItems = feedEl ? Array.from(feedEl.querySelectorAll('.wr-feed-item')) : [];
+
+    html += `<h2>${_escWord(cfg.flag)} ${_escWord(cfg.name)} — Cyber Intelligence</h2>
+    <p class="meta">Countries: ${_escWord(cfg.countries)}</p>`;
+
+    if (feedItems.length) {
+      html += `<h3>Intelligence Feed (${feedItems.length} items)</h3>
+      <table><thead><tr><th>Date</th><th>Source</th><th>Type</th><th>Headline</th><th>Detail</th><th>Severity</th><th>Reference</th></tr></thead><tbody>`;
+
+      feedItems.forEach(el => {
+        const sev     = el.className.includes('sev-RED') ? 'RED' : el.className.includes('sev-AMBER') ? 'AMBER' : 'GREEN';
+        const sevCls  = sev === 'RED' ? 'badge-red' : sev === 'AMBER' ? 'badge-amber' : 'badge-green';
+        const date    = el.querySelector('.wr-feed-date')?.textContent?.trim() || '';
+        const reg     = el.querySelector('.wr-feed-regulator')?.textContent?.trim() || '';
+        const type    = Array.from(el.querySelectorAll('.wr-feed-type')).map(e => e.textContent.trim()).join(', ');
+        const headline = el.querySelector('.wr-feed-headline')?.textContent?.trim() || '';
+        const detail   = el.querySelector('.wr-feed-detail')?.textContent?.trim() || '';
+        const refEl    = el.querySelector('.wr-feed-ref');
+        const ref      = (refEl?.textContent || '').replace(/\s*↗\s*$/, '');
+        const refHref  = refEl?.getAttribute('href') || '';
+        const refCell  = refHref
+          ? `<a href="${_escWord(refHref)}" style="color:#2563eb;text-decoration:underline">${_escWord(ref)}</a>`
+          : _escWord(ref);
+
+        html += `<tr class="intel-item ${sev}"><td>${_escWord(date)}</td><td>${_escWord(reg)}</td><td>${_escWord(type)}</td><td><strong>${_escWord(headline)}</strong></td><td>${_escWord(detail)}</td><td><span class="${sevCls}">${sev}</span></td><td>${refCell}</td></tr>`;
+      });
+
+      html += `</tbody></table>`;
+    } else {
+      html += `<p class="meta">No intelligence feed items loaded.</p>`;
+    }
+    html += `<hr class="section-rule"/>`;
+  });
+  return html;
+}
+</script>
+</body>
+</html>

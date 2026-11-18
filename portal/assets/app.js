@@ -1195,6 +1195,17 @@ const REPORTS = [
     href: '/world-report',
   },
   {
+    id: 'cyber_world_report',
+    title: 'Cyber Intelligence World Report',
+    tag: 'CYBER',
+    tagClass: 'tag-cyber',
+    iconClass: 'cat-cyber',
+    icon: 'shield',
+    desc: 'Global cyber threat intelligence from national cyber bodies — NCSC, CISA, ENISA, JPCERT/CC, ASD/ACSC, ngCERT and partners across all six Govisk regions.',
+    regs: 'NCSC · CISA · ENISA · JPCERT/CC · ASD/ACSC · ngCERT',
+    href: '/cyber-world-report',
+  },
+  {
     id: 'blacklist_report',
     title: 'FATF Blacklist Intelligence Report',
     tag: 'AML/CFT',
