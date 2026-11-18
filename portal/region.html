@@ -186,13 +186,56 @@
     .rp-feed-subtitle {
       font-size: 0.7rem; color: var(--text-3);
       font-family: 'IBM Plex Mono', monospace;
-      margin: -8px 0 12px;
+      margin: 6px 0 0; line-height: 1.8;
     }
 
-    /* ── Severity filter bar ── */
-    .rp-filter-bar {
-      display: flex; gap: 6px; margin-bottom: 12px;
+    /* ── Intel panel — right-side container to clear the left currency globe ── */
+    .rp-intel-panel {
+      margin-left: auto;
+      margin-right: 0;
     }
+    @media (min-width: 861px) {
+      .rp-intel-panel { max-width: 72%; }
+    }
+
+    /* ── Active Regulators card ── */
+    .rp-cloud-card {
+      background: var(--surface-1);
+      border: 1px solid var(--border-dim);
+      border-radius: var(--r-lg);
+      padding: 16px 28px;
+      margin-bottom: 16px;
+    }
+    .rp-cloud-card .rp-regulators {
+      justify-content: center;
+      margin-bottom: 0;
+    }
+    .rp-cloud-card .rp-reg-label {
+      width: 100%; text-align: center; margin-bottom: 8px; margin-right: 0;
+    }
+
+    /* ── Reference Intel header card ── */
+    .rp-ref-header {
+      background: var(--surface-1);
+      border: 1px solid var(--border-dim);
+      border-radius: var(--r-lg);
+      padding: 22px 32px 20px;
+      margin: 0 0 14px;
+      text-align: center;
+    }
+    .rp-ref-header .section-title {
+      justify-content: center; margin: 0 0 8px;
+    }
+    .rp-ref-header .section-title::after { display: none; }
+    .rp-ref-header .rp-feed-subtitle {
+      word-break: break-word; line-height: 1.9;
+    }
+
+    /* ── Reference feed filter bar ── */
+    .rp-filter-bar {
+      display: flex; gap: 6px; margin-bottom: 12px; justify-content: center;
+    }
+
     .rp-filter-btn {
       font-size: 0.65rem; font-weight: 700; padding: 4px 12px;
       border-radius: 12px; border: 1px solid var(--border-dim);
@@ -336,24 +379,32 @@
     </div>
   </div>
 
-  <!-- ── Active Regulators ── -->
-  <div class="rp-regulators" id="rp-reg-cloud">
-    <span class="rp-reg-label">Active Regulators</span>
-  </div>
+  <!-- ── Intel panel: right-shifted to clear the left currency globe ── -->
+  <div class="rp-intel-panel">
 
-  <!-- ── Reference Feed ── -->
-  <div style="margin-top:24px">
-    <div class="section-title" id="rp-ref-title">Reference Intelligence</div>
-    <div class="rp-feed-subtitle" id="rp-feed-subtitle"></div>
-  </div>
-  <div style="margin-bottom:10px">
+    <!-- Active Regulators -->
+    <div class="rp-cloud-card">
+      <div class="rp-regulators" id="rp-reg-cloud">
+        <span class="rp-reg-label">Active Regulators</span>
+      </div>
+    </div>
+
+    <!-- Reference Feed header -->
+    <div class="rp-ref-header">
+      <div class="section-title" id="rp-ref-title">Reference Intelligence</div>
+      <div class="rp-feed-subtitle" id="rp-feed-subtitle"></div>
+    </div>
+
+    <!-- Filter bar -->
     <div class="rp-filter-bar" id="rp-filter-bar">
       <button class="rp-filter-btn active" data-sev="ALL">All</button>
       <button class="rp-filter-btn" data-sev="RED">High Risk</button>
       <button class="rp-filter-btn" data-sev="AMBER">Medium</button>
       <button class="rp-filter-btn" data-sev="GREEN">Low Risk</button>
     </div>
-  </div>
+
+  </div><!-- /.rp-intel-panel -->
+
   <div class="reg-feed" id="rp-ref-feed">
     <div class="reg-item"><div class="reg-dot"></div><div class="reg-body"><div class="reg-headline" style="color:var(--text-3)">Loading reference intelligence…</div></div></div>
   </div>
@@ -388,7 +439,7 @@
 </div>
 
 <div class="toast-stack" id="toast-stack"></div>
-<script src="/assets/app.js?v=20261107"></script><script src="/assets/globe.js?v=20261023e"></script>
-<script src="/assets/region.js?v=20261108"></script>
-<script src="/assets/megamenu.js?v=20261107"></script></body>
+<script src="/assets/app.js?v=20261111"></script><script src="/assets/globe.js?v=20261023e"></script>
+<script src="/assets/region.js?v=20261111"></script>
+<script src="/assets/megamenu.js?v=20261111"></script></body>
 </html>

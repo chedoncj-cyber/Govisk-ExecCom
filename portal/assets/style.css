@@ -462,6 +462,7 @@ body {
 .tag-exec  { background: rgba(236, 72, 153, 0.1);  color: #F9A8D4; border: 1px solid rgba(236,72,153,0.18); }
 .tag-phys  { background: rgba(148, 163, 184, 0.1); color: #94A3B8; border: 1px solid rgba(148,163,184,0.15); }
 .tag-grc   { background: rgba(20, 184, 166, 0.12); color: #5EEAD4; border: 1px solid rgba(20,184,166,0.2); }
+.tag-idr   { background: rgba(251, 146, 60, 0.12); color: #FBA94C; border: 1px solid rgba(251,146,60,0.2); }
 
 /* Card icon tints */
 .cat-cass  { background: rgba(62, 130, 250, 0.1); }
@@ -472,6 +473,7 @@ body {
 .cat-exec  { background: rgba(236, 72, 153, 0.08); }
 .cat-phys  { background: rgba(148, 163, 184, 0.08); }
 .cat-grc   { background: rgba(20, 184, 166, 0.1); }
+.cat-idr   { background: rgba(251, 146, 60, 0.1); }
 
 /* ── Modal ── */
 .modal-backdrop {

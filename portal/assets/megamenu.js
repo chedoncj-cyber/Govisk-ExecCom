@@ -44,13 +44,36 @@
       activePaths: ['/portal'],
       columns: [
         {
-          head: 'GRC Suite',
+          head: 'Governance & Control',
           items: [
-            { icon: '🏛', title: 'Governance & Control', desc: 'Board-level GRC posture & control ops',  href: '/portal?report=governance_control_ops' },
-            { icon: '📜', title: 'Policy Governance',    desc: 'Policy inventory, review & attestation', href: '/portal?report=policy_governance' },
-            { icon: '⚙️', title: 'Risk Operations',      desc: 'KRI/KPI monitoring & risk register',     href: '/portal?report=risk_operations' },
-            { icon: '🚨', title: 'Incident Oversight',   desc: 'Incident log, RCA & regulator notify',   href: '/portal?report=incident_oversight' },
-            { icon: '🔐', title: 'Identity & Data Risk', desc: 'Identity, data & third-party risk',      href: '/portal?report=identity_data_risk' }
+            { icon: '📋', title: 'Policy Governance',     desc: 'Policy inventory, review cycles & attestation',   href: '/portal?report=gc_policy_governance' },
+            { icon: '⚙️', title: 'Risk Operations',        desc: 'KRI/KPI monitoring, risk register & appetite',    href: '/portal?report=gc_risk_operations' },
+            { icon: '🚨', title: 'Incident Oversight',     desc: 'Incident log, root cause & regulator notify',     href: '/portal?report=gc_incident_oversight' },
+            { icon: '🔭', title: 'Risk Intelligence',      desc: 'Threat feeds, emerging risks & horizon scanning', href: '/portal?report=gc_risk_intelligence' },
+            { icon: '👁',  title: 'Control Monitoring',    desc: 'Control effectiveness, testing & failures',       href: '/portal?report=gc_control_monitoring' },
+            { icon: '🤖', title: 'Control Automation',     desc: 'Automated control coverage & migration pipeline', href: '/portal?report=gc_control_automation' }
+          ]
+        },
+        {
+          head: 'Identity, Data & Risk',
+          items: [
+            { icon: '🔑', title: 'Access Governance',       desc: 'User access lifecycle, SoD & recertification',   href: '/portal?report=idr_access_governance' },
+            { icon: '🔒', title: 'Privileged Oversight',    desc: 'PAM coverage, MFA & session recording',          href: '/portal?report=idr_privileged_oversight' },
+            { icon: '👥', title: 'Third-Party Risk',         desc: 'Vendor assessments & 4th-party exposure',        href: '/portal?report=idr_third_party_risk' },
+            { icon: '🗄',  title: 'Data Governance',         desc: 'Classification, GDPR incidents & retention',     href: '/portal?report=idr_data_governance' },
+            { icon: '⚠️', title: 'Operational Risk',        desc: 'Op risk events, BCP/DR & RTO/RPO status',        href: '/portal?report=idr_operational_risk' },
+            { icon: '🌐', title: 'Regulatory Risk',          desc: 'Obligations, compliance gaps & enforcement',     href: '/portal?report=idr_regulatory_risk' }
+          ]
+        },
+        {
+          head: 'GRC — Enterprise',
+          items: [
+            { icon: '📈', title: 'Enterprise Risk',          desc: 'Strategic risk register & appetite compliance',  href: '/portal?report=grc_enterprise_risk' },
+            { icon: '✅', title: 'Compliance Management',    desc: 'Obligations, fines & enforcement tracking',      href: '/portal?report=grc_compliance_mgmt' },
+            { icon: '🎯', title: 'Policy Management',        desc: 'Policy library, review schedule & exceptions',   href: '/portal?report=grc_policy_management' },
+            { icon: '👤', title: 'Third-Party Oversight',    desc: 'Critical suppliers & 4th-party governance',      href: '/portal?report=grc_third_party_oversight' },
+            { icon: '🔔', title: 'Awareness & Training',     desc: 'Training completion & phishing simulation',      href: '/portal?report=grc_awareness_training' },
+            { icon: '📊', title: 'Executive Reporting',      desc: 'Board packs, KPI/KRI cadence & MI accuracy',    href: '/portal?report=grc_executive_reporting' }
           ]
         },
         {
@@ -235,7 +258,9 @@
       + '</div>'
       + '<div class="mm-mobile-section">'
       + '<div class="mm-mobile-section-head">Reports</div>'
-      + '<a class="mm-mobile-link" href="/portal?report=cass_health_check"><span class="mm-mobile-icon">📊</span>CASS Health Check</a>'
+      + '<a class="mm-mobile-link" href="/portal?report=gc_policy_governance"><span class="mm-mobile-icon">📋</span>Policy Governance</a>'
+      + '<a class="mm-mobile-link" href="/portal?report=idr_access_governance"><span class="mm-mobile-icon">🔑</span>Access Governance</a>'
+      + '<a class="mm-mobile-link" href="/portal?report=grc_enterprise_risk"><span class="mm-mobile-icon">📈</span>Enterprise Risk</a>'
       + '<a class="mm-mobile-link" href="/portal?report=threat_intelligence"><span class="mm-mobile-icon">🎯</span>Threat Intelligence</a>'
       + '<a class="mm-mobile-link" href="/portal?report=cyber_threat_assessment"><span class="mm-mobile-icon">🛡</span>Cyber Assessment</a>'
       + '<a class="mm-mobile-link" href="/portal"><span class="mm-mobile-icon">📋</span>All Reports →</a>'

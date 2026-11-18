@@ -61,25 +61,43 @@ ROUTES = {
 
 # Report type display names
 REPORT_NAMES = {
-    "cass_health_check":        "CASS Health Check",
-    "cass_resolution_pack":     "CASS Resolution Pack",
-    "client_money_segregation": "Client Money Segregation Audit",
-    "cass_breach_log":          "CASS Breach Log & Remediation",
-    "cass_oversight":           "CASS Oversight (COOF)",
-    "governance_control_ops":   "Governance & Control Operations",
-    "policy_governance":        "Policy Governance",
-    "risk_operations":          "Risk Operations",
-    "incident_oversight":       "Incident Oversight",
-    "identity_data_risk":       "Identity, Data & Third-Party Risk",
-    "threat_intelligence":      "Threat Intelligence",
-    "cyber_threat_assessment":  "Cyber Threat Assessment",
-    "fca_incident_response":    "FCA Incident Response",
-    "due_diligence":            "Due Diligence",
-    "country_risk":             "Country Risk",
-    "executive_protection":     "Executive Protection (SM&CR)",
-    "physical_security_audit":  "Physical Security Audit",
-    "grc_report":               "GRC Intelligence Report",
-    "blacklist_report":         "FATF Blacklist Report",
+    # ── GOVERNANCE & CONTROL Operations ──────────────────────────
+    "gc_policy_governance":       "Policy Governance",
+    "gc_risk_operations":         "Risk Operations",
+    "gc_incident_oversight":      "Incident Oversight",
+    "gc_risk_intelligence":       "Risk Intelligence",
+    "gc_control_monitoring":      "Control Monitoring",
+    "gc_control_automation":      "Control Automation",
+    # ── IDENTITY, DATA & Third-Party Risk ─────────────────────────
+    "idr_access_governance":      "Access Governance",
+    "idr_privileged_oversight":   "Privileged Access Oversight",
+    "idr_third_party_risk":       "Third-Party Risk",
+    "idr_operational_risk":       "Operational Risk",
+    "idr_data_governance":        "Data Governance",
+    "idr_regulatory_risk":        "Regulatory Risk",
+    # ── Governance Risk & Compliance ──────────────────────────────
+    "grc_enterprise_risk":        "Enterprise Risk Management",
+    "grc_compliance_mgmt":        "Compliance Management",
+    "grc_policy_management":      "Policy Management",
+    "grc_third_party_oversight":  "Third-Party Oversight",
+    "grc_awareness_training":     "Awareness & Training",
+    "grc_executive_reporting":    "Executive Reporting",
+    # ── Security & Risk Intelligence (unchanged) ──────────────────
+    "threat_intelligence":        "Threat Intelligence",
+    "cyber_threat_assessment":    "Cyber Threat Assessment",
+    "fca_incident_response":      "FCA Incident Response",
+    "due_diligence":              "Due Diligence",
+    "country_risk":               "Country Risk",
+    "executive_protection":       "Executive Protection (SM&CR)",
+    "physical_security_audit":    "Physical Security Audit",
+    "grc_report":                 "GRC Intelligence Report",
+    "blacklist_report":           "FATF Blacklist Report",
+    # ── CASS legacy (UK portal only, kept for backwards compat) ───
+    "cass_health_check":          "CASS Health Check",
+    "cass_resolution_pack":       "CASS Resolution Pack",
+    "client_money_segregation":   "Client Money Segregation Audit",
+    "cass_breach_log":            "CASS Breach Log & Remediation",
+    "cass_oversight":             "CASS Oversight (COOF)",
 }
 
 def _sse(obj):
