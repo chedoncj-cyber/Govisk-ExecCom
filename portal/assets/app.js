@@ -15,7 +15,12 @@ const ICONS = {
   globe:     `<svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>`,
   user:      `<svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>`,
   building:  `<svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="1"/><path d="M16 22V12H8v10"/><path d="M9 7h1"/><path d="M14 7h1"/><path d="M9 11h1"/><path d="M14 11h1"/></svg>`,
-  arrow:     `<svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>`,
+  arrow:      `<svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>`,
+  key:        `<svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 11-7.778 7.778 5.5 5.5 0 017.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>`,
+  users:      `<svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>`,
+  database:   `<svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>`,
+  trendingup: `<svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>`,
+  barchart:   `<svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>`,
 };
 
 // -- Field tooltip copy — keyed by field id ----------------------------------
@@ -219,400 +224,640 @@ const FIELD_TOOLTIPS = {
 
 // -- Report catalogue --------------------------------------------------------
 const REPORTS = [
+  // ── GOVERNANCE & CONTROL Operations ──────────────────────────────────────────
   {
-    id: 'cass_health_check',
-    title: 'CASS Health Check',
-    tag: 'CASS 6 & 7',
-    tagClass: 'tag-cass',
-    iconClass: 'cat-cass',
-    icon: 'activity',
-    desc: 'Reconciliation gaps, pool compliance, CASS 7.13.4R & 7.18 scoring with RAG output.',
-    regs: 'CASS 6 - CASS 7 - CASS 7A',
-    fields: [
-      { row: 'cols-2', fields: [
-        { id: 'firm_name', label: 'Firm Name', type: 'text', placeholder: 'Barclays Bank plc', required: true },
-        { id: 'frn', label: 'FCA FRN', type: 'text', placeholder: '122702' },
-      ]},
-      { row: 'cols-2', fields: [
-        { id: 'cass_category', label: 'CASS Firm Category', type: 'select', options: ['Small', 'Medium', 'Large'] },
-        { id: 'assessment_period', label: 'Assessment Period', type: 'text', placeholder: 'e.g. Q3 2026' },
-      ]},
-      { row: 'cols-2', fields: [
-        { id: 'last_cm_reconciliation_date', label: 'Last Client Money Recon Date', type: 'date' },
-        { id: 'last_custody_reconciliation_date', label: 'Last Custody Recon Date', type: 'date' },
-      ]},
-      { row: 'cols-2', fields: [
-        { id: 'client_money_calculation_method', label: 'CM Calculation Method', type: 'select', options: ['Standard', 'Alternative'] },
-        { id: 'alternative_method_fca_agreed', label: 'Alternative Method FCA Agreed?', type: 'select', options: ['false', 'true'] },
-      ]},
-      { row: 'cols-2', fields: [
-        { id: 'max_single_institution_percentage', label: 'Max Single Institution %', type: 'number', placeholder: '20' },
-        { id: 'custody_assets_segregated', label: 'Custody Assets Segregated?', type: 'select', options: ['true', 'false'] },
-      ]},
-      { row: 'cols-2', fields: [
-        { id: 'acknowledgement_letters_in_place', label: 'Acknowledgement Letters in Place?', type: 'select', options: ['true', 'false'] },
-        { id: 'coof_individual_named', label: 'COOF Individual Named?', type: 'select', options: ['true', 'false'] },
-      ]},
-      { row: 'cols-2', fields: [
-        { id: 'coof_last_review_date', label: 'COOF Last Review Date', type: 'date' },
-        { id: 'cass_breaches_last_12_months', label: 'CASS Breaches in Last 12 Months?', type: 'select', options: ['false', 'true'] },
-      ]},
-      { row: 'cols-2', fields: [
-        { id: 'has_retail_clients', label: 'Has Retail Clients?', type: 'select', options: ['true', 'false'] },
-        { id: 'retail_interest_paid', label: 'Retail Interest Paid? (CASS 7.11.32R)', type: 'select', options: ['true', 'false', ''] },
-      ]},
-      { row: 'cols-2', fields: [
-        { id: 'custodian_selection_grounds_recorded', label: 'Custodian Selection Grounds Recorded? (CASS 6.3.2A R)', type: 'select', options: ['true', 'false'] },
-        { id: 'is_payment_or_emoney_firm', label: 'Payment / E-Money Firm? (CASS 15)', type: 'select', options: ['false', 'true'] },
-      ]},
-      { row: null, fields: [
-        { id: 'cass_breach_details', label: 'Breach Details (if any)', type: 'textarea', placeholder: 'Describe any CASS breaches in the period...', rows: 3 },
-      ]},
-    ],
-  },
-  {
-    id: 'cass_resolution_pack',
-    title: 'CASS Resolution Pack Readiness',
-    tag: 'CASS 10',
-    tagClass: 'tag-cass',
-    iconClass: 'cat-cass',
-    icon: 'clipboard',
-    desc: 'Client asset return readiness under CASS 10 -- pack completeness, distribution, nominee companies.',
-    regs: 'CASS 10 - FCA SUP',
-    fields: [
-      { row: 'cols-2', fields: [
-        { id: 'firm_name', label: 'Firm Name', type: 'text', required: true },
-        { id: 'frn', label: 'FCA FRN', type: 'text' },
-      ]},
-      { row: 'cols-2', fields: [
-        { id: 'crp_document_exists', label: 'Resolution Pack Exists?', type: 'select', options: ['true', 'false'] },
-        { id: 'crp_accessible_48hrs', label: 'Retrievable within 48 Hours?', type: 'select', options: ['true', 'false'] },
-      ]},
-      { row: 'cols-2', fields: [
-        { id: 'crp_responsible_individual', label: 'Responsible Individual', type: 'text', placeholder: 'Name of pack owner' },
-        { id: 'crp_last_review_date', label: 'Last Review Date', type: 'date' },
-      ]},
-      { row: 'cols-2', fields: [
-        { id: 'crp_tested', label: 'Pack Tested?', type: 'select', options: ['true', 'false'] },
-        { id: 'crp_last_test_date', label: 'Last Test Date', type: 'date' },
-      ]},
-      { row: 'cols-2', fields: [
-        { id: 'crp_secure_offsite_storage', label: 'Secure Off-Site Storage?', type: 'select', options: ['true', 'false'] },
-        { id: 'client_asset_schedule', label: 'Client Asset Schedule Included?', type: 'select', options: ['true', 'false'] },
-      ]},
-      { row: 'cols-2', fields: [
-        { id: 'acknowledgement_letters', label: 'Acknowledgement Letters Included?', type: 'select', options: ['true', 'false'] },
-        { id: 'reconciliation_records', label: 'Reconciliation Records Included?', type: 'select', options: ['true', 'false'] },
-      ]},
-      { row: null, fields: [
-        { id: 'system_access_credentials', label: 'System Access Credentials Documented?', type: 'select', options: ['true', 'false'] },
-      ]},
-    ],
-  },
-  {
-    id: 'client_money_segregation',
-    title: 'Client Money Segregation Audit',
-    tag: 'CASS 7',
-    tagClass: 'tag-cass',
-    iconClass: 'cat-cass',
-    icon: 'lock',
-    desc: 'Segregation method, CMA reconciliation, daily reconciliation compliance under CASS 7.',
-    regs: 'CASS 7 - CASS 7A',
-    fields: [
-      { row: 'cols-2', fields: [
-        { id: 'firm_name', label: 'Firm Name', type: 'text', required: true },
-        { id: 'frn', label: 'FCA FRN', type: 'text' },
-      ]},
-      { row: 'cols-2', fields: [
-        { id: 'calculation_method', label: 'CM Calculation Method', type: 'select', options: ['Standard', 'Alternative'] },
-        { id: 'alternative_method_fca_agreed', label: 'Alternative Method FCA Agreed?', type: 'select', options: ['false', 'true'] },
-      ]},
-      { row: 'cols-2', fields: [
-        { id: 'last_internal_reconciliation_date', label: 'Last Internal Recon Date', type: 'date' },
-        { id: 'internal_reconciliation_frequency', label: 'Internal Recon Frequency', type: 'select', options: ['Daily', 'Weekly', 'Monthly'] },
-      ]},
-      { row: 'cols-2', fields: [
-        { id: 'last_external_reconciliation_date', label: 'Last External Recon Date', type: 'date' },
-        { id: 'max_single_institution_pct', label: 'Max Single Institution %', type: 'number', placeholder: '20' },
-      ]},
-      { row: 'cols-2', fields: [
-        { id: 'acknowledgement_letters_all_accounts', label: 'Ack Letters for All Accounts?', type: 'select', options: ['true', 'false'] },
-        { id: 'all_accounts_designated', label: 'All Accounts Designated?', type: 'select', options: ['true', 'false'] },
-      ]},
-      { row: 'cols-2', fields: [
-        { id: 'accounts_with_affiliated_entities', label: 'Accounts with Affiliated Entities?', type: 'select', options: ['false', 'true'] },
-        { id: 'third_party_agent_arrangements', label: 'Third-Party Agent Arrangements?', type: 'select', options: ['false', 'true'] },
-      ]},
-      { row: 'cols-2', fields: [
-        { id: 'reconciliation_breaks_identified', label: 'Reconciliation Breaks Found?', type: 'select', options: ['false', 'true'] },
-      ]},
-      { row: null, fields: [
-        { id: 'break_details', label: 'Break Details (if any)', type: 'textarea', placeholder: 'Describe any reconciliation breaks found...', rows: 3 },
-      ]},
-    ],
-  },
-  {
-    id: 'cass_breach_log',
-    title: 'CASS Breach Log & Remediation',
-    tag: 'CASS BREACH',
-    tagClass: 'tag-cass',
-    iconClass: 'cat-cass',
-    icon: 'alert',
-    desc: 'Document CASS breaches, root cause analysis, corrective actions and FCA notification status.',
-    regs: 'CASS 6 - CASS 7 - FCA SUP',
-    fields: [
-      { row: 'cols-2', fields: [
-        { id: 'firm_name', label: 'Firm Name', type: 'text', required: true },
-        { id: 'frn', label: 'FCA FRN', type: 'text' },
-      ]},
-      { row: null, fields: [
-        { id: 'breach_register_maintained', label: 'Breach Register Maintained?', type: 'select', options: ['true', 'false'] },
-      ]},
-      { row: 'cols-2', fields: [
-        { id: 'breach_date', label: 'Breach Date', type: 'date', required: true },
-        { id: 'breach_type', label: 'Breach Type', type: 'select', options: ['CASS 7 Segregation Failure', 'CASS 6 Custody Failure', 'Reconciliation Failure', 'Reporting Failure', 'Other'] },
-      ]},
-      { row: null, fields: [
-        { id: 'rule_breached', label: 'Rule Breached', type: 'text', placeholder: 'e.g. CASS 7.13.4 R', required: true },
-      ]},
-      { row: 'cols-2', fields: [
-        { id: 'fca_notified', label: 'FCA Notified?', type: 'select', options: ['false', 'true'] },
-        { id: 'notification_required', label: 'Notification Required?', type: 'select', options: ['true', 'false'] },
-      ]},
-      { row: null, fields: [
-        { id: 'notification_date', label: 'FCA Notification Date', type: 'date' },
-      ]},
-      { row: null, fields: [
-        { id: 'remediation_status', label: 'Remediation Status', type: 'select', options: ['Open', 'Closed', 'Monitoring'] },
-      ]},
-      { row: null, fields: [
-        { id: 'root_cause_analysis', label: 'Root Cause Analysis', type: 'textarea', placeholder: 'What caused the breach and what has been done?', rows: 3 },
-      ]},
-    ],
-  },
-  {
-    id: 'cass_oversight',
-    title: 'CASS Oversight (COOF)',
-    tag: 'COOF',
-    tagClass: 'tag-cass',
-    iconClass: 'cat-cass',
-    icon: 'eye',
-    desc: 'CASS Operational Oversight Function -- board reporting, frequency, issues raised.',
-    regs: 'CASS 1A - SM&CR',
-    fields: [
-      { row: 'cols-2', fields: [
-        { id: 'firm_name', label: 'Firm Name', type: 'text', required: true },
-        { id: 'frn', label: 'FCA FRN', type: 'text' },
-      ]},
-      { row: 'cols-2', fields: [
-        { id: 'cass_category', label: 'CASS Firm Category', type: 'select', options: ['Small', 'Medium', 'Large'] },
-        { id: 'coof_individual_name', label: 'COOF Individual Name', type: 'text', placeholder: 'Name of appointed COOF officer' },
-      ]},
-      { row: 'cols-2', fields: [
-        { id: 'coof_individual_qualified', label: 'COOF Individual Qualified?', type: 'select', options: ['true', 'false'] },
-        { id: 'coof_also_compliance_officer', label: 'COOF Also Compliance Officer?', type: 'select', options: ['false', 'true'] },
-      ]},
-      { row: 'cols-2', fields: [
-        { id: 'last_coof_review_of_cass_date', label: 'Last COOF Review of CASS', type: 'date' },
-        { id: 'last_coof_report_to_board_date', label: 'Last COOF Report to Board', type: 'date' },
-      ]},
-      { row: 'cols-2', fields: [
-        { id: 'board_minutes_confirm_coof_report', label: 'Board Minutes Confirm COOF Report?', type: 'select', options: ['true', 'false'] },
-      ]},
-      { row: null, fields: [
-        { id: 'outstanding_coof_recommendations', label: 'Outstanding COOF Recommendations', type: 'textarea', placeholder: 'List any outstanding recommendations...', rows: 3 },
-      ]},
-    ],
-  },
-  // ── GRC Framework Reports (non-UK regions; replaces CASS suite) ──────────────
-  {
-    id: 'governance_control_ops',
-    title: 'Governance & Control Operations',
-    tag: 'GC OPS',
-    tagClass: 'tag-grc',
-    iconClass: 'cat-grc',
-    icon: 'activity',
-    desc: 'Policy governance, risk operations, incident oversight, control effectiveness — board-level GRC posture.',
-    regs: 'COSO ERM - ISO 31000 - NIST CSF',
-    fields: [
-      { row: 'cols-2', fields: [
-        { id: 'firm_name', label: 'Firm Name', type: 'text', required: true },
-        { id: 'frn', label: 'Body Ref', type: 'text', placeholder: 'Regulator reference' },
-      ]},
-      { row: 'cols-2', fields: [
-        { id: 'assessment_period', label: 'Assessment Period', type: 'text', placeholder: 'e.g. Q3 2026' },
-        { id: 'grc_framework', label: 'GRC Framework', type: 'select', options: ['COSO ERM', 'ISO 31000', 'NIST CSF', 'OCEG', 'Mixed'] },
-      ]},
-      { row: 'cols-2', fields: [
-        { id: 'governance_board_oversight', label: 'Board Oversight Active?', type: 'select', options: ['true', 'false'] },
-        { id: 'risk_appetite_defined', label: 'Risk Appetite Defined?', type: 'select', options: ['true', 'false'] },
-      ]},
-      { row: 'cols-2', fields: [
-        { id: 'governance_policy_doc_current', label: 'Policies Reviewed (12 months)?', type: 'select', options: ['true', 'false'] },
-        { id: 'governance_policy_comprehension_rate', label: 'Staff Attestation Rate (%)', type: 'number', placeholder: '85' },
-      ]},
-      { row: 'cols-2', fields: [
-        { id: 'compliance_control_effectiveness', label: 'Control Effectiveness (%)', type: 'number', placeholder: '80' },
-        { id: 'compliance_audit_findings_open', label: 'Open Audit Findings', type: 'number', placeholder: '0' },
-      ]},
-      { row: 'cols-2', fields: [
-        { id: 'grc_platform_in_use', label: 'GRC Platform in Use?', type: 'select', options: ['true', 'false'] },
-        { id: 'governance_decision_framework', label: 'Decision Framework Documented?', type: 'select', options: ['true', 'false'] },
-      ]},
-      { row: null, fields: [
-        { id: 'governance_notes', label: 'Governance Notes', type: 'textarea', placeholder: 'Key findings, exceptions, escalation items...', rows: 3 },
-      ]},
-    ],
-  },
-  {
-    id: 'policy_governance',
+    id: 'gc_policy_governance',
     title: 'Policy Governance',
     tag: 'POLICY GOV',
     tagClass: 'tag-grc',
     iconClass: 'cat-grc',
     icon: 'clipboard',
     desc: 'Policy inventory, review cycles, compliance gaps, board approval status and staff attestation rates.',
-    regs: 'COSO ERM - ISO 31000 - FCA SYSC',
+    regs: 'COSO ERM · ISO 31000 · FCA SYSC · NIST CSF',
     fields: [
       { row: 'cols-2', fields: [
         { id: 'firm_name', label: 'Firm Name', type: 'text', required: true },
-        { id: 'frn', label: 'Body Ref', type: 'text' },
+        { id: 'frn', label: 'Body Ref', type: 'text', placeholder: 'Regulator reference' },
       ]},
       { row: 'cols-2', fields: [
-        { id: 'assessment_period', label: 'Assessment Period', type: 'text', placeholder: 'e.g. Q3 2026' },
-        { id: 'total_active_policies', label: 'Total Active Policies', type: 'number', placeholder: '25' },
+        { id: 'assessment_period', label: 'Assessment Period', type: 'text', placeholder: 'e.g. Q4 2026' },
+        { id: 'policy_total', label: 'Total Active Policies (KPI)', type: 'number', placeholder: '25' },
       ]},
       { row: 'cols-2', fields: [
-        { id: 'policies_reviewed_last_12m', label: 'Policies Reviewed (Last 12m)', type: 'select', options: ['All', 'Most', 'Some', 'None'] },
-        { id: 'governance_policy_comprehension_rate', label: 'Staff Attestation Rate (%)', type: 'number', placeholder: '85' },
+        { id: 'policy_current_pct', label: 'Policies Current / Reviewed % (KPI)', type: 'number', placeholder: '90' },
+        { id: 'policy_attestation_rate', label: 'Staff Attestation Rate % (KPI)', type: 'number', placeholder: '85' },
       ]},
       { row: 'cols-2', fields: [
-        { id: 'governance_board_oversight', label: 'Board-Approved Policies?', type: 'select', options: ['true', 'false'] },
-        { id: 'policy_gaps_identified', label: 'Policy Gaps Identified?', type: 'select', options: ['false', 'true'] },
+        { id: 'policy_gaps_count', label: 'Policy Gaps Identified (KRI)', type: 'number', placeholder: '0' },
+        { id: 'policy_exceptions_open', label: 'Open Exceptions (KRI)', type: 'number', placeholder: '0' },
       ]},
       { row: 'cols-2', fields: [
-        { id: 'policy_exception_process', label: 'Exception Process in Place?', type: 'select', options: ['true', 'false'] },
-        { id: 'compliance_regulatory_monitoring', label: 'Regulatory Change Monitoring?', type: 'select', options: ['true', 'false'] },
+        { id: 'policy_board_approved', label: 'Board-Approved Policies?', type: 'select', options: ['Yes', 'No', 'Partial'] },
+        { id: 'kri_overdue_reviews', label: 'Overdue Policy Reviews (KRI breach)', type: 'number', placeholder: '0' },
       ]},
       { row: null, fields: [
-        { id: 'policy_notes', label: 'Policy Notes', type: 'textarea', placeholder: 'Key policy gaps, upcoming reviews, exceptions...', rows: 3 },
+        { id: 'policy_notes', label: 'Policy Notes', type: 'textarea', placeholder: 'Key gaps, upcoming reviews, exceptions, escalation items...', rows: 3 },
       ]},
     ],
   },
   {
-    id: 'risk_operations',
+    id: 'gc_risk_operations',
     title: 'Risk Operations',
     tag: 'RISK OPS',
     tagClass: 'tag-grc',
     iconClass: 'cat-grc',
     icon: 'activity',
     desc: 'KRI/KPI monitoring, risk register status, appetite breaches, emerging risk scanning and trend analysis.',
-    regs: 'COSO ERM - ISO 31000 - NIST RMF',
+    regs: 'COSO ERM · ISO 31000 · NIST RMF · FCA SYSC 7',
     fields: [
       { row: 'cols-2', fields: [
         { id: 'firm_name', label: 'Firm Name', type: 'text', required: true },
         { id: 'frn', label: 'Body Ref', type: 'text' },
       ]},
       { row: 'cols-2', fields: [
-        { id: 'assessment_period', label: 'Assessment Period', type: 'text', placeholder: 'e.g. Q3 2026' },
-        { id: 'risk_appetite_defined', label: 'Risk Appetite Statement Defined?', type: 'select', options: ['true', 'false'] },
+        { id: 'assessment_period', label: 'Assessment Period', type: 'text', placeholder: 'e.g. Q4 2026' },
+        { id: 'risk_register_total', label: 'Total Risk Register Items (KPI)', type: 'number', placeholder: '50' },
       ]},
       { row: 'cols-2', fields: [
-        { id: 'risk_register_maintained', label: 'Risk Register Maintained?', type: 'select', options: ['true', 'false'] },
-        { id: 'risk_register_last_reviewed', label: 'Risk Register Last Reviewed', type: 'date' },
+        { id: 'risk_open_items', label: 'Open / Unresolved Risks (KPI)', type: 'number', placeholder: '5' },
+        { id: 'risk_treatment_completion_pct', label: 'Treatment Plan Completion % (KPI)', type: 'number', placeholder: '80' },
       ]},
       { row: 'cols-2', fields: [
-        { id: 'risk_open_items', label: 'Open Risk Items', type: 'number', placeholder: '0' },
-        { id: 'risk_critical_items', label: 'Critical / High Overdue Items', type: 'number', placeholder: '0' },
+        { id: 'kri_total', label: 'KRIs Monitored (KPI)', type: 'number', placeholder: '15' },
+        { id: 'kri_amber', label: 'KRIs at Amber (KRI)', type: 'number', placeholder: '2' },
       ]},
       { row: 'cols-2', fields: [
-        { id: 'kri_count', label: 'KRIs Monitored', type: 'number', placeholder: '10' },
-        { id: 'kri_breaches', label: 'KRI Breaches (Last Quarter)', type: 'number', placeholder: '0' },
+        { id: 'kri_red', label: 'KRIs at Red / Breach (KRI)', type: 'number', placeholder: '0' },
+        { id: 'risk_appetite_breaches', label: 'Risk Appetite Breaches (KRI)', type: 'number', placeholder: '0' },
       ]},
       { row: 'cols-2', fields: [
-        { id: 'risk_identification_process', label: 'Formal Risk Identification Process?', type: 'select', options: ['true', 'false'] },
-        { id: 'third_party_risk_assessed', label: 'Third-Party Risks Assessed?', type: 'select', options: ['true', 'false'] },
+        { id: 'risk_register_last_reviewed', label: 'Register Last Reviewed', type: 'date' },
+        { id: 'risk_appetite_defined', label: 'Risk Appetite Defined?', type: 'select', options: ['Yes', 'No'] },
       ]},
       { row: null, fields: [
-        { id: 'risk_ops_notes', label: 'Risk Operations Notes', type: 'textarea', placeholder: 'KRI breaches, emerging risks, appetite exceptions...', rows: 3 },
+        { id: 'risk_ops_notes', label: 'Risk Operations Notes', type: 'textarea', placeholder: 'KRI breaches, emerging risks, appetite exceptions, treatment plan updates...', rows: 3 },
       ]},
     ],
   },
   {
-    id: 'incident_oversight',
+    id: 'gc_incident_oversight',
     title: 'Incident Oversight',
     tag: 'INCIDENT',
     tagClass: 'tag-grc',
     iconClass: 'cat-grc',
-    icon: 'alert-triangle',
+    icon: 'alert',
     desc: 'Incident log, root cause analysis, remediation tracking, regulator notification and lessons learned.',
-    regs: 'FCA SYSC - ISO 22301 - DORA - NIST CSF',
+    regs: 'FCA SYSC · ISO 22301 · DORA Art.19 · NIST CSF',
     fields: [
       { row: 'cols-2', fields: [
         { id: 'firm_name', label: 'Firm Name', type: 'text', required: true },
         { id: 'frn', label: 'Body Ref', type: 'text' },
       ]},
       { row: 'cols-2', fields: [
-        { id: 'assessment_period', label: 'Assessment Period', type: 'text', placeholder: 'e.g. Q3 2026' },
-        { id: 'total_incidents_period', label: 'Total Incidents in Period', type: 'number', placeholder: '0' },
+        { id: 'assessment_period', label: 'Assessment Period', type: 'text', placeholder: 'e.g. Q4 2026' },
+        { id: 'incident_total', label: 'Total Incidents in Period (KPI)', type: 'number', placeholder: '0' },
       ]},
       { row: 'cols-2', fields: [
-        { id: 'critical_incidents', label: 'Critical Incidents', type: 'number', placeholder: '0' },
-        { id: 'fca_notified', label: 'Regulator Notified?', type: 'select', options: ['false', 'true', 'N/A'] },
+        { id: 'incident_critical', label: 'Critical / High Incidents (KRI)', type: 'number', placeholder: '0' },
+        { id: 'incident_mttr_days', label: 'Mean Time to Resolve Days (KPI)', type: 'number', placeholder: '5' },
       ]},
       { row: 'cols-2', fields: [
-        { id: 'fca_notification_datetime', label: 'Regulator Notification Date', type: 'date' },
-        { id: 'fca_notification_reference', label: 'Regulator Notification Reference', type: 'text' },
+        { id: 'regulator_notified', label: 'Regulator Notified?', type: 'select', options: ['Yes', 'No', 'N/A'] },
+        { id: 'kri_overdue_incidents', label: 'Overdue Open Incidents (KRI breach)', type: 'number', placeholder: '0' },
       ]},
       { row: 'cols-2', fields: [
-        { id: 'root_cause_analysis_completed', label: 'Root Cause Analysis Done?', type: 'select', options: ['true', 'false'] },
-        { id: 'remediation_on_track', label: 'Remediation On Track?', type: 'select', options: ['true', 'false', 'N/A'] },
-      ]},
-      { row: 'cols-2', fields: [
-        { id: 'lessons_learned_documented', label: 'Lessons Learned Documented?', type: 'select', options: ['true', 'false'] },
-        { id: 'incident_management_policy', label: 'Incident Management Policy Exists?', type: 'select', options: ['true', 'false'] },
+        { id: 'rca_completed', label: 'Root Cause Analysis Done?', type: 'select', options: ['Yes', 'No', 'In Progress'] },
+        { id: 'lessons_learned_documented', label: 'Lessons Learned Documented?', type: 'select', options: ['Yes', 'No'] },
       ]},
       { row: null, fields: [
-        { id: 'incident_notes', label: 'Incident Summary', type: 'textarea', placeholder: 'Key incidents, root causes, outstanding actions...', rows: 3 },
+        { id: 'incident_notes', label: 'Incident Summary', type: 'textarea', placeholder: 'Key incidents, root causes, outstanding actions, regulatory notifications...', rows: 3 },
       ]},
     ],
   },
   {
-    id: 'identity_data_risk',
-    title: 'Identity, Data & Third-Party Risk',
-    tag: 'IDR',
+    id: 'gc_risk_intelligence',
+    title: 'Risk Intelligence',
+    tag: 'RISK INTEL',
     tagClass: 'tag-grc',
     iconClass: 'cat-grc',
-    icon: 'lock',
-    desc: 'Identity governance, data classification, third-party risk assessments, access reviews and supply chain risk.',
-    regs: 'GDPR - ISO 27001 - FCA PS26/2 - NIST CSF',
+    icon: 'search',
+    desc: 'Threat and regulatory intelligence feeds, emerging risk identification, regulatory change tracking and trend analysis.',
+    regs: 'FCA Handbook · FATF · ISO 31000 · NIST CSF',
     fields: [
       { row: 'cols-2', fields: [
         { id: 'firm_name', label: 'Firm Name', type: 'text', required: true },
         { id: 'frn', label: 'Body Ref', type: 'text' },
       ]},
       { row: 'cols-2', fields: [
-        { id: 'assessment_period', label: 'Assessment Period', type: 'text', placeholder: 'e.g. Q3 2026' },
-        { id: 'data_classification_policy', label: 'Data Classification Policy?', type: 'select', options: ['true', 'false'] },
+        { id: 'assessment_period', label: 'Assessment Period', type: 'text', placeholder: 'e.g. Q4 2026' },
+        { id: 'intel_feeds_monitored', label: 'Intelligence Feeds Monitored (KPI)', type: 'number', placeholder: '10' },
       ]},
       { row: 'cols-2', fields: [
-        { id: 'access_reviews_completed', label: 'Access Reviews Completed (Qtrly)?', type: 'select', options: ['true', 'false'] },
-        { id: 'privileged_access_mfa', label: 'Privileged Access MFA Enforced?', type: 'select', options: ['true', 'false'] },
+        { id: 'intel_reports_produced', label: 'Intelligence Reports Produced (KPI)', type: 'number', placeholder: '4' },
+        { id: 'regulatory_changes_tracked', label: 'Regulatory Changes Tracked (KPI)', type: 'number', placeholder: '8' },
       ]},
       { row: 'cols-2', fields: [
-        { id: 'third_party_risk_assessed', label: 'Critical Third-Party Risks Assessed?', type: 'select', options: ['true', 'false'] },
-        { id: 'vendor_contracts_data_protection', label: 'Data Protection Clauses in Contracts?', type: 'select', options: ['true', 'false'] },
+        { id: 'emerging_risks_identified', label: 'Emerging Risks Identified (KRI)', type: 'number', placeholder: '2' },
+        { id: 'kri_missed_reg_updates', label: 'Missed Regulatory Updates (KRI breach)', type: 'number', placeholder: '0' },
       ]},
       { row: 'cols-2', fields: [
-        { id: 'data_breach_response_plan', label: 'Data Breach Response Plan?', type: 'select', options: ['true', 'false'] },
-        { id: 'gdpr_dpo_appointed', label: 'DPO / Privacy Officer Appointed?', type: 'select', options: ['true', 'false', 'N/A'] },
-      ]},
-      { row: 'cols-2', fields: [
-        { id: 'supply_chain_risk_mapped', label: 'Supply Chain Risk Mapped?', type: 'select', options: ['true', 'false'] },
-        { id: 'fourth_party_risk_considered', label: 'Fourth-Party Risk Considered?', type: 'select', options: ['true', 'false'] },
+        { id: 'intel_coverage_pct', label: 'Intelligence Coverage % (KPI)', type: 'number', placeholder: '90' },
+        { id: 'horizon_scanning_active', label: 'Horizon Scanning Active?', type: 'select', options: ['Yes', 'No'] },
       ]},
       { row: null, fields: [
-        { id: 'idr_notes', label: 'Identity, Data & Risk Notes', type: 'textarea', placeholder: 'Access review findings, vendor risk issues, data incidents...', rows: 3 },
+        { id: 'intel_notes', label: 'Risk Intelligence Notes', type: 'textarea', placeholder: 'Key intelligence findings, emerging regulatory risks, unaddressed items...', rows: 3 },
+      ]},
+    ],
+  },
+  {
+    id: 'gc_control_monitoring',
+    title: 'Control Monitoring',
+    tag: 'CTRL MON',
+    tagClass: 'tag-grc',
+    iconClass: 'cat-grc',
+    icon: 'eye',
+    desc: 'Control inventory, effectiveness testing, failed controls, testing coverage and remediation status.',
+    regs: 'COSO IC-IF · ISO 27001 · NIST CSF · SOC 2',
+    fields: [
+      { row: 'cols-2', fields: [
+        { id: 'firm_name', label: 'Firm Name', type: 'text', required: true },
+        { id: 'frn', label: 'Body Ref', type: 'text' },
+      ]},
+      { row: 'cols-2', fields: [
+        { id: 'assessment_period', label: 'Assessment Period', type: 'text', placeholder: 'e.g. Q4 2026' },
+        { id: 'controls_total', label: 'Total Controls in Inventory (KPI)', type: 'number', placeholder: '100' },
+      ]},
+      { row: 'cols-2', fields: [
+        { id: 'controls_effective_pct', label: 'Controls Effective % (KPI)', type: 'number', placeholder: '85' },
+        { id: 'controls_tested_pct', label: 'Controls Tested This Period % (KPI)', type: 'number', placeholder: '75' },
+      ]},
+      { row: 'cols-2', fields: [
+        { id: 'controls_failed', label: 'Failed Controls (KRI)', type: 'number', placeholder: '0' },
+        { id: 'controls_critical_failed', label: 'Critical Controls Failed (KRI breach)', type: 'number', placeholder: '0' },
+      ]},
+      { row: 'cols-2', fields: [
+        { id: 'controls_overdue_testing', label: 'Controls Overdue Testing (KRI)', type: 'number', placeholder: '0' },
+        { id: 'remediation_actions_open', label: 'Open Remediation Actions (KRI)', type: 'number', placeholder: '0' },
+      ]},
+      { row: null, fields: [
+        { id: 'control_monitoring_notes', label: 'Control Monitoring Notes', type: 'textarea', placeholder: 'Failed controls, overdue tests, remediation priorities, design gaps...', rows: 3 },
+      ]},
+    ],
+  },
+  {
+    id: 'gc_control_automation',
+    title: 'Control Automation',
+    tag: 'CTRL AUTO',
+    tagClass: 'tag-grc',
+    iconClass: 'cat-grc',
+    icon: 'shield',
+    desc: 'Automated control coverage, manual control migration programme and automation implementation KPIs.',
+    regs: 'COSO IC-IF · NIST CSF · SOC 2 · DORA Art.6',
+    fields: [
+      { row: 'cols-2', fields: [
+        { id: 'firm_name', label: 'Firm Name', type: 'text', required: true },
+        { id: 'frn', label: 'Body Ref', type: 'text' },
+      ]},
+      { row: 'cols-2', fields: [
+        { id: 'assessment_period', label: 'Assessment Period', type: 'text', placeholder: 'e.g. Q4 2026' },
+        { id: 'controls_automated_pct', label: 'Controls Automated % (KPI)', type: 'number', placeholder: '40' },
+      ]},
+      { row: 'cols-2', fields: [
+        { id: 'automation_implemented_ytd', label: 'Controls Automated YTD (KPI)', type: 'number', placeholder: '5' },
+        { id: 'automation_planned_pipeline', label: 'Controls in Automation Pipeline (KPI)', type: 'number', placeholder: '10' },
+      ]},
+      { row: 'cols-2', fields: [
+        { id: 'controls_manual_high_risk', label: 'Manual High-Risk Controls (KRI)', type: 'number', placeholder: '5' },
+        { id: 'kri_unautomated_critical', label: 'Critical Controls Not Automated (KRI breach)', type: 'number', placeholder: '0' },
+      ]},
+      { row: 'cols-2', fields: [
+        { id: 'automation_project_on_track', label: 'Automation Programme On Track?', type: 'select', options: ['Yes', 'No', 'At Risk'] },
+        { id: 'grc_tool_integrated', label: 'GRC Tool Integration Active?', type: 'select', options: ['Yes', 'No', 'Partial'] },
+      ]},
+      { row: null, fields: [
+        { id: 'automation_notes', label: 'Automation Notes', type: 'textarea', placeholder: 'Automation milestones, blockers, priority controls for migration...', rows: 3 },
+      ]},
+    ],
+  },
+  // ── IDENTITY, DATA & Third-Party Risk ─────────────────────────────────────────
+  {
+    id: 'idr_access_governance',
+    title: 'Access Governance',
+    tag: 'ACCESS GOV',
+    tagClass: 'tag-idr',
+    iconClass: 'cat-idr',
+    icon: 'key',
+    desc: 'User access lifecycle, access reviews, SoD conflict detection and recertification compliance.',
+    regs: 'ISO 27001 A.9 · NIST AC · GDPR Art.25 · FCA SYSC',
+    fields: [
+      { row: 'cols-2', fields: [
+        { id: 'firm_name', label: 'Firm Name', type: 'text', required: true },
+        { id: 'frn', label: 'Body Ref', type: 'text' },
+      ]},
+      { row: 'cols-2', fields: [
+        { id: 'assessment_period', label: 'Assessment Period', type: 'text', placeholder: 'e.g. Q4 2026' },
+        { id: 'user_accounts_total', label: 'Total User Accounts (KPI)', type: 'number', placeholder: '500' },
+      ]},
+      { row: 'cols-2', fields: [
+        { id: 'access_reviews_completed_pct', label: 'Access Reviews Completed % (KPI)', type: 'number', placeholder: '90' },
+        { id: 'recertification_rate_pct', label: 'Recertification Rate % (KPI)', type: 'number', placeholder: '95' },
+      ]},
+      { row: 'cols-2', fields: [
+        { id: 'orphaned_accounts', label: 'Orphaned Accounts (KRI)', type: 'number', placeholder: '0' },
+        { id: 'sod_conflicts_open', label: 'Open SoD Conflicts (KRI)', type: 'number', placeholder: '0' },
+      ]},
+      { row: 'cols-2', fields: [
+        { id: 'kri_overdue_access_reviews', label: 'Overdue Access Reviews (KRI breach)', type: 'number', placeholder: '0' },
+        { id: 'access_provisioning_process', label: 'Formal Provisioning Process?', type: 'select', options: ['Yes', 'No'] },
+      ]},
+      { row: null, fields: [
+        { id: 'access_gov_notes', label: 'Access Governance Notes', type: 'textarea', placeholder: 'Orphaned accounts, SoD issues, overdue reviews, access exceptions...', rows: 3 },
+      ]},
+    ],
+  },
+  {
+    id: 'idr_privileged_oversight',
+    title: 'Privileged Access Oversight',
+    tag: 'PAM',
+    tagClass: 'tag-idr',
+    iconClass: 'cat-idr',
+    icon: 'lock',
+    desc: 'Privileged access management (PAM) coverage, MFA enforcement, session recording and unmanaged account tracking.',
+    regs: 'ISO 27001 A.9.4 · NIST AC-6 · CIS Control 5 · DORA Art.9',
+    fields: [
+      { row: 'cols-2', fields: [
+        { id: 'firm_name', label: 'Firm Name', type: 'text', required: true },
+        { id: 'frn', label: 'Body Ref', type: 'text' },
+      ]},
+      { row: 'cols-2', fields: [
+        { id: 'assessment_period', label: 'Assessment Period', type: 'text', placeholder: 'e.g. Q4 2026' },
+        { id: 'privileged_accounts_total', label: 'Total Privileged Accounts (KPI)', type: 'number', placeholder: '50' },
+      ]},
+      { row: 'cols-2', fields: [
+        { id: 'pam_coverage_pct', label: 'PAM Coverage % (KPI)', type: 'number', placeholder: '90' },
+        { id: 'mfa_privileged_pct', label: 'MFA on Privileged Accounts % (KPI)', type: 'number', placeholder: '100' },
+      ]},
+      { row: 'cols-2', fields: [
+        { id: 'kri_unmanaged_privileged', label: 'Unmanaged Privileged Accounts (KRI breach)', type: 'number', placeholder: '0' },
+        { id: 'session_recording_pct', label: 'Session Recording Coverage % (KPI)', type: 'number', placeholder: '80' },
+      ]},
+      { row: 'cols-2', fields: [
+        { id: 'pam_tool_deployed', label: 'PAM Tool Deployed?', type: 'select', options: ['Yes', 'No', 'Partial'] },
+        { id: 'just_in_time_access', label: 'Just-In-Time Access Enabled?', type: 'select', options: ['Yes', 'No'] },
+      ]},
+      { row: null, fields: [
+        { id: 'pam_notes', label: 'Privileged Access Notes', type: 'textarea', placeholder: 'PAM gaps, MFA exceptions, unmanaged accounts, session logging issues...', rows: 3 },
+      ]},
+    ],
+  },
+  {
+    id: 'idr_third_party_risk',
+    title: 'Third-Party Risk',
+    tag: 'TPRM',
+    tagClass: 'tag-idr',
+    iconClass: 'cat-idr',
+    icon: 'users',
+    desc: 'Vendor risk assessments, contract compliance, 4th-party dependencies and critical supplier monitoring.',
+    regs: 'ISO 27036 · FCA PS26/2 · EBA GL/2019/02 · DORA Art.28',
+    fields: [
+      { row: 'cols-2', fields: [
+        { id: 'firm_name', label: 'Firm Name', type: 'text', required: true },
+        { id: 'frn', label: 'Body Ref', type: 'text' },
+      ]},
+      { row: 'cols-2', fields: [
+        { id: 'assessment_period', label: 'Assessment Period', type: 'text', placeholder: 'e.g. Q4 2026' },
+        { id: 'critical_vendors_total', label: 'Critical Vendors / Suppliers (KPI)', type: 'number', placeholder: '20' },
+      ]},
+      { row: 'cols-2', fields: [
+        { id: 'vendors_assessed_pct', label: 'Vendors Assessed % (KPI)', type: 'number', placeholder: '85' },
+        { id: 'contract_compliance_pct', label: 'Contract Compliance % (KPI)', type: 'number', placeholder: '90' },
+      ]},
+      { row: 'cols-2', fields: [
+        { id: 'high_risk_vendors', label: 'High-Risk Vendors (KRI)', type: 'number', placeholder: '2' },
+        { id: 'kri_unassessed_critical', label: 'Unassessed Critical Vendors (KRI breach)', type: 'number', placeholder: '0' },
+      ]},
+      { row: 'cols-2', fields: [
+        { id: 'fourth_party_risk_considered', label: 'Fourth-Party Risk Mapped?', type: 'select', options: ['Yes', 'No', 'Partial'] },
+        { id: 'vendor_assessments_overdue', label: 'Overdue Vendor Assessments (KRI)', type: 'number', placeholder: '0' },
+      ]},
+      { row: null, fields: [
+        { id: 'tprm_notes', label: 'Third-Party Risk Notes', type: 'textarea', placeholder: 'High-risk vendors, overdue assessments, 4th-party exposures, contract gaps...', rows: 3 },
+      ]},
+    ],
+  },
+  {
+    id: 'idr_operational_risk',
+    title: 'Operational Risk',
+    tag: 'OPS RISK',
+    tagClass: 'tag-idr',
+    iconClass: 'cat-idr',
+    icon: 'alert',
+    desc: 'Operational risk events, loss events, BCP/DR testing status and RTO/RPO compliance tracking.',
+    regs: 'Basel III · FCA PS21/3 · ISO 22301 · DORA Art.11',
+    fields: [
+      { row: 'cols-2', fields: [
+        { id: 'firm_name', label: 'Firm Name', type: 'text', required: true },
+        { id: 'frn', label: 'Body Ref', type: 'text' },
+      ]},
+      { row: 'cols-2', fields: [
+        { id: 'assessment_period', label: 'Assessment Period', type: 'text', placeholder: 'e.g. Q4 2026' },
+        { id: 'operational_risk_events', label: 'Operational Risk Events in Period (KPI)', type: 'number', placeholder: '0' },
+      ]},
+      { row: 'cols-2', fields: [
+        { id: 'loss_events_total', label: 'Loss Events (KRI)', type: 'number', placeholder: '0' },
+        { id: 'bcp_last_tested', label: 'BCP Last Tested', type: 'date' },
+      ]},
+      { row: 'cols-2', fields: [
+        { id: 'dr_last_tested', label: 'DR Last Tested', type: 'date' },
+        { id: 'rto_compliance', label: 'RTO Compliance?', type: 'select', options: ['Yes', 'No', 'Not Tested'] },
+      ]},
+      { row: 'cols-2', fields: [
+        { id: 'rpo_compliance', label: 'RPO Compliance?', type: 'select', options: ['Yes', 'No', 'Not Tested'] },
+        { id: 'kri_bcp_testing_overdue', label: 'BCP/DR Testing Overdue? (KRI breach)', type: 'select', options: ['No', 'Yes'] },
+      ]},
+      { row: null, fields: [
+        { id: 'ops_risk_notes', label: 'Operational Risk Notes', type: 'textarea', placeholder: 'Risk events, BCP gaps, RTO/RPO issues, loss events, remediation...', rows: 3 },
+      ]},
+    ],
+  },
+  {
+    id: 'idr_data_governance',
+    title: 'Data Governance',
+    tag: 'DATA GOV',
+    tagClass: 'tag-idr',
+    iconClass: 'cat-idr',
+    icon: 'database',
+    desc: 'Data classification coverage, retention compliance, GDPR/privacy incidents, DPO appointment and data quality KPIs.',
+    regs: 'GDPR Art.5/13/37 · ISO 27701 · NIST PR.DS · FCA SYSC',
+    fields: [
+      { row: 'cols-2', fields: [
+        { id: 'firm_name', label: 'Firm Name', type: 'text', required: true },
+        { id: 'frn', label: 'Body Ref', type: 'text' },
+      ]},
+      { row: 'cols-2', fields: [
+        { id: 'assessment_period', label: 'Assessment Period', type: 'text', placeholder: 'e.g. Q4 2026' },
+        { id: 'data_classified_pct', label: 'Data Classified % (KPI)', type: 'number', placeholder: '80' },
+      ]},
+      { row: 'cols-2', fields: [
+        { id: 'data_retention_compliance_pct', label: 'Retention Policy Compliance % (KPI)', type: 'number', placeholder: '90' },
+        { id: 'gdpr_incidents', label: 'GDPR / Privacy Incidents (KRI)', type: 'number', placeholder: '0' },
+      ]},
+      { row: 'cols-2', fields: [
+        { id: 'dpo_appointed', label: 'DPO / Privacy Officer Appointed?', type: 'select', options: ['Yes', 'No', 'N/A'] },
+        { id: 'data_breach_response_plan', label: 'Data Breach Response Plan?', type: 'select', options: ['Yes', 'No'] },
+      ]},
+      { row: 'cols-2', fields: [
+        { id: 'kri_unclassified_sensitive', label: 'Unclassified Sensitive Data Sets (KRI breach)', type: 'number', placeholder: '0' },
+        { id: 'data_quality_score', label: 'Data Quality Score 1-10 (KPI)', type: 'number', placeholder: '8' },
+      ]},
+      { row: null, fields: [
+        { id: 'data_gov_notes', label: 'Data Governance Notes', type: 'textarea', placeholder: 'Classification gaps, GDPR incidents, DPO actions, retention issues...', rows: 3 },
+      ]},
+    ],
+  },
+  {
+    id: 'idr_regulatory_risk',
+    title: 'Regulatory Risk',
+    tag: 'REG RISK',
+    tagClass: 'tag-idr',
+    iconClass: 'cat-idr',
+    icon: 'globe',
+    desc: 'Regulatory obligation tracking, compliance gap monitoring, enforcement actions and regulatory change implementation rate.',
+    regs: 'FCA Handbook · EBA · BCBS · FATF Recommendations',
+    fields: [
+      { row: 'cols-2', fields: [
+        { id: 'firm_name', label: 'Firm Name', type: 'text', required: true },
+        { id: 'frn', label: 'Body Ref', type: 'text' },
+      ]},
+      { row: 'cols-2', fields: [
+        { id: 'assessment_period', label: 'Assessment Period', type: 'text', placeholder: 'e.g. Q4 2026' },
+        { id: 'regulatory_obligations_tracked', label: 'Regulatory Obligations Tracked (KPI)', type: 'number', placeholder: '50' },
+      ]},
+      { row: 'cols-2', fields: [
+        { id: 'compliance_gaps_total', label: 'Open Compliance Gaps (KRI)', type: 'number', placeholder: '0' },
+        { id: 'reg_change_implementation_pct', label: 'Reg Change Implementation % (KPI)', type: 'number', placeholder: '90' },
+      ]},
+      { row: 'cols-2', fields: [
+        { id: 'enforcement_actions_open', label: 'Open Enforcement Actions (KRI breach)', type: 'number', placeholder: '0' },
+        { id: 'fines_ytd', label: 'Regulatory Fines YTD', type: 'number', placeholder: '0' },
+      ]},
+      { row: 'cols-2', fields: [
+        { id: 'kri_missed_deadlines', label: 'Missed Regulatory Deadlines (KRI breach)', type: 'number', placeholder: '0' },
+        { id: 'regulatory_horizon_scanning', label: 'Horizon Scanning Active?', type: 'select', options: ['Yes', 'No'] },
+      ]},
+      { row: null, fields: [
+        { id: 'reg_risk_notes', label: 'Regulatory Risk Notes', type: 'textarea', placeholder: 'Compliance gaps, missed deadlines, enforcement actions, change pipeline...', rows: 3 },
+      ]},
+    ],
+  },
+  // ── Governance Risk & Compliance ─────────────────────────────────────────────
+  {
+    id: 'grc_enterprise_risk',
+    title: 'Enterprise Risk Management',
+    tag: 'ERM',
+    tagClass: 'tag-grc',
+    iconClass: 'cat-grc',
+    icon: 'trendingup',
+    desc: 'Enterprise risk register, strategic risk management, residual risk ratings and risk appetite compliance.',
+    regs: 'COSO ERM 2017 · ISO 31000 · Basel III · FCA ICARA',
+    fields: [
+      { row: 'cols-2', fields: [
+        { id: 'firm_name', label: 'Firm Name', type: 'text', required: true },
+        { id: 'frn', label: 'Body Ref', type: 'text' },
+      ]},
+      { row: 'cols-2', fields: [
+        { id: 'assessment_period', label: 'Assessment Period', type: 'text', placeholder: 'e.g. Q4 2026' },
+        { id: 'enterprise_risks_total', label: 'Enterprise Risk Register Items (KPI)', type: 'number', placeholder: '30' },
+      ]},
+      { row: 'cols-2', fields: [
+        { id: 'strategic_risks_open', label: 'Strategic Risks Open (KPI)', type: 'number', placeholder: '5' },
+        { id: 'risk_appetite_compliance_pct', label: 'Risk Appetite Compliance % (KPI)', type: 'number', placeholder: '90' },
+      ]},
+      { row: 'cols-2', fields: [
+        { id: 'kri_unowned_strategic_risks', label: 'Unowned Strategic Risks (KRI breach)', type: 'number', placeholder: '0' },
+        { id: 'risk_treatment_completion_pct', label: 'Risk Treatment Completion % (KPI)', type: 'number', placeholder: '80' },
+      ]},
+      { row: 'cols-2', fields: [
+        { id: 'residual_risk_rating', label: 'Average Residual Risk Rating', type: 'select', options: ['Low', 'Medium', 'High', 'Critical'] },
+        { id: 'board_risk_committee_active', label: 'Board Risk Committee Active?', type: 'select', options: ['Yes', 'No'] },
+      ]},
+      { row: null, fields: [
+        { id: 'erm_notes', label: 'Enterprise Risk Notes', type: 'textarea', placeholder: 'Strategic risks, appetite breaches, unowned items, board escalations...', rows: 3 },
+      ]},
+    ],
+  },
+  {
+    id: 'grc_compliance_mgmt',
+    title: 'Compliance Management',
+    tag: 'COMPLIANCE',
+    tagClass: 'tag-grc',
+    iconClass: 'cat-grc',
+    icon: 'clipboard',
+    desc: 'Compliance obligations, compliance gap analysis, regulatory fines, training completion and pending enforcement tracking.',
+    regs: 'FCA SYSC 6 · ISO 37301 · ACFE · Sarbanes-Oxley',
+    fields: [
+      { row: 'cols-2', fields: [
+        { id: 'firm_name', label: 'Firm Name', type: 'text', required: true },
+        { id: 'frn', label: 'Body Ref', type: 'text' },
+      ]},
+      { row: 'cols-2', fields: [
+        { id: 'assessment_period', label: 'Assessment Period', type: 'text', placeholder: 'e.g. Q4 2026' },
+        { id: 'compliance_obligations_total', label: 'Compliance Obligations Tracked (KPI)', type: 'number', placeholder: '60' },
+      ]},
+      { row: 'cols-2', fields: [
+        { id: 'compliance_gaps_total', label: 'Open Compliance Gaps (KRI)', type: 'number', placeholder: '0' },
+        { id: 'compliance_training_pct', label: 'Compliance Training Completion % (KPI)', type: 'number', placeholder: '90' },
+      ]},
+      { row: 'cols-2', fields: [
+        { id: 'fines_ytd', label: 'Regulatory Fines YTD', type: 'number', placeholder: '0' },
+        { id: 'pending_enforcement_actions', label: 'Pending Enforcement Actions (KRI breach)', type: 'number', placeholder: '0' },
+      ]},
+      { row: 'cols-2', fields: [
+        { id: 'compliance_monitoring_active', label: 'Ongoing Compliance Monitoring?', type: 'select', options: ['Yes', 'No', 'Partial'] },
+        { id: 'compliance_officer_appointed', label: 'Compliance Officer Appointed?', type: 'select', options: ['Yes', 'No'] },
+      ]},
+      { row: null, fields: [
+        { id: 'compliance_notes', label: 'Compliance Management Notes', type: 'textarea', placeholder: 'Compliance gaps, fine context, enforcement actions, training gaps...', rows: 3 },
+      ]},
+    ],
+  },
+  {
+    id: 'grc_policy_management',
+    title: 'Policy Management',
+    tag: 'POLICY MGMT',
+    tagClass: 'tag-grc',
+    iconClass: 'cat-grc',
+    icon: 'target',
+    desc: 'Policy library governance, review schedule adherence, exception management and policy owner accountability.',
+    regs: 'ISO 37301 · FCA SYSC · COSO IC-IF · NIST SP 800-53',
+    fields: [
+      { row: 'cols-2', fields: [
+        { id: 'firm_name', label: 'Firm Name', type: 'text', required: true },
+        { id: 'frn', label: 'Body Ref', type: 'text' },
+      ]},
+      { row: 'cols-2', fields: [
+        { id: 'assessment_period', label: 'Assessment Period', type: 'text', placeholder: 'e.g. Q4 2026' },
+        { id: 'policies_total', label: 'Total Policies in Library (KPI)', type: 'number', placeholder: '40' },
+      ]},
+      { row: 'cols-2', fields: [
+        { id: 'policies_current_pct', label: 'Policies Current % (KPI)', type: 'number', placeholder: '90' },
+        { id: 'policy_review_backlog', label: 'Policy Review Backlog (KRI)', type: 'number', placeholder: '0' },
+      ]},
+      { row: 'cols-2', fields: [
+        { id: 'policy_exceptions_open', label: 'Open Policy Exceptions (KRI)', type: 'number', placeholder: '0' },
+        { id: 'kri_outdated_critical_policies', label: 'Outdated Critical Policies (KRI breach)', type: 'number', placeholder: '0' },
+      ]},
+      { row: 'cols-2', fields: [
+        { id: 'policy_owner_assigned_pct', label: 'Policies with Named Owners % (KPI)', type: 'number', placeholder: '100' },
+        { id: 'policy_library_tool', label: 'Policy Management Tool Active?', type: 'select', options: ['Yes', 'No'] },
+      ]},
+      { row: null, fields: [
+        { id: 'policy_mgmt_notes', label: 'Policy Management Notes', type: 'textarea', placeholder: 'Outdated policies, missing owners, exception details, review schedule...', rows: 3 },
+      ]},
+    ],
+  },
+  {
+    id: 'grc_third_party_oversight',
+    title: 'Third-Party Oversight',
+    tag: 'TPO',
+    tagClass: 'tag-grc',
+    iconClass: 'cat-grc',
+    icon: 'user',
+    desc: 'Critical supplier monitoring, 4th-party risk identification, outsourcing register and supply chain governance.',
+    regs: 'FCA PS26/2 · EBA GL/2019/02 · DORA Art.28-44 · ISO 27036',
+    fields: [
+      { row: 'cols-2', fields: [
+        { id: 'firm_name', label: 'Firm Name', type: 'text', required: true },
+        { id: 'frn', label: 'Body Ref', type: 'text' },
+      ]},
+      { row: 'cols-2', fields: [
+        { id: 'assessment_period', label: 'Assessment Period', type: 'text', placeholder: 'e.g. Q4 2026' },
+        { id: 'critical_suppliers_monitored', label: 'Critical Suppliers Monitored (KPI)', type: 'number', placeholder: '15' },
+      ]},
+      { row: 'cols-2', fields: [
+        { id: 'supplier_risk_assessments_pct', label: 'Supplier Assessments Complete % (KPI)', type: 'number', placeholder: '90' },
+        { id: 'fourth_party_risks_identified', label: 'Fourth-Party Risks Identified (KRI)', type: 'number', placeholder: '2' },
+      ]},
+      { row: 'cols-2', fields: [
+        { id: 'kri_unmonitored_critical', label: 'Unmonitored Critical Suppliers (KRI breach)', type: 'number', placeholder: '0' },
+        { id: 'outsourcing_register_current', label: 'Outsourcing Register Current?', type: 'select', options: ['Yes', 'No'] },
+      ]},
+      { row: 'cols-2', fields: [
+        { id: 'exit_plans_documented', label: 'Exit Plans Documented?', type: 'select', options: ['Yes', 'Partial', 'No'] },
+        { id: 'concentration_risk_assessed', label: 'Concentration Risk Assessed?', type: 'select', options: ['Yes', 'No'] },
+      ]},
+      { row: null, fields: [
+        { id: 'tpo_notes', label: 'Third-Party Oversight Notes', type: 'textarea', placeholder: 'Key supplier risks, 4th-party exposures, exit plan gaps, concentration issues...', rows: 3 },
+      ]},
+    ],
+  },
+  {
+    id: 'grc_awareness_training',
+    title: 'Awareness & Training',
+    tag: 'TRAINING',
+    tagClass: 'tag-grc',
+    iconClass: 'cat-grc',
+    icon: 'bell',
+    desc: 'Security & compliance training completion, phishing simulation results, awareness campaigns and mandatory training KRIs.',
+    regs: 'FCA SYSC 5 · NIST AT-2 · ISO 27001 A.7.2.2 · GDPR Art.39',
+    fields: [
+      { row: 'cols-2', fields: [
+        { id: 'firm_name', label: 'Firm Name', type: 'text', required: true },
+        { id: 'frn', label: 'Body Ref', type: 'text' },
+      ]},
+      { row: 'cols-2', fields: [
+        { id: 'assessment_period', label: 'Assessment Period', type: 'text', placeholder: 'e.g. Q4 2026' },
+        { id: 'training_completion_pct', label: 'Training Completion % (KPI)', type: 'number', placeholder: '90' },
+      ]},
+      { row: 'cols-2', fields: [
+        { id: 'mandatory_training_overdue', label: 'Mandatory Training Overdue (KRI)', type: 'number', placeholder: '0' },
+        { id: 'phishing_test_pass_rate_pct', label: 'Phishing Simulation Pass Rate % (KPI)', type: 'number', placeholder: '90' },
+      ]},
+      { row: 'cols-2', fields: [
+        { id: 'awareness_campaigns_ytd', label: 'Awareness Campaigns YTD (KPI)', type: 'number', placeholder: '4' },
+        { id: 'kri_low_completion_critical', label: 'Critical Roles Below Threshold (KRI breach)', type: 'number', placeholder: '0' },
+      ]},
+      { row: 'cols-2', fields: [
+        { id: 'high_risk_role_completion_pct', label: 'High-Risk Role Completion % (KPI)', type: 'number', placeholder: '100' },
+        { id: 'training_platform_active', label: 'LMS / Training Platform Active?', type: 'select', options: ['Yes', 'No'] },
+      ]},
+      { row: null, fields: [
+        { id: 'training_notes', label: 'Awareness & Training Notes', type: 'textarea', placeholder: 'Completion gaps, phishing results, upcoming campaigns, high-risk role status...', rows: 3 },
+      ]},
+    ],
+  },
+  {
+    id: 'grc_executive_reporting',
+    title: 'Executive Reporting',
+    tag: 'EXEC REPORT',
+    tagClass: 'tag-grc',
+    iconClass: 'cat-grc',
+    icon: 'barchart',
+    desc: 'Board-level GRC reporting, dashboard accuracy, KPI/KRI reporting cadence and exec pack delivery compliance.',
+    regs: 'FCA SYSC 4 · COSO ERM · ISO 31000 · SM&CR Senior Function',
+    fields: [
+      { row: 'cols-2', fields: [
+        { id: 'firm_name', label: 'Firm Name', type: 'text', required: true },
+        { id: 'frn', label: 'Body Ref', type: 'text' },
+      ]},
+      { row: 'cols-2', fields: [
+        { id: 'assessment_period', label: 'Assessment Period', type: 'text', placeholder: 'e.g. Q4 2026' },
+        { id: 'board_reports_on_time_pct', label: 'Board Reports On-Time % (KPI)', type: 'number', placeholder: '100' },
+      ]},
+      { row: 'cols-2', fields: [
+        { id: 'dashboard_accuracy_pct', label: 'Dashboard / MI Accuracy % (KPI)', type: 'number', placeholder: '95' },
+        { id: 'kri_kpi_reporting_cadence_met', label: 'KPI/KRI Reporting Cadence Met?', type: 'select', options: ['Yes', 'No', 'Partial'] },
+      ]},
+      { row: 'cols-2', fields: [
+        { id: 'kri_late_board_reports', label: 'Late Board Reports (KRI breach)', type: 'number', placeholder: '0' },
+        { id: 'exec_reporting_frequency', label: 'Reporting Frequency', type: 'select', options: ['Monthly', 'Quarterly', 'Ad Hoc'] },
+      ]},
+      { row: 'cols-2', fields: [
+        { id: 'last_board_report_date', label: 'Last Board Report Date', type: 'date' },
+        { id: 'next_board_report_date', label: 'Next Board Report Date', type: 'date' },
+      ]},
+      { row: null, fields: [
+        { id: 'exec_reporting_notes', label: 'Executive Reporting Notes', type: 'textarea', placeholder: 'Late pack issues, dashboard gaps, board feedback, escalation items...', rows: 3 },
       ]},
     ],
   },
@@ -937,6 +1182,17 @@ const REPORTS = [
         { id: 'fca_regulatory_changes_tracked', label: 'FCA Changes Tracked?', type: 'select', options: ['true', 'false'] },
       ]},
     ],
+  },
+  {
+    id: 'world_report',
+    title: 'ExecCom Region World Report',
+    tag: 'GRC',
+    tagClass: 'tag-grc',
+    iconClass: 'cat-grc',
+    icon: 'globe',
+    desc: 'Multi-region executive intelligence briefing — FATF blacklist, enforcement actions, regional MI feeds and live daily intelligence across all Govisk regions.',
+    regs: 'FATF · FCA · ESMA · OFSI · FinCEN · AMLD6',
+    href: '/world-report',
   },
   {
     id: 'blacklist_report',

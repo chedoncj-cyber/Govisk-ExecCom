@@ -69,7 +69,7 @@ _SEC_HEADERS = {
     "Permissions-Policy":     "geolocation=(), microphone=(), camera=()",
     "Content-Security-Policy": (
         "default-src 'self'; "
-        "script-src 'self' 'unsafe-inline'; "
+        "script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; "
         "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; "
         "font-src https://fonts.gstatic.com; "
         "connect-src 'self'; "
@@ -479,6 +479,12 @@ async def serve_blacklist():
 @app.get("/grc-templates", response_class=HTMLResponse)
 async def serve_grc_templates():
     return _serve_html("grc-templates.html")
+
+
+@app.get("/world-report", response_class=HTMLResponse)
+async def serve_world_report():
+    """Govisk ExecCom Region World Report — multi-region GRC intelligence."""
+    return _serve_html("world_report.html")
 
 
 @app.get("/api/fatf-blacklist")

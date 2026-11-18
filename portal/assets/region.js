@@ -280,19 +280,37 @@ const CASS_SUITE = [
 ];
 
 const GRC_SUITE = [
-  { id: 'governance_control_ops',   icon: '🏛', title: 'Governance & Control Ops',    tag: 'GC OPS',     desc: 'Policy governance, risk operations, control effectiveness — board-level GRC posture.' },
-  { id: 'policy_governance',        icon: '📜', title: 'Policy Governance',           tag: 'POLICY GOV', desc: 'Policy inventory, review cycles, compliance gaps, board approval and staff attestation.' },
-  { id: 'risk_operations',          icon: '⚙️', title: 'Risk Operations',             tag: 'RISK OPS',   desc: 'KRI/KPI monitoring, risk register, appetite breaches and emerging risk scanning.' },
-  { id: 'incident_oversight',       icon: '🚨', title: 'Incident Oversight',          tag: 'INCIDENT',   desc: 'Incident log, root cause analysis, remediation tracking and regulator notification.' },
-  { id: 'identity_data_risk',       icon: '🔐', title: 'Identity, Data & Third-Party',tag: 'IDR',        desc: 'Identity governance, data classification, third-party risk and supply chain.' },
-  { id: 'threat_intelligence',      icon: '🎯', title: 'Threat Intelligence',         tag: 'INTEL',      desc: 'Sector threat landscape, fraud typologies, insider risk.' },
-  { id: 'cyber_threat_assessment',  icon: '🛡', title: 'Cyber Threat Assessment',     tag: 'CYBER',      desc: 'Pen test status, MFA, endpoint protection, CBEST/DORA scoring.' },
-  { id: 'fca_incident_response',    icon: '🔔', title: 'Regulatory Incident Response',tag: '24HR',       desc: '24-hour operational incident reporting and regulator notification procedures.' },
-  { id: 'due_diligence',            icon: '🔍', title: 'Due Diligence',               tag: 'DD',         desc: 'Fit & Proper checks, third-party compliance, sanctions screening.' },
-  { id: 'country_risk',             icon: '🌐', title: 'Country Risk',                tag: 'RISK',       desc: 'Sanctions, FATF status, AML risk rating, local custody.' },
-  { id: 'executive_protection',     icon: '👤', title: 'Executive Protection',        tag: 'EXEC',       desc: 'Senior Manager risk briefings, accountability mapping, travel risk.' },
-  { id: 'physical_security_audit',  icon: '🏢', title: 'Physical Security Audit',     tag: 'PHYSICAL',   desc: 'Access control, CCTV, alarms, operational resilience.' },
-  { id: 'grc_report',               icon: '📈', title: 'GRC Intelligence Report',     tag: 'GRC',        desc: 'Governance, Risk & Compliance maturity — OCEG/COSO methodology.' },
+  // ── GOVERNANCE & CONTROL Operations ──────────────────────────────────────────
+  { group: 'GOVERNANCE & CONTROL Operations',   id: 'gc_policy_governance',      icon: '📋', title: 'Policy Governance',          tag: 'POLICY GOV',  desc: 'Policy inventory, review cycles, compliance gaps, board approval status and staff attestation rates.' },
+  { group: 'GOVERNANCE & CONTROL Operations',   id: 'gc_risk_operations',        icon: '⚙️', title: 'Risk Operations',            tag: 'RISK OPS',    desc: 'KRI/KPI monitoring, risk register status, appetite breaches, emerging risk scanning and trend analysis.' },
+  { group: 'GOVERNANCE & CONTROL Operations',   id: 'gc_incident_oversight',     icon: '🚨', title: 'Incident Oversight',          tag: 'INCIDENT',    desc: 'Incident log, root cause analysis, remediation tracking, regulator notification and lessons learned.' },
+  { group: 'GOVERNANCE & CONTROL Operations',   id: 'gc_risk_intelligence',      icon: '🔭', title: 'Risk Intelligence',           tag: 'RISK INTEL',  desc: 'Threat and regulatory intelligence feeds, emerging risk identification and regulatory change tracking.' },
+  { group: 'GOVERNANCE & CONTROL Operations',   id: 'gc_control_monitoring',     icon: '👁',  title: 'Control Monitoring',          tag: 'CTRL MON',    desc: 'Control inventory, effectiveness testing, failed controls, testing coverage and remediation status.' },
+  { group: 'GOVERNANCE & CONTROL Operations',   id: 'gc_control_automation',     icon: '🤖', title: 'Control Automation',          tag: 'CTRL AUTO',   desc: 'Automated control coverage, manual control migration programme and automation implementation KPIs.' },
+  // ── IDENTITY, DATA & Third-Party Risk ─────────────────────────────────────────
+  { group: 'IDENTITY, DATA & Third-Party Risk', id: 'idr_access_governance',     icon: '🔑', title: 'Access Governance',           tag: 'ACCESS GOV',  desc: 'User access lifecycle, access reviews, SoD conflict detection and recertification compliance.' },
+  { group: 'IDENTITY, DATA & Third-Party Risk', id: 'idr_privileged_oversight',  icon: '🔒', title: 'Privileged Access Oversight', tag: 'PAM',         desc: 'PAM coverage, MFA enforcement, session recording and unmanaged privileged account tracking.' },
+  { group: 'IDENTITY, DATA & Third-Party Risk', id: 'idr_third_party_risk',      icon: '👥', title: 'Third-Party Risk',            tag: 'TPRM',        desc: 'Vendor risk assessments, contract compliance, 4th-party dependencies and critical supplier monitoring.' },
+  { group: 'IDENTITY, DATA & Third-Party Risk', id: 'idr_operational_risk',      icon: '⚠️', title: 'Operational Risk',            tag: 'OPS RISK',    desc: 'Operational risk events, loss events, BCP/DR testing status and RTO/RPO compliance tracking.' },
+  { group: 'IDENTITY, DATA & Third-Party Risk', id: 'idr_data_governance',       icon: '🗄',  title: 'Data Governance',             tag: 'DATA GOV',    desc: 'Data classification coverage, retention compliance, GDPR/privacy incidents and DPO appointment.' },
+  { group: 'IDENTITY, DATA & Third-Party Risk', id: 'idr_regulatory_risk',       icon: '🌐', title: 'Regulatory Risk',             tag: 'REG RISK',    desc: 'Regulatory obligation tracking, compliance gap monitoring, enforcement actions and change implementation.' },
+  // ── Governance Risk & Compliance ──────────────────────────────────────────────
+  { group: 'Governance Risk & Compliance',      id: 'grc_enterprise_risk',       icon: '📈', title: 'Enterprise Risk Management',  tag: 'ERM',         desc: 'Enterprise risk register, strategic risk management, residual risk ratings and risk appetite compliance.' },
+  { group: 'Governance Risk & Compliance',      id: 'grc_compliance_mgmt',       icon: '✅', title: 'Compliance Management',       tag: 'COMPLIANCE',  desc: 'Compliance obligations, gap analysis, regulatory fines, training completion and enforcement tracking.' },
+  { group: 'Governance Risk & Compliance',      id: 'grc_policy_management',     icon: '🎯', title: 'Policy Management',           tag: 'POLICY MGMT', desc: 'Policy library governance, review schedule adherence, exception management and owner accountability.' },
+  { group: 'Governance Risk & Compliance',      id: 'grc_third_party_oversight', icon: '👤', title: 'Third-Party Oversight',       tag: 'TPO',         desc: 'Critical supplier monitoring, 4th-party risk identification, outsourcing register and supply chain governance.' },
+  { group: 'Governance Risk & Compliance',      id: 'grc_awareness_training',    icon: '🔔', title: 'Awareness & Training',        tag: 'TRAINING',    desc: 'Security & compliance training completion, phishing simulation results and mandatory training KRIs.' },
+  { group: 'Governance Risk & Compliance',      id: 'grc_executive_reporting',   icon: '📊', title: 'Executive Reporting',         tag: 'EXEC REPORT', desc: 'Board-level GRC reporting, dashboard accuracy, KPI/KRI reporting cadence and exec pack delivery.' },
+  // ── Security & Risk Intelligence (all regions) ───────────────────────────────
+  { group: 'Security & Risk Intelligence',      id: 'threat_intelligence',       icon: '🎯', title: 'Threat Intelligence',         tag: 'INTEL',       desc: 'Sector threat landscape, fraud typologies, insider risk.' },
+  { group: 'Security & Risk Intelligence',      id: 'cyber_threat_assessment',   icon: '🛡',  title: 'Cyber Threat Assessment',     tag: 'CYBER',       desc: 'Pen test status, MFA, endpoint protection, CBEST/DORA scoring.' },
+  { group: 'Security & Risk Intelligence',      id: 'fca_incident_response',     icon: '🔔', title: 'Regulatory Incident Response',tag: '24HR',        desc: '24-hour operational incident reporting and regulator notification procedures.' },
+  { group: 'Security & Risk Intelligence',      id: 'due_diligence',             icon: '🔍', title: 'Due Diligence',               tag: 'DD',          desc: 'Fit & Proper checks, third-party compliance, sanctions screening.' },
+  { group: 'Security & Risk Intelligence',      id: 'country_risk',              icon: '🌐', title: 'Country Risk',                tag: 'RISK',        desc: 'Sanctions, FATF status, AML risk rating, local custody.' },
+  { group: 'Security & Risk Intelligence',      id: 'executive_protection',      icon: '👤', title: 'Executive Protection',        tag: 'EXEC',        desc: 'Senior Manager risk briefings, accountability mapping, travel risk.' },
+  { group: 'Security & Risk Intelligence',      id: 'physical_security_audit',   icon: '🏢', title: 'Physical Security Audit',     tag: 'PHYSICAL',    desc: 'Access control, CCTV, alarms, operational resilience.' },
+  { group: 'Security & Risk Intelligence',      id: 'grc_report',                icon: '📈', title: 'GRC Intelligence Report',     tag: 'GRC',         desc: 'Governance, Risk & Compliance maturity — OCEG/COSO methodology.' },
+  { group: 'Security & Risk Intelligence',      id: 'world_report',              icon: '🌐', title: 'ExecCom Region World Report',  tag: 'EXEC · WORLD', desc: 'Multi-region executive briefing — FATF blacklist, enforcement actions, regional MI feeds and live daily intelligence.', href: '/world-report' },
 ];
 
 const REPORT_SUITE = GRC_SUITE;
@@ -364,6 +382,16 @@ function injectSuiteStyles() {
     .rp-suite-desc { font-size: 0.70rem; color: var(--text-3); line-height: 1.45; }
     .rp-suite-arrow { font-size: 0.85rem; color: var(--text-3); flex-shrink: 0; margin-top: 3px; transition: color 0.15s; }
     .rp-suite-card:hover .rp-suite-arrow { color: var(--rp-accent); }
+    .rp-cat-header {
+      grid-column: 1 / -1;
+      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--text-3);
+      font-family: 'IBM Plex Mono', monospace;
+      padding: 14px 0 6px;
+      border-top: 1px solid var(--border-dim);
+      margin-top: 4px;
+    }
+    .rp-cat-header:first-child { border-top: none; margin-top: 0; padding-top: 0; }
   `;
   document.head.appendChild(s);
 }
@@ -372,18 +400,30 @@ function renderReportSuite() {
   const section = document.getElementById('rp-report-suite');
   if (!section) return;
   injectSuiteStyles();
-  section.innerHTML = `
-    <div class="rp-suite-header">
-      <div class="rp-suite-title">Report Suite — ${_cfg.name}</div>
-      <div class="rp-suite-sub">Generate all 13 intelligence reports scoped to ${_cfg.name} regulatory frameworks · click any card to open the portal</div>
-    </div>
-    <div class="rp-suite-grid">
-      ${REPORT_SUITE.map(r => {
-        const ov    = _REGIONAL_REPORTS[r.id] && _REGIONAL_REPORTS[r.id][_slug];
-        const title = ov ? ov.title : r.title;
-        const tag   = ov ? ov.tag   : r.tag;
-        const desc  = ov ? ov.desc  : r.desc;
-        return `<a class="rp-suite-card" href="/portal?region=${_slug}&report=${r.id}">
+
+  // Group reports by their `group` property (preserves insertion order)
+  const groups = [];
+  const groupIndex = {};
+  REPORT_SUITE.forEach(r => {
+    if (!groupIndex[r.group]) {
+      groupIndex[r.group] = groups.length;
+      groups.push({ name: r.group, items: [] });
+    }
+    groups[groupIndex[r.group]].items.push(r);
+  });
+
+  const total = REPORT_SUITE.length;
+
+  const cardsHtml = groups.map((g, gi) => {
+    const headerCls = gi === 0 ? 'rp-cat-header' : 'rp-cat-header';
+    const header = `<div class="${headerCls}">${g.name}</div>`;
+    const cards = g.items.map(r => {
+      const ov    = _REGIONAL_REPORTS[r.id] && _REGIONAL_REPORTS[r.id][_slug];
+      const title = ov ? ov.title : r.title;
+      const tag   = ov ? ov.tag   : r.tag;
+      const desc  = ov ? ov.desc  : r.desc;
+      const cardHref = r.href || `/portal?region=${_slug}&report=${r.id}`;
+      return `<a class="rp-suite-card" href="${cardHref}">
           <span class="rp-suite-icon">${r.icon}</span>
           <div class="rp-suite-body">
             <span class="rp-suite-tag">${tag}</span>
@@ -392,8 +432,16 @@ function renderReportSuite() {
           </div>
           <span class="rp-suite-arrow">→</span>
         </a>`;
-      }).join('')}
-    </div>`;
+    }).join('');
+    return header + cards;
+  }).join('');
+
+  section.innerHTML = `
+    <div class="rp-suite-header">
+      <div class="rp-suite-title">Report Suite — ${_cfg.name}</div>
+      <div class="rp-suite-sub">Generate all ${total} intelligence reports scoped to ${_cfg.name} regulatory frameworks · click any card to open the portal</div>
+    </div>
+    <div class="rp-suite-grid">${cardsHtml}</div>`;
 }
 
 // ── Main boot ─────────────────────────────────────────────────────────────────
