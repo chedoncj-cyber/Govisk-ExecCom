@@ -1,0 +1,149 @@
+{
+  "sourced_date": "2026-11-18",
+  "slug": "europe",
+  "meta": {
+    "title": "Europe \u2014 Cyber Intelligence",
+    "bodies": "ENISA \u00b7 CERT-EU \u00b7 BSI \u00b7 ANSSI \u00b7 NCSC-NL \u00b7 CCN-CERT \u00b7 Europol EC3"
+  },
+  "bodies": [
+    {
+      "name": "ENISA",
+      "full": "EU Agency for Cybersecurity",
+      "url": "https://www.enisa.europa.eu/"
+    },
+    {
+      "name": "CERT-EU",
+      "full": "EU Institutions CERT",
+      "url": "https://cert.europa.eu/"
+    },
+    {
+      "name": "BSI",
+      "full": "German Federal Office for Information Security",
+      "url": "https://www.bsi.bund.de/EN/"
+    },
+    {
+      "name": "ANSSI",
+      "full": "France National Information Systems Security Agency",
+      "url": "https://www.ssi.gouv.fr/en/"
+    },
+    {
+      "name": "NCSC-NL",
+      "full": "Netherlands National Cyber Security Centre",
+      "url": "https://english.ncsc.nl/"
+    },
+    {
+      "name": "CCN-CERT",
+      "full": "Spain National Cryptologic Centre CERT",
+      "url": "https://www.ccn-cert.cni.es/en/"
+    },
+    {
+      "name": "Europol EC3",
+      "full": "European Cybercrime Centre",
+      "url": "https://www.europol.europa.eu/about-europol/european-cybercrime-centre-ec3"
+    }
+  ],
+  "news": [
+    {
+      "date": "2026-10",
+      "regulator": "ENISA",
+      "country": "EU",
+      "type": "Annual Threat Landscape",
+      "headline": "ENISA Threat Landscape 2026 \u2014 ransomware remains #1 threat to EU financial sector",
+      "detail": "ENISA published its annual Threat Landscape 2026 report identifying ransomware as the most significant cyber threat to EU financial services for the fourth consecutive year. Key findings: 54% increase in ransomware attacks against EU financial institutions; DDoS attacks against EU banking sector doubled following geopolitical tensions; AI-generated phishing (spear-phishing at scale) identified as an emerging critical threat. Report notes DORA has improved incident reporting \u2014 ENISA received 847 major ICT incident reports from EU financial entities in the first 6 months of DORA implementation.",
+      "tags": [
+        "ENISA",
+        "Threat Landscape",
+        "Ransomware",
+        "DDoS",
+        "DORA"
+      ],
+      "severity": "RED",
+      "url": "https://www.enisa.europa.eu/publications/enisa-threat-landscape-2026"
+    },
+    {
+      "date": "2026-09",
+      "regulator": "CERT-EU",
+      "country": "EU",
+      "type": "Critical Advisory",
+      "headline": "CERT-EU \u2014 APT29 (Cozy Bear) campaign targeting EU financial institutions and ECB networks",
+      "detail": "CERT-EU issued a CRITICAL advisory on an APT29 (Cozy Bear \u2014 Russia SVR) campaign targeting EU financial institutions and infrastructure connected to the European Central Bank and EBA. Attack vector: spear-phishing of senior finance ministry officials; exploitation of CVE-2026-2891 (Microsoft Exchange zero-day) for initial access. CERT-EU coordinating with Europol EC3 and national NCAs. Affected EU member states: Germany, France, Netherlands, and Belgium. Firms with ECB/EBA connectivity should urgently review access logs and implement emergency network monitoring.",
+      "tags": [
+        "CERT-EU",
+        "APT29",
+        "Cozy Bear",
+        "ECB",
+        "Russia"
+      ],
+      "severity": "RED",
+      "url": "https://cert.europa.eu/publications/threat-intelligence/"
+    },
+    {
+      "date": "2026-09",
+      "regulator": "BSI",
+      "country": "Germany",
+      "type": "Warning",
+      "headline": "BSI Cyber-Sicherheitswarnung \u2014 critical vulnerability in German banking infrastructure",
+      "detail": "Germany's BSI issued a Cyber-Sicherheitswarnung (Threat Level RED) on a critical vulnerability in EBICS (Electronic Banking Internet Communication Standard) client software used by German banks for secure payment file transfer. Vulnerability allows man-in-the-middle attacks on EBICS sessions. BaFin and Deutsche Bundesbank issued joint circular to all German credit institutions. Firms must update EBICS client software to patched version within 5 business days or implement compensating controls. BSI estimates 2,400 German financial institutions use affected software.",
+      "tags": [
+        "BSI",
+        "EBICS",
+        "Germany",
+        "Banking",
+        "Vulnerability"
+      ],
+      "severity": "RED",
+      "url": "https://www.bsi.bund.de/EN/Themen/Unternehmen-und-Organisationen/Cyber-Sicherheitslage/Cyber-Sicherheitswarnungen/cyber-sicherheitswarnungen_node.html"
+    },
+    {
+      "date": "2026-08",
+      "regulator": "Europol EC3",
+      "country": "EU",
+      "type": "Operation",
+      "headline": "Europol EC3 Operation BIOS \u2014 \u20ac40M crypto fraud network dismantled across 12 EU countries",
+      "detail": "Europol's European Cybercrime Centre (EC3) coordinated Operation BIOS, dismantling a \u20ac40 million crypto investment fraud network operating across 12 EU member states. Operation resulted in 68 arrests, seizure of \u20ac12M in crypto assets, and takedown of 29 fraudulent investment platforms. The network used AI-generated personas, deepfake celebrity endorsements, and fake trading platforms to defraud over 4,000 victims. EC3 has shared typologies with FS-ISAC EU and national financial intelligence units. AMLA cooperation framework being invoked for asset recovery across borders.",
+      "tags": [
+        "Europol EC3",
+        "Crypto Fraud",
+        "Operation BIOS",
+        "AI Deepfake",
+        "EU"
+      ],
+      "severity": "RED",
+      "url": "https://www.europol.europa.eu/media-press/newsroom/news/"
+    },
+    {
+      "date": "2026-07",
+      "regulator": "ANSSI",
+      "country": "France",
+      "type": "Threat Advisory",
+      "headline": "ANSSI alerte \u2014 Russian APT Sandworm targeting French financial sector since Q2 2026",
+      "detail": "France's ANSSI (Agence nationale de la s\u00e9curit\u00e9 des syst\u00e8mes d'information) published an advisory identifying Sandworm (Russian GRU Unit 74455) activity targeting French financial sector infrastructure since Q2 2026, coinciding with geopolitical tensions. Techniques: destructive NotPetya-variant malware pre-positioning; targeting network monitoring systems to blind defenders before destructive payload delivery. ANSSI urges French financial institutions to implement network segmentation, review OT/IT boundary controls, and test incident response playbooks for destructive cyber scenarios within 90 days.",
+      "tags": [
+        "ANSSI",
+        "Sandworm",
+        "GRU",
+        "France",
+        "Destructive Malware"
+      ],
+      "severity": "AMBER",
+      "url": "https://www.ssi.gouv.fr/en/publication/"
+    },
+    {
+      "date": "2026-06",
+      "regulator": "ENISA/DORA NCAs",
+      "country": "EU",
+      "type": "Regulatory Intelligence",
+      "headline": "DORA implementation \u2014 847 major ICT incidents reported in first 6 months, classification gaps found",
+      "detail": "ENISA and DORA NCAs published a mid-year assessment of DORA ICT incident reporting in the first 6 months of implementation. 847 major incidents reported across EU financial entities \u2014 below expected volumes, indicating classification gaps. NCAs identified: firms under-classifying incidents due to threshold ambiguity; inconsistent use of initial/intermediate/final reporting timelines; inadequate documentation of third-party ICT provider involvement. ESMA, EBA, and EIOPA issuing Q&A guidance to address classification inconsistencies before Q4 2026 supervisory review.",
+      "tags": [
+        "DORA",
+        "ICT Incident",
+        "ENISA",
+        "NCA",
+        "Reporting"
+      ],
+      "severity": "AMBER",
+      "url": "https://www.eba.europa.eu/regulation-and-policy/operational-resilience/digital-operational-resilience-act-dora"
+    }
+  ]
+}

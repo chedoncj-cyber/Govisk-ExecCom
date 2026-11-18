@@ -1,0 +1,122 @@
+{
+  "sourced_date": "2026-11-18",
+  "slug": "africa",
+  "meta": {
+    "title": "Africa \u2014 Cyber Intelligence",
+    "bodies": "ngCERT \u00b7 CSIRT-SA \u00b7 KE-CIRT/CC \u00b7 AFRIPOL \u00b7 SSASC \u00b7 ESAAMLG"
+  },
+  "bodies": [
+    {
+      "name": "ngCERT",
+      "full": "Nigeria Computer Emergency Response Team",
+      "url": "https://www.ngcert.gov.ng/"
+    },
+    {
+      "name": "CSIRT-SA",
+      "full": "South Africa National CSIRT",
+      "url": "https://www.csirt.org.za/"
+    },
+    {
+      "name": "KE-CIRT/CC",
+      "full": "Kenya CERT (Communications Authority)",
+      "url": "https://www.ca.go.ke/consumers/kecirtcc"
+    },
+    {
+      "name": "AFRIPOL",
+      "full": "African Union Cybercrime Coordination",
+      "url": "https://www.afripol.africaunion.org/"
+    },
+    {
+      "name": "SSASC",
+      "full": "South Africa State Security Agency",
+      "url": "https://www.ssa.gov.za/"
+    }
+  ],
+  "news": [
+    {
+      "date": "2026-10",
+      "regulator": "ngCERT",
+      "country": "Nigeria",
+      "type": "Emergency Alert",
+      "headline": "ngCERT emergency alert \u2014 banking trojan wave targeting Nigerian mobile financial apps",
+      "detail": "Nigeria's ngCERT issued an emergency alert on a coordinated banking trojan campaign targeting Nigerian mobile banking applications and USSD-based financial services. The trojan (dubbed 'FinStealer-NG') uses overlay attacks on mobile apps of GTBank, Zenith Bank, Access Bank, and mobile money providers. Distributed via fraudulent Google Play and third-party APK links. Over 12,000 devices confirmed compromised in October 2026. CBN directed all DMBs to implement app integrity verification and enhanced transaction anomaly detection within 72 hours.",
+      "tags": [
+        "ngCERT",
+        "Banking Trojan",
+        "Nigeria",
+        "Mobile Banking",
+        "CBN"
+      ],
+      "severity": "RED",
+      "url": "https://www.ngcert.gov.ng/"
+    },
+    {
+      "date": "2026-09",
+      "regulator": "CSIRT-SA",
+      "country": "South Africa",
+      "type": "Ransomware Advisory",
+      "headline": "CSIRT-SA advisory \u2014 ransomware targeting South African banks and insurance firms",
+      "detail": "South Africa's CSIRT-SA issued an advisory on targeted ransomware campaigns against South African financial institutions. Two major incidents confirmed: a mid-tier bank and a large insurer both suffered ransomware deployment with demands exceeding R50M. CSIRT-SA attributes to RansomHub and Medusa ransomware groups. SARB and FSCA jointly issued a supervisory letter requiring all regulated entities to test backup restoration capabilities and report results within 30 days. POPIA breach notification obligations triggered for both affected entities.",
+      "tags": [
+        "CSIRT-SA",
+        "Ransomware",
+        "South Africa",
+        "POPIA",
+        "FSCA"
+      ],
+      "severity": "RED",
+      "url": "https://www.csirt.org.za/"
+    },
+    {
+      "date": "2026-08",
+      "regulator": "KE-CIRT/CC",
+      "country": "Kenya",
+      "type": "Fraud Alert",
+      "headline": "KE-CIRT/CC \u2014 SIM swap fraud campaigns targeting M-Pesa and banking apps at scale",
+      "detail": "Kenya's KE-CIRT/CC issued an alert on large-scale SIM swap fraud campaigns targeting M-Pesa and mobile banking customers. The campaign exploits insider access at Kenyan mobile network operators to perform unauthorised SIM replacements, then drain mobile money and banking accounts. CBK and CA Kenya issued joint guidance requiring financial institutions to implement transaction cooling periods for accounts where SIM changes occurred within 48 hours; device binding for high-value transactions; enhanced MNO identity verification requirements.",
+      "tags": [
+        "KE-CIRT/CC",
+        "SIM Swap",
+        "M-Pesa",
+        "Kenya",
+        "Mobile Money"
+      ],
+      "severity": "RED",
+      "url": "https://www.ca.go.ke/consumers/kecirtcc"
+    },
+    {
+      "date": "2026-07",
+      "regulator": "AFRIPOL",
+      "country": "Regional",
+      "type": "Operation",
+      "headline": "AFRIPOL Operation Serengeti II \u2014 1,006 suspects arrested in Africa-wide cyber fraud",
+      "detail": "AFRIPOL and INTERPOL announced the results of Operation Serengeti II, arresting 1,006 suspects across 19 African countries for cyber-enabled financial fraud. Operations dismantled: online investment fraud networks causing $193M in losses; romance scam operations; ransomware groups targeting African financial institutions. Four cyber crime command centres seized in Nigeria, Kenya, South Africa, and Cameroon. Financial institutions across Africa should review transaction monitoring for typologies identified in AFRIPOL's post-operation intelligence bulletin.",
+      "tags": [
+        "AFRIPOL",
+        "INTERPOL",
+        "Cybercrime",
+        "Operation Serengeti",
+        "Africa"
+      ],
+      "severity": "RED",
+      "url": "https://www.afripol.africaunion.org/"
+    },
+    {
+      "date": "2026-06",
+      "regulator": "ESAAMLG",
+      "country": "Regional",
+      "type": "Advisory",
+      "headline": "ESAAMLG cyber-financial crime advisory \u2014 crypto-enabled fraud surging across East Africa",
+      "detail": "ESAAMLG published a typologies advisory on crypto-enabled financial cybercrime across East and Southern Africa, noting a 340% year-on-year increase in crypto fraud losses. Key typologies: fake investment platforms (pig butchering); crypto ATM fraud; NFT-based money laundering; cross-border crypto transfers to avoid AML controls. Financial institutions with East African correspondent relationships must update their crypto exposure risk assessments and implement enhanced transaction monitoring for crypto-to-fiat conversion activities.",
+      "tags": [
+        "ESAAMLG",
+        "Crypto",
+        "Financial Crime",
+        "East Africa",
+        "AML"
+      ],
+      "severity": "AMBER",
+      "url": "https://www.esaamlg.org/"
+    }
+  ]
+}

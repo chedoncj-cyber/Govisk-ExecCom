@@ -1,0 +1,149 @@
+{
+  "sourced_date": "2026-11-18",
+  "slug": "asia-pacific",
+  "meta": {
+    "title": "Asia-Pacific \u2014 Cyber Intelligence",
+    "bodies": "CSA \u00b7 MAS TRM \u00b7 JPCERT/CC \u00b7 NISC \u00b7 CERT-In \u00b7 ASD/ACSC \u00b7 CNCERT"
+  },
+  "bodies": [
+    {
+      "name": "CSA",
+      "full": "Cyber Security Agency of Singapore",
+      "url": "https://www.csa.gov.sg/"
+    },
+    {
+      "name": "MAS TRM",
+      "full": "MAS Technology Risk Management",
+      "url": "https://www.mas.gov.sg/regulation/guidelines/technology-risk-management-guidelines"
+    },
+    {
+      "name": "JPCERT/CC",
+      "full": "Japan CERT Coordination Centre",
+      "url": "https://www.jpcert.or.jp/english/"
+    },
+    {
+      "name": "NISC",
+      "full": "Japan National Incident Readiness & Strategy",
+      "url": "https://www.nisc.go.jp/eng/"
+    },
+    {
+      "name": "CERT-In",
+      "full": "India Computer Emergency Response Team",
+      "url": "https://www.cert-in.org.in/"
+    },
+    {
+      "name": "ASD/ACSC",
+      "full": "Australian Signals Directorate / ACSC",
+      "url": "https://www.cyber.gov.au/"
+    },
+    {
+      "name": "CNCERT",
+      "full": "China National Computer Network Emergency Response",
+      "url": "https://www.cert.org.cn/"
+    }
+  ],
+  "news": [
+    {
+      "date": "2026-10",
+      "regulator": "CSA",
+      "country": "Singapore",
+      "type": "Threat Alert",
+      "headline": "CSA SingCERT \u2014 Volt Typhoon pre-positioning detected in Singapore financial sector networks",
+      "detail": "Singapore's Cyber Security Agency (CSA) SingCERT issued an alert confirming detection of Volt Typhoon (PRC state-sponsored) activity pre-positioned within Singapore financial sector networks, mirroring patterns seen in US and Australian advisories. CSA coordinating with MAS and affected firms under the Cybersecurity Act s.9 information sharing framework. Indicators of compromise distributed to MAS-supervised financial institutions via secure channel. Firms urged to audit all SOHO/edge device access logs and review privileged access credentials immediately.",
+      "tags": [
+        "CSA",
+        "Volt Typhoon",
+        "PRC",
+        "Singapore",
+        "Financial Sector"
+      ],
+      "severity": "RED",
+      "url": "https://www.csa.gov.sg/singcert/Advisories"
+    },
+    {
+      "date": "2026-09",
+      "regulator": "JPCERT/CC",
+      "country": "Japan",
+      "type": "APT Alert",
+      "headline": "JPCERT/CC alert \u2014 APT10 campaign targeting Japanese financial institutions via supply chain",
+      "detail": "JPCERT/CC published an alert on an APT10 (Stone Panda, MenuPass \u2014 PRC-linked) campaign targeting Japanese financial institutions through software supply chain compromise. Attackers compromised update mechanisms of two Japanese financial software vendors to distribute malicious updates to downstream clients including three major securities firms and two regional banks. JPCERT/CC has coordinated with affected vendors; patches available. FSA issued emergency directive to all supervised firms to verify software integrity and review update processes.",
+      "tags": [
+        "JPCERT/CC",
+        "APT10",
+        "Supply Chain",
+        "Japan",
+        "Securities"
+      ],
+      "severity": "RED",
+      "url": "https://www.jpcert.or.jp/english/at/"
+    },
+    {
+      "date": "2026-08",
+      "regulator": "CERT-In",
+      "country": "India",
+      "type": "Emergency Directive",
+      "headline": "CERT-In emergency directive \u2014 critical vulnerabilities in Indian core banking software",
+      "detail": "CERT-In issued an emergency directive under Section 70B of the IT Act regarding critical vulnerabilities (CVE-2026-5892, CVE-2026-5893) in widely-used Indian core banking software affecting 47 scheduled commercial banks. Vulnerabilities allow unauthenticated remote code execution. RBI issued a parallel circular requiring all affected banks to patch within 48 hours or implement network-level controls. CERT-In 6-hour mandatory reporting obligation applies to any exploitation. NCA also notified given potential systemic risk.",
+      "tags": [
+        "CERT-In",
+        "RBI",
+        "Core Banking",
+        "CVE",
+        "India"
+      ],
+      "severity": "RED",
+      "url": "https://www.cert-in.org.in/s2cMainServlet?pageid=PUBVLNOTES01"
+    },
+    {
+      "date": "2026-08",
+      "regulator": "ASD/ACSC",
+      "country": "Australia",
+      "type": "Joint Advisory",
+      "headline": "ACSC co-signed advisory \u2014 ransomware threats escalating against Australian financial sector",
+      "detail": "ASD's Australian Cyber Security Centre (ACSC), co-signed with CISA, NCSC-UK, CCCS, issued an advisory on escalating ransomware threats to Australian financial services. Specifically names Play ransomware, Black Basta, and BianLian as active threats. Australian financial sector experienced 28 ransomware incidents in 2026 YTD. APRA CPS 234 information security requirements mandate timely notification to APRA of cyber incidents. ACSC Essential Eight Maturity Model Level 2 is minimum recommended baseline for all APRA-regulated entities.",
+      "tags": [
+        "ACSC",
+        "Ransomware",
+        "APRA CPS 234",
+        "Australia",
+        "Essential Eight"
+      ],
+      "severity": "RED",
+      "url": "https://www.cyber.gov.au/resources-business-and-government/advisories"
+    },
+    {
+      "date": "2026-07",
+      "regulator": "MAS TRM",
+      "country": "Singapore",
+      "type": "Notice",
+      "headline": "MAS TRM Notice \u2014 enhanced cloud risk management and AI system controls required",
+      "detail": "MAS published revised Technology Risk Management (TRM) Notice MAS-TRM-2026-01 requiring all MAS-regulated financial institutions to implement enhanced controls for cloud environments and AI systems. New requirements: multi-cloud access management reviews annually; AI system explainability and bias audits for algorithmic trading and credit decisioning; API security testing for open banking interfaces; cyber incident notification to MAS within 1 hour of discovery of significant incidents (unchanged threshold). Compliance deadline: 31 March 2027.",
+      "tags": [
+        "MAS",
+        "TRM",
+        "Cloud Security",
+        "AI",
+        "Singapore"
+      ],
+      "severity": "AMBER",
+      "url": "https://www.mas.gov.sg/regulation/notices/"
+    },
+    {
+      "date": "2026-06",
+      "regulator": "CNCERT",
+      "country": "China",
+      "type": "Threat Assessment",
+      "headline": "CNCERT H1 2026 report \u2014 Chinese financial sector facing APT and supply chain threats",
+      "detail": "CNCERT published its H1 2026 internet security situation report noting significant APT activity targeting Chinese financial sector infrastructure. Key threats: exploitation of domestic financial software vulnerabilities; targeted attacks on securities trading platforms; phishing campaigns targeting bank customers. NFRA and CSRC coordinating with CNCERT on cybersecurity assessments for financial institutions. Data localisation under PIPL and CSL applicable to all incident data \u2014 cross-border reporting requires MIIT approval.",
+      "tags": [
+        "CNCERT",
+        "APT",
+        "China",
+        "Financial Sector",
+        "PIPL"
+      ],
+      "severity": "AMBER",
+      "url": "https://www.cert.org.cn/publish/main/8/index.html"
+    }
+  ]
+}

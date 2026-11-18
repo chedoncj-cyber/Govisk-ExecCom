@@ -41,6 +41,18 @@ ROUTES = {
     "/region/africa":             "region.html",
     "/region/europe":             "region.html",
 
+    # World reports
+    "/world-report":              "world_report.html",
+    "/cyber-world-report":        "cyber_world_report.html",
+
+    # API — cyber intelligence feeds
+    "/api/cyber-updates/uk":               "api/cyber-updates-uk.json",
+    "/api/cyber-updates/north-america":    "api/cyber-updates-north-america.json",
+    "/api/cyber-updates/latin-america":    "api/cyber-updates-latin-america.json",
+    "/api/cyber-updates/asia-pacific":     "api/cyber-updates-asia-pacific.json",
+    "/api/cyber-updates/africa":           "api/cyber-updates-africa.json",
+    "/api/cyber-updates/europe":           "api/cyber-updates-europe.json",
+
     # Main pages
     "/about":         "about.html",
     "/services":      "services.html",

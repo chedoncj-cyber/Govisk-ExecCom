@@ -1,0 +1,139 @@
+{
+  "sourced_date": "2026-11-18",
+  "slug": "uk",
+  "meta": {
+    "title": "United Kingdom \u2014 Cyber Intelligence",
+    "bodies": "NCSC \u00b7 FCA/CBEST \u00b7 CPNI \u00b7 ICO \u00b7 OFCOM"
+  },
+  "bodies": [
+    {
+      "name": "NCSC",
+      "full": "National Cyber Security Centre",
+      "url": "https://www.ncsc.gov.uk/"
+    },
+    {
+      "name": "FCA/CBEST",
+      "full": "FCA Cyber Threat-Led Penetration Testing",
+      "url": "https://www.fca.org.uk/firms/cyber-resilience"
+    },
+    {
+      "name": "CPNI",
+      "full": "Centre for the Protection of National Infrastructure",
+      "url": "https://www.cpni.gov.uk/"
+    },
+    {
+      "name": "ICO",
+      "full": "Information Commissioner's Office",
+      "url": "https://ico.org.uk/"
+    },
+    {
+      "name": "OFCOM",
+      "full": "Office of Communications",
+      "url": "https://www.ofcom.org.uk/research-and-data/telecoms-research/security"
+    }
+  ],
+  "news": [
+    {
+      "date": "2026-10",
+      "regulator": "NCSC",
+      "country": "United Kingdom",
+      "type": "Threat Advisory",
+      "headline": "NCSC critical advisory \u2014 ransomware groups escalating attacks on UK financial sector",
+      "detail": "NCSC issued a critical advisory warning of a marked escalation in ransomware targeting UK financial services firms, particularly mid-tier asset managers and payment processors. The advisory specifically names LockBit 4.0, ALPHV/BlackCat successors, and Cl0p as active threat actors. Firms are directed to: patch CVE-2024-3400 (PAN-OS) and CVE-2025-1974 (Kubernetes) immediately; implement offline backups; activate MFA on all remote access; review third-party VPN credentials. NCSC CISP portal updated with indicators of compromise.",
+      "tags": [
+        "Ransomware",
+        "Financial Sector",
+        "LockBit",
+        "ALPHV",
+        "NCSC"
+      ],
+      "severity": "RED",
+      "url": "https://www.ncsc.gov.uk/collection/ransomware"
+    },
+    {
+      "date": "2026-09",
+      "regulator": "NCSC",
+      "country": "United Kingdom",
+      "type": "Annual Report",
+      "headline": "NCSC Annual Cyber Threat Report 2026 \u2014 state-sponsored attacks at record high",
+      "detail": "NCSC published its Annual Cyber Threat Report 2026, citing a record number of state-sponsored cyber incidents targeting UK critical national infrastructure. Financial services ranked second-most targeted sector (after government). Russia (Cozy Bear/APT29), China (Volt Typhoon), Iran (APT34), and North Korea (Lazarus Group targeting crypto/SWIFT) all named as active threats. NCSC handled 2,049 cyber incidents in 2025/26 \u2014 20% increase year-on-year.",
+      "tags": [
+        "State Actors",
+        "APT",
+        "Annual Report",
+        "Critical Infrastructure",
+        "NCSC"
+      ],
+      "severity": "RED",
+      "url": "https://www.ncsc.gov.uk/section/annual-review/2026"
+    },
+    {
+      "date": "2026-08",
+      "regulator": "ICO",
+      "country": "United Kingdom",
+      "type": "Enforcement",
+      "headline": "ICO fines financial services firm \u00a34.4M \u2014 inadequate security controls under UK GDPR",
+      "detail": "ICO imposed a \u00a34.4 million fine on a UK financial services firm for failing to implement adequate technical and organisational security measures under UK GDPR Article 32. The firm failed to: encrypt sensitive customer data at rest; implement MFA on critical systems; conduct regular penetration testing; maintain an adequate patch management programme. The incident exposed 340,000 customer records including account numbers and credit scores. ICO confirmed this is a signal of a tougher enforcement approach for 2026/27.",
+      "tags": [
+        "ICO",
+        "UK GDPR",
+        "Enforcement",
+        "Data Breach",
+        "Article 32"
+      ],
+      "severity": "RED",
+      "url": "https://ico.org.uk/action-weve-taken/enforcement/"
+    },
+    {
+      "date": "2026-07",
+      "regulator": "FCA/CBEST",
+      "country": "United Kingdom",
+      "type": "Framework Update",
+      "headline": "FCA updates CBEST framework \u2014 AI-driven threat simulation and cloud scenarios now required",
+      "detail": "FCA published an updated CBEST framework (v4.0) requiring financial firms to incorporate AI-assisted threat actor simulation and cloud-specific attack scenarios into their threat-led penetration tests. Firms in scope: banks, insurers, payment infrastructure, market infrastructure. New requirements: annual CBEST cycle (previously biennial for some); cloud penetration testing must cover identity and access management (IAM) misconfigurations; AI-assisted spear phishing scenarios for executive targeting; results must be reported to the FCA within 30 days of test completion.",
+      "tags": [
+        "CBEST",
+        "FCA",
+        "Penetration Testing",
+        "AI",
+        "Cloud"
+      ],
+      "severity": "AMBER",
+      "url": "https://www.fca.org.uk/firms/cyber-resilience/cbest"
+    },
+    {
+      "date": "2026-06",
+      "regulator": "OFCOM",
+      "country": "United Kingdom",
+      "type": "Enforcement",
+      "headline": "OFCOM issues network security duty enforcement notices to 3 telecoms operators",
+      "detail": "OFCOM issued enforcement notices to three UK telecoms operators for breaches of the Network and Information Systems (NIS) Regulations 2018 and the Telecoms Security Act 2021. Failures identified: inadequate SS7 signalling security; insufficient monitoring for SIM-swap fraud patterns; failure to report security incidents within 24-hour deadline. Financial firms relying on SMS-based OTP authentication must review dependency on telecoms infrastructure security as part of their operational resilience assessments.",
+      "tags": [
+        "OFCOM",
+        "Telecoms Security",
+        "NIS Regulations",
+        "SS7",
+        "SIM Swap"
+      ],
+      "severity": "AMBER",
+      "url": "https://www.ofcom.org.uk/phones-and-broadband/telecoms-security"
+    },
+    {
+      "date": "2026-05",
+      "regulator": "CPNI",
+      "country": "United Kingdom",
+      "type": "Guidance",
+      "headline": "CPNI updated protective security guidance for financial critical infrastructure",
+      "detail": "CPNI published updated Protective Security Guidance for organisations designated as critical national infrastructure within the financial sector. Key updates: insider threat detection requirements for privileged access holders; physical-cyber convergence controls for data centres and trading floors; supply chain security assessment mandatory for third-party technology providers. Guidance aligns with NCSC CAF (Cyber Assessment Framework) and FCA operational resilience requirements under PS21/3 and PS26/2.",
+      "tags": [
+        "CPNI",
+        "Critical Infrastructure",
+        "Insider Threat",
+        "Supply Chain",
+        "CAF"
+      ],
+      "severity": "GREEN",
+      "url": "https://www.cpni.gov.uk/protective-security-guidance"
+    }
+  ]
+}

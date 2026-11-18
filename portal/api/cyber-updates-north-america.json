@@ -1,0 +1,144 @@
+{
+  "sourced_date": "2026-11-18",
+  "slug": "north-america",
+  "meta": {
+    "title": "North America \u2014 Cyber Intelligence",
+    "bodies": "CISA \u00b7 NSA/CNMF \u00b7 FBI Cyber \u00b7 SEC \u00b7 CCCS \u00b7 CSE"
+  },
+  "bodies": [
+    {
+      "name": "CISA",
+      "full": "Cybersecurity and Infrastructure Security Agency",
+      "url": "https://www.cisa.gov/"
+    },
+    {
+      "name": "NSA/CNMF",
+      "full": "NSA / Cyber National Mission Force",
+      "url": "https://www.nsa.gov/cybersecurity/"
+    },
+    {
+      "name": "FBI Cyber",
+      "full": "FBI Cyber Division",
+      "url": "https://www.fbi.gov/investigate/cyber"
+    },
+    {
+      "name": "SEC",
+      "full": "Securities and Exchange Commission",
+      "url": "https://www.sec.gov/cybersecurity"
+    },
+    {
+      "name": "CCCS",
+      "full": "Canadian Centre for Cyber Security",
+      "url": "https://www.cyber.gc.ca/"
+    },
+    {
+      "name": "CSE",
+      "full": "Communications Security Establishment",
+      "url": "https://www.cse-cst.gc.ca/"
+    }
+  ],
+  "news": [
+    {
+      "date": "2026-10",
+      "regulator": "CISA",
+      "country": "USA",
+      "type": "Known Exploited Vulnerabilities",
+      "headline": "CISA KEV \u2014 7 new exploited vulnerabilities affecting financial sector software added",
+      "detail": "CISA added 7 vulnerabilities to its Known Exploited Vulnerabilities (KEV) catalog confirmed as actively exploited in attacks targeting the financial sector. Critical entries: CVE-2026-1134 (Cisco IOS XE web UI RCE, CVSS 10.0); CVE-2026-0892 (Citrix NetScaler auth bypass); CVE-2025-4471 (Palo Alto PAN-OS). CISA Binding Operational Directive 22-01 applies to federal agencies; private financial institutions are strongly urged to patch within 15 days. FS-ISAC threat-sharing alert simultaneously issued to member firms.",
+      "tags": [
+        "CISA",
+        "KEV",
+        "CVE",
+        "Vulnerabilities",
+        "Financial Sector"
+      ],
+      "severity": "RED",
+      "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog"
+    },
+    {
+      "date": "2026-09",
+      "regulator": "FBI Cyber",
+      "country": "USA",
+      "type": "Threat Advisory",
+      "headline": "FBI warns Scattered Spider actively targeting US financial sector cloud environments",
+      "detail": "FBI Cyber Division issued a Private Industry Notification (PIN) warning that Scattered Spider (UNC3944/Octo Tempest) is conducting advanced social engineering campaigns targeting US financial sector help desks and IT support personnel to gain access to cloud environments. Tactics: impersonating employees to bypass MFA; SIM swapping executive mobile numbers; vishing attacks on tier-1 IT staff. Targets in 2026: three major US brokerages and two insurance firms. FBI urges: mandatory video verification for password resets; out-of-band confirmation for privileged access changes.",
+      "tags": [
+        "FBI",
+        "Scattered Spider",
+        "Social Engineering",
+        "Cloud",
+        "Vishing"
+      ],
+      "severity": "RED",
+      "url": "https://www.ic3.gov/"
+    },
+    {
+      "date": "2026-08",
+      "regulator": "CISA/NSA",
+      "country": "USA",
+      "type": "Joint Advisory",
+      "headline": "CISA/NSA/CCCS joint advisory \u2014 PRC state actors (Volt Typhoon) in financial networks",
+      "detail": "CISA, NSA, FBI, CCCS and partner agencies issued a joint advisory confirming Volt Typhoon (PRC state-sponsored) has pre-positioned access in US and Canadian financial sector networks, likely for disruption capability rather than immediate exfiltration. Techniques: living-off-the-land (LOtL) using native tools; targeting SOHO routers as proxy infrastructure; exploiting OT/IT boundary systems in financial data centres. Firms urged to hunt for indicators of compromise, review SOHO network devices, and implement network segmentation between trading and administrative systems.",
+      "tags": [
+        "Volt Typhoon",
+        "PRC",
+        "State Actor",
+        "Critical Infrastructure",
+        "LOtL"
+      ],
+      "severity": "RED",
+      "url": "https://www.cisa.gov/news-events/cybersecurity-advisories"
+    },
+    {
+      "date": "2026-09",
+      "regulator": "SEC",
+      "country": "USA",
+      "type": "Enforcement",
+      "headline": "SEC charges investment firm $2.9M \u2014 failure to disclose material cyber incident within 4 days",
+      "detail": "SEC charged a registered investment adviser with violating the cybersecurity incident disclosure rules (Item 1.05 of Form 8-K) for failing to disclose a material ransomware attack within the required 4 business days. The firm delayed disclosure by 23 days while attempting to negotiate with the threat actor. Additionally charged with inadequate cybersecurity policies and failure to maintain required records of the incident response. Total penalty: $2,900,000. First major enforcement action under the 2023 cyber disclosure rules.",
+      "tags": [
+        "SEC",
+        "Form 8-K",
+        "Disclosure",
+        "Ransomware",
+        "Enforcement"
+      ],
+      "severity": "RED",
+      "url": "https://www.sec.gov/enforce/cyber-enforcement"
+    },
+    {
+      "date": "2026-07",
+      "regulator": "CCCS",
+      "country": "Canada",
+      "type": "Threat Bulletin",
+      "headline": "CCCS threat bulletin \u2014 LockBit affiliate activity resurging in Canadian banking sector",
+      "detail": "Canadian Centre for Cyber Security issued a threat bulletin confirming resurgence of LockBit affiliate activity targeting Canadian banking and financial infrastructure following partial law enforcement disruption. Affiliates now deploying customised variants to evade detection. CCCS observed 11 confirmed incidents in Canadian financial sector in Q2/Q3 2026. Recommended controls: network segmentation; offline backup testing; LSASS memory protection; disabling WMIC for non-administrative accounts.",
+      "tags": [
+        "CCCS",
+        "LockBit",
+        "Ransomware",
+        "Canada",
+        "Banking"
+      ],
+      "severity": "RED",
+      "url": "https://www.cyber.gc.ca/en/alerts-advisories"
+    },
+    {
+      "date": "2026-06",
+      "regulator": "CSE",
+      "country": "Canada",
+      "type": "Annual Assessment",
+      "headline": "CSE National Cyber Threat Assessment 2026 \u2014 ransomware-as-a-service dominant threat vector",
+      "detail": "Communications Security Establishment published its National Cyber Threat Assessment 2026. Key findings: ransomware-as-a-service (RaaS) remains the most disruptive cyber threat to Canadian financial institutions; state-sponsored actors (Russia, China, Iran, DPRK) increasingly targeting financial infrastructure for pre-positioning; Canadian financial sector experienced 34% increase in reported cyber incidents in 2025. CSE recommends adoption of Cyber Essentials framework as baseline for all financial firms.",
+      "tags": [
+        "CSE",
+        "RaaS",
+        "Annual Assessment",
+        "State Actors",
+        "Canada"
+      ],
+      "severity": "AMBER",
+      "url": "https://www.cse-cst.gc.ca/en/publication/ncta-2026"
+    }
+  ]
+}
