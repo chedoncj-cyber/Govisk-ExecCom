@@ -33,6 +33,32 @@ from observability import get_logger, metrics, set_request_id
 
 _gw_log = get_logger("cass.gateway", log_file=Path(__file__).parent.parent / ".tmp" / "cass.log")
 
+
+# ── SOC 2 Audit Logger (CC7.2 — System Operations / Security Events) ─────────
+class _AuditLogger:
+    """Append-only structured JSON audit log for SOC 2 CC6 / CC7 compliance."""
+
+    def __init__(self):
+        self._path: Path | None = None
+
+    def _p(self) -> Path:
+        if self._path is None:
+            p = Path(__file__).parent.parent / ".tmp" / "audit.log"
+            p.parent.mkdir(parents=True, exist_ok=True)
+            self._path = p
+        return self._path
+
+    def log(self, event: str, **kwargs):
+        entry = {"t": datetime.utcnow().isoformat() + "Z", "event": event, **kwargs}
+        try:
+            with open(self._p(), "a", encoding="utf-8") as f:
+                f.write(json.dumps(entry) + "\n")
+        except OSError:
+            pass
+
+
+_audit = _AuditLogger()
+
 # ── Web-shell / script extension probe blocker ───────────────────────────────
 _BLOCKED_EXTS = re.compile(
     r"\.(php\d*|phtml|phar|asp|aspx|ashx|asmx|jsp|jspx|cfm|cgi|pl|sh|bash"
@@ -61,6 +87,11 @@ _RATE_STORE: dict[str, list[float]] = defaultdict(list)
 _RATE_WINDOW = 60   # seconds
 _RATE_LIMIT  = 40   # max requests per IP per window
 
+# ── Login brute-force lockout (SOC 2 CC6.6) ──────────────────────────────────
+_LOGIN_FAILURES: dict[str, list[float]] = defaultdict(list)
+_LOGIN_MAX_ATTEMPTS  = 5
+_LOGIN_LOCKOUT_SECS  = 900  # 15-minute lockout after 5 failed attempts
+
 # ── Security headers added to every response ─────────────────────────────────
 _SEC_HEADERS = {
     "X-Frame-Options":        "DENY",
@@ -84,15 +115,27 @@ _SEC_HEADERS = {
 # Env vars required:
 #   PORTAL_USERNAME  — login username (default: "admin")
 #   PORTAL_PASSWORD  — login password (required; set in Render dashboard, not .env)
-_SESSIONS: dict[str, str] = {}  # token → username
+_SESSIONS: dict[str, dict] = {}  # token → {username, ip, created}
 _SESSION_COOKIE = "govisk_session"
-_SESSION_MAX_AGE = 8 * 3600  # 8 hours
+_SESSION_MAX_AGE = 8 * 3600  # 8-hour absolute expiry (SOC 2 CC6.1)
 
 # Public routes that do NOT require authentication
 _PUBLIC_PATHS = {"/", "/home", "/about", "/services", "/case-studies", "/contact",
                  "/request-demo", "/faq", "/privacy-policy", "/terms", "/cookie-policy",
                  "/refund-policy", "/404", "/login", "/health", "/api/auth/login",
                  "/api/status"}
+
+
+def _resolve_session(token: str | None) -> str | None:
+    """Return username for a valid, non-expired session token, or None."""
+    if not token or token not in _SESSIONS:
+        return None
+    sess = _SESSIONS[token]
+    if time.time() - sess["created"] > _SESSION_MAX_AGE:
+        _SESSIONS.pop(token, None)
+        _audit.log("session.expired", user=sess["username"])
+        return None
+    return sess["username"]
 
 
 def _check_credentials(username: str, password: str) -> bool:
@@ -107,22 +150,23 @@ def _check_credentials(username: str, password: str) -> bool:
 
 
 def _get_session_user(govisk_session: str = Cookie(default=None)) -> str:
-    """FastAPI dependency — raises 401 if not authenticated. Use on API routes."""
-    if not govisk_session or govisk_session not in _SESSIONS:
+    """FastAPI dependency — raises 401 if not authenticated or session expired."""
+    user = _resolve_session(govisk_session)
+    if not user:
         raise HTTPException(status_code=401, detail="Authentication required")
-    return _SESSIONS[govisk_session]
+    return user
 
 
 def _portal_auth(request: Request) -> str:
-    """For HTML routes — returns redirect to /login instead of JSON 401."""
-    token = request.cookies.get(_SESSION_COOKIE)
-    if not token or token not in _SESSIONS:
+    """For HTML routes — redirects to /login instead of JSON 401."""
+    user = _resolve_session(request.cookies.get(_SESSION_COOKIE))
+    if not user:
         raise HTTPException(
             status_code=307,
             headers={"Location": f"/login?next={request.url.path}"},
             detail="Login required",
         )
-    return _SESSIONS[token]
+    return user
 
 
 class SecurityMiddleware(BaseHTTPMiddleware):
@@ -152,6 +196,13 @@ class SecurityMiddleware(BaseHTTPMiddleware):
         if len(_RATE_STORE[ip]) >= _RATE_LIMIT:
             return JSONResponse({"detail": "Too Many Requests"}, status_code=429)
         _RATE_STORE[ip].append(now)
+
+        # SOC 2 CC7.2 — Log authenticated access to protected API endpoints
+        if path.startswith("/api/") and path not in {"/api/auth/login", "/api/status"}:
+            token = request.cookies.get(_SESSION_COOKIE, "")
+            sess = _SESSIONS.get(token)
+            if sess:
+                _audit.log("data.access", ip=ip, user=sess.get("username"), path=path, method=request.method)
 
         # Assign a request ID and log the incoming request
         rid = set_request_id()
@@ -219,23 +270,39 @@ async def serve_login():
 
 
 @app.post("/api/auth/login")
-async def auth_login(response: Response, body: dict = Body(...)):
-    username = str(body.get("username", ""))
-    password = str(body.get("password", ""))
+async def auth_login(request: Request, response: Response, body: dict = Body(...)):
+    ip       = request.client.host if request.client else "unknown"
+    username = str(body.get("username", ""))[:128]
+    password = str(body.get("password", ""))[:256]
+
     if not os.getenv("PORTAL_PASSWORD"):
         raise HTTPException(status_code=503, detail="Portal auth not configured — set PORTAL_PASSWORD env var")
+
+    # SOC 2 CC6.6 — Brute-force lockout: 5 failures → 15-minute block per IP
+    now = time.time()
+    _LOGIN_FAILURES[ip] = [t for t in _LOGIN_FAILURES[ip] if now - t < _LOGIN_LOCKOUT_SECS]
+    if len(_LOGIN_FAILURES[ip]) >= _LOGIN_MAX_ATTEMPTS:
+        _audit.log("login.blocked", ip=ip, username=username, reason="lockout")
+        raise HTTPException(
+            status_code=429,
+            detail=f"Too many failed attempts. Try again in {_LOGIN_LOCKOUT_SECS // 60} minutes.",
+        )
+
     if not _check_credentials(username, password):
+        _LOGIN_FAILURES[ip].append(now)
+        _audit.log("login.failed", ip=ip, username=username,
+                   attempts=len(_LOGIN_FAILURES[ip]), max=_LOGIN_MAX_ATTEMPTS)
         raise HTTPException(status_code=401, detail="Invalid credentials")
+
+    # Success — clear failure counter, create session
+    _LOGIN_FAILURES.pop(ip, None)
     token = secrets.token_hex(32)
-    _SESSIONS[token] = username
+    _SESSIONS[token] = {"username": username, "ip": ip, "created": now}
+    _audit.log("login.success", ip=ip, username=username)
+
     response.set_cookie(
-        key=_SESSION_COOKIE,
-        value=token,
-        httponly=True,
-        secure=True,
-        samesite="strict",
-        max_age=_SESSION_MAX_AGE,
-        path="/",
+        key=_SESSION_COOKIE, value=token, httponly=True, secure=True,
+        samesite="strict", max_age=_SESSION_MAX_AGE, path="/",
     )
     return {"status": "ok", "redirect": "/portal"}
 
@@ -243,7 +310,11 @@ async def auth_login(response: Response, body: dict = Body(...)):
 @app.post("/api/auth/logout")
 async def auth_logout(request: Request, response: Response):
     token = request.cookies.get(_SESSION_COOKIE)
-    if token:
+    if token and token in _SESSIONS:
+        sess = _SESSIONS.pop(token)
+        ip = request.client.host if request.client else "unknown"
+        _audit.log("logout", ip=ip, username=sess.get("username", "unknown"))
+    elif token:
         _SESSIONS.pop(token, None)
     response.delete_cookie(_SESSION_COOKIE, path="/")
     return {"status": "ok"}
@@ -281,8 +352,7 @@ async def serve_home():
 
 @app.get("/portal", response_class=HTMLResponse)
 async def serve_portal(request: Request):
-    token = request.cookies.get(_SESSION_COOKIE)
-    if not token or token not in _SESSIONS:
+    if not _resolve_session(request.cookies.get(_SESSION_COOKIE)):
         return RedirectResponse(url="/login?next=/portal", status_code=302)
     return _serve_html("index.html")
 
@@ -497,8 +567,7 @@ async def fca_updates(user: str = Depends(_get_session_user)):
 @app.get("/region/{slug}", response_class=HTMLResponse)
 async def serve_region_page(slug: str, request: Request):
     """Serve the regional MI intelligence page for any valid region slug."""
-    token = request.cookies.get(_SESSION_COOKIE)
-    if not token or token not in _SESSIONS:
+    if not _resolve_session(request.cookies.get(_SESSION_COOKIE)):
         return RedirectResponse(url=f"/login?next=/region/{slug}", status_code=302)
     valid = {"uk", "north-america", "latin-america", "asia-pacific", "africa", "europe"}
     if slug not in valid:
@@ -563,16 +632,14 @@ async def get_all_enforcement(user: str = Depends(_get_session_user)):
 
 @app.get("/blacklist", response_class=HTMLResponse)
 async def serve_blacklist(request: Request):
-    token = request.cookies.get(_SESSION_COOKIE)
-    if not token or token not in _SESSIONS:
+    if not _resolve_session(request.cookies.get(_SESSION_COOKIE)):
         return RedirectResponse(url="/login?next=/blacklist", status_code=302)
     return _serve_html("blacklist.html")
 
 
 @app.get("/grc-templates", response_class=HTMLResponse)
 async def serve_grc_templates(request: Request):
-    token = request.cookies.get(_SESSION_COOKIE)
-    if not token or token not in _SESSIONS:
+    if not _resolve_session(request.cookies.get(_SESSION_COOKIE)):
         return RedirectResponse(url="/login?next=/grc-templates", status_code=302)
     return _serve_html("grc-templates.html")
 
@@ -580,8 +647,7 @@ async def serve_grc_templates(request: Request):
 @app.get("/world-report", response_class=HTMLResponse)
 async def serve_world_report(request: Request):
     """Govisk ExecCom Region World Report — multi-region GRC intelligence."""
-    token = request.cookies.get(_SESSION_COOKIE)
-    if not token or token not in _SESSIONS:
+    if not _resolve_session(request.cookies.get(_SESSION_COOKIE)):
         return RedirectResponse(url="/login?next=/world-report", status_code=302)
     return _serve_html("world_report.html")
 
@@ -589,8 +655,7 @@ async def serve_world_report(request: Request):
 @app.get("/cyber-world-report", response_class=HTMLResponse)
 async def serve_cyber_world_report(request: Request):
     """Cyber Intelligence World Region Report — threat intel from national cyber bodies."""
-    token = request.cookies.get(_SESSION_COOKIE)
-    if not token or token not in _SESSIONS:
+    if not _resolve_session(request.cookies.get(_SESSION_COOKIE)):
         return RedirectResponse(url="/login?next=/cyber-world-report", status_code=302)
     return _serve_html("cyber_world_report.html")
 
@@ -762,6 +827,16 @@ async def get_enforcement_for_report(report_type: str, user: str = Depends(_get_
         raise
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
+# SOC 2 CC7.2 — Mask internal error details from API consumers
+@app.exception_handler(Exception)
+async def _unhandled_exception_handler(request: Request, exc: Exception):
+    _gw_log.error("unhandled_exception", extra={"path": request.url.path, "error": str(exc)})
+    return JSONResponse(
+        status_code=500,
+        content={"detail": "An internal error occurred. Please try again or contact support."},
+    )
 
 
 if __name__ == "__main__":
