@@ -28,7 +28,7 @@ _SAFE_NAME_RE = re.compile(r"[^A-Za-z0-9 _\-]")
 _MAX_PAYLOAD_BYTES = 64 * 1024  # 64 KB hard limit
 
 # ── Shared observability ───────────────────────────────────────────────────────
-sys.path.insert(0, str(Path(__file__).parent.parent.parent / "shared"))
+sys.path.insert(0, str(Path(__file__).parent.parent / "shared"))
 from observability import get_logger, metrics, set_request_id
 
 _gw_log = get_logger("cass.gateway", log_file=Path(__file__).parent.parent / ".tmp" / "cass.log")
