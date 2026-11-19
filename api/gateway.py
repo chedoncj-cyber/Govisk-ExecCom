@@ -70,7 +70,7 @@ _SEC_HEADERS = {
     "Permissions-Policy":     "geolocation=(), microphone=(), camera=()",
     "Content-Security-Policy": (
         "default-src 'self'; "
-        "script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; "
+        "script-src 'self' https://cdn.jsdelivr.net; "
         "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; "
         "font-src https://fonts.gstatic.com; "
         "connect-src 'self'; "

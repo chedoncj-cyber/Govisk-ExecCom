@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -123,19 +123,6 @@
     <span></span><span></span><span></span>
   </button>
 </nav>
-<script>
-(function(){
-  var btn = document.getElementById('nav-hamburger');
-  var links = document.getElementById('nav-links');
-  if (!btn || !links) return;
-  btn.addEventListener('click', function(){
-    var open = links.classList.toggle('open');
-    btn.classList.toggle('open', open);
-    btn.setAttribute('aria-expanded', open);
-  });
-  document.addEventListener('keydown', function(e){ if(e.key==='Escape'){ links.classList.remove('open'); btn.classList.remove('open'); btn.setAttribute('aria-expanded','false'); }});
-})();
-</script>
 
 <main id="main-content" class="err-page">
   <div class="err-inner fade-in">
@@ -177,8 +164,8 @@
   <span>We use essential cookies to keep this platform running. <a href="/portal/cookie-policy.html" style="color:var(--data);text-decoration:underline;">Cookie Policy</a></span>
   <button onclick="document.getElementById('cookie-banner').style.display='none';localStorage.setItem('cba','1')" style="background:var(--data);color:#fff;border:none;border-radius:6px;padding:7px 18px;font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap;font-family:inherit;">Accept</button>
 </div>
-<script>if(localStorage.getItem('cba'))document.getElementById('cookie-banner').style.display='none';</script>
 <!-- /cookie-banner -->
 
+  <script src="/assets/init-old.js"></script>
 </body>
 </html>

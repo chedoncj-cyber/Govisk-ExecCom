@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -207,56 +207,6 @@
   </div>
 
   <script src="/assets/app.js"></script>
-  <script>
-    const form = document.getElementById('login-form');
-    const btn  = document.getElementById('submit-btn');
-    const err  = document.getElementById('err');
-
-    // Redirect param
-    const next = new URLSearchParams(window.location.search).get('next') || '/portal';
-
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      err.style.display = 'none';
-
-      const username = document.getElementById('username').value.trim();
-      const password = document.getElementById('password').value;
-
-      if (!username || !password) {
-        err.textContent = 'Please enter your username and password.';
-        err.style.display = 'block';
-        return;
-      }
-
-      btn.disabled = true;
-      btn.innerHTML = '<span class="spinner"></span>Signing in…';
-
-      try {
-        const res = await fetch('/api/auth/login', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          credentials: 'same-origin',
-          body: JSON.stringify({ username, password }),
-        });
-
-        if (res.ok) {
-          window.location.href = next;
-        } else {
-          const data = await res.json().catch(() => ({}));
-          err.textContent = data.detail || 'Invalid credentials. Please try again.';
-          err.style.display = 'block';
-          btn.disabled = false;
-          btn.textContent = 'Sign in';
-          document.getElementById('password').value = '';
-          document.getElementById('password').focus();
-        }
-      } catch {
-        err.textContent = 'Network error. Please check your connection and try again.';
-        err.style.display = 'block';
-        btn.disabled = false;
-        btn.textContent = 'Sign in';
-      }
-    });
-  </script>
+  <script src="/assets/login.js"></script>
 </body>
 </html>

@@ -1,0 +1,50 @@
+(function(){
+  var el = document.getElementById('ticker-date');
+  if(el) el.textContent = new Date().toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'});
+})();
+
+document.getElementById('d-submit').addEventListener('click', function() {
+  var name    = document.getElementById('d-name').value.trim();
+  var email   = document.getElementById('d-email').value.trim();
+  var org     = document.getElementById('d-org').value.trim();
+  var title   = document.getElementById('d-title').value.trim();
+  var consent = document.getElementById('consent').checked;
+  if (!name)  { document.getElementById('d-name').focus();  return; }
+  if (!email || !email.includes('@')) { document.getElementById('d-email').focus(); return; }
+  if (!org)   { document.getElementById('d-org').focus();   return; }
+  if (!title) { document.getElementById('d-title').focus(); return; }
+  if (!consent) { document.getElementById('consent').focus(); alert('Please confirm your consent to proceed.'); return; }
+  this.textContent = '✓ Sent';
+  this.disabled = true;
+  document.getElementById('d-success').classList.add('shown');
+});
+
+(function() {
+  var canvas = document.getElementById('particle-canvas');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var W = window.innerWidth, H = window.innerHeight;
+  canvas.width = W; canvas.height = H;
+  window.addEventListener('resize', function(){ W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; });
+  var pts = Array.from({length:40}, function(){ return {
+    x:Math.random()*W, y:Math.random()*H,
+    vx:(Math.random()-.5)*.25, vy:(Math.random()-.5)*.25,
+    r:Math.random()*1+.3, a:Math.random()*.25+.04
+  }; });
+  (function draw() {
+    ctx.clearRect(0,0,W,H);
+    pts.forEach(function(p){
+      p.x+=p.vx; p.y+=p.vy;
+      if(p.x<0)p.x=W; if(p.x>W)p.x=0;
+      if(p.y<0)p.y=H; if(p.y>H)p.y=0;
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle='rgba(62,189,250,'+p.a+')'; ctx.fill();
+    });
+    for(var i=0;i<pts.length;i++) for(var j=i+1;j<pts.length;j++){
+      var dx=pts[i].x-pts[j].x, dy=pts[i].y-pts[j].y, d=Math.sqrt(dx*dx+dy*dy);
+      if(d<110){ctx.beginPath();ctx.moveTo(pts[i].x,pts[i].y);ctx.lineTo(pts[j].x,pts[j].y);
+        ctx.strokeStyle='rgba(62,130,250,'+(.06*(1-d/110))+')';ctx.lineWidth=.5;ctx.stroke();}
+    }
+    requestAnimationFrame(draw);
+  })();
+})();
