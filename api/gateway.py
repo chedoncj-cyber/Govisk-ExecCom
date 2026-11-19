@@ -109,6 +109,8 @@ _SEC_HEADERS = {
         "frame-ancestors 'none';"
     ),
     "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+    # Prevent shared/CDN caches from serving one user's authenticated page to another
+    "Cache-Control": "private, no-store",
 }
 
 # ── Session-based authentication ──────────────────────────────────────────────
@@ -124,6 +126,20 @@ _PUBLIC_PATHS = {"/", "/home", "/about", "/services", "/case-studies", "/contact
                  "/request-demo", "/faq", "/privacy-policy", "/terms", "/cookie-policy",
                  "/refund-policy", "/404", "/login", "/health", "/api/auth/login",
                  "/api/status"}
+
+
+def _get_client_ip(request: Request) -> str:
+    """Return the real client IP, safe against X-Forwarded-For spoofing.
+    Render.com (and similar reverse proxies) APPEND the real client IP as the
+    last XFF entry — attackers can inject earlier entries but not what the
+    trusted proxy adds.  Falls back to the direct connection address when no
+    XFF header is present (local dev / direct connections)."""
+    xff = request.headers.get("x-forwarded-for", "")
+    if xff:
+        parts = [p.strip() for p in xff.split(",") if p.strip()]
+        if parts:
+            return parts[-1]
+    return request.client.host if request.client else "unknown"
 
 
 def _resolve_session(token: str | None) -> str | None:
@@ -189,8 +205,8 @@ class SecurityMiddleware(BaseHTTPMiddleware):
         if _BLOCKED_UA.search(ua):
             return JSONResponse({"detail": "Forbidden"}, status_code=403)
 
-        # Rate limit per client IP
-        ip  = (request.client.host if request.client else "unknown")
+        # Rate limit per client IP (real IP resolved safely from XFF)
+        ip  = _get_client_ip(request)
         now = time.monotonic()
         _RATE_STORE[ip] = [t for t in _RATE_STORE[ip] if now - t < _RATE_WINDOW]
         if len(_RATE_STORE[ip]) >= _RATE_LIMIT:
@@ -212,7 +228,7 @@ class SecurityMiddleware(BaseHTTPMiddleware):
                 "rid": rid,
                 "method": request.method,
                 "path": path,
-                "ip": request.client.host if request.client else "unknown",
+                "ip": _get_client_ip(request),
             },
         )
         metrics.inc("http_requests_total", method=request.method, path=path.split("?")[0])
@@ -271,7 +287,7 @@ async def serve_login():
 
 @app.post("/api/auth/login")
 async def auth_login(request: Request, response: Response, body: dict = Body(...)):
-    ip       = request.client.host if request.client else "unknown"
+    ip       = _get_client_ip(request)
     username = str(body.get("username", ""))[:128]
     password = str(body.get("password", ""))[:256]
 
@@ -312,7 +328,7 @@ async def auth_logout(request: Request, response: Response):
     token = request.cookies.get(_SESSION_COOKIE)
     if token and token in _SESSIONS:
         sess = _SESSIONS.pop(token)
-        ip = request.client.host if request.client else "unknown"
+        ip = _get_client_ip(request)
         _audit.log("logout", ip=ip, username=sess.get("username", "unknown"))
     elif token:
         _SESSIONS.pop(token, None)
@@ -396,7 +412,7 @@ async def prometheus_metrics():
 
 
 @app.get("/api/status")
-async def get_status():
+async def get_status(user: str = Depends(_get_session_user)):
     try:
         from ai_connector import get_status_for_api
         ai_status = get_status_for_api()
@@ -522,8 +538,8 @@ async def generate_stream(report_type: str, client_name: str, data: dict, no_sca
             yield f"data: {json.dumps({'type': 'complete', 'message': f'{label} generated successfully!', 'filename': output_path.name})}\n\n"
         else:
             yield f"data: {json.dumps({'type': 'error', 'message': 'Report file not found after generation. Check logs.'})}\n\n"
-    except Exception as e:
-        yield f"data: {json.dumps({'type': 'error', 'message': str(e)})}\n\n"
+    except Exception:
+        yield f"data: {json.dumps({'type': 'error', 'message': 'Report generation failed. Check server logs.'})}\n\n"
 
 
 @app.post("/api/generate/{report_type}")
@@ -731,8 +747,8 @@ async def refresh_fatf_blacklist(user: str = Depends(_get_session_user)):
                 yield f"data: {json.dumps({'type': 'complete', 'message': 'FATF blacklist refreshed.'})}\n\n"
             else:
                 yield f"data: {json.dumps({'type': 'error', 'message': 'FATF refresh failed.'})}\n\n"
-        except Exception as e:
-            yield f"data: {json.dumps({'type': 'error', 'message': str(e)})}\n\n"
+        except Exception:
+            yield f"data: {json.dumps({'type': 'error', 'message': 'FATF refresh failed. Check server logs.'})}\n\n"
 
     return StreamingResponse(
         _stream(),
@@ -795,8 +811,8 @@ async def run_daily_update(request: Request, user: str = Depends(_get_session_us
                     "Daily update failed. Check server logs.",
                 )
                 yield f"data: {json.dumps({'type': 'error', 'message': err_text})}\n\n"
-        except Exception as e:
-            yield f"data: {json.dumps({'type': 'error', 'message': str(e)})}\n\n"
+        except Exception:
+            yield f"data: {json.dumps({'type': 'error', 'message': 'Daily update failed. Check server logs.'})}\n\n"
 
     return StreamingResponse(
         _stream(),
