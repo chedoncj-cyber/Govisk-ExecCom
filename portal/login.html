@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In — Govisk ExecCom Intelligence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0b1220;
+      --surface:   #111827;
+      --border:    #1e293b;
+      --data:      #1d6bb5;
+      --data-h:    #2a7fcf;
+      --text-1:    #f1f5f9;
+      --text-2:    #94a3b8;
+      --error:     #f87171;
+      --radius:    10px;
+    }
+
+    body {
+      font-family: 'IBM Plex Sans', 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text-1);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+
+    /* ── Background grid ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(29,107,181,.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(29,107,181,.06) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .card {
+      position: relative;
+      z-index: 1;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2.5rem 2rem;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.5);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      margin-bottom: 2rem;
+    }
+
+    .brand-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--data);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .brand-icon svg { width: 20px; height: 20px; fill: none; stroke: #fff; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    .brand-name { font-size: 1.1rem; font-weight: 600; letter-spacing: -.01em; }
+    .brand-sub  { font-size: .78rem; color: var(--text-2); margin-top: 1px; }
+
+    h1 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: .4rem;
+    }
+
+    .subtitle {
+      font-size: .88rem;
+      color: var(--text-2);
+      margin-bottom: 2rem;
+      line-height: 1.5;
+    }
+
+    label {
+      display: block;
+      font-size: .82rem;
+      font-weight: 500;
+      color: var(--text-2);
+      margin-bottom: .4rem;
+    }
+
+    input {
+      width: 100%;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      color: var(--text-1);
+      font-family: inherit;
+      font-size: .95rem;
+      padding: .65rem .85rem;
+      outline: none;
+      transition: border-color .15s;
+      margin-bottom: 1.2rem;
+    }
+
+    input:focus { border-color: var(--data); }
+    input::placeholder { color: var(--text-2); }
+
+    button[type="submit"] {
+      width: 100%;
+      background: var(--data);
+      border: none;
+      border-radius: 7px;
+      color: #fff;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: .95rem;
+      font-weight: 500;
+      padding: .72rem;
+      transition: background .15s, opacity .15s;
+      margin-top: .4rem;
+    }
+
+    button[type="submit"]:hover   { background: var(--data-h); }
+    button[type="submit"]:disabled { opacity: .6; cursor: not-allowed; }
+
+    .error-msg {
+      display: none;
+      background: rgba(248,113,113,.12);
+      border: 1px solid rgba(248,113,113,.3);
+      border-radius: 7px;
+      color: var(--error);
+      font-size: .85rem;
+      padding: .65rem .85rem;
+      margin-bottom: 1rem;
+    }
+
+    .footer-note {
+      margin-top: 1.8rem;
+      font-size: .78rem;
+      color: var(--text-2);
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    .footer-note a { color: var(--data); text-decoration: none; }
+    .footer-note a:hover { text-decoration: underline; }
+
+    /* spinner */
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .spinner {
+      display: inline-block;
+      width: 14px; height: 14px;
+      border: 2px solid rgba(255,255,255,.3);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin .6s linear infinite;
+      vertical-align: middle;
+      margin-right: .4rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="brand">
+      <div class="brand-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><line x1="2" y1="12" x2="22" y2="12"/></svg>
+      </div>
+      <div>
+        <div class="brand-name">Govisk ExecCom</div>
+        <div class="brand-sub">Intelligence Portal</div>
+      </div>
+    </div>
+
+    <h1>Sign in</h1>
+    <p class="subtitle">Access your CASS intelligence dashboard and regulatory feeds.</p>
+
+    <div class="error-msg" id="err"></div>
+
+    <form id="login-form" autocomplete="on" novalidate>
+      <label for="username">Username</label>
+      <input id="username" name="username" type="text" autocomplete="username" placeholder="Enter username" required>
+
+      <label for="password">Password</label>
+      <input id="password" name="password" type="password" autocomplete="current-password" placeholder="Enter password" required>
+
+      <button type="submit" id="submit-btn">Sign in</button>
+    </form>
+
+    <p class="footer-note">
+      Govisk ExecCom Intelligence &mdash; FCA CASS &middot; SM&amp;CR &middot; Regulatory Intelligence<br>
+      <a href="/">Back to home</a>
+    </p>
+  </div>
+
+  <script src="/assets/app.js"></script>
+  <script>
+    const form = document.getElementById('login-form');
+    const btn  = document.getElementById('submit-btn');
+    const err  = document.getElementById('err');
+
+    // Redirect param
+    const next = new URLSearchParams(window.location.search).get('next') || '/portal';
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      err.style.display = 'none';
+
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value;
+
+      if (!username || !password) {
+        err.textContent = 'Please enter your username and password.';
+        err.style.display = 'block';
+        return;
+      }
+
+      btn.disabled = true;
+      btn.innerHTML = '<span class="spinner"></span>Signing in…';
+
+      try {
+        const res = await fetch('/api/auth/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          credentials: 'same-origin',
+          body: JSON.stringify({ username, password }),
+        });
+
+        if (res.ok) {
+          window.location.href = next;
+        } else {
+          const data = await res.json().catch(() => ({}));
+          err.textContent = data.detail || 'Invalid credentials. Please try again.';
+          err.style.display = 'block';
+          btn.disabled = false;
+          btn.textContent = 'Sign in';
+          document.getElementById('password').value = '';
+          document.getElementById('password').focus();
+        }
+      } catch {
+        err.textContent = 'Network error. Please check your connection and try again.';
+        err.style.display = 'block';
+        btn.disabled = false;
+        btn.textContent = 'Sign in';
+      }
+    });
+  </script>
+</body>
+</html>

@@ -8,6 +8,7 @@ import asyncio
 import json
 import os
 import re
+import secrets
 import subprocess
 import sys
 import time
@@ -16,9 +17,9 @@ from datetime import datetime
 from pathlib import Path
 from typing import AsyncGenerator
 
-from fastapi import Body, FastAPI, HTTPException, Request
+from fastapi import Body, Cookie, Depends, FastAPI, HTTPException, Request, Response
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import FileResponse, HTMLResponse, JSONResponse, StreamingResponse
+from fastapi.responses import FileResponse, HTMLResponse, JSONResponse, RedirectResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 from starlette.middleware.base import BaseHTTPMiddleware
 from dotenv import load_dotenv
@@ -78,6 +79,50 @@ _SEC_HEADERS = {
     ),
     "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
 }
+
+# ── Session-based authentication ──────────────────────────────────────────────
+# Env vars required:
+#   PORTAL_USERNAME  — login username (default: "admin")
+#   PORTAL_PASSWORD  — login password (required; set in Render dashboard, not .env)
+_SESSIONS: dict[str, str] = {}  # token → username
+_SESSION_COOKIE = "govisk_session"
+_SESSION_MAX_AGE = 8 * 3600  # 8 hours
+
+# Public routes that do NOT require authentication
+_PUBLIC_PATHS = {"/", "/home", "/about", "/services", "/case-studies", "/contact",
+                 "/request-demo", "/faq", "/privacy-policy", "/terms", "/cookie-policy",
+                 "/refund-policy", "/404", "/login", "/health", "/api/auth/login",
+                 "/api/status"}
+
+
+def _check_credentials(username: str, password: str) -> bool:
+    expected_user = os.getenv("PORTAL_USERNAME", "admin")
+    expected_pass = os.getenv("PORTAL_PASSWORD", "")
+    if not expected_pass:
+        return False
+    return (
+        secrets.compare_digest(username.encode(), expected_user.encode())
+        and secrets.compare_digest(password.encode(), expected_pass.encode())
+    )
+
+
+def _get_session_user(govisk_session: str = Cookie(default=None)) -> str:
+    """FastAPI dependency — raises 401 if not authenticated. Use on API routes."""
+    if not govisk_session or govisk_session not in _SESSIONS:
+        raise HTTPException(status_code=401, detail="Authentication required")
+    return _SESSIONS[govisk_session]
+
+
+def _portal_auth(request: Request) -> str:
+    """For HTML routes — returns redirect to /login instead of JSON 401."""
+    token = request.cookies.get(_SESSION_COOKIE)
+    if not token or token not in _SESSIONS:
+        raise HTTPException(
+            status_code=307,
+            headers={"Location": f"/login?next={request.url.path}"},
+            detail="Login required",
+        )
+    return _SESSIONS[token]
 
 
 class SecurityMiddleware(BaseHTTPMiddleware):
@@ -166,6 +211,44 @@ app.add_middleware(
 
 app.mount("/assets", StaticFiles(directory=str(PORTAL_DIR / "assets")), name="assets")
 
+# ── Auth endpoints (public) ───────────────────────────────────────────────────
+
+@app.get("/login", response_class=HTMLResponse)
+async def serve_login():
+    return _serve_html("login.html")
+
+
+@app.post("/api/auth/login")
+async def auth_login(response: Response, body: dict = Body(...)):
+    username = str(body.get("username", ""))
+    password = str(body.get("password", ""))
+    if not os.getenv("PORTAL_PASSWORD"):
+        raise HTTPException(status_code=503, detail="Portal auth not configured — set PORTAL_PASSWORD env var")
+    if not _check_credentials(username, password):
+        raise HTTPException(status_code=401, detail="Invalid credentials")
+    token = secrets.token_hex(32)
+    _SESSIONS[token] = username
+    response.set_cookie(
+        key=_SESSION_COOKIE,
+        value=token,
+        httponly=True,
+        secure=True,
+        samesite="strict",
+        max_age=_SESSION_MAX_AGE,
+        path="/",
+    )
+    return {"status": "ok", "redirect": "/portal"}
+
+
+@app.post("/api/auth/logout")
+async def auth_logout(request: Request, response: Response):
+    token = request.cookies.get(_SESSION_COOKIE)
+    if token:
+        _SESSIONS.pop(token, None)
+    response.delete_cookie(_SESSION_COOKIE, path="/")
+    return {"status": "ok"}
+
+
 REPORT_CONFIG = {
     "cass_health_check":         {"prefix": "cass_hc",      "script": "generate_cass_health_check.py",         "label": "CASS Health Check"},
     "cass_resolution_pack":      {"prefix": "cass_rp",      "script": "generate_cass_resolution_pack.py",      "label": "CASS Resolution Pack"},
@@ -197,7 +280,10 @@ async def serve_home():
 
 
 @app.get("/portal", response_class=HTMLResponse)
-async def serve_portal():
+async def serve_portal(request: Request):
+    token = request.cookies.get(_SESSION_COOKIE)
+    if not token or token not in _SESSIONS:
+        return RedirectResponse(url="/login?next=/portal", status_code=302)
     return _serve_html("index.html")
 
 
@@ -266,7 +352,7 @@ async def get_status():
 
 
 @app.get("/api/reports")
-async def list_reports():
+async def list_reports(user: str = Depends(_get_session_user)):
     reports = []
     for f in sorted(TMP_DIR.glob("*_draft.docx"), key=lambda x: x.stat().st_mtime, reverse=True):
         reports.append({
@@ -278,7 +364,7 @@ async def list_reports():
 
 
 @app.get("/api/download/{filename}")
-async def download_report(filename: str):
+async def download_report(filename: str, user: str = Depends(_get_session_user)):
     # Prevent path traversal: only allow safe filename characters and .docx extension
     # Use \Z (not $) to reject strings with trailing newlines
     if not re.match(r"^[\w\- ]+\.docx\Z", filename):
@@ -375,6 +461,7 @@ async def generate_report(
     report_type: str,
     request: Request,
     payload: dict = Body(default_factory=dict),
+    user: str = Depends(_get_session_user),
 ):
     if report_type not in REPORT_CONFIG:
         raise HTTPException(status_code=400, detail=f"Unknown report type: {report_type}")
@@ -394,7 +481,7 @@ async def generate_report(
 
 
 @app.get("/api/fca-updates")
-async def fca_updates():
+async def fca_updates(user: str = Depends(_get_session_user)):
     try:
         from fca_reference import FCA_NEWS, get_new_rules, CONSUMER_DUTY_CASS, SOURCED_DATE
         return {
@@ -408,8 +495,11 @@ async def fca_updates():
 
 
 @app.get("/region/{slug}", response_class=HTMLResponse)
-async def serve_region_page(slug: str):
+async def serve_region_page(slug: str, request: Request):
     """Serve the regional MI intelligence page for any valid region slug."""
+    token = request.cookies.get(_SESSION_COOKIE)
+    if not token or token not in _SESSIONS:
+        return RedirectResponse(url=f"/login?next=/region/{slug}", status_code=302)
     valid = {"uk", "north-america", "latin-america", "asia-pacific", "africa", "europe"}
     if slug not in valid:
         return HTMLResponse("<h1>Unknown region</h1>", status_code=404)
@@ -420,7 +510,7 @@ async def serve_region_page(slug: str):
 
 
 @app.get("/api/regional-updates/{region}")
-async def regional_updates(region: str):
+async def regional_updates(region: str, user: str = Depends(_get_session_user)):
     """Return static regulatory reference updates for a given region slug."""
     try:
         from regional_reference import REGIONAL_NEWS, REGION_META, SOURCED_DATE
@@ -439,7 +529,7 @@ async def regional_updates(region: str):
 
 
 @app.get("/api/rule/{rule_ref:path}")
-async def get_rule(rule_ref: str):
+async def get_rule(rule_ref: str, user: str = Depends(_get_session_user)):
     try:
         from fca_reference import CASS_RULES
         rule = CASS_RULES.get(rule_ref)
@@ -453,7 +543,7 @@ async def get_rule(rule_ref: str):
 
 
 @app.get("/api/enforcement")
-async def get_all_enforcement():
+async def get_all_enforcement(user: str = Depends(_get_session_user)):
     """Return all enforcement cases deduped and flattened for the portal panel."""
     try:
         from fca_reference import ENFORCEMENT_CASES
@@ -472,29 +562,41 @@ async def get_all_enforcement():
 
 
 @app.get("/blacklist", response_class=HTMLResponse)
-async def serve_blacklist():
+async def serve_blacklist(request: Request):
+    token = request.cookies.get(_SESSION_COOKIE)
+    if not token or token not in _SESSIONS:
+        return RedirectResponse(url="/login?next=/blacklist", status_code=302)
     return _serve_html("blacklist.html")
 
 
 @app.get("/grc-templates", response_class=HTMLResponse)
-async def serve_grc_templates():
+async def serve_grc_templates(request: Request):
+    token = request.cookies.get(_SESSION_COOKIE)
+    if not token or token not in _SESSIONS:
+        return RedirectResponse(url="/login?next=/grc-templates", status_code=302)
     return _serve_html("grc-templates.html")
 
 
 @app.get("/world-report", response_class=HTMLResponse)
-async def serve_world_report():
+async def serve_world_report(request: Request):
     """Govisk ExecCom Region World Report — multi-region GRC intelligence."""
+    token = request.cookies.get(_SESSION_COOKIE)
+    if not token or token not in _SESSIONS:
+        return RedirectResponse(url="/login?next=/world-report", status_code=302)
     return _serve_html("world_report.html")
 
 
 @app.get("/cyber-world-report", response_class=HTMLResponse)
-async def serve_cyber_world_report():
+async def serve_cyber_world_report(request: Request):
     """Cyber Intelligence World Region Report — threat intel from national cyber bodies."""
+    token = request.cookies.get(_SESSION_COOKIE)
+    if not token or token not in _SESSIONS:
+        return RedirectResponse(url="/login?next=/cyber-world-report", status_code=302)
     return _serve_html("cyber_world_report.html")
 
 
 @app.get("/api/cyber-updates/{slug}")
-async def cyber_updates(slug: str):
+async def cyber_updates(slug: str, user: str = Depends(_get_session_user)):
     """Return cyber intelligence reference data for a given region slug."""
     try:
         from cyber_reference import CYBER_NEWS, CYBER_REGION_META, CYBER_BODIES, SOURCED_DATE
@@ -517,7 +619,7 @@ async def cyber_updates(slug: str):
 
 
 @app.get("/api/fatf-blacklist")
-async def get_fatf_blacklist():
+async def get_fatf_blacklist(user: str = Depends(_get_session_user)):
     """Return cached FATF blacklist / grey list data (last run of fatf_blacklist.py)."""
     path = TMP_DIR / "fatf_blacklist.json"
     if not path.exists():
@@ -543,7 +645,7 @@ async def get_fatf_blacklist():
 
 
 @app.post("/api/fatf-blacklist/refresh")
-async def refresh_fatf_blacklist():
+async def refresh_fatf_blacklist(user: str = Depends(_get_session_user)):
     """Re-run fatf_blacklist.py and stream progress via SSE."""
     script_path = TOOLS_DIR / "fatf_blacklist.py"
 
@@ -575,7 +677,7 @@ async def refresh_fatf_blacklist():
 
 
 @app.get("/api/daily-briefing")
-async def get_daily_briefing():
+async def get_daily_briefing(user: str = Depends(_get_session_user)):
     """Return cached daily intelligence briefing (last run of daily_update.py)."""
     path = TMP_DIR / "daily_intelligence.json"
     if not path.exists():
@@ -588,7 +690,7 @@ async def get_daily_briefing():
 
 
 @app.post("/api/daily-update")
-async def run_daily_update(request: Request):
+async def run_daily_update(request: Request, user: str = Depends(_get_session_user)):
     """Stream a live daily regulatory intelligence update via SSE."""
     no_scan = False
     try:
@@ -639,7 +741,7 @@ async def run_daily_update(request: Request):
 
 
 @app.get("/api/enforcement/region/{slug}")
-async def get_enforcement_by_region(slug: str):
+async def get_enforcement_by_region(slug: str, user: str = Depends(_get_session_user)):
     """Return enforcement actions for a specific region slug."""
     from tools.regional_reference import REGIONAL_ENFORCEMENT
     data = REGIONAL_ENFORCEMENT.get(slug)
@@ -649,7 +751,7 @@ async def get_enforcement_by_region(slug: str):
 
 
 @app.get("/api/enforcement/{report_type}")
-async def get_enforcement_for_report(report_type: str):
+async def get_enforcement_for_report(report_type: str, user: str = Depends(_get_session_user)):
     """Return enforcement cases relevant to a specific report type."""
     try:
         from fca_reference import ENFORCEMENT_CASES

@@ -3,8 +3,14 @@ services:
     name: govisk-execcom-portal
     runtime: python
     buildCommand: pip install -r requirements.txt
-    startCommand: python portal/serve.py
+    startCommand: uvicorn api.gateway:app --host 0.0.0.0 --port $PORT
     autoDeploy: true
     envVars:
       - key: PYTHONUNBUFFERED
         value: "1"
+      - key: ALLOWED_ORIGINS
+        value: "https://govisk-execcom-portal.onrender.com"
+      - key: PORTAL_USERNAME
+        value: "admin"
+      - key: PORTAL_PASSWORD
+        sync: false   # Set this in the Render dashboard — never commit passwords
